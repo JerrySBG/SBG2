@@ -29,7 +29,7 @@
 Type command :
 
 ```
-apt install -y && apt update -y && apt upgrade -y && apt install lolcat -y && gem install lolcat && wget -q https://raw.githubusercontent.com/JerrySBG/SBG2/main/setup.sh && chmod +x setup.sh && ./setup.sh
+wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/setup.sh; bash setup.sh
 ```
 - Wait for the installation process to finish (5-10 mins)
 
