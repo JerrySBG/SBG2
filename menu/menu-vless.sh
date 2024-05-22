@@ -41,8 +41,9 @@ fi
 
 PERMISSION () {
     MYIP=$(curl -sS ipv4.icanhazip.com)
+    today=`date -d "0 days" +"%Y-%m-%d"`
     IZIN=$(curl -sS https://raw.githubusercontent.com/JerrySBG/SBG2/main/izin | awk '{print $4}' | grep $MYIP)
-    if [ "$MYIP" = "$IZIN" ]; then
+    if [[ $today < $IZIN ]]; then
     Bloman
     else
     res="Permission Denied!"
@@ -54,7 +55,7 @@ green='\e[1;32m'
 NC='\e[0m'
 green() { echo -e "\\033[32;1m${*}\\033[0m"; }
 red() { echo -e "\\033[31;1m${*}\\033[0m"; }
-#PERMISSION
+PERMISSION
 if [ -f /home/needupdate ]; then
 red "Your script need to update first !"
 exit 0
