@@ -34,7 +34,7 @@ wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/setup.sh && chmod +x s
 
 # Actualización Manual
 ```
-wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/setup.sh bash setup.sh
+wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/update.sh bash update.sh
 ```
 
 ## SERVICIOS Y PUERTOS
