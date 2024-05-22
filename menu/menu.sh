@@ -1,3 +1,6 @@
+DATEVPS=$(date +'%d/%m/%Y')
+TIMEZONE=$(printf '%(%I:%M %p)T')
+
 BURIQ () {
 curl -sS https://raw.githubusercontent.com/JerrySBG/SBG2/main/izin > /root/tmp
 data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
@@ -39,16 +42,23 @@ res="Permission Denied!"
 fi
 BURIQ
 }
-red='\e[1;31m'
+CYAN="\033[96m"
+red='\033[0;31m'
+LIGHT='\033[0;37m'
 green='\e[1;32m'
 NC='\e[0m'
 green() { echo -e "\\033[32;1m${*}\\033[0m"; }
 red() { echo -e "\\033[31;1m${*}\\033[0m"; }
 PERMISSION
-if [ "$res" = "Expired" ]; then
-Exp="\e[36mExpired\033[0m"
+# Status ExpiRED Active | Geo Project
+Info="(${CYAN}ACTIVO${LIGHT})"
+Error="(${red}EXPIRADO${LIGHT})"
+today=`date -d "0 days" +"%Y-%m-%d"`
+Exp1=$(curl -sS https://raw.githubusercontent.com/JerrySBG/SBG2/main/izin | grep $MYIP | awk '{print $3}')
+if [[ $today < $Exp1 ]]; then
+sts="${Info}"
 else
-Exp=$(curl -sS https://raw.githubusercontent.com/JerrySBG/SBG2/main/izin | grep $MYIP | awk '{print $3}')
+sts="${Error}"
 fi
 vlx=$(grep -c -E "^#& " "/etc/xray/config.json")
 let vla=$vlx/2
@@ -216,12 +226,12 @@ echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
 menu
 }
-export sem=$( curl -s https://raw.githubusercontent.com/IlhamStoree/v6/main/versions)
+export sem=$( curl -s https://raw.githubusercontent.com/JerrySBG/SBG2/main/version)
 export pak=$( cat /home/.ver)
 IPVPS=$(curl -s ipinfo.io/ip )
 clear
 echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
-echo -e "${BICyan} │                  ${BIWhite}${UWhite}AUTOSCRIPT REVOERVPN${NC}"
+echo -e "${BICyan} │                  ${BIWhite}${UWhite}AUTOSCRIPT SBG-VPN${NC}"
 echo -e "${BICyan} │"
 echo -e "${BICyan} │  ${BICyan}OS        :  ${BIYellow}$( cat /etc/os-release | grep -w PRETTY_NAME | sed 's/PRETTY_NAME//g' | sed 's/=//g' | sed 's/"//g' ) ( $( uname -m) )${NC}"
 echo -e "${BICyan} │  ${BICyan}CPU       :  ${BIYellow}$cpu_usage${NC}"
@@ -230,8 +240,8 @@ echo -e "${BICyan} │  ${BICyan}DOMAIN    :  ${BIYellow}$(cat /etc/xray/domain)
 echo -e "${BICyan} │  ${BICyan}RAM       :  ${BIYellow}$totalram MB${NC}"
 echo -e "${BICyan} │  ${BICyan}SWAP RAM  :  ${BIYellow}$uram / $tram MB${NC}"
 echo -e "${BICyan} │  ${BICyan}IP VPS    :  ${BIYellow}$IPVPS${NC}"
-echo -e "${BICyan} │  ${BICyan}REBOOT    :  ${BIYellow}02:00 ( Jam 2 malam )${NC}"
-echo -e "${BICyan} │  ${BICyan}DEVELOPER :  ${BIYellow}AtaaXD${NC}"
+echo -e "${BICyan} │  ${BICyan}REBOOT    :  ${BIYellow}00:00 ( Mexico )${NC}"
+echo -e "${BICyan} │  ${BICyan}DEVELOPER :  ${BIYellow}JERRY${NC}"
 echo -e "${BICyan} └─────────────────────────────────────────────────────┘${NC}"
 echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
 echo -e "${BICyan} │  ${BIYellow}SSH         VMESS           VLESS          TROJAN $NC"
@@ -252,7 +262,7 @@ DATE=$(date +'%d %B %Y')
 datediff() {
 d1=$(date -d "$1" +%s)
 d2=$(date -d "$2" +%s)
-echo -e "        ${BICyan}│$NC Expiry In     : $(( (d1 - d2) / 86400 )) Days $NC"
+echo -e "        ${BICyan}│$NC Expira En     : $(( (d1 - d2) / 86400 )) Dias $NC"
 }
 mai="datediff "$Exp" "$DATE""
 echo -e "        ${BICyan}┌─────────────────────────────────────┐${NC}"
