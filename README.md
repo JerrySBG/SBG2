@@ -1,61 +1,12 @@
-<br>
-<img src="https://raw.githubusercontent.com/JerrySBG/SBG2/blob/main/menu%20premium.jpg">
-</br>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/76937659/153705486-44e6c1b2-74fa-4d44-be1c-36c8fdb83331.gif"/>
+</p>
 
-Nunca tener instalado nada...VPS LIMPIA
-<br>
-- Si instala el script dos veces, deberá reconstruir el VPS a la configuración de fábrica, en el panel del proveedor de VPS.<br>
-- DOMAIN (MUST) / Random<br>
-- DEBIAN 9/10<br>
-- Ubuntu 18/20 LTS<br>
-- CPU MIN 1 CORE<br>
-- RAM 1GB<br>
-- (Recommendation) Ubuntu 18 / 20 LTS (STABLE to use)
-<br>
+♦️ Installation Link
 
-<br>
-- SSL/TLS : FULL<br>
-- SSL/TLS Recommender : OFF<br>
-- GRPC : ON<br>
-- WEBSOCKET : ON<br>
-- Always Use HTTPS : OFF<br>
-- UNDER ATTACK MODE : OFF<br>
-<br>
+<pre><code>sysctl -w net.ipv6.conf.all.disable_ipv6=1 && sysctl -w net.ipv6.conf.default.disable_ipv6=1 && apt update && apt install -y bzip2 gzip coreutils screen curl unzip && wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/setup.sh && chmod +x setup.sh && sed -i -e 's/\r$//' setup.sh && screen -S setup ./setup.sh
+</code></pre>
 
-# Actualizar VPS
-```
-apt update && apt upgrade -y --fix-missing && update-grub && sleep 2 && apt -y install xxd && apt install -y bzip2 && apt install -y wget && apt install -y curl && reboot
-```
-
-# Instalador VPS
-```
-wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/setup.sh && chmod +x setup.sh && ./setup.sh
-```
-
-# Actualización Manual
-```
-wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/update.sh bash update.sh
-```
-
-## SERVICIOS Y PUERTOS
-<br>
-- OpenSSH                  : 22<br>
-- SSH Websocket            : 80<br>
-- SSH SSL Websocket        : 443<br>
-- Stunnel4                 : 222, 777<br>
-- Dropbear                 : 109, 143<br>
-- Badvpn                   : 7100-7900<br>
-- Nginx                    : 86<br>
-- Vmess WS TLS             : 443<br>
-- Vless WS TLS             : 443<br>
-- Trojan WS TLS            : 443<br>
-- Shadowsocks WS TLS       : 443<br>
-- Vmess WS none TLS        : 80<br>
-- Vless WS none TLS        : 80<br>
-- Trojan WS none TLS       : 80<br>
-- Shadowsocks WS none TLS  : 80<br>
-- Vmess gRPC               : 443<br>
-- Vless gRPC               : 443<br>
-- Trojan gRPC              : 443<br>
-- Shadowsocks gRPC         : 443<br>
-<br>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/76937659/153705486-44e6c1b2-74fa-4d44-be1c-36c8fdb83331.gif"/>
+</p>
