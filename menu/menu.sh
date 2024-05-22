@@ -258,10 +258,10 @@ echo -e "${BICyan} │  ${BICyan}[${BIWhite}5${BICyan}] SETTING  ${BICyan}[${BIY
 echo -e "${BICyan} │  ${BICyan}[${BIWhite}6${BICyan}] TRIAL    ${BICyan}[${BIYellow}Menu${BICyan}]${NC}"  "${BICyan}  [${BIWhite}13${BICyan}] UPDATE SCRIPT   ${BICyan}[${BIYellow}Menu${BICyan}]${NC}" "${BICyan} │${NC}"
 echo -e "${BICyan} │  ${BICyan}[${BIWhite}7${BICyan}] BACKUP   ${BICyan}[${BIYellow}Menu${BICyan}]${NC}"  "${BICyan}   ${BIWhite}  ${BICyan}                  ${BICyan} ${BIYellow}    ${BICyan} ${NC}" "${BICyan} │${NC}"
 echo -e "${BICyan} └─────────────────────────────────────────────────────┘${NC}"
-DATE=$(date +'%d %B %Y')
+DATE=$(date +'%Y-%m-%d')
 datediff() {
-d1=$(date -d "$1" +%s)
-d2=$(date -d "$2" +%s)
+    d1=$(date -d "$1" +%s)
+    d2=$(date -d "$2" +%s)
 echo -e "        ${BICyan}│$NC Expira En     : $(( (d1 - d2) / 86400 )) Dias $NC"
 }
 mai="datediff "$Exp" "$DATE""

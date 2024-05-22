@@ -41,14 +41,35 @@ fi
 
 PERMISSION () {
     MYIP=$(curl -sS ipv4.icanhazip.com)
-    IZIN=$(curl -sS https://raw.githubusercontent.com/JerrySBG/SBG2/main/izin | awk '{print $4}' | grep $MYIP)
-    if [ "$IZIN" = "$MYIP" ]; then
-    Bloman
-    else
-    res="Permission Denied!"
-    fi
-    BURIQ
+    echo -e "\e[32mCargando...\e[0m"
+    clear
+    # Valid Script
+    ipsaya=$(wget -qO- ipinfo.io/ip)
+    data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+    date_list=$(date +"%Y-%m-%d" -d "$data_server")
+    data_ip=$(curl -sS https://raw.githubusercontent.com/JerrySBG/SBG2/main/izin | awk '{print $4}' | grep $MYIP)
+    checking_sc() {
+  useexp=$(wget -qO- $data_ip | grep $ipsaya | awk '{print $3}')
+  if [[ $date_list < $useexp ]]; then
+    echo -ne
+  else
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    echo -e "\033[42m          404 AUTOSCRIPT NO ENCONTRADO      \033[0m"
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    echo -e ""
+    echo -e "              ${RED}PERMISO DENEGADO !${NC}"
+    echo -e "     \033[0;33mTU VPS${NC} $ipsaya \033[0;33mHA SIDO BANEADA${NC}"
+    echo -e " \033[0;33mComprar permisos de Acceso para el Scripts${NC}"
+    echo -e "              \033[0;33mContacto del Admin :${NC}"
+    echo -e "      ${GREEN}WhatsApp${NC} wa.me/+529241293310"
+    echo -e "      ${Lgreen}Telegram${NC} t.me/Jerry_SGB"
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    exit
+  fi
 }
+checking_sc
+echo -e "\e[32mCargando...\e[0m"
+clear
 red='\e[1;31m'
 green='\e[1;32m'
 NC='\e[0m'
