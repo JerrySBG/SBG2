@@ -5,7 +5,6 @@ biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 NC="\e[0m"
 RED="\033[0;31m" 
 
-
 BIBlack='\033[1;90m'      # Black
 BIRed='\033[1;91m'        # Red
 BIGreen='\033[1;92m'      # Green

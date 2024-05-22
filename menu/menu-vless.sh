@@ -2,8 +2,6 @@
 dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 ###########- COLOR CODE -##############
-NC="\e[0m"
-RED="\033[0;31m" 
 
 BIBlack='\033[1;90m'      # Black
 BIRed='\033[1;91m'        # Red
