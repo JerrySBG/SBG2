@@ -22,15 +22,21 @@ Nunca tener instalado nada...VPS LIMPIA
 - UNDER ATTACK MODE : OFF<br>
 <br>
 
-# INSTALADOR
+# Actualizar VPS
 ```
 apt update && apt upgrade -y --fix-missing && update-grub && sleep 2 && apt -y install xxd && apt install -y bzip2 && apt install -y wget && apt install -y curl && reboot
 ```
 
-# Actualizacion Manual
+# Instalador VPS
+```
+wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/setup.sh && chmod +x setup.sh && ./setup.sh
+```
+
+# Actualización Manual
 ```
 wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/setup.sh bash setup.sh
 ```
+
 ## SERVICIOS Y PUERTOS
 <br>
 - OpenSSH                  : 22<br>
