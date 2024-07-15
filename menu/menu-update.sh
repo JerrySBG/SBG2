@@ -80,13 +80,13 @@ else
 sts="${Error}"
 fi
 clear
-echo -e "\e[1;31mUpdate Available Now..\e[m"
+echo -e "\e[1;31mActualización Disponible Ahora..\e[m"
 echo -e ""
 sleep 1
-echo -e "\e[1;36mStart Update For New Version, Please Wait..\e[m"
+echo -e "\e[1;36mInicie la Actualización para la Nueva Versión, Espere..\e[m"
 sleep 2
 clear
-echo -e "\e[0;32mGetting New Version Script..\e[0m"
+echo -e "\e[0;32mObtener una Nueva Versión del Script..\e[0m"
 sleep 1
 echo ""
 rm -rf update
@@ -317,17 +317,17 @@ chmod +x renew-ssws
 
 clear
 echo -e ""
-echo -e "\e[0;32mDownloaded successfully!\e[0m"
+echo -e "\e[0;32mDescargado Exitosamente!\e[0m"
 echo ""
 ver=$( curl sS https://raw.githubusercontent.com/JerrySBG/SBG2/main/versi )
 sleep 1
-echo -e "\e[0;32mPatching New Update, Please Wait...\e[0m"
+echo -e "\e[0;32mParchando Nueva Actualización, Espere...\e[0m"
 echo ""
 sleep 2
-echo -e "\e[0;32mPatching... OK!\e[0m"
+echo -e "\e[0;32mActualizando... OK!\e[0m"
 sleep 1
 echo ""
-echo -e "\e[0;32mSucces Update Script For New Version\e[0m"
+echo -e "\e[0;32mScript de Actualización Exitosa para la Nueva Versión\e[0m"
 cd
 echo "$ver" > /home/ver
 rm -f update.sh
