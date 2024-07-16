@@ -78,7 +78,7 @@ echo "$localip $(hostname)" >> /etc/hosts
 fi
 mkdir -p /etc/xray
 
-echo -e "[ ${tyblue}NOTES${NC} ] Antes de irnos.. "
+echo -e "[ ${tyblue}NOTES${NC} ] Antes de Instalar.. "
 sleep 1
 echo -e "[ ${tyblue}NOTES${NC} ] Primero necesito revisar tus datos.."
 sleep 2
