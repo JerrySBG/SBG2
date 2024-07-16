@@ -33,7 +33,7 @@ CekTwo=$(cat /etc/.$Name.ini)
         res="Expired"
     fi
 else
-res="Permission Accepted..."
+res="Permiso Aceptado..."
 fi
 }
 
@@ -78,9 +78,9 @@ echo "$localip $(hostname)" >> /etc/hosts
 fi
 mkdir -p /etc/xray
 
-echo -e "[ ${tyblue}NOTES${NC} ] Antes de irnos.. "
+echo -e "[ ${tyblue}NOTES${NC} ] Antes de Instalar.. "
 sleep 1
-echo -e "[ ${tyblue}NOTES${NC} ] Primero necesito revisar tus datos.."
+echo -e "[ ${tyblue}NOTES${NC} ] Primero Necesito Revisar tus Datos.."
 sleep 2
 echo -e "[ ${green}INFO${NC} ] Checando Datos"
 sleep 1
@@ -162,7 +162,7 @@ clear
 wget -q https://raw.githubusercontent.com/JerrySBG/SBG2/main/api.sh;chmod +x api.sh;./api.sh
 clear
 echo -e " ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-yellow "Agregue DOMINIO o SUBDOMINIO para vmess/vless/trojan dll"
+ yellow "  Agregue DOMINIO o SUBDOMINIO para vmess/vless/trojan dll"
 echo -e " ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo " "
 echo -e " ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
@@ -373,6 +373,6 @@ secs_to_human "$(($(date +%s) - ${start}))" | tee -a log-install.txt
 echo -e ""
 echo "===============-[ INSTALAR SSH UDP & REINICIAR ]-==============="
 sleep 2
-wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1S3IE25v_fyUfCLslnujFBSBMNunDHDk2' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1S3IE25v_fyUfCLslnujFBSBMNunDHDk2" -O install-udp && rm -rf /tmp/cookies.txt && chmod +x install-udp && ./install-udp
+wget https://raw.githubusercontent.com/JerrySBG/SBG/main/limit/udp-costum.sh && chmod +x udp-costum.sh && ./udp-costum.sh
 read -p "$( echo -e "Presione ${yellow}[ ${purple}${yellow}Enter${purple} ${yellow}]${purple} Para Reiniciar") "
 reboot
