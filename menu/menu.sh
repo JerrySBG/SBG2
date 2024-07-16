@@ -294,5 +294,5 @@ case $opt in
 15) clear ; menu-bckp ;;
 0) clear ; menu ;;
 x) exit ;;
-*) echo "Presionaste Mal Manco" ; sleep 5 ; ctrl + c ;;
+*) echo "Presionaste Mal, Manco..." ; sleep 5 ; ctrl + c ;;
 esac

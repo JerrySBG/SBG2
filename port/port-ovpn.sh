@@ -147,7 +147,7 @@ exit
 menu
 ;;
 *)
-echo "Anda salah tekan.."
+echo "Presionaste MAL, Manco..."
 ;;
 esac
 
