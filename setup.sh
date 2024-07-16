@@ -80,7 +80,7 @@ mkdir -p /etc/xray
 
 echo -e "[ ${tyblue}NOTES${NC} ] Antes de Instalar.. "
 sleep 1
-echo -e "[ ${tyblue}NOTES${NC} ] Primero necesito revisar tus datos.."
+echo -e "[ ${tyblue}NOTES${NC} ] Primero Necesito Revisar tus Datos.."
 sleep 2
 echo -e "[ ${green}INFO${NC} ] Checando Datos"
 sleep 1
