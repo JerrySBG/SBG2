@@ -15,9 +15,6 @@ elif [[ -e /etc/centos-release ]]; then
 	OS=centos
 fi
 
-
-
-
 echo "Instalando Herramientas...!"
 echo "Iniciando..."
 sleep 2

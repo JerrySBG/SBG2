@@ -78,9 +78,9 @@ echo "$localip $(hostname)" >> /etc/hosts
 fi
 mkdir -p /etc/xray
 
-echo -e "[ ${tyblue}NOTES${NC} ] Antes de Instalar.. "
+echo -e "[ ${tyblue}NOTES${NC} ] Antes de irnos.. "
 sleep 1
-echo -e "[ ${tyblue}NOTES${NC} ] Primero Necesito Revisar tus Datos.."
+echo -e "[ ${tyblue}NOTES${NC} ] Primero necesito revisar tus datos.."
 sleep 2
 echo -e "[ ${green}INFO${NC} ] Checando Datos"
 sleep 1
@@ -119,7 +119,7 @@ PERMISSION
 if [ -f /home/needupdate ]; then
 red "Su Script debe Actualizarse Primero !"
 exit 0
-elif [ "$res" = "Permission Accepted..." ]; then
+elif [ "$res" = "Permiso Aceptado..." ]; then
 green "Permiso Aceptado!"
 else
 red "Permiso Denegado!"
