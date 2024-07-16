@@ -119,7 +119,7 @@ PERMISSION
 if [ -f /home/needupdate ]; then
 red "Su Script debe Actualizarse Primero !"
 exit 0
-elif [ "$res" = "Permiso Aceptado..." ]; then
+elif [ "$res" = "Permission Accepted..." ]; then
 green "Permiso Aceptado!"
 else
 red "Permiso Denegado!"
