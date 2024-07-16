@@ -24,8 +24,8 @@ else
 echo -e "${NC}${RED}Permission Denied!${NC}";
 echo -e "${NC}${LIGHT}Please Contact Admin!!"
 echo -e "${NC}${LIGHT}Facebook : "
-echo -e "${NC}${LIGHT}WhatsApp : 081250851741"
-echo -e "${NC}${LIGHT}Telegram : https://t.me/Cibut2d"
+echo -e "${NC}${LIGHT}WhatsApp : +052 9241293310"
+echo -e "${NC}${LIGHT}Telegram : https://t.me/Jerry_SBG"
 exit 0
 fi
 # ==================================================
@@ -49,7 +49,7 @@ if [[ -e /etc/wireguard/params ]]; then
 	exit 1
 fi
 
-echo -e "${Info} Wireguard Script By TARAP KUHING"
+echo -e "${Info} Wireguard Script By JERRY SBG"
 # Detect public IPv4 address and pre-fill for the user
 
 # Detect public interface and pre-fill for the user

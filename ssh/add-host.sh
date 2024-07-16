@@ -33,8 +33,8 @@ clear
 echo -e "\033[0;33m   ┌──────────────────────────────────────────┐\033[0m"
 echo -e "\033[0;33m   │\033[0m            \033[0;32mCHANGE DOMAIN VPS\033[0m             \033[0;33m|\033[0m"
 echo -e "\033[0;33m   └──────────────────────────────────────────┘\033[0m"
-echo -e "     ${RED}Autoscript Papada'an Store (multi port)${NC}"
-echo -e "${RED}Make sure the internet is smooth when installing the script${NC}"
+echo -e "     ${RED}Autoscript JERRY-SBG Store (multi port)${NC}"
+echo -e "${RED}Asegúrese de que su Internet sea fluido al instalar el script${NC}"
 echo -e "───────────────────────────────────────────────────────"
 echo -e ""
 echo -e "       ${GREEN}Hostname${NC}    :  $LAST_DOMAIN"
@@ -42,7 +42,7 @@ echo -e "       ${GREEN}Public IP${NC}   :  $MYIP"
 echo -e "       ${GREEN}Total RAM${NC}   :  $totalram MB"
 echo -e ""
 echo -e "───────────────────────────────────────────────────────"
-read -rp "Input ur Domain/Host : " -e domain
+read -rp "Introduce tu Dominio/Host : " -e domain
 rm -rf /etc/xray/domain
 rm -rf /etc/v2ray/domain
 rm -rf /etc/xray/scdomain

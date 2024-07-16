@@ -222,10 +222,10 @@ echo -e "${BICyan}${NC}${BICyan}SSH UDP HC :                 ${NC}" | tee -a /et
 echo -e "${BIGreen}${NC}${BIGreen}$domen:1-65535@$Login:$Pass${NC}" | tee -a /etc/log-create-user.log
 echo -e "${BIRed}${NC}" | tee -a /etc/log-create-user.log
 echo -e "${BICyan}${NC}${BICyan}Payload WSS :                                      ${NC}" | tee -a /etc/log-create-user.log
-echo -e "${BIGreen}${NC}${BIGreen}GET /cdn-cgi/trace HTTP/1.1[crlf]Host: isi_bug_disini[crlf][crlf]CF-RAY / HTTP/1.1[crlf]Host: [host][crlf]Upgrade: Websocket[crlf]Connection: Keep-Alive[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf]${NC}" | tee -a /etc/log-create-user.log
+echo -e "${BIGreen}${NC}${BIGreen}GET / HTTP/1.1[crlf]Host: [host_port][crlf]Connection: Upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf] \n${NC}" | tee -a /etc/log-create-user.log
 echo -e "${BIRed}${NC}" | tee -a /etc/log-create-user.log
 echo -e "${BICyan}${NC}${BICyan}Payload WS :                  ${NC}" | tee -a /etc/log-create-user.log
-echo -e "${BIGreen}${NC}${BIGreen}GET ws://$domen/ HTTP/1.1[crlf]Host: bug.com[crlf]Upgrade: websocket[crlf][crlf]${NC}" | tee -a /etc/log-create-user.log
+echo -e "${BIGreen}${NC}${BIGreen}GET ws://$domen/ HTTP/1.1[crlf]Host: google.com[crlf]Upgrade: websocket[crlf][crlf]${NC}" | tee -a /etc/log-create-user.log
 echo -e "${BIRed}${NC}" | tee -a /etc/log-create-user.log
 fi
 echo ""

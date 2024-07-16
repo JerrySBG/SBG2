@@ -11,7 +11,7 @@ portsshws=`cat ~/log-install.txt | grep -w "SSH Websocket" | cut -d: -f2 | awk '
 if [ -f "/etc/systemd/system/sshws.service" ]; then
 clear
 else
-wget -q -O /usr/bin/proxy3.js "https://raw.githubusercontent.com/bagusid93/pp/main/ssh/proxy3.js"
+wget -q -O /usr/bin/proxy3.js "raw.githubusercontent.com/JerrySBG/SBG2/main/ssh/proxy3.js"
 cat <<EOF> /etc/systemd/system/sshws.service
 [Unit]
 Description=WSenabler
@@ -38,7 +38,7 @@ PID=`ps -ef |grep -v grep | grep sshws |awk '{print $2}'`
 if [[ ! -z "${PID}" ]]; then
 echo "Already ON !"
 else
-wget -q -O /usr/bin/sshws-service "https://raw.githubusercontent.com/bagusid93/pp/main/ssh/sshws-true.sh" && chmod +x /usr/bin/sshws-service && /usr/bin/sshws-service
+wget -q -O /usr/bin/sshws-service "raw.githubusercontent.com/JerrySBG/SBG2/main/ssh/sshws-true.sh" && chmod +x /usr/bin/sshws-service && /usr/bin/sshws-service
 systemctl daemon-reload >/dev/null 2>&1
 systemctl enable sshws.service >/dev/null 2>&1
 systemctl start sshws.service >/dev/null 2>&1

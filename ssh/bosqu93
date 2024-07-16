@@ -1,11 +1,11 @@
-USERID=2118266757
-KEY="6561892159:AAEfW_wh32WA3KzJDVrvFDDbtazjcmA2Cc4"
+USERID=833821933
+KEY="5340711015:AAEgC3JCrQZ2fkFqfV40UyqLfyzMmXX9BZI"
 TIMEOUT="10"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 curl -s ipinfo.io/org?token=75082b4831f909  | cut -d " " -f 2-10 >> /etc/xray/isp
 MYIP=$(curl -sS ipv4.icanhazip.com)
-Name=$(curl -sS https://raw.githubusercontent.com/bosqu93/v5/main/ipvps | grep $MYIP | awk '{print $2}')
-Izin=$(curl -sS https://raw.githubusercontent.com/bosqu93/v5/main/ipvps | grep $MYIP | awk '{print $3}')
+Name=$(curl -sS https://raw.githubusercontent.com/JerrySBG/SBG2/main/ipvps | grep $MYIP | awk '{print $2}')
+Izin=$(curl -sS https://raw.githubusercontent.com/JerrySBG/SBG2/main/ipvps | grep $MYIP | awk '{print $3}')
 ISP=$(wget -qO- ipinfo.io/org)
 NAMES=$(whoami)
 RAMMS=$(free -m | awk 'NR==2 {print $2}')
@@ -28,9 +28,9 @@ if [ -n "$SSH_CLIENT" ] && [ -z "$TMUX" ]; then
   ⚠️ AUTOSCRIPT  V2⚠️
   ⚠️ JULAK - BANTUR ⚠️
 ◇━━━━━━━━━━━━━━◇
-TANGGAL  : ${DATE_EXEC}
-CLIENT        : ${Name}
-DOMAIN      : $(cat /etc/xray/domain)
+FECHA  : ${DATE_EXEC}
+CLIENTE        : ${Name}
+DOMINIO      : $(cat /etc/xray/domain)
 IP                : ${IPADDR}
 ISP              : ${ISP}
 CITY            : ${CITY}

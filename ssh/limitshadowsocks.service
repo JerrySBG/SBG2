@@ -1,6 +1,6 @@
 [Unit]
 Description=Limit Usage Xray Service
-Documentation=Papada'an-Store
+Documentation=JERRY SBG-Store
 After=syslog.target network-online.target
 
 [Service]
