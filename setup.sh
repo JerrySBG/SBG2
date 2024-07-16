@@ -78,15 +78,15 @@ echo "$localip $(hostname)" >> /etc/hosts
 fi
 mkdir -p /etc/xray
 
-echo -e "[ ${tyblue}NOTES${NC} ] Before we go.. "
+echo -e "[ ${tyblue}NOTES${NC} ] Antes de irnos.. "
 sleep 1
-echo -e "[ ${tyblue}NOTES${NC} ] I need check your headers first.."
+echo -e "[ ${tyblue}NOTES${NC} ] Primero necesito revisar tus datos.."
 sleep 2
-echo -e "[ ${green}INFO${NC} ] Checking headers"
+echo -e "[ ${green}INFO${NC} ] Checando Datos"
 sleep 1
 
 secs_to_human() {
-    echo "Installation time : $(( ${1} / 3600 )) hours $(( (${1} / 60) % 60 )) minute's $(( ${1} % 60 )) seconds"
+    echo "Tiempo de Instalacion : $(( ${1} / 3600 )) Horas $(( (${1} / 60) % 60 )) Minutos $(( ${1} % 60 )) Segundos"
 }
 start=$(date +%s)
 ln -fs /usr/share/zoneinfo/America/Mexico_City /etc/localtime
@@ -108,21 +108,21 @@ clear
 END
 chmod 644 /root/.profile
 
-echo -e "[ ${green}INFO${NC} ] Preparing the install file"
+echo -e "[ ${green}INFO${NC} ] Preparando el Archivo de Instalación"
 apt install git curl -y >/dev/null 2>&1
 apt install python -y >/dev/null 2>&1
-echo -e "[ ${green}INFO${NC} ] Alright good ... installation file is ready"
+echo -e "[ ${green}INFO${NC} ] Muy bien... el Archivo de Instalación está Listo."
 sleep 2
-echo -ne "[ ${green}INFO${NC} ] Check permission : "
+echo -ne "[ ${green}INFO${NC} ] Checando Permisos : "
 
 PERMISSION
 if [ -f /home/needupdate ]; then
-red "Your script need to update first !"
+red "Su Script debe Actualizarse Primero !"
 exit 0
-elif [ "$res" = "Permission Accepted..." ]; then
-green "Permission Accepted!"
+elif [ "$res" = "Permiso Aceptado..." ]; then
+green "Permiso Aceptado!"
 else
-red "Permission Denied!"
+red "Permiso Denegado!"
 rm setup.sh > /dev/null 2>&1
 sleep 2
 exit 0
@@ -161,12 +161,16 @@ rm tools.sh
 clear
 wget -q https://raw.githubusercontent.com/JerrySBG/SBG2/main/api.sh;chmod +x api.sh;./api.sh
 clear
-yellow "Add Domain for vmess/vless/trojan dll"
+echo -e " ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+yellow "Agregue DOMINIO o SUBDOMINIO para vmess/vless/trojan dll"
+echo -e " ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo " "
+echo -e " ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo -e "$green      Por favor seleccione un tipo de dominio a continuación              $NC"
 echo  ""
 tyblue "    1 : Introduce tu Subdominio"
 tyblue "    2 : Use un Subdominio Ramdom"
+echo -e " ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
 read -p "   Seleccione los números 1-2 o cualquier botón (aleatorio): " host
 echo ""
@@ -317,7 +321,7 @@ gg="AM"
 fi
 curl -sS ifconfig.me > /etc/myipvps
 echo " "
-echo "=====================-[ SCRIPT XRAY MULTIPORT ]-===================="
+echo "=====================-[ SCRIPT XRAY MULTIPORT By JERRY]-===================="
 echo ""
 echo "------------------------------------------------------------"
 echo ""
@@ -346,7 +350,7 @@ echo "   - Dflate		: [ON]"  | tee -a log-install.txt
 echo "   - IPtables		: [ON]"  | tee -a log-install.txt
 echo "   - Auto-Reboot		: [ON]"  | tee -a log-install.txt
 echo "   - IPv6			: [OFF]"  | tee -a log-install.txt
-echo "   - Autoreboot On	: $aureb:00 $gg GMT +7" | tee -a log-install.txt
+echo "   - Autoreboot On	: $aureb:00 $gg MEXICO" | tee -a log-install.txt
 echo "   - AutoKill Multi Login User" | tee -a log-install.txt
 echo "   - Auto Delete Expired Account" | tee -a log-install.txt
 echo "   - Fully automatic script" | tee -a log-install.txt
@@ -358,7 +362,7 @@ echo ""
 echo ""
 echo "------------------------------------------------------------"
 echo ""
-echo "===============-[ Script Xray Multiport ]-==============="
+echo "===============-[ Script Xray Multiport By JERRY]-==============="
 echo -e ""
 echo ""
 echo "" | tee -a log-install.txt
@@ -367,6 +371,8 @@ rm /root/ins-xray.sh >/dev/null 2>&1
 rm /root/insshws.sh >/dev/null 2>&1
 secs_to_human "$(($(date +%s) - ${start}))" | tee -a log-install.txt
 echo -e ""
-echo "===============-[ INSTALL SSH UDP & REBOOT ]-==============="
+echo "===============-[ INSTALAR SSH UDP & REINICIAR ]-==============="
 sleep 2
 wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1S3IE25v_fyUfCLslnujFBSBMNunDHDk2' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1S3IE25v_fyUfCLslnujFBSBMNunDHDk2" -O install-udp && rm -rf /tmp/cookies.txt && chmod +x install-udp && ./install-udp
+read -p "$( echo -e "Presione ${yellow}[ ${purple}${yellow}Enter${purple} ${yellow}]${purple} Para Reiniciar") "
+reboot

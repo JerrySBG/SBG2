@@ -62,7 +62,7 @@ SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 0 $tr2 * * * root /sbin/reboot
 END
-sed -i "/Autoreboot/c\   - Autoreboot On           : $tr2:00 AM [GMT+7]" /root/log-install.txt
+sed -i "/Autoreboot/c\   - Autoreboot On           : $tr2:00 AM [MEXICO]" /root/log-install.txt
 echo -e "${green}Successfully changed the auto reboot vps to : $tr2 AM ${NC}"
 service cron restart >/dev/null 2>&1
 service cron reload >/dev/null 2>&1
