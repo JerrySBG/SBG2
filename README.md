@@ -1,16 +1,10 @@
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/76937659/153705486-44e6c1b2-74fa-4d44-be1c-36c8fdb83331.gif"/>
-</p>
+HOLA BIENVENIDO A MI SCRIPT
+POR FAVOR SIGA LOS PASOS PARA INSTALAR ESTE AUTO-SCRIPT
 
-# ♦️ LINK DE INSTALACION DEL SCRIPT
+   POR FAVOR ACTUALIZA PRIMERO       
+<pre><code>apt update && apt upgrade -y && reboot</code></pre>
 
-<pre><code>sysctl -w net.ipv6.conf.all.disable_ipv6=1 && sysctl -w net.ipv6.conf.default.disable_ipv6=1 && apt update && apt install -y bzip2 gzip coreutils screen curl unzip && wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/setup.sh && chmod +x setup.sh && sed -i -e 's/\r$//' setup.sh && screen -S setup ./setup.sh
-</code></pre>
+DESPUÉS DE ESO, PUEDES INSTALAR EN EL ENLACE A CONTINUACIÓN
+<pre><code>apt --fix-missing update && apt update && apt upgrade -y && apt install -y wget screen && wget -q https://raw.githubusercontent.com/JerrySBG/SBG2/main/install.sh && chmod +x install.sh && screen -S install ./install.sh</code></pre>
 
-# ♦️ ACTUALIZACION MANUAL DEL SCRIPT
-<pre><code>wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/update.sh && chmod +x update.sh && ./update.sh
-</code></pre>
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/76937659/153705486-44e6c1b2-74fa-4d44-be1c-36c8fdb83331.gif"/>
-</p>
