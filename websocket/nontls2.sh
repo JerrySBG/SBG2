@@ -16,16 +16,16 @@ red='\e[1;31m'
 green='\e[0;32m'
 yell='\e[1;33m'
 NC='\e[0m'
-echo "Installing SSH Websocket None TLS by Jerry " | lolcat
+echo "Installing SSH Websocket None TLS v2 By Jerry " | lolcat
 echo "Progress..." | lolcat
 sleep 3
 
 # Getting Proxy Template
-wget -q -O /usr/local/bin/ws-nontls https://https://raw.githubusercontent.com/JerrySBG/SBG2/main/websocket/ws-nontls.py
-chmod +x /usr/local/bin/ws-nontls
+wget -q -O /usr/local/bin/ws-nontls2 https://https://raw.githubusercontent.com/JerrySBG/SBG2/main/websocket/ws-nontls2.py
+chmod +x /usr/local/bin/ws-nontls2
 
 # Installing Service
-cat > /etc/systemd/system/ws-nontls.service << END
+cat > /etc/systemd/system/ws-nontls2.service << END
 [Unit]
 Description=Python Proxy Mod By Jerry
 Documentation=https://t.me/Jerry_SBG
@@ -37,7 +37,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /usr/local/bin/ws-nontls 8080
+ExecStart=/usr/bin/python -O /usr/local/bin/ws-nontls 8280
 Restart=on-failure
 
 [Install]
@@ -45,6 +45,6 @@ WantedBy=multi-user.target
 END
 
 systemctl daemon-reload
-systemctl enable ws-nontls
-systemctl restart ws-nontls
+systemctl enable ws-nontls2
+systemctl restart ws-nontls2
 

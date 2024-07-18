@@ -223,6 +223,8 @@ wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/websocket/insshws.sh &
 clear
 wget https://raw.githubusercontent.com/JerrySBG/SBG/main/websocket/nontls.sh && chmod +x nontls.sh && ./nontls.sh
 clear
+wget https://raw.githubusercontent.com/JerrySBG/SBG/main/websocket/nontls2.sh && chmod +x nontls.sh && ./nontls.sh
+clear
 echo -e "$green[INFO]$NC Download Extra Menu"
 sleep 2
 wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/update/update.sh && chmod +x update.sh && ./update.sh
@@ -277,7 +279,7 @@ echo "   >>> Service & Port"  | tee -a log-install.txt
 echo "   - OpenSSH                 : 22"  | tee -a log-install.txt
 echo "   - SSH Websocket           : 80" | tee -a log-install.txt
 echo "   - SSH SSL Websocket       : 443" | tee -a log-install.txt
-echo "   - SSH NON-SSL Websocket   : 80, 8880" | tee -a log-install.txt
+echo "   - SSH NON-SSL Websocket   : 80, 8080, 8280" | tee -a log-install.txt
 echo "   - SLOWDNS                 : 5300 [OFF]" | tee -a log-install.txt
 echo "   - Stunnel4                : 447, 777" | tee -a log-install.txt
 echo "   - Dropbear                : 109, 143" | tee -a log-install.txt
