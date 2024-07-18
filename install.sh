@@ -3,7 +3,7 @@ dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Dat
 biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 #########################
 BURIQ () {
-    curl -sS https://https://raw.githubusercontent.com/JerrySBG/SBG2/main/IP > /root/tmp
+    curl -sS https://raw.githubusercontent.com/JerrySBG/SBG2/main/IP > /root/tmp
     data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
     for user in "${data[@]}"
     do
@@ -19,9 +19,9 @@ BURIQ () {
     done
     rm -f  /root/tmp
 }
-# https://https://raw.githubusercontent.com/JerrySBG/SBG2/main/IP 
+# https://raw.githubusercontent.com/JerrySBG/SBG2/main/IP 
 MYIP=$(curl -sS ipv4.icanhazip.com)
-Name=$(curl -sS https://https://raw.githubusercontent.com/JerrySBG/SBG2/main/IP | grep $MYIP | awk '{print $2}')
+Name=$(curl -sS https://raw.githubusercontent.com/JerrySBG/SBG2/main/IP | grep $MYIP | awk '{print $2}')
 echo $Name > /usr/local/etc/.$Name.ini
 CekOne=$(cat /usr/local/etc/.$Name.ini)
 
@@ -29,7 +29,7 @@ Bloman () {
 if [ -f "/etc/.$Name.ini" ]; then
 CekTwo=$(cat /etc/.$Name.ini)
     if [ "$CekOne" = "$CekTwo" ]; then
-        res="Expired"
+        res="Expirado"
     fi
 else
 res="Permission Accepted..."
@@ -38,11 +38,11 @@ fi
 
 PERMISSION () {
     MYIP=$(curl -sS ipv4.icanhazip.com)
-    IZIN=$(curl -sS https://https://raw.githubusercontent.com/JerrySBG/SBG2/main/IP | awk '{print $4}' | grep $MYIP)
+    IZIN=$(curl -sS https://raw.githubusercontent.com/JerrySBG/SBG2/main/IP | awk '{print $4}' | grep $MYIP)
     if [ "$MYIP" = "$IZIN" ]; then
     Bloman
     else
-    res="Permission Denied!"
+    res="Permiso Denegado!"
     fi
     BURIQ
 }
@@ -68,7 +68,7 @@ mkdir -p /var/lib/ssnvpn-pro >/dev/null 2>&1
 echo -e "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
     echo -e "${red}    ♦️${NC} ${green} CUSTOM SETUP DOMAIN VPS     ${NC}"
     echo -e "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-    read -rp "Enter Your Domain : " domen 
+    read -rp "Entroduce Tu Dominio : " domen 
     echo $domen > /root/domain
     echo "$domen" > /root/domain
     echo "$domen" > /root/scdomain
@@ -98,7 +98,7 @@ echo "$localip $(hostname)" >> /etc/hosts
 fi
 
 secs_to_human() {
-    echo "Installation time : $(( ${1} / 3600 )) hours $(( (${1} / 60) % 60 )) minute's $(( ${1} % 60 )) seconds"
+    echo "ITiempo de Instalacion : $(( ${1} / 3600 )) Horas $(( (${1} / 60) % 60 )) minutos $(( ${1} % 60 )) segundos"
 }
 start=$(date +%s)
 ln -fs /usr/share/zoneinfo/America/Mexico_City /etc/localtime
@@ -130,11 +130,13 @@ PERMISSION
 if [ -f /home/needupdate ]; then
 red "Your script need to update first !"
 exit 0
-elif [ "$res" = "Permission Accepted..." ]; then
-green "Permission Accepted!"
+elif [ "$res" = "Permiso Aceptado..." ]; then
+green "Permiso Aceptado!"
 else
-red "Permission Denied!"
-rm setup.sh > /dev/null 2>&1
+red "Permiso Denegado!"
+rm install.sh > /dev/null 2>&1
+rm domain > /dev/null 2>&1
+rm scdomain > /dev/null 2>&1
 sleep 10
 exit 0
 fi
@@ -142,11 +144,13 @@ sleep 3
 
 if [ -f "/etc/xray/domain" ]; then
 echo ""
-echo -e "[ ${green}INFO${NC} ] Script Already Installed"
-echo -ne "[ ${yell}WARNING${NC} ] Do you want to install again ? (y/n)? "
+echo -e "[ ${green}INFO${NC} ] Script ya se Encuentra Instalado"
+echo -ne "[ ${yell}WARNING${NC} ] Quieres Volver a Instalar ? (S/n)? "
 read answer
-if [ "$answer" == "${answer#[Yy]}" ] ;then
-rm setup.sh
+if [ "$answer" == "${answer#[Ss]}" ] ;then
+rm install.sh
+rm domain
+rm scdomain
 sleep 10
 exit 0
 else
@@ -165,7 +169,7 @@ fi
     chmod +x /tmp/bbr.sh && bash /tmp/bbr.sh
 
 echo ""
-wget -q https://https://raw.githubusercontent.com/JerrySBG/SBG2/main/dependencies.sh;chmod +x dependencies.sh;./dependencies.sh
+wget -q https://raw.githubusercontent.com/JerrySBG/SBG2/main/dependencies.sh;chmod +x dependencies.sh;./dependencies.sh
 rm dependencies.sh
 clear
 
@@ -205,27 +209,27 @@ blue
 EOF
     
 #install ssh ovpn
-echo -e "$green[INFO]$NC Install SSH"
+echo -e "$green[INFO]$NC Instalando SSH"
 sleep 2
 clear
 wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/ssh/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
 #Instal Xray
-echo -e "$green[INFO]$NC Install XRAY!"
+echo -e "$green[INFO]$NC Instalando XRAY!"
 sleep 2
 clear
-wget https://https://raw.githubusercontent.com/JerrySBG/SBG2/main/xray/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
+wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/xray/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
 clear
-echo -e "$green[INFO]$NC Install SET-BR!"
-wget https://https://raw.githubusercontent.com/JerrySBG/SBG2/main/backup/set-br.sh && chmod +x set-br.sh && ./set-br.sh
+echo -e "$green[INFO]$NC Instalando SET-BR!"
+wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/backup/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 clear
-echo -e "$green[INFO]$NC Install WEBSOCKET!"
+echo -e "$green[INFO]$NC Instalando WEBSOCKET!"
 wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/websocket/insshws.sh && chmod +x insshws.sh && ./insshws.sh
 clear
 wget https://raw.githubusercontent.com/JerrySBG/SBG/main/websocket/nontls.sh && chmod +x nontls.sh && ./nontls.sh
 clear
 wget https://raw.githubusercontent.com/JerrySBG/SBG/main/websocket/nontls2.sh && chmod +x nontls.sh && ./nontls.sh
 clear
-echo -e "$green[INFO]$NC Download Extra Menu"
+echo -e "$green[INFO]$NC Dercargando Extra Menu"
 sleep 2
 wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/update/update.sh && chmod +x update.sh && ./update.sh
 rm -f update.sh
@@ -325,9 +329,9 @@ rm /root/nontls.sh
 secs_to_human "$(($(date +%s) - ${start}))" | tee -a log-install.txt
 echo -e "
 "
-echo -ne "[ ${yell}WARNING${NC} ] Do you want to reboot now ? (y/n)? "
+echo -ne "[ ${yell}WARNING${NC} ] Desesa Reiniciar Ahora ? (s/n)? "
 read answer
-if [ "$answer" == "${answer#[Yy]}" ] ;then
+if [ "$answer" == "${answer#[Ss]}" ] ;then
 exit 0
 else
 reboot
