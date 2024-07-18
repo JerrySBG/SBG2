@@ -225,9 +225,11 @@ clear
 echo -e "$green[INFO]$NC Instalando WEBSOCKET!"
 wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/websocket/insshws.sh && chmod +x insshws.sh && ./insshws.sh
 clear
-wget https://raw.githubusercontent.com/JerrySBG/SBG/main/websocket/nontls.sh && chmod +x nontls.sh && ./nontls.sh
+wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/websocket/nontls.sh && chmod +x nontls.sh && ./nontls.sh
 clear
-wget https://raw.githubusercontent.com/JerrySBG/SBG/main/websocket/nontls2.sh && chmod +x nontls.sh && ./nontls.sh
+wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/websocket/nontls2.sh && chmod +x nontls2.sh && ./nontls2.sh
+clear
+wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/websocket/nontls3.sh && chmod +x nontls3.sh && ./nontls3.sh
 clear
 echo -e "$green[INFO]$NC Dercargando Extra Menu"
 sleep 2

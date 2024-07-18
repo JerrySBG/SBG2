@@ -2,7 +2,7 @@
 dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 ###########- COLOR CODE -##############
-echo -e " [INFO] Downloading Update File"
+echo -e " [INFO] Decargando Archivos Actualizados"
 sleep 2
 wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/JerrySBG/SBG2/main/update/menu.sh" && chmod +x /usr/bin/menu
 wget -q -O /usr/bin/menu-ss "https://raw.githubusercontent.com/JerrySBG/SBG2/main/update/menu-ss.sh" && chmod +x /usr/bin/menu-ss
@@ -19,7 +19,7 @@ wget -q -O /usr/bin/menu-tcp "https://raw.githubusercontent.com/JerrySBG/SBG2/ma
 wget -q -O /usr/bin/rebootvps "https://raw.githubusercontent.com/Paper890/mysc/main/corn/rebootvps.sh" && chmod +x /usr/bin/rebootvps
 wget -q -O /usr/bin/info "https://raw.githubusercontent.com/JerrySBG/SBG2/main/update/info.sh" && chmod +x /usr/bin/info
 wget -q -O /usr/bin/mbandwith "https://raw.githubusercontent.com/JerrySBG/SBG2/main/update/menu-bandwith.sh" && chmod +x /usr/bin/mbandwith
-echo -e " [INFO] Update Successfully"
+echo -e " [INFO] Actualizacion Exitosa
 sleep 2
 rm -f update.sh
 exit

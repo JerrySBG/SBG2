@@ -188,8 +188,8 @@ sed -i '/#vless$/a\#& '"$user $exp"'\
 sed -i '/#vlessgrpc$/a\#& '"$user $exp"'\
 },{"id": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
 vlesslink1="vless://${uuid}@${domain}:$tls?path=/vlessws&security=tls&encryption=none&type=ws#${user}"
-vlesslink2="vless://${uuid}@${domain}:$none?path=/vlessws&encryption=none&type=ws#${user}"
-vlesslink3="vless://${uuid}@${domain}:$tls?mode=gun&security=tls&encryption=none&type=grpc&serviceName=vless-grpc&sni=bug.com#${user}"
+vlesslink2="vless://${uuid}@${domain}:$none?path=/vlessws&encryption=none&type=ws&sni=google.com#${user}"
+vlesslink3="vless://${uuid}@${domain}:$tls?mode=gun&security=tls&encryption=none&type=grpc&serviceName=vless-grpc&sni=google.com#${user}"
 systemctl restart xray
 clear
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -204,7 +204,7 @@ echo -e " id            : ${uuid}"
 echo -e " Encryption    : none" 
 echo -e " Network       : ws" 
 echo -e " Path          : /vless" 
-echo -e " Path WSS      : wss://bug.com/vless" 
+echo -e " Path WSS      : wss://google.com/vless" 
 echo -e " Path          : vless-grpc" 
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e " Link TLS :"
@@ -234,8 +234,8 @@ sed -i '/#vless$/a\#& '"$user $exp"'\
 sed -i '/#vlessgrpc$/a\#& '"$user $exp"'\
 },{"id": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
 vlesslink1="vless://${uuid}@${domain}:$tls?path=/vlessws&security=tls&encryption=none&type=ws#${user}"
-vlesslink2="vless://${uuid}@${domain}:$none?path=/vlessws&encryption=none&type=ws#${user}"
-vlesslink3="vless://${uuid}@${domain}:$tls?mode=gun&security=tls&encryption=none&type=grpc&serviceName=vless-grpc&sni=bug.com#${user}"
+vlesslink2="vless://${uuid}@${domain}:$none?path=/vlessws&encryption=none&type=ws&sni=google.com#${user}"
+vlesslink3="vless://${uuid}@${domain}:$tls?mode=gun&security=tls&encryption=none&type=grpc&serviceName=vless-grpc&sni=google.com#${user}"
 systemctl restart xray
 clear
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -250,7 +250,7 @@ echo -e " id            : ${uuid}"
 echo -e " Encryption    : none" 
 echo -e " Network       : ws" 
 echo -e " Path          : /vless" 
-echo -e " Path WSS      : wss://bug.com/vless" 
+echo -e " Path WSS      : wss://google.com/vless" 
 echo -e " Path          : vless-grpc" 
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e " Link TLS :"
