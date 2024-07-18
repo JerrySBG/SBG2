@@ -32,7 +32,7 @@ CekTwo=$(cat /etc/.$Name.ini)
         res="Expirado"
     fi
 else
-res="Permission Accepted..."
+res="Permiso Aceptado..."
 fi
 }
 
@@ -68,7 +68,7 @@ mkdir -p /var/lib/ssnvpn-pro >/dev/null 2>&1
 echo -e "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
     echo -e "${red}    ♦️${NC} ${green} CUSTOM SETUP DOMAIN VPS     ${NC}"
     echo -e "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-    read -rp "Entroduce Tu Dominio : " domen 
+    read -rp "Introduce Tu Dominio o Subdominio: " domen 
     echo $domen > /root/domain
     echo "$domen" > /root/domain
     echo "$domen" > /root/scdomain
@@ -98,7 +98,7 @@ echo "$localip $(hostname)" >> /etc/hosts
 fi
 
 secs_to_human() {
-    echo "ITiempo de Instalacion : $(( ${1} / 3600 )) Horas $(( (${1} / 60) % 60 )) minutos $(( ${1} % 60 )) segundos"
+    echo "Tiempo de Instalacion : $(( ${1} / 3600 )) Horas $(( (${1} / 60) % 60 )) minutos $(( ${1} % 60 )) segundos"
 }
 start=$(date +%s)
 ln -fs /usr/share/zoneinfo/America/Mexico_City /etc/localtime
@@ -120,18 +120,18 @@ clear
 END
 chmod 644 /root/.profile
 
-echo -e "[ ${green}INFO${NC} ] Preparing the install file"
+echo -e "[ ${green}INFO${NC} ] Prepando Archivos de Instalacion"
 apt install git curl -y >/dev/null 2>&1
-echo -e "[ ${green}INFO${NC} ] Allright good ... installation file is ready"
+echo -e "[ ${green}INFO${NC} ] Todo Listo ... Ins de Archivos va a Empezar"
 sleep 2
-echo -ne "[ ${green}INFO${NC} ] Check permission : "
+echo -ne "[ ${green}INFO${NC} ] Checando Permisos : "
 
 PERMISSION
 if [ -f /home/needupdate ]; then
 red "Your script need to update first !"
 exit 0
 elif [ "$res" = "Permiso Aceptado..." ]; then
-green "Permiso Aceptado!"
+tyblue "Permiso Aceptado!"
 else
 red "Permiso Denegado!"
 rm install.sh > /dev/null 2>&1
