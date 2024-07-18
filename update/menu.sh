@@ -6,7 +6,7 @@ RED='\033[0;31m'
 ipsaya=$(wget -qO- ipinfo.io/ip)
 data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 date_list=$(date +"%Y-%m-%d" -d "$data_server")
-data_ip="https://https://raw.githubusercontent.com/JerrySBG/SBG2/main/IP"
+data_ip="https://raw.githubusercontent.com/JerrySBG/SBG2/main/IP"
 checking_sc() {
   useexp=$(wget -qO- $data_ip | grep $ipsaya | awk '{print $3}')
   if [[ $date_list < $useexp ]]; then
@@ -32,11 +32,11 @@ clear
 ISP=$(curl -s ipinfo.io/org | cut -d " " -f 2-10 )
 CITY=$(curl -s ipinfo.io/city )
 MYIP=$(curl -sS ipv4.icanhazip.com)
-Name=$(curl -sS https://https://raw.githubusercontent.com/JerrySBG/SBG2/main/IP | grep $MYIP | awk '{print $2}')
+Name=$(curl -sS https://raw.githubusercontent.com/JerrySBG/SBG2/main/IP | grep $MYIP | awk '{print $2}')
 if [ "$res" = "Expired" ]; then
 Exp="\e[36mExpired\033[0m"
 else
-Exp=$(curl -sS https://https://raw.githubusercontent.com/JerrySBG/SBG2/main/IP | grep $MYIP | awk '{print $3}')
+Exp=$(curl -sS https://raw.githubusercontent.com/JerrySBG/SBG2/main/IP | grep $MYIP | awk '{print $3}')
 fi
 
 # =========================================
@@ -221,7 +221,7 @@ case $opt in
 07 | 7) clear ; menu-set ;;
 08 | 8) clear ; wget ${UPDATE} && chmod +x update.sh && ./update.sh ;;
 09 | 9) clear ; add-host ;;
-10 | 10) clear ; wget https://raw.githubusercontent.com/Paper890/mysc/main/bot/setup_bot.sh && chmod +x setup_bot.sh && ./setup_bot.sh ;;
+10 | 10) clear ; wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/bot/setup_bot.sh && chmod +x setup_bot.sh && ./setup_bot.sh ;;
 99 | 99) clear ; wget "https://raw.githubusercontent.com/Paper890/udp/main/install.sh" -O install.sh && chmod +x install.sh && ./install.sh ;;
 999) clear ; $up2u ;;
 00 | 0) clear ; menu ;;
