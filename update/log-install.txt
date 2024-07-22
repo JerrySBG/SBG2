@@ -1,0 +1,71 @@
+
+      PHANTOM SHIELD VPN PREMIUM                    
+      SCRYPT VPS PREMIUM UPDATE                    
+-------------------------------------------------------
+   >>> Service & Port
+   - SlowDNS SSH             : ALL Port SSH
+   - OpenSSH                 : 22, 80,
+   - OpenVPN                 : TCP 1194
+   - OpenVPN                 : SSL  990
+   - OpenVPN                 : UDP  2200
+   - Stunnel5                : 443, 445
+   - Dropbear                : 443, 109, 143, 8282,
+   - CloudFront Websocket    : [OFF]
+   - SSH Websocket           : 443, 80, [ON]
+   - Websocket OpenVPN       : 2086, 80
+   - Squid Proxy             : 3128, 8080
+   - Badvpn                  : 7100, 7200, 7300
+   - Nginx                   : 86
+   - Wireguard               : 7070
+   - L2TP/IPSEC VPN          : 1701
+   - PPTP VPN                : 1732
+   - SSTP VPN                : 444
+   - Shadowsocks-R           : 1443-1543
+   - SS-OBFS TLS             : 2443-2543
+   - SS-OBFS HTTP            : 3443-3543
+   - XRAYS Vmess TLS         : 8443
+   - XRAYS Vmess None TLS    : 80
+   - XRAYS Vless TLS         : 8443
+   - XRAYS Vless None TLS    : 80
+   - XRAYS Trojan            : 2083
+   - XRAYS VMESS GRPC        : 1180
+   - XRAYS VLESS GRPC        : 2280
+   - OHP SSH                 : 8181
+   - OHP OpenVPN             : 8383
+   - TrojanGo                : 2087
+   - SSH SSL Websocket        : 443
+   - Stunnel4                 : 222, 777
+   - Badvpn                   : 7100-7900
+   - Vmess WS TLS             : 443
+   - Vless WS TLS             : 443
+   - Trojan WS TLS            : 443
+    - Trojan WS Non-TLS       : 80
+   - Shadowsocks WS TLS       : 443
+   - Vmess WS none TLS        : 80
+   - Vless WS none TLS        : 80
+   - Trojan WS none TLS       : 80
+   - Shadowsocks WS none TLS  : 80
+   - Vmess gRPC               : 443
+   - Vless gRPC               : 443
+   - Trojan gRPC              : 443
+   - Trojan gRPC              : 80
+   - Shadowsocks gRPC         : 443
+
+   >>> Server Information & Other Features
+   - Timezone                : Asia/Jakarta (GMT +7)
+   - Fail2Ban                : [ON]
+   - Dflate                  : [ON]
+   - IPtables                : [ON]
+   - Auto-Reboot             : [ON]
+   - IPv6                    : [OFF]
+   - Autoreboot On 05.00 GMT +7
+   - Autobackup Data
+   - Restore Data
+   - Auto Delete Expired Account
+   - Full Orders For Various Services
+   - White Label
+
+===================Contact================
+-----------------PHANTOM SHIELD------------
+---------------Telegram : @TeamPegasus----
+-----------------------------------------
