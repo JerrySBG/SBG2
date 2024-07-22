@@ -1,8 +1,20 @@
-<br>
-<img src="https://github.com/Z0nure/PhantomShield/blob/main/menu%20premium.jpg">
-</br>
+# ** SCRYPT VPS PREMIUM INSTALL **
 
-  
+# Order from me (MUST READ) before using
+
+</p> 
+<h2 align="center"> Supported Linux Distribution</h2>
+<p align="center"><img src="https://d33wubrfki0l68.cloudfront.net/5911c43be3b1da526ed609e9c55783d9d0f6b066/9858b/assets/img/debian-ubuntu-hover.png"></p> 
+<p align="center"><img src="https://img.shields.io/static/v1?style=for-the-badge&logo=debian&label=Debian%209&message=Stretch&color=purple"> <img src="https://img.shields.io/static/v1?style=for-the-badge&logo=debian&label=Debian%2010&message=Buster&color=purple">  <img src="https://img.shields.io/static/v1?style=for-the-badge&logo=ubuntu&label=Ubuntu%2018&message=Lts&color=red"> <img src="https://img.shields.io/static/v1?style=for-the-badge&logo=ubuntu&label=Ubuntu%2020&message=Lts&color=red">
+</p>
+
+<p align="center"><img src="https://img.shields.io/badge/Service-SSH_Over_Websocket-success.svg"> <img src="https://img.shields.io/badge/Service-SSH_UDP_Custom-success.svg"> <img src="https://img.shields.io/badge/Service-SSH_Dropbear-success.svg">  <img src="https://img.shields.io/badge/Service-Stunnel4-success.svg">  <img src="https://img.shields.io/badge/Service-Fail2Ban-brightgreen">  
+<p align="center"><img src="https://img.shields.io/badge/Service-XRAY_VLESS-success.svg">  <img src="https://img.shields.io/badge/Service-XRAY_VMESS-success.svg">  <img src="https://img.shields.io/badge/Service-XRAY_TROJAN-success.svg"> <img src= "https://img.shields.io/badge/Service-Websocket-success.svg"> <img src= "https://img.shields.io/badge/Service-GRPC-success.svg"> <img src= "https://img.shields.io/badge/Service-Shadowsocks-success.svg">  
+<p <p align="center"><img src="https://img.shields.io/badge/Service-Webmin-success.svg"> <img src="https://img.shields.io/badge/Service-Helium-success.svg">
+<p <p align="center"><img src="https://wangchujiang.com/sb/status/stable.svg">
+<p align="center">
+<img src="https://github.com/JerrySBG/SBG2/blob/33370fe510550c530c62b0d57beb52ffdc89cbc7/scrypt%20foto.jpg"> 
+</p>
 # Required VPS is still fresh (MUST) / have never installed anything
 <br>
 - If you install the Script twice, you need to rebuild the VPS to factory settings, in the VPS provider panel<br>
@@ -12,9 +24,10 @@
 - CPU MIN 1 CORE<br>
 - RAM 1GB<br>
 - (Recommendation) Ubuntu 18 / 20 LTS (STABLE to use)
-- Doesn't work well for Ubuntu 22.0, lots of bugs and errors.
+- Tidak cocok di gunakan untuk UBUNTU 22.0 Banyak Bug Error
 <br>
 
+# Cloudflare settings for those who have their own Domain, you can check at folder [image](https://github.com/givpn/AutoScriptXray/tree/master/image) to display other settings
 <br>
 - SSL/TLS : FULL<br>
 - SSL/TLS Recommender : OFF<br>
@@ -24,28 +37,12 @@
 - UNDER ATTACK MODE : OFF<br>
 <br>
 
-# Installation
-
-Type command :
-
-```
-apt update && apt upgrade -y && cd /usr/bin/ && wget -O vpnpremium "https://raw.githubusercontent.com/Z0nure/PhantomShield/main/setup.sh" && chmod +x vpnpremium && ./vpnpremium
-```
-- Wait for the installation process to finish (5-10 mins)
-
-# AFTER INSTALLATION, PERFORM AN UPDATE BY FOLLOWING THESE STEPS :
-
-Type command :
-
-```
-cd /usr/bin/ && wget -O vpnpremium "https://raw.githubusercontent.com/Z0nure/update/main/vpnpremium.sh" && chmod +x vpnpremium && ./vpnpremium
-```
-
-After that, perform an update from the update menu.
 
 ## Service & Port:
 <br>
 - OpenSSH                  : 22<br>
+- UDP                      : 1-65535<br>
+- SLOW DNS                 : ALL PORT </br>
 - SSH Websocket            : 80<br>
 - SSH SSL Websocket        : 443<br>
 - Stunnel4                 : 222, 777<br>
@@ -65,6 +62,11 @@ After that, perform an update from the update menu.
 - Trojan gRPC              : 443<br>
 - Shadowsocks gRPC         : 443<br>
 <br>
+
+<p align="center">
+<img src="https://github.com/JerrySBG/SBG2/blob/a3eb05b76b19ee8186636031f3b916f4da5b8de8/PORT%20READY.jpg"> 
+</p>
+
   
 ## Feature
 - Speedtest® by [Ookla®](https://speedtest.net)
@@ -84,100 +86,81 @@ After that, perform an update from the update menu.
   
 
 
-# SCRIPT FOR AUTO INSTALLING VPS ON UBUNTU & DEBIAN
-
-- Step 2 for (ubuntu) directly install
+# [Step Install]
+- Step 1 for (debian) please update first
+```
+apt update && apt upgrade -y && reboot
+```
+# Jika Bash Comand Not Found Gunakan Perintah (Debian10)
 
 ```
-sysctl -w net.ipv6.conf.all.disable_ipv6=1 && sysctl -w net.ipv6.conf.default.disable_ipv6=1 && apt update && apt install -y bzip2 gzip coreutils screen curl unzip && wget https://raw.githubusercontent.com/Z0nure/PhantomShield/main/setup.sh && chmod +x setup.sh && sed -i -e 's/\r$//' setup.sh && screen -S setup ./setup.sh
+apt-get install wget
+
+```
+  
+# Step  for (ubuntu) directly install
+```
+sysctl -w net.ipv6.conf.all.disable_ipv6=1 && sysctl -w net.ipv6.conf.default.disable_ipv6=1 && apt update && apt install -y bzip2 gzip coreutils screen curl unzip && wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/setup.sh && chmod +x setup.sh && sed -i -e 's/\r$//' setup.sh && screen -S setup ./setup.sh
 ```
 
 
 # install Helium ADS Block + Panel Webmin
 ```
-apt update && apt install wget -y && wget -q -O /usr/bin/ins-helium "https://raw.githubusercontent.com/Z0nure/alpha3/main/helium/ins-helium.sh" && chmod +x /usr/bin/ins-helium && ins-helium
+apt update && apt install wget -y && wget -q -O /usr/bin/ins-helium "https://raw.githubusercontent.com/JerrySBG/SBG2/main/helium/ins-helium.sh" && chmod +x /usr/bin/ins-helium && ins-helium
+```
+
+# install udp-custom + slowdns + OpenVPN
+- (NOTE) Slowdns limit speed
+- Upload : 3 Mbps
+- Download : 3 Mbps
+```
+apt update && apt install wget -y && wget -qO- -O udp.sh "https://raw.githubusercontent.com/JerrySBG/SBG2/main/udp-custom/udp.sh" && chmod +x udp.sh && ./udp.sh
+```
+
+#INSTALL BACKUP EMAIL
+
+```
+apt update && apt install wget -y && wget -qO- -O set-br.sh "https://raw.githubusercontent.com/JerrySBG/SBG2/main/backup/backupE/set-br.sh" && chmod +x set-br.sh && ./set-br.sh
+
 ```
 
 
-# Gaining Root Access :
+# Mendapat Hak Asses root :
 
-- The first step is to log in to the VPS.
-- Then enter the command code below.
-```
-sudo su && cd && nano /etc/ssh/sshd_config
-```
-
-- ----  Change 'PermitRootLogin' to 'prohibit-password
+- Pertama Login VPS
+- kemudian masukan kode perintah di bawah ini
+- sudo su
+- cd
+- nano /etc/ssh/sshd_config
+- ----  PermitRootLogin prohibit-password menjadi
   PermitRootLogin yes
 
-- ------ Change 'PasswordAuthentication' to 'no'
+- ------ PasswordAuthentication no, ubah menjadi
   PasswordAuthentication yes
 - 
-- Save the file by pressing Ctrl + X, then Y, and finally Enter.
+- Simpan file dengan cara tekan Ctrl x lalu y lalu Enter
   
-- Type
-```
+- ketikan
   systemctl restart ssh
-```
-```  
   systemctl restart sshd
-```
-- Then change the root access password by entering the code below.
+- kemudian ganti password access root dengan memasukan kode di bawah ini
   
-- Type 
-```
+- Ketikan 
   passwd root
-```
-
-- Enter the password.
   
-- Type the command.
-
-```
+- Masukan Pasword nya lalu
+  
+- Ketikan perintah
+  
   service ssh restart
-```
-```
+  
   service sshd restart
-```
+  
 
-# FOR CLOUD HOST ID, USE DEBIAN 10
+# UNTUK ID CLOUD HOST GUNAKAN DEBIAN 10
 
 <P>
 </p> 
 <p align="center"><img src="https://img.shields.io/static/v1?style=for-the-badge&logo=debian&label=Debian%209&message=Stretch&color=purple"> <img src="https://img.shields.io/static/v1?style=for-the-badge&logo=debian&label=Debian%2010&message=Buster&color=purple">
 </P>
-
-
-  # BEFORE INSTALLING ON DEBIAN 9
-
-  - Change the repository first, type the command below.
-  - 
-```
-nano /etc/apt/sources.list
-```
-
-Enter the following line into the repository. :
-
-```
-deb http://http.us.debian.org/debian/ testing non-free contrib main
-```
-
-- Then press Ctrl + X.
-- Type Y and press Enter.
-- Perform the update & upgrade as usual.
-- Then reboot the system, and after the reboot, install as usual.
-
-  # Once installed, please type 100 for the initial update.
-
-# Passed the Debian 11.07 test.
-- Please note that SSTP needs to be reconfigured.
-- If slow DNS is not active, then enter the following command and insert your DOMAIN name inside.
-  ```
-  sudo sed -i 's|\(ExecStart=/etc/slowdns/sldns-server -udp :5300 -privkey-file /etc/slowdns/server.key\)\(.*\)|\1 -nameserver example.com:53\2|' /etc/systemd/system/server-sldns.service
-```
-- Then restart all services.
-
-# TESTING UBUNTU 22
-- sshws is not active
-- xray is running normally
-
+  
