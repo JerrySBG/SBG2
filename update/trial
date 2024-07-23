@@ -1,0 +1,202 @@
+#!/bin/bash
+#Funnyvpn
+#Rerechan02
+#Rayzell25
+#Nuralfiya
+#em0zz
+#naravpn.com
+#indo-ssh.com
+#indossh
+#Skc
+clear
+#=========================================================================================================================
+# ==========================================
+# Color
+RED='\033[0;31m'
+NC='\033[0m'
+GREEN='\033[0;32m'
+ORANGE='\033[0;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
+LIGHT='\033[0;37m'
+CHATID="@maswayvpnofficial"
+CHATID2="@tempestunnel"
+KEY="6100079323:AAFSs4ovyrGGi039RySx0lzshGbB01nHM8k"
+TIME="10"
+URL="https://api.telegram.org/bot$KEY/sendMessage"
+#TRIAL VMESS
+# ==========================================
+user=mw-`</dev/urandom tr -dc X-Z0-9 | head -c4`
+domain=$(cat /etc/xray/domain)
+uuid=$(cat /proc/sys/kernel/random/uuid)
+exp=`date -d "1 days" +"%Y-%m-%d"`
+#Trojan
+#sed -i '/#trojanws$/a\#! '"$user $exp"'\
+#},{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
+#sed -i '/#trojangrpc$/a\#! '"$user $exp"'\
+#},{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
+#vmess
+sed -i '/#vmess$/a\### '"$user $exp"'\
+},{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/config.json
+exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
+sed -i '/#vmessgrpc$/a\### '"$user $exp"'\
+},{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/config.json
+asu=`cat<<EOF
+      {
+      "v": "2",
+      "ps": "${user}",
+      "add": "${domain}",
+      "port": "443",
+      "id": "${uuid}",
+      "aid": "0",
+      "net": "ws",
+      "path": "/vmess",
+      "type": "none",
+      "host": "${domain}",
+      "tls": "tls"
+}
+EOF`
+ask=`cat<<EOF
+      {
+      "v": "2",
+      "ps": "${user}",
+      "add": "${domain}",
+      "port": "80",
+      "id": "${uuid}",
+      "aid": "0",
+      "net": "ws",
+      "path": "/vmess",
+      "type": "none",
+      "host": "${domain}",
+      "tls": "none"
+}
+EOF`
+grpc=`cat<<EOF
+      {
+      "v": "2",
+      "ps": "${user}",
+      "add": "${domain}",
+      "port": "443",
+      "id": "${uuid}",
+      "aid": "0",
+      "net": "grpc",
+      "path": "vmgrpc",
+      "type": "none",
+      "host": "${domain}",
+      "tls": "tls"
+}
+EOF`
+#vmess
+vmess_base641=$( base64 -w 0 <<< $vmess_json1)
+vmess_base642=$( base64 -w 0 <<< $vmess_json2)
+vmess_base643=$( base64 -w 0 <<< $vmess_json3)
+vmesslink1="vmess://$(echo $asu | base64 -w 0)"
+vmesslink2="vmess://$(echo $ask | base64 -w 0)"
+vmesslink3="vmess://$(echo $grpc | base64 -w 0)"
+trasu=`cat<<EOF
+      {
+      "v": "2",
+      "ps": "${user}",
+      "add": "${domain}",
+      "port": "443",
+      "id": "${uuid}",
+      "aid": "0",
+      "net": "ws",
+      "path": "/vmess",
+      "type": "none",
+      "host": "${domain}",
+      "tls": "tls"
+}
+EOF`
+trgrpc=`cat<<EOF
+      {
+      "v": "2",
+      "ps": "${user}",
+      "add": "${domain}",
+      "port": "443",
+      "id": "${uuid}",
+      "aid": "0",
+      "net": "grpc",
+      "path": "vmgrpc",
+      "type": "none",
+      "host": "${domain}",
+      "tls": "tls"
+}
+EOF`
+#trojan
+#trojanlink1="trojan://${uuid}@${domain}:443?mode=gun&security=tls&type=grpc&serviceName=trgrpc&sni=${domain}#${user}"
+#trojanlink="trojan://${uuid}@bug.com:443?path=%2Ftrojan_ws&security=tls&host=${domain}&type=ws&sni=${domain}#${user}"
+#trojanlink="trojan://$(echo $trasu | base64 -w 0)"
+#trojanlink1="trojan://$(echo $trgrpc | base64 -w 0)"
+systemctl restart xray > /dev/null 2>&1
+service cron restart > /dev/null 2>&1
+#TRIAL SSH
+# ==========================================
+clear
+Login=mw-`</dev/urandom tr -dc X-Z0-9 | head -c4`
+hari="1"
+Pass=@maswayvpn
+clear
+systemctl restart ws-stunnel
+systemctl restart ws-nontls
+systemctl restart dropbear
+systemctl restart ssh
+useradd -e `date -d "1 days" +"%Y-%m-%d"` -s /bin/false -M $Login
+exp="$(chage -l $Login | grep "Account expires" | awk -F": " '{print $2}')"
+hariini=`date -d "1 days" +"%Y-%m-%d"`
+expi=`date -d "$masaaktif days" +"%Y-%m-%d"`
+echo -e "$Pass\n$Pass\n"|passwd $Login &> /dev/null
+echo -e ""
+TEXT="
+         𝗦𝘂𝗰𝗰𝗲𝘀 𝗮𝘁 𝗥𝗲𝗴𝗶𝘀𝘁𝗿𝘆 𝗜𝗡𝗙𝗢
+    ◇━━━━━━━━━━━━━━━━━━━◇
+    <code>Domain       :</code> <code>$domain</code>
+    <code>IP Vps          :</code> <code>$(cat /etc/xray/domain)</code>
+    <code>User Login  :</code> <code>$Login</code>
+    <code>Pass Login :</code> <code>$Pass</code>
+    <code>Port NTLS. :</code> <code>80, 2082, 8080</code>
+    <code>Port SSL.    :</code> <code>443</code>
+    <code>Port TLS.    :</code> <code>445/447</code>
+    <code>Port Udp.    :</code> <code>1-65335</code>
+    <code>Exp SSH      :</code> <code>$expi</code>
+    ◇━━━━━━━━━━━━━━━━━━━◇
+    <code> GET / HTTP/1.1[crlf]Host: [host][crlf]Upgrade: websocket[crlf][crlf]</code>
+    ◇━━━━━━━━━━━━━━━━━━━◇
+                  VMESS INFO ACCOUNTS
+    ◇━━━━━━━━━━━━━━━━━━━◇
+      Vmess TLS :
+      <code>$vmesslink1</code>
+    ◇━━━━━━━━━━━━━━━━━━━◇
+      Vmess NTLS :
+      <code>$vmesslink2</code>
+    ◇━━━━━━━━━━━━━━━━━━━◇
+      Vmess GRPC :
+      <code>$vmesslink3</code>
+    ◇━━━━━━━━━━━━━━━━━━━◇
+    ⚠︎𝘽𝙮 MyMaWay 𝙋𝙧𝙤𝙟𝙚𝙘𝙩 𝙈𝙖𝙣𝙖𝙜𝙚𝙧 ⚠︎
+    ◇━━━━━━━━━━━━━━━━━━━◇
+"
+curl -s --max-time $TIME -d "chat_id=$CHATID&disabley_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
+curl -s --max-time $TIME -d "chat_id=$CHATID2&disabley_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
+clear
+echo -e "══════════════════════════"
+echo -e "    <=  SSH ACCOUNT =>"
+echo -e "══════════════════════════"
+echo -e ""
+echo -e "Username     : $Login"
+echo -e "Password     : $Pass"
+echo -e "Host/IP      : $(cat /etc/xray/domain)"
+echo -e "Udp Custom   : 1-65535"
+echo -e "Port ssl/tls : 443"
+echo -e "Port non tls : 80, 2082, 8080"
+echo -e "Udpgw/Badvpn : 7200"
+echo -e ""
+echo -e "══════════════════════════"
+echo -e "Payload Ws   => GET / HTTP/1.1[crlf]Host: $(cat /etc/xray/domain)[crlf]Upgrade: websocket[crlf][crlf]"
+echo -e "══════════════════════════"
+echo -e "     Expired => $expi"
+echo -e "══════════════════════════"
+echo -e ""
+read -n 1 -s -r -p "Press any key to back on menu"
+menu
