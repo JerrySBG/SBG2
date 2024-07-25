@@ -46,7 +46,7 @@ wget -q https://raw.githubusercontent.com/NevermoreSSH/nitro/main/tools.sh && ch
 rm tools.sh
 clear
 # izin
-MYIP=$(wget -qO- ipinfo.io/ip);
+MYIP=$(wget -qO- ipv4.icanhazip.com);
 echo "checking your vps"
 sleep 0.5
 CEKEXPIRED () {
