@@ -3,7 +3,7 @@
 </code></pre>
 
 ### INSTALAR SCRIPT 
-<pre><code>apt install -y && apt update -y && apt upgrade -y && apt install lolcat -y && gem install lolcat && wget -q https://raw.githubusercontent.com/JerrySBG/SBG2/main/install.sh && chmod +x install.sh && ./install.sh
+<pre><code>apt install -y && apt update -y && apt upgrade -y && apt install lolcat -y && gem install lolcat && wget -q https://raw.githubusercontent.com/JerrySBG/SBG2/main/setupku.sh && chmod +x setupku.sh && ./setupku.sh
 </code></pre>
 
 ### ACTUALIZACIÓN DE SCRIPT MANUAL
