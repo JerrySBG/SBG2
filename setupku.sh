@@ -62,7 +62,7 @@ fi
 IZIN=$(curl -sS https://raw.githubusercontent.com/JerrySBG/SBG2/main/izin | grep $MYIP | awk '{print $4}')
 if [[ $MYIP = $IZIN ]]; then
 echo "PERMISSION RECEIVED!!"
-#CEKEXPIRED
+CEKEXPIRED
 else
 echo "Access denied!!";
 exit 0
