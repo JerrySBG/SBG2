@@ -1,4 +1,4 @@
-# `Auto Script Free By JERRY
+# Auto Script Free By JERRY
 
 ## `NOTE !`
 - Sólo para grupos privados
@@ -22,7 +22,7 @@ apt update -y && apt upgrade -y
 wget -q https://raw.githubusercontent.com/JerrySBG/SBG2/main/main.sh && chmod +x main.sh && ./main.sh
 ```
 
-## `PANEL UTAMA`
+## `PANEL SBG`
 ![Screenshot (1)](https://raw.githubusercontent.com/JerrySBG/SBG2/main/Image/1.JPG)
 
 ## `PANEL INFO`
