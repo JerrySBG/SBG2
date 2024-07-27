@@ -83,7 +83,7 @@ apt-get install ruby -y
 gem install lolcat
 
 # set time GMT +7
-ln -fs /usr/share/zoneinfo/America/Mexico_City /etc/localtime
+ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 
 # set locale
 sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
@@ -134,7 +134,7 @@ mkdir -p /home/vps/public_html
 
 # install badvpn
 cd
-wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/JerrySBG/SBG2/main/ssh/newudpgw"
+wget -O /usr/bin/badvpn-udpgw "https://raw.github.com/JerrySBG/SBG2/main/ssh/newudpgw"
 chmod +x /usr/bin/badvpn-udpgw
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 500' /etc/rc.local
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500' /etc/rc.local
@@ -182,11 +182,11 @@ socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
 
 [dropbear]
-accept = 443
+accept = 222
 connect = 127.0.0.1:22
 
 [dropbear]
-accept = 444
+accept = 777
 connect = 127.0.0.1:109
 
 [ws-stunnel]
