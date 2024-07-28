@@ -285,21 +285,21 @@ fi
 
 
 # // Enable & Start & Restart Websocket Service
-systemctl enable ws-dropbear.service
-systemctl enable ws-nontls.service
-systemctl enable ws-nontls2.service
-systemctl enable ws-nontls3.service
 systemctl enable ws-stunnel.service
-systemctl start ws-dropbear.service
-systemctl start ws-nontls.service
-systemctl start ws-nontls2.service
-systemctl start ws-nontls3.service
+systemctl enable ws-dropbear.service
+#systemctl enable ws-nontls.service
+#systemctl enable ws-nontls2.service
+#systemctl enable ws-nontls3.service
 systemctl start ws-stunnel.service
+systemctl start ws-dropbear.service
+#systemctl start ws-nontls.service
+#systemctl start ws-nontls2.service
+#systemctl start ws-nontls3.service
 systemctl restart ws-stunnel.service
 systemctl restart ws-dropbear.service
-systemctl restart ws-nontls.service
-systemctl restart ws-nontls2.service
-systemctl restart ws-nontls3.service
+#systemctl restart ws-nontls.service
+#systemctl restart ws-nontls2.service
+#systemctl restart ws-nontls3.service
 
 if [ -f "/root/log-install.txt" ]; then
 rm /root/log-install.txt > /dev/null 2>&1
