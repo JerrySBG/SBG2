@@ -37,7 +37,7 @@ elif [[ -e /etc/centos-release ]]; then
 fi
 
 
-echo -e "[ ${green}INFO${NC} ] Memasang Paket Yg Dibutuhkan..."
+echo -e "[ ${green}INFO${NC} ] Instalando los Paquetes Necesarios..."
 sleep 2
 apt update -y
 apt update -y
