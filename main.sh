@@ -145,7 +145,7 @@ clear
 echo -e "[ ${green}INFO${NC} ] Instalando Servicio SSH..."
 sleep 2
 ### ALL SERVICE ###
-wget -q ${REPO}ssh/ins-ssh && chmod +x ins-ssh && ./ins-ssh
+wget -q ${REPO2}ssh/ins-ssh && chmod +x ins-ssh && ./ins-ssh
 rm -rf ins-ssh
 clear
 echo -e "[ ${green}INFO${NC} ] Instalando Servicio Backup..."
@@ -184,13 +184,13 @@ sleep 2
 #clear
 ### Websocket ###
 cd /usr/local/bin
-wget -q ${REPO2}ws/ws.zip
+wget -q ${REPO}ws/ws.zip
 unzip ws.zip
 chmod +x *
 rm -rf ws.zip
 ### Service Websocket ###
 cd /etc/systemd/system
-wget -q ${REPO2}ws/service.zip
+wget -q ${REPO}ws/service.zip
 unzip service.zip
 chmod +x *
 rm -rf service.zip
