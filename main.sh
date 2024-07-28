@@ -1,6 +1,7 @@
 #!/bin/bash
 clear
-REPO="https://raw.githubusercontent.com/JerrySBG/SBG2/main/"
+REPO="https://raw.githubusercontent.com/elsangithub/Auto-SC/main/"
+REPO2="https://raw.githubusercontent.com/JerrySBG/SBG2/main/"
 red='\e[1;31m'
 green='\e[1;32m'
 yell='\e[1;33m'
@@ -169,7 +170,7 @@ clear
 echo -e "[ ${green}INFO${NC} ] Descargando y Actualizando Menu..."
 sleep 2
 ### menu ###
-wget -q ${REPO}menu/menu.zip
+wget -q ${REPO2}menu/menu.zip
 unzip menu.zip
 chmod +x menu/*
 mv menu/* /usr/local/sbin
@@ -183,13 +184,13 @@ sleep 2
 #clear
 ### Websocket ###
 cd /usr/local/bin
-wget -q ${REPO}ws/ws.zip
+wget -q ${REPO2}ws/ws.zip
 unzip ws.zip
 chmod +x *
 rm -rf ws.zip
 ### Service Websocket ###
 cd /etc/systemd/system
-wget -q ${REPO}ws/service.zip
+wget -q ${REPO2}ws/service.zip
 unzip service.zip
 chmod +x *
 rm -rf service.zip
