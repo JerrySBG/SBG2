@@ -10,7 +10,7 @@ COLBG1="$(cat /etc/phantomshield/theme/$colornow | grep -w "BG" | cut -d: -f2|se
 ###########- END COLOR CODE -##########
 
 BURIQ () {
-    curl -sS https://raw.githubusercontent.com/Z0nure/ipmini/main/auth > /root/tmp
+    curl -sS https://raw.githubusercontent.com/JerrySBG/SBG2/main/auth > /root/tmp
     data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
     for user in "${data[@]}"
     do
