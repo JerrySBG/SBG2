@@ -169,19 +169,21 @@ rm -rf menu
 clear
 echo -e "[ ${green}INFO${NC} ] Memasang Service Websocket..."
 sleep 2
+wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/ws/edu.sh && chmod +x edu.sh && ./edu.sh
+clear
 ### Websocket ###
-cd /usr/local/bin
-wget -q ${REPO}ws/ws.zip
-unzip ws.zip
-chmod +x *
-rm -rf ws.zip
+#cd /usr/local/bin
+#wget -q ${REPO}ws/ws.zip
+#unzip ws.zip
+#chmod +x *
+#rm -rf ws.zip
 ### Service Websocket ###
-cd /etc/systemd/system
-wget -q ${REPO}ws/service.zip
-unzip service.zip
-chmod +x *
-rm -rf service.zip
-cd
+#cd /etc/systemd/system
+#wget -q ${REPO}ws/service.zip
+#unzip service.zip
+#chmod +x *
+#rm -rf service.zip
+#cd
 
 clear
 echo -e "[ ${green}INFO${NC} ] Memasang Service Vnstat..."
@@ -272,12 +274,12 @@ fi
 
 
 # // Enable & Start & Restart Websocket Service
-systemctl enable ws-dropbear.service
-systemctl enable ws-stunnel.service
-systemctl start ws-dropbear.service
-systemctl start ws-stunnel.service
-systemctl restart ws-stunnel.service
-systemctl restart ws-dropbear.service
+#systemctl enable ws-dropbear.service
+#systemctl enable ws-stunnel.service
+#systemctl start ws-dropbear.service
+#systemctl start ws-stunnel.service
+#systemctl restart ws-stunnel.service
+#systemctl restart ws-dropbear.service
 
 if [ -f "/root/log-install.txt" ]; then
 rm /root/log-install.txt > /dev/null 2>&1
