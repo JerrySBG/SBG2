@@ -428,7 +428,7 @@ fun_bar() {
         touch $HOME/fim
     ) >/dev/null 2>&1 &
     tput civis
-    echo -ne "  \033[0;33mNuevamente instalando archivos \033[1;37m- \033[0;33m["
+    echo -ne "  \033[0;33mEspera, Instalando archivos \033[1;37m- \033[0;33m["
     while true; do
         for ((i = 0; i < 18; i++)); do
             echo -ne "\033[0;32m#"
@@ -439,7 +439,7 @@ fun_bar() {
         sleep 1s
         tput cuu1
         tput dl1
-        echo -ne "  \033[0;33mNuevamente instalando archivos \033[1;37m- \033[0;33m["
+        echo -ne "  \033[0;33mEspera, Instalando archivos \033[1;37m- \033[0;33m["
     done
     echo -e "\033[0;33m]\033[1;37m -\033[1;32m Con Exito !\033[1;37m"
     tput cnorm
@@ -654,7 +654,7 @@ cd
 iinfo
 rm -rf *
 echo -e "${BIBlue}╭════════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR} INSTALACION DEL SCRIPT FINALIZADO..                 ${NC}${BIBlue} │${NC}"
+echo -e "${BIBlue}│ ${BGCOLOR} INSTALACION DEL SCRIPT FINALIZADO..    ${NC}${BIBlue} │${NC}"
 echo -e "${BIBlue}╰════════════════════════════════════════════╯${NC}"
 echo  ""
 sleep 4
