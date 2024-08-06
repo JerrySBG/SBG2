@@ -570,7 +570,7 @@ URL="https://api.telegram.org/bot$KEY/sendMessage"
 ISP=$(cat /etc/xray/isp)
 CITY=$(cat /etc/xray/city)
 domain=$(cat /etc/xray/domain) 
-TIME=$(date +'%Y-%m-%d %H:%M:%S')
+TIME=$(date +'%(%H:%M:%S)T')
 RAMMS=$(free -m | awk 'NR==2 {print $2}')
 MODEL2=$(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')
 MYIP=$(curl -sS ipv4.icanhazip.com)
@@ -584,13 +584,13 @@ TEXT="
 <code>⚠️ AUTOSCRIPT PREMIUM ⚠️</code>
 <code>━━━━━━━━━━━━━━━━━━━━</code>
 <code>NOMBRE   : </code><code>${author}</code>
-<code>HORA     : </code><code>${TIME} WIB</code>
+<code>FECHA    : </code><code>${TIME} HORA</code>
 <code>DOMINIO  : </code><code>${domain}</code>
 <code>IP VPS   : </code><code>${MYIP}</code>
 <code>ISP      : </code><code>${ISP} $CITY</code>
-<code>OS LINUX : </code><code>${MODEL2}</code>
+<code>S.Op     : </code><code>${MODEL2}</code>
 <code>RAM      : </code><code>${RAMMS} MB</code>
-<code>EXP SC   : </code><code>$EXP Days</code>
+<code>EXP SC   : </code><code>$EXP Dias</code>
 <code>━━━━━━━━━━━━━━━━━━━━</code>
 <i> Notificacion de Instalacion Script...</i>
 "'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ","url":"https://t.me/Jerry_SBG"},{"text":"Contack","url":"https://wa.me/+529241293310"}]]}'
