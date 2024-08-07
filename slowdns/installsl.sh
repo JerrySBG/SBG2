@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 ns_domain_cloudflare() {
 	DOMAIN="tepllovpn.eu.org"
 	DOMAIN_PATH=$(cat /etc/xray/domain)

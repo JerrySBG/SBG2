@@ -1,87 +1,61 @@
 #!/bin/bash
-# Proxy For Edukasi & Imclass
+#installer Websocker tunneling 
+url="https://raw.githubusercontent.com/JerrySBG/SBG2/main"
+cd
 
-# Link Hosting Kalian
-SFVPN="https://raw.githubusercontent.com/JerrySBG/SBG2/main/install"
+#Install Script Websocket-SSH Python
+wget -O /usr/local/bin/proxy ${url}/sshws/https.py
+#wget -O /usr/local/bin/proxy2 ${url}/sshws/https2.py
+#wget -O /usr/local/bin/proxy3 ${url}/sshws/https3.py
+wget -O /usr/local/bin/ws-dropbear ${url}/sshws/dropbear-ws.py
+wget -O /usr/local/bin/ws-stunnel ${url}/sshws/ws-stunnel.py
 
-wget -O /usr/local/bin/ws-dropbear https://raw.githubusercontent.com/JerrySBG/SBG2/main/sshws/ws-dropbear
+#izin permision
+chmod +x /usr/local/bin/proxy
+#chmod +x /usr/local/bin/proxy2
+#chmod +x /usr/local/bin/proxy3
 chmod +x /usr/local/bin/ws-dropbear
+chmod +x /usr/local/bin/ws-stunnel
 
-# Installing Service
-cat > /etc/systemd/system/ws-nontls.service << END
-[Unit]
-Description=Python Proxy Mod By JERRY 
-Documentation=https://t.me/Jerry_SBG
-After=network.target nss-lookup.target
+#System Direcly dropbear Websocket-SSH Python
+wget -O /etc/systemd/system/proxy.service ${url}/sshws/http.service && chmod +x /etc/systemd/system/proxy.service
 
-[Service]
-Type=simple
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /usr/local/bin/ws-dropbear
-Restart=on-failure
+#System Direcly dropbear Websocket-SSH Python
+#wget -O /etc/systemd/system/proxy2.service ${url}/sshws/http2.service && chmod +x /etc/systemd/system/proxy2.service
 
-[Install]
-WantedBy=multi-user.target
-END
+#System Direcly dropbear Websocket-SSH Python
+#wget -O /etc/systemd/system/proxy3.service ${url}/sshws/http3.service && chmod +x /etc/systemd/system/proxy3.service
 
+#System Dropbear Websocket-SSH Python
+wget -O /etc/systemd/system/ws-dropbear.service ${url}/sshws/service-wsdropbear.txt && chmod +x /etc/systemd/system/ws-dropbear.service
+
+#System SSL/TLS Websocket-SSH Python
+wget -O /etc/systemd/system/ws-stunnel.service ${url}/sshws/ws-stunnel.service.txt && chmod +x /etc/systemd/system/ws-stunnel.service
+
+
+#restart service
 systemctl daemon-reload
+
+#Enable & Start & Restart directly dropbear
+#systemctl daemon-reload
+systemctl enable proxy.service
+systemctl start proxy.service
+systemctl restart proxy.service
+#systemctl enable proxy2.service
+#systemctl start proxy2.service
+#systemctl restart proxy2.service
+#systemctl enable proxy3.service
+#systemctl start proxy3.service
+#systemctl restart proxy3.service
+
+#Enable & Start & Restart ws-dropbear service
 systemctl enable ws-dropbear.service
 systemctl start ws-dropbear.service
 systemctl restart ws-dropbear.service
 
-wget -O /usr/local/bin/ws-ovpn https://raw.githubusercontent.com/JerrySBG/SBG2/main/sshws/ws-ovpn.py
-chmod +x /usr/local/bin/ws-ovpn
-
-# Installing Service
-cat > /etc/systemd/system/ws-ovpn.service << END
-[Unit]
-Description=Python Proxy Mod By JERRY 
-Documentation=https://t.me/Jerry_SBG
-After=network.target nss-lookup.target
-
-[Service]
-Type=simple
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /usr/local/bin/ws-ovpn 2086
-Restart=on-failure
-
-[Install]
-WantedBy=multi-user.target
-END
-
-systemctl daemon-reload
-systemctl enable ws-ovpn
-systemctl restart ws-ovpn
-
-wget -O /usr/local/bin/ws-stunnel https://raw.githubusercontent.com/JerrySBG/SBG2/main/sshws/ws-stunnel
-chmod +x /usr/local/bin/ws-stunnel
-
-# Installing Service
-cat > /etc/systemd/system/ws-stunnel.service << END
-[Unit]
-Description=Python Proxy Mod By JERRY 
-Documentation=https://t.me/Jerry_SBG
-After=network.target nss-lookup.target
-
-[Service]
-Type=simple
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /usr/local/bin/ws-stunnel
-Restart=on-failure
-
-[Install]
-WantedBy=multi-user.target
-END
-
+#Enable & Start & Restart ws-stunnel service
 systemctl enable ws-stunnel.service
 systemctl start ws-stunnel.service
 systemctl restart ws-stunnel.service
+
+clear

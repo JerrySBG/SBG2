@@ -1,6 +1,6 @@
 [Unit]
-Description=SSH Over Websocket
-Documentation=https://google.com
+Description=Websocket-OpenSSH By JERRY
+Documentation=https://t.me/Jerry_SBG
 After=network.target nss-lookup.target
 
 [Service]

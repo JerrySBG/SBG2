@@ -1,6 +1,6 @@
 #!/bin/bash
 # Ohp Script
-# Mod By RMBL VPN 
+# Mod By rmbl
 # ==========================================
 # Color
 RED='\033[0;31m'
@@ -26,7 +26,7 @@ cp ohpserver /usr/local/bin/ohpserver
 cat > /etc/systemd/system/ssh-ohp.service << END
 [Unit]
 Description=SSH OHP Redirection Service
-Documentation=https://t.me/abecasdee13
+Documentation=https://t.me/abecasdee
 After=network.target nss-lookup.target
 
 [Service]
@@ -47,7 +47,7 @@ END
 cat > /etc/systemd/system/dropbear-ohp.service << END
 [Unit]]
 Description=Dropbear OHP Redirection Service
-Documentation=https://t.me/abecasdee13
+Documentation=https://t.me/abecasdee
 After=network.target nss-lookup.target
 
 [Service]
@@ -68,7 +68,7 @@ END
 cat > /etc/systemd/system/openvpn-ohp.service << END
 [Unit]]
 Description=OpenVPN OHP Redirection Service
-Documentation=https://t.me/abecasdee13
+Documentation=https://t.me/abecasdee
 After=network.target nss-lookup.target
 
 [Service]
@@ -98,22 +98,22 @@ sleep 0.5
 printf 'CHECKING LISTENING PORT\n'
 if [ -n "$(ss -tupln | grep ohpserver | grep -w 8181)" ]
 then
-	echo 'SSH OHP Redirection Running'
+  echo 'SSH OHP Redirection Running'
 else
-	echo 'SSH OHP Redirection Not Found, please check manually'
+  echo 'SSH OHP Redirection Not Found, please check manually'
 fi
 sleep 0.5
 if [ -n "$(ss -tupln | grep ohpserver | grep -w 8282)" ]
 then
-	echo 'Dropbear OHP Redirection Running'
+  echo 'Dropbear OHP Redirection Running'
 else
-	echo 'Dropbear OHP Redirection Not Found, please check manually'
+  echo 'Dropbear OHP Redirection Not Found, please check manually'
 fi
 sleep 0.5
 if [ -n "$(ss -tupln | grep ohpserver | grep -w 8383)" ]
 then
-	echo 'OpenVPN OHP Redirection Running'
+  echo 'OpenVPN OHP Redirection Running'
 else
-	echo 'OpenVPN OHP Redirection Not Found, please check manually'
+  echo 'OpenVPN OHP Redirection Not Found, please check manually'
 fi
 sleep 0.5
