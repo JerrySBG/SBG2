@@ -8,7 +8,6 @@ apt install netfilter-persistent -y
 apt-get remove --purge ufw firewalld -y
 apt install -y screen curl jq bzip2 gzip vnstat coreutils rsyslog iftop zip unzip git apt-transport-https build-essential -y
 
-
 # initializing var
 export DEBIAN_FRONTEND=noninteractive
 MYIP=$(wget -qO- ipinfo.io/ip);
@@ -71,6 +70,7 @@ sed -i '$ i\echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6' /etc/rc.local
 #update
 apt update -y
 apt upgrade -y
+apt clean all
 apt dist-upgrade -y
 apt-get remove --purge ufw firewalld -y
 apt-get remove --purge exim4 -y
@@ -90,7 +90,7 @@ apt-get install ruby -y
 gem install lolcat
 
 # set time GMT +7
-ln -fs /usr/share/zoneinfo/America/Mexico_City /etc/localtime
+ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 
 # set locale
 sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
@@ -199,7 +199,7 @@ apt -y install squid3
 
 # install squid for debian 11
 apt -y install squid
-wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/squid3.conf"
+wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/main/squid3.conf"
 sed -i $MYIP2 /etc/squid/squid.conf
 
 # setting vnstat
@@ -230,19 +230,29 @@ socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
 
 [dropbear]
-accept = 447
+accept = 445
 connect = 127.0.0.1:22
 
 [dropbear]
-accept = 8443
+accept = 447
 connect = 127.0.0.1:109
 
+#[dropbear]
+#accept = 2082
+#connect = 127.0.0.1:22
+#[dropbear]
+#accept = 2083
+#connect = 127.0.0.1:109
+#[ws-stunnel]
+#accept = 2083
+#connect = 700
+
 [ws-stunnel]
-accept = 444
+accept = 2096
 connect = 700
 
 [openvpn]
-accept = 990
+accept = 442
 connect = 127.0.0.1:1194
 
 END
@@ -260,10 +270,16 @@ sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 #OpenVPN
 wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
 
+#OpenVPNwebsocket
+#apt install golang-go
+#wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/sshws/ovpn-websocket.sh &&  chmod +x ovpn-websocket.sh && ./ovpn-websocket.sh
+#go run ovpn-websocket.sh
+
+
 # // install lolcat
 wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/lolcat.sh &&  chmod +x lolcat.sh && ./lolcat.sh
 
-# memory swap 4gb
+# memory swap 1gb
 cd
 dd if=/dev/zero of=/swapfile bs=1024 count=4194304
 mkswap /swapfile
@@ -312,6 +328,23 @@ wget -O /etc/issue.net "https://raw.githubusercontent.com/JerrySBG/SBG2/main/ins
 #install bbr dan optimasi kernel
 wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/bbr.sh && chmod +x bbr.sh && ./bbr.sh
 
+#run_ip
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 80 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8008 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8008 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8080 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8280 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8280 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 443 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 2052 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 2052-j ACCEPT
+iptables-save > /etc/iptables.up.rules
+iptables-restore -t < /etc/iptables.up.rules
+netfilter-persistent save
+netfilter-persistent reload
 # blokir torrent
 iptables -A FORWARD -m string --string "get_peers" --algo bm -j DROP
 iptables -A FORWARD -m string --string "announce_peer" --algo bm -j DROP
@@ -344,6 +377,12 @@ chmod +x m-theme
 chmod +x speedtest
 chmod +x xp
 cd
+cat >/etc/cron.d/logclean <<-END
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+*/59 * * * * root /usr/sbin/logclean
+END
+chmod 644 /root/.profile
 
 #if [ ! -f "/etc/cron.d/xp_otm" ]; then
 cat> /etc/cron.d/xp_otm << END

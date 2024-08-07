@@ -23,12 +23,12 @@ exit 0
 fi
 clear
 echo -e "${tyblue}|━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━|${NC}"
-echo -e "${tyblue}|           ♡ PORT SERVER VPS ACTIVO               |${NC}"
+echo -e "${tyblue}|           ♡ PORT SERVER VPS SBG                 |${NC}"
 echo -e "${tyblue}|━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━|${NC}"
 echo -e "${tyblue}|●⏩ Open VPN                : 2086 ⏪             |${NC}"
 echo -e "${tyblue}|●⏩ SSH SSL Websocket       : 443 ⏪              |${NC}"
-echo -e "${tyblue}|●⏩ SSH Websocket           : 80,8008,8080,8280 ⏪|${NC}"
-echo -e "${tyblue}|●⏩ Stunnel                 : 447,8443 ⏪         |${NC}"
+echo -e "${tyblue}|●⏩ SSH Websocket           : 80,8008,8090,8280 ⏪|${NC}"
+echo -e "${tyblue}|●⏩ Stunnel                 : 445,447 ⏪        |${NC}"
 echo -e "${tyblue}|●⏩ Vmess WS TLS            : 443 ⏪              |${NC}"
 echo -e "${tyblue}|●⏩ Vless WS TLS            : 443 ⏪              |${NC}"
 echo -e "${tyblue}|●⏩ Trojan WS TLS           : 443 ⏪              |${NC}"
@@ -50,5 +50,5 @@ echo -e ""
 case $opt in
 1) clear ; menu ;;
 2) exit ;;
-*) echo "SALAH TEKAN" ; sleep 1 ; m-port ;;
+*) echo "Presionaste Mal" ; sleep 1 ; m-port ;;
 esac

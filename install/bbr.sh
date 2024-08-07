@@ -16,7 +16,7 @@ Check_And_Add_Line(){
 
 Install_BBR(){
 echo "#############################################"
-echo "Install TCP_BBR..."
+echo "Instalar TCP_BBR..."
 if [ -n "$(lsmod | grep bbr)" ];then
 echo "TCP_BBR Ya Instalado."
 echo "#############################################"
@@ -38,7 +38,7 @@ echo "#############################################"
 
 Optimize_Parameters(){
 echo "#############################################"
-echo "Optimasi Parameters..."
+echo "Optimando Parametros..."
 Check_And_Add_Line "/etc/security/limits.conf" "* soft nofile 51200"
 Check_And_Add_Line "/etc/security/limits.conf" "* hard nofile 51200"
 Check_And_Add_Line "/etc/security/limits.conf" "root soft nofile 51200"

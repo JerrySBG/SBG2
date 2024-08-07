@@ -306,19 +306,19 @@ clear
 clear && clear && clear
 clear;clear;clear
 echo -e " $COLOR1╭══════════════════════════════════════════════════════════╮${NC}"
-echo -e " $COLOR1│${NC} ${COLBG1}                ${WH} • JERRY VPN TUNNELING •                ${NC} $COLOR1│ $NC"
+echo -e " $COLOR1│${NC} ${COLBG1}                 ${WH} • AUTOSCRIPT BY JERRY VIP •           ${NC} $COLOR1│ $NC"
 echo -e " $COLOR1╰══════════════════════════════════════════════════════════╯${NC}"
 echo -e " $COLOR1╭══════════════════════════════════════════════════════════╮${NC}"
 echo -e " $COLOR1│$NC${WH} ❈ OS            ${COLOR1}: ${WH}$MODEL2${NC}"
 echo -e " $COLOR1│$NC${WH} ❈ RAM           ${COLOR1}: ${WH}$tram / $uram MB${NC}"
-echo -e " $COLOR1│$NC${WH} ❈ DATE          ${COLOR1}: ${WH}$DATE2 HORA${NC}"
-echo -e " $COLOR1│$NC${WH} ❈ UPTIME        ${COLOR1}: ${WH}$uphours $upminutes $uptimecek"
+echo -e " $COLOR1│$NC${WH} ❈ FECHA         ${COLOR1}: ${WH}$DATE2 HORA${NC}"
+echo -e " $COLOR1│$NC${WH} ❈ ACTIVO        ${COLOR1}: ${WH}$uphours $upminutes $uptimecek"
 #echo -e " $COLOR1│$NC${WH} ❈ TIME          ${COLOR1}: ${WH}$TIMEZONE${NC}"
 echo -e " $COLOR1│$NC${WH} ❈ ISP           ${COLOR1}: ${WH}$ISP${NC}"
 echo -e " $COLOR1│$NC${WH} ❈ City          ${COLOR1}: ${WH}$CITY${NC}"
 echo -e " $COLOR1│$NC${WH} ❈ IP VPS        ${COLOR1}: ${WH}$MYIP${NC}"
-echo -e " $COLOR1│$NC${WH} ❈ DOMAIN        ${COLOR1}: ${WH}$(cat /etc/xray/domain)"
-echo -e " $COLOR1│$NC${WH} ❈ NSDomain      ${COLOR1}: ${WH}$(cat /etc/xray/dns)"
+echo -e " $COLOR1│$NC${WH} ❈ DOMINIO       ${COLOR1}: ${WH}$(cat /etc/xray/domain)"
+echo -e " $COLOR1│$NC${WH} ❈ NSDominio     ${COLOR1}: ${WH}$(cat /etc/xray/dns)"
 echo -e " $COLOR1╰══════════════════════════════════════════════════════════╯${NC}"
 echo -e "    $COLOR1╭═════════════════ • ${NC}${WH}STATUS SERVER${NC}${COLOR1} • ═══════════════╮${NC}"
 echo -e "     ${WH} SSH WS : ${status_ws} ${WH} XRAY : ${status_xray} ${WH} NGINX : ${status_nginx} ${WH} DROPBEAR : ${status_beruangjatuh}$NC"
@@ -354,14 +354,14 @@ ressee="menu"
 bottt="menu"
 fi
 echo -e "$COLOR1╭═════════════════════════════════════════════════════════╮${NC}"
-echo -e "$COLOR1│$NC  ${WH}Total    $COLOR1│${NC}     ${WH}Today       ${WH}Yesterday       ${WH}Month         ${NC}"
+echo -e "$COLOR1│$NC  ${WH}Total    $COLOR1│${NC}     ${WH}HOY         ${WH}AYER             ${WH}MES         ${NC}"
 echo -e "$COLOR1│$NC ${WH}Bantwidth $COLOR1│${NC}   ${WH}$today_tx $today_txv     ${WH}$yesterday_tx $yesterday_txv      ${WH}$month_tx $month_txv$COLOR1${NC}"
 echo -e "$COLOR1╰═════════════════════════════════════════════════════════╯${NC}"
 DATE=$(date +'%Y-%m-%d')
 datediff() {
 d1=$(date -d "$1" +%s)
 d2=$(date -d "$2" +%s)
-echo -e "$COLOR1 $NC Expiry In   : $(( (d1 - d2) / 86400 )) Days"
+echo -e "$COLOR1 $NC Expira En   : $(( (d1 - d2) / 86400 )) Dias"
 }
 function new(){
 cat> /etc/cron.d/autocpu << END
@@ -376,7 +376,7 @@ menu
 function newx(){
 clear
 until [[ $usagee =~ ^[0-9]+$ ]]; do
-read -p "kuota user format angka 1, 2 atau 3 (TERA): " usagee
+read -p "Formato de Cuota de Usuario número 1, 2 o 3 (TERA): " usagee
 done
 echo "$usagee" > /etc/usagee
 cat> /etc/cron.d/bantwidth << END
@@ -404,7 +404,7 @@ fun_bar() {
         touch $HOME/fim
     ) >/dev/null 2>&1 &
     tput civis
-    echo -ne "  \033[0;33mPlease Wait Loading \033[1;37m- \033[0;33m["
+    echo -ne "  \033[0;33mPor Favor Espere, Cargando \033[1;37m- \033[0;33m["
     while true; do
         for ((i = 0; i < 18; i++)); do
             echo -ne "\033[0;32m#"
@@ -415,7 +415,7 @@ fun_bar() {
         sleep 1s
         tput cuu1
         tput dl1
-        echo -ne "  \033[0;33mPlease Wait Loading \033[1;37m- \033[0;33m["
+        echo -ne "  \033[0;33mPor Favor Espere, Cargando \033[1;37m- \033[0;33m["
     done
     echo -e "\033[0;33m]\033[1;37m -\033[1;32m OK !\033[1;37m"
     tput cnorm
@@ -441,14 +441,14 @@ res1() {
 }
 clear
 echo -e "$COLOR1 ╭══════════════════════════════════════════╮${NC}"
-echo -e "$COLOR1 ${NC} ${COLBG1}          ${WH}RESTART SERVICE VPS             ${NC} $COLOR1 $NC"
+echo -e "$COLOR1 ${NC} ${COLBG1}          ${WH}REINICIANDO SERVICIOS VPS             ${NC} $COLOR1 $NC"
 echo -e "$COLOR1 ╰══════════════════════════════════════════╯${NC}"
 echo -e ""
-echo -e "  \033[1;91m Restart All Service... \033[1;37m"
+echo -e "  \033[1;91m Reiniciando Todos los Servicios... \033[1;37m"
 fun_bar 'res1'
 
 echo -e ""
-read -n 1 -s -r -p "Press [ Enter ] to back on menu"
+read -n 1 -s -r -p "Presione [ Enter ] para Regresar al MENU"
 menu
 }
 function updatews(){

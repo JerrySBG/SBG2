@@ -51,7 +51,7 @@ service cron restart > /dev/null 2>&1
 
 # > Pasang Limit
 
-#wget "https://sfvt.serv00.net/mysc/bin/limit.sh" >/dev/null 2>&1
+#wget "https://raw.githubusercontent.com/JerrySBG/SBG2/main/bin/limit.sh" >/dev/null 2>&1
 
 #chmod +x limit.sh && bash limit.sh >/dev/null 2>&1
     

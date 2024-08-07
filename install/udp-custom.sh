@@ -4,8 +4,8 @@ cd
 rm -rf /etc/udp
 mkdir -p /etc/udp
 
-# change to time UTC -6
-echo "Cambiar Zona Horaria MEXICO UTC -6"
+# change to time GMT+7
+echo "change to time GMT+7"
 ln -fs /usr/share/zoneinfo/America/Mexico_City /etc/localtime
 
 # install udp-custom

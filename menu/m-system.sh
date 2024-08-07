@@ -313,14 +313,14 @@ echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━�
 echo -e "\e[0;100;33m       • AUTO-REBOOT MENU •        \e[0m"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e ""
-echo -e "[\e[36m•1\e[0m] Set Auto-Reboot Setiap 1 Jam"
-echo -e "[\e[36m•2\e[0m] Set Auto-Reboot Setiap 6 Jam"
-echo -e "[\e[36m•3\e[0m] Set Auto-Reboot Setiap 12 Jam"
-echo -e "[\e[36m•4\e[0m] Set Auto-Reboot Setiap 1 Hari"
-echo -e "[\e[36m•5\e[0m] Set Auto-Reboot Setiap 1 Minggu"
-echo -e "[\e[36m•6\e[0m] Set Auto-Reboot Setiap 1 Bulan"
+echo -e "[\e[36m•1\e[0m] Set Auto-Reboot Cada 1 hora"
+echo -e "[\e[36m•2\e[0m] Set Auto-Reboot Cada 6 hora"
+echo -e "[\e[36m•3\e[0m] Set Auto-Reboot Cada 12 horas"
+echo -e "[\e[36m•4\e[0m] Set Auto-Reboot Cada 1 Dia"
+echo -e "[\e[36m•5\e[0m] Set Auto-Reboot Cada 1 Semana"
+echo -e "[\e[36m•6\e[0m] Set Auto-Reboot Cada 1 mes"
 echo -e "[\e[36m•7\e[0m] Set Auto-Rebooot CPU 100%"
-echo -e "[\e[36m•8\e[0m] Matikan Auto-Reboot & Auto-Reboot CPU 100%"
+echo -e "[\e[36m•8\e[0m] Apagar Auto-Reboot & Auto-Reboot CPU 100%"
 echo -e "[\e[36m•9\e[0m] View reboot log"
 echo -e "[\e[36m•10\e[0m] Remove reboot log"
 echo -e ""
@@ -1041,9 +1041,9 @@ neofetch
 speedtest
 }
 function nameauthor(){
-read -rp "Input Your New Name : " -e name
+read -rp "Ingresa Tu Nuevo Nombre : " -e name
 echo "$name" > /etc/profil
-read -n 1 -s -r -p " Succes Change Press Any key to Back Menu"
+read -n 1 -s -r -p " Cambiado con Exito presiona cualquier tecla para Regresar al Menu"
 menu
 }
 clear
