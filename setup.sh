@@ -39,7 +39,7 @@ if [[ "$hst" != "$dart" ]]; then
 echo "$localip $(hostname)" >> /etc/hosts
 fi
 secs_to_human() {
-echo "Installation time : $(( ${1} / 3600 )) hours $(( (${1} / 60) % 60 )) minute's $(( ${1} % 60 )) seconds"
+echo "TIEMPO DE INSTALACION : $(( ${1} / 3600 )) horas $(( (${1} / 60) % 60 )) minutos $(( ${1} % 60 )) segundos"
 }
 rm -rf /etc/rmbl
 mkdir -p /etc/rmbl
@@ -48,11 +48,11 @@ mkdir -p /var/lib/ >/dev/null 2>&1
 echo "IP=" >> /var/lib/ipvps.conf
 clear
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}             MASUKKAN NAMA KAMU         ${NC}${BIBlue} │${NC}"
+echo -e "${BIBlue}│ ${BGCOLOR}           INTRODUZCA SU NOMBRE         ${NC}${BIBlue} │${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 echo " "
 until [[ $name =~ ^[a-zA-Z0-9_.-]+$ ]]; do
-read -rp "Masukan Nama Kamu Disini tanpa spasi : " -e name
+read -rp "Introduce tu nombre aquí sin espacios : " -e name
 done
 rm -rf /etc/profil
 echo "$name" > /etc/profil
@@ -65,14 +65,14 @@ echo ""
 function key2(){
 clear
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR} Please select a your Choice            ${BIBlue} │${NC}"
+echo -e "${BIBlue}│ ${BGCOLOR} Por Favor Seleccione su Opción         ${BIBlue} │${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│  [ 1 ]  \033[1;37mTRIAL 1 HARI      ${NC}"
-echo -e "${BIBlue}│  [ 2 ]  \033[1;37mMEMBER SUDAH BELI     ${NC}"
+echo -e "${BIBlue}│  [ 1 ]  \033[1;37mPRUEBA DE 1 DÍA      ${NC}"
+echo -e "${BIBlue}│  [ 2 ]  \033[1;37mUSUARIO YA COMPRADO     ${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 until [[ $key =~ ^[12]+$ ]]; do 
-read -p "   Please select numbers 1 atau 2 : " key
+read -p "   Por favor seleccione los números 1 o 2 : " key
 done
 if [[ $key == "1" ]]; then
 MYIP=$(curl -sS ipv4.icanhazip.com)
@@ -108,13 +108,13 @@ fi
 if [[ $key == "2" ]]; then
 clear
 echo -e  "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e  "${BIBlue}│              MASUKKAN LICENSE KEY        │${NC}"
+echo -e  "${BIBlue}│    INTRODUZCA LA CLAVE DE LA LICENCIA    │${NC}"
 echo -e  "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 echo " "
-read -rp "Masukan Key Kamu Disini (Ctrl + C Exit) : " -e kode
+read -rp "Introduce tu clave aquí (Ctrl + C = Exit) : " -e kode
 
 if [ -z $kode ]; then
-echo -e "KODE SALAH SILAHKAN MASUKKAN ULANG KODENYA"
+echo -e "CÓDIGO EQUIVOCADO POR FAVOR VUELVA A INGRESAR EL CÓDIGO"
 key2
 fi
 LIST=$(curl -sS https://raw.githubusercontent.com/RMBL-VPN/license/main/key | grep $kode | awk '{print $2}')
@@ -268,7 +268,7 @@ rm -rf /root/rmbl
 rm -rf /etc/github
 clear
 else
-echo -e "KODE SALAH SILAHKAN MASUKKAN ULANG KODENYA"
+echo -e "CÓDIGO EQUIVOCADO POR FAVOR VUELVA A INGRESAR EL CÓDIGO"
 sleep 1
 key2
 fi
@@ -285,7 +285,7 @@ fun_bar() {
         touch $HOME/fim
     ) >/dev/null 2>&1 &
     tput civis
-    echo -ne "  \033[0;33mUpdate Domain.. \033[1;37m- \033[0;33m["
+    echo -ne "  \033[0;33mActualizando Dominio.. \033[1;37m- \033[0;33m["
     while true; do
         for ((i = 0; i < 18; i++)); do
             echo -ne "\033[0;32m#"
@@ -296,13 +296,13 @@ fun_bar() {
         sleep 1s
         tput cuu1
         tput dl1
-        echo -ne "  \033[0;33mUpdate Domain... \033[1;37m- \033[0;33m["
+        echo -ne "  \033[0;33mActualizando Dominio... \033[1;37m- \033[0;33m["
     done
-    echo -e "\033[0;33m]\033[1;37m -\033[1;32m Succes !\033[1;37m"
+    echo -e "\033[0;33m]\033[1;37m -\033[1;32m Con Exito !\033[1;37m"
     tput cnorm
 }
 res1() {
-wget https://raw.githubusercontent.com/warouhh/new/main/install/rmbl.sh && chmod +x rmbl.sh && ./rmbl.sh
+wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/rmbl.sh && chmod +x rmbl.sh && ./rmbl.sh
 clear
 }
 res2() {
@@ -320,25 +320,29 @@ clear
 clear
 cd
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ \033[1;37mPlease select a your Choice to Set Domain${BIBlue}│${NC}"
+echo -e "${BIBlue}│ \033[1;37mSeleccione Opcion para Configurar Dominio${BIBlue}│${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│  [ 1 ]  \033[1;37mDomain kamu sendiri       ${NC}"
-echo -e "${BIBlue}│  [ 2 ]  \033[1;37mDomain yang punya script  ${NC}"
+echo -e "${BIBlue}│  [ 1 ]  \033[1;37mTu propio Dominio Y SlowDNS Aletorio      ${NC}"
+echo -e "${BIBlue}│  [ 2 ]  \033[1;37mDominios que tiene el Script y SlowDNS aleatorio  ${NC}"
+echo -e "${BIBlue}│  [ 3 ]  \033[1;37mTu propio Dominio y tu Propio Dominio SlowDNS    ${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 until [[ $domain =~ ^[132]+$ ]]; do 
-read -p "   Please select numbers 1  atau 2 : " domain
+read -p "   Por favor seleccione los números 1 o 3 : " domain
 done
 if [[ $domain == "1" ]]; then
 clear
+echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
+echo -e "${BIBlue}│            \033[1;37mDOMINIO O SUBDOMINIO           ${BIBlue}│${NC}"
+echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 echo -e  "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e  "${BIBlue}│              \033[1;37mTERIMA KASIH                ${BIBlue}│${NC}"
-echo -e  "${BIBlue}│         \033[1;37mSUDAH MENGGUNAKAN SCRIPT         ${BIBlue}│${NC}"
-echo -e  "${BIBlue}│                \033[1;37Admin SF                 ${BIBlue}│${NC}"
+echo -e  "${BIBlue}│               \033[1;37mGRACIAS POR                ${BIBlue}│${NC}"
+echo -e  "${BIBlue}│        \033[1;37mUSAR MI AUTOSCRIPT PREMIUM        ${BIBlue}│${NC}"
+echo -e  "${BIBlue}│                \033[1;37mBY JERRY 2024             ${BIBlue}│${NC}"
 echo -e  "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 echo " "
 until [[ $dnss =~ ^[a-zA-Z0-9_.-]+$ ]]; do 
-read -rp "Masukan domain kamu Disini : " -e dnss
+read -rp "Introduce tu Sub/Dominio aquí : " -e dnss
 done
 rm -rf /etc/xray
 rm -rf /etc/v2ray
@@ -364,24 +368,24 @@ fi
 if [[ $domain == "2" ]]; then
 clear
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ \033[1;37mPlease select a your Choice to Set Domain${BIBlue}│${NC}"
+echo -e "${BIBlue}│ \033[1;37mSeleccione Opcion para Configurar Dominio${BIBlue}│${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│  [ 1 ]  \033[1;37mDomain xxx.tepllovpn.eu.org          ${NC}"                                        
+echo -e "${BIBlue}│  [ 1 ]  \033[1;37mDominio xxx.tepllovpn.eu.org          ${NC}"                                        
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 until [[ $domain2 =~ ^[1-5]+$ ]]; do 
-read -p "   Please select numbers 1 sampai 1 : " domain2
+read -p "   Por favor seleccione los números 1 al 1 : " domain2
 done
 fi
 if [[ $domain2 == "1" ]]; then
 clear
 echo -e  "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e  "${BIBlue}│  \033[1;37mContoh subdomain xxx.tepllovpn.eu.org        ${BIBlue}│${NC}"
-echo -e  "${BIBlue}│    \033[1;37mxxx jadi subdomain kamu               ${BIBlue}│${NC}"
+echo -e  "${BIBlue}│  \033[1;37mEjemplo de subdominio xxx.tepllovpn.eu.org   ${BIBlue}│${NC}"
+echo -e  "${BIBlue}│    \033[1;37mxxx Entonces tu Subdominio            ${BIBlue}│${NC}"
 echo -e  "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 echo " "
 until [[ $dn1 =~ ^[a-zA-Z0-9_.-]+$ ]]; do
-read -rp "Masukan subdomain kamu Disini tanpa spasi : " -e dn1
+read -rp "Ingresa tu Subdominio aquí sin Espacios : " -e dn1
 done
 rm -rf /etc/xray
 rm -rf /etc/v2ray
@@ -406,12 +410,12 @@ rm /root/subdomainx
 elif [[ $domain2 == "2" ]]; then
 clear
 echo -e  "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e  "${BIBlue}│  \033[1;37mContoh subdomain xxx.vpnvip.app         ${BIBlue}│${NC}"
-echo -e  "${BIBlue}│    \033[1;37mxxx jadi subdomain kamu               ${BIBlue}│${NC}"
+echo -e  "${BIBlue}│  \033[1;37mEjemplo de subdominio xxx.vpnvip.app         ${BIBlue}│${NC}"
+echo -e  "${BIBlue}│    \033[1;37mxxx Entonces tu Subdominio            ${BIBlue}│${NC}"
 echo -e  "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 echo " "
 until [[ $dn2 =~ ^[a-zA-Z0-9_.-]+$ ]]; do
-read -rp "Masukan subdomain kamu Disini tanpa spasi : " -e dn2
+read -rp "Ingresa tu Subdominio aquí sin Espacios : " -e dn2
 done
 rm -rf /etc/xray
 rm -rf /etc/v2ray
@@ -436,12 +440,12 @@ rm /root/subdomainx
 elif [[ $domain2 == "3" ]]; then
 clear
 echo -e  "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e  "${BIBlue}│  \033[1;37mContoh subdomain xxx.slowapp.cfd        ${BIBlue}│${NC}"
-echo -e  "${BIBlue}│    \033[1;37mxxx jadi subdomain kamu               ${BIBlue}│${NC}"
+echo -e  "${BIBlue}│  \033[1;37mEjemplo de subdominio xxx.slowapp.cfd        ${BIBlue}│${NC}"
+echo -e  "${BIBlue}│    \033[1;37mxxx Entonces tu Subdominio            ${BIBlue}│${NC}"
 echo -e  "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 echo " "
 until [[ $dn3 =~ ^[a-zA-Z0-9_.-]+$ ]]; do
-read -rp "Masukan subdomain kamu Disini tanpa spasi : " -e dn3
+read -rp "Ingresa tu Subdominio aquí sin Espacios : " -e dn3
 done
 rm -rf /etc/xray
 rm -rf /etc/v2ray
@@ -466,12 +470,12 @@ rm /root/subdomainx
 elif [[ $domain2 == "4" ]]; then
 clear
 echo -e  "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e  "${BIBlue}│  \033[1;37mContoh subdomain xxx.slowapp.dev        ${BIBlue}│${NC}"
-echo -e  "${BIBlue}│    \033[1;37mxxx jadi subdomain kamu               ${BIBlue}│${NC}"
+echo -e  "${BIBlue}│  \033[1;37mEjemplo de subdominio xxx.slowapp.dev        ${BIBlue}│${NC}"
+echo -e  "${BIBlue}│    \033[1;37mxxx Entonces tu Subdominio            ${BIBlue}│${NC}"
 echo -e  "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 echo " "
 until [[ $dn4 =~ ^[a-zA-Z0-9_.-]+$ ]]; do
-read -rp "Masukan subdomain kamu Disini tanpa spasi : " -e dn4
+read -rp "Ingresa tu Subdominio aquí sin Espacios : " -e dn4
 done
 rm -rf /etc/xray
 rm -rf /etc/v2ray
@@ -496,12 +500,12 @@ rm /root/subdomainx
 elif [[ $domain2 == "5" ]]; then
 clear
 echo -e  "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e  "${BIBlue}│  \033[1;37mContoh subdomain xxx.vipnvip.tech       ${BIBlue}│${NC}"
-echo -e  "${BIBlue}│    \033[1;37mxxx jadi subdomain kamu               ${BIBlue}│${NC}"
+echo -e  "${BIBlue}│  \033[1;37mEjemplo de subdominio xxx.vipnvip.tech       ${BIBlue}│${NC}"
+echo -e  "${BIBlue}│    \033[1;37mxxx Entonces tu Subdominio            ${BIBlue}│${NC}"
 echo -e  "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 echo " "
 until [[ $dn4 =~ ^[a-zA-Z0-9_.-]+$ ]]; do
-read -rp "Masukan subdomain kamu Disini tanpa spasi : " -e dn5
+read -rp "Ingresa tu Subdominio aquí sin Espacios : " -e dn5
 done
 rm -rf /etc/xray
 rm -rf /etc/v2ray
@@ -524,31 +528,44 @@ fun_bar 'res5'
 fi
 if [[ $domain == "3" ]]; then
 clear
+echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
+echo -e "${BIBlue}│            \033[1;37mDOMINIO O SUBDOMINIO           ${BIBlue}│${NC}"
+echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 echo -e  "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e  "${BIBlue}│              \033[1;37mTERIMA KASIH                ${BIBlue}│${NC}"
-echo -e  "${BIBlue}│         \033[1;37mSUDAH MENGGUNAKAN SCRIPT         ${BIBlue}│${NC}"
-echo -e  "${BIBlue}│                \033[1;37mDARI SAYA                 ${BIBlue}│${NC}"
+echo -e  "${BIBlue}│               \033[1;37mGRACIAS POR                ${BIBlue}│${NC}"
+echo -e  "${BIBlue}│        \033[1;37mUSAR MI AUTOSCRIPT PREMIUM        ${BIBlue}│${NC}"
+echo -e  "${BIBlue}│                \033[1;37mBY JERRY 2024             ${BIBlue}│${NC}"
 echo -e  "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 echo " "
 until [[ $dns1 =~ ^[a-zA-Z0-9_.-]+$ ]]; do 
-read -rp "Masukan domain kamu Disini : " -e dns1
+read -rp "Introduce tu dominio aquí : " -e dns1
 done
 echo ""
+mkdir -p /etc/xray
+mkdir -p /etc/v2ray
+touch /etc/xray/domain
+touch /etc/v2ray/domain
 echo "$dns1" > /etc/xray/domain
 echo "$dns1" > /etc/v2ray/domain
 echo "IP=$dns1" > /var/lib/ipvps.conf
 clear
 echo ""
+echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
+echo -e "${BIBlue}│            \033[1;37mDOMINIO O SUBDOMINIO           ${BIBlue}│${NC}"
+echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 echo -e  "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e  "${BIBlue}│              \033[1;37mTERIMA KASIH                ${BIBlue}│${NC}"
-echo -e  "${BIBlue}│         \033[1;37mSUDAH MENGGUNAKAN SCRIPT         ${BIBlue}│${NC}"
-echo -e  "${BIBlue}│                \033[1;37mDARI SAYA                 ${BIBlue}│${NC}"
+echo -e  "${BIBlue}│               \033[1;37mGRACIAS POR                ${BIBlue}│${NC}"
+echo -e  "${BIBlue}│        \033[1;37mUSAR MI AUTOSCRIPT PREMIUM        ${BIBlue}│${NC}"
+echo -e  "${BIBlue}│                \033[1;37mBY JERRY 2024             ${BIBlue}│${NC}"
 echo -e  "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 echo " "
 until [[ $dns2 =~ ^[a-zA-Z0-9_.-]+$ ]]; do
-read -rp "Masukan Domain SlowDNS kamu Disini : " -e dns2
+read -rp "Ingrese su dominio SlowDNS aquí : " -e dns2
 done
-echo $dns2 >/etc/xray/dns
+mkdir -p /etc/xray
+touch /etc/xray/nsdomain
+echo "$dns2" > /etc/xray/nsdomain
+echo "$dns2" >/etc/xray/dns
 fi
 }
 cat <<EOF>> /etc/rmbl/theme/green
@@ -615,12 +632,12 @@ cd
 sysctl -w net.ipv6.conf.all.disable_ipv6=1 >/dev/null 2>&1
 sysctl -w net.ipv6.conf.default.disable_ipv6=1 >/dev/null 2>&1
 clear
-wget https://raw.githubusercontent.com/warouhh/new/main/tools.sh &> /dev/null
+wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/tools.sh &> /dev/null
 chmod +x tools.sh 
 bash tools.sh
 clear
 start=$(date +%s)
-ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
+ln -fs /usr/share/zoneinfo/America/Mexico_City /etc/localtime
 apt install git curl -y >/dev/null 2>&1
 apt install python -y >/dev/null 2>&1
 }
@@ -635,7 +652,7 @@ fun_bar() {
         touch $HOME/fim
     ) >/dev/null 2>&1 &
     tput civis
-    echo -ne "  \033[0;33mLagi Menginstal File \033[1;37m- \033[0;33m["
+    echo -ne "  \033[0;33mEspera, Instalando archivos \033[1;37m- \033[0;33m["
     while true; do
         for ((i = 0; i < 18; i++)); do
             echo -ne "\033[0;32m#"
@@ -646,35 +663,35 @@ fun_bar() {
         sleep 1s
         tput cuu1
         tput dl1
-        echo -ne "  \033[0;33mLagi Menginstal File \033[1;37m- \033[0;33m["
+        echo -ne "  \033[0;33mEspera, Instalando archivos \033[1;37m- \033[0;33m["
     done
-    echo -e "\033[0;33m]\033[1;37m -\033[1;32m Succes !\033[1;37m"
+    echo -e "\033[0;33m]\033[1;37m -\033[1;32m Con Exito !\033[1;37m"
     tput cnorm
 }
 
 
 res2() {
-wget https://raw.githubusercontent.com/warouhh/new/main/install/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
+wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
 clear
 } 
 
 res3() {
-wget https://raw.githubusercontent.com/warouhh/new/main/install/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
+wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
 clear
 }
 
 res4() {
-wget https://raw.githubusercontent.com/warouhh/new/main/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
+wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
 clear
 }
 
 res5() {
-wget https://raw.githubusercontent.com/warouhh/new/main/install/set-br.sh && chmod +x set-br.sh && ./set-br.sh
+wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 clear
 }
 
 res6() {
-#wget https://raw.githubusercontent.com/warouhh/new/main/sshws/ohp.sh && chmod +x ohp.sh && ./ohp.sh
+#wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/sshws/ohp.sh && chmod +x ohp.sh && ./ohp.sh
 clear
 }
 
@@ -684,16 +701,16 @@ clear
 }
 
 res8() {
-wget https://raw.githubusercontent.com/warouhh/new/main/slowdns/installsl.sh && chmod +x installsl.sh && bash installsl.sh
+wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/slowdns/installsl.sh && chmod +x installsl.sh && bash installsl.sh
 clear
 }
 
 res9() {
-wget https://raw.githubusercontent.com/warouhh/new/main/install/udp-custom.sh && chmod +x udp-custom.sh && bash udp-custom.sh
+wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/udp-custom.sh && chmod +x udp-custom.sh && bash udp-custom.sh
 clear
 }
 res10() {
-wget https://raw.githubusercontent.com/warouhh/new/main/noobz/noobzvpns.zip
+wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/noobz/noobzvpns.zip
 unzip noobzvpns.zip
 chmod +x noobzvpns/*
 cd noobzvpns
@@ -704,66 +721,66 @@ clear
 }
 
 res11() {
-#wget https://raw.githubusercontent.com/SatanTech/hm/main/limit/limit.sh && chmod +x limit.sh && ./limit.sh
+wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/bin/limit.sh && chmod +x limit.sh && ./limit.sh
 clear
 }
 
 res12() {
-wget https://raw.githubusercontent.com/warouhh/new/main/install/ins-trgo.sh && chmod +x ins-trgo.sh && bash ./ins-trgo.sh
+wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/ins-trgo.sh && chmod +x ins-trgo.sh && bash ./ins-trgo.sh
 clear
 }
 
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}  PROCESS INSTALLED SSH & OVVPN         ${NC}${BIBlue} │${NC}"
+echo -e "${BIBlue}│ ${BGCOLOR}  PROCESANDO A INSTALAR SSH & OVVPN     ${NC}${BIBlue} │${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 fun_bar 'res2'
 
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}       PROCESS INSTALLED XRAY           ${NC}${BIBlue} │${NC}"
+echo -e "${BIBlue}│ ${BGCOLOR}       PROCESANDO A INSTALAR XRAY       ${NC}${BIBlue} │${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 fun_bar 'res3'
 
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}      PROCESS INSTALLED WEBSOCKET SSH   ${NC}${BIBlue} │${NC}"
+echo -e "${BIBlue}│ ${BGCOLOR}     PROCESANDO A INSTALAR WEBSOCKET SSH${NC}${BIBlue} │${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 fun_bar 'res4'
 
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}      PROCESS INSTALLED BACKUP MENU     ${NC}${BIBlue} │${NC}"
+echo -e "${BIBlue}│ ${BGCOLOR}     PROCESANDO A INSTALAR BACKUP MENU  ${NC}${BIBlue} │${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 fun_bar 'res5'
 
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}          PROCESS INSTALLED OHP         ${NC}${BIBlue} │${NC}"
+echo -e "${BIBlue}│ ${BGCOLOR}        PROCESANDO A INSTALAR OHP       ${NC}${BIBlue} │${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 fun_bar 'res6'
 
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}          DOWNLOAD EXTRA MENU           ${NC}${BIBlue} │${NC}"
+echo -e "${BIBlue}│ ${BGCOLOR}         DESCARGANDO EXTRA MENU         ${NC}${BIBlue} │${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 fun_bar 'res7'
 
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}           DOWNLOAD SLOW DNS            ${NC}${BIBlue} │${NC}"
+echo -e "${BIBlue}│ ${BGCOLOR}         DESCARGANDO SLOW DNS           ${NC}${BIBlue} │${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 fun_bar 'res8'
 
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}          DOWNLOAD UDP COSTUM           ${NC}${BIBlue} │${NC}"
+echo -e "${BIBlue}│ ${BGCOLOR}         DESCARGANDO UDP COSTUM         ${NC}${BIBlue} │${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 fun_bar 'res9'
 
-echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}    PROCESS INSTALLED NOOBZVPNS         ${NC}${BIBlue} │${NC}"
-echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
-fun_bar 'res10'
+#echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
+#echo -e "${BIBlue}│ ${BGCOLOR}    PROCESANDO A INSTALAR NOOBZVPNS     ${NC}${BIBlue} │${NC}"
+#echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
+#fun_bar 'res10'
 
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}    PROCESS INSTALLED LIMIT XRAY        ${NC}${BIBlue} │${NC}"
+echo -e "${BIBlue}│ ${BGCOLOR}    PROCESANDO A INSTALAR LIMIT XRAY    ${NC}${BIBlue} │${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 fun_bar 'res11'
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}    PROCESS INSTALLED TROJAN-GO         ${NC}${BIBlue} │${NC}"
+echo -e "${BIBlue}│ ${BGCOLOR}    PROCESANDO A INSTALAR TROJAN-GO     ${NC}${BIBlue} │${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 fun_bar 'res12'
 }
@@ -777,7 +794,7 @@ URL="https://api.telegram.org/bot$KEY/sendMessage"
 ISP=$(cat /etc/xray/isp)
 CITY=$(cat /etc/xray/city)
 domain=$(cat /etc/xray/domain) 
-TIME=$(date +'%(%H:%M:%S)T')
+TIME=$(date +'%Y-%m-%d %H:%M:%S T')
 RAMMS=$(free -m | awk 'NR==2 {print $2}')
 MODEL2=$(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')
 MYIP=$(curl -sS ipv4.icanhazip.com)
@@ -861,12 +878,12 @@ cd
 iinfo
 rm -rf *
 echo -e "${BIBlue}╭════════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR} INSTALL SCRIPT SELESAI..                 ${NC}${BIBlue} │${NC}"
+echo -e "${BIBlue}│ ${BGCOLOR} INSTALACION DEL SCRIPT FINALIZADO..    ${NC}${BIBlue} │${NC}"
 echo -e "${BIBlue}╰════════════════════════════════════════════╯${NC}"
 echo  ""
 sleep 4
-echo -e "[ ${yell}WARNING${NC} ] Do you want to reboot now ? (y/n)? "; read answer
-if [ "$answer" == "${answer#[Yy]}" ] ;then
+echo -e "[ ${yell}WARNING${NC} ] ¿Quieres Reiniciar Ahora? ? (s/n)? "; read answer
+if [ "$answer" == "${answer#[Ss]}" ] ;then
 exit 0
 else
 reboot

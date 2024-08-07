@@ -8,8 +8,8 @@ green() { echo -e "\\033[32;1m${*}\\033[0m"; }
 red() { echo -e "\\033[31;1m${*}\\033[0m"; }
 
 
-echo "           Instalación de Herramientas...!"
-echo "                  Iniciando..."
+red "           Instalación de Herramientas...!"
+red "                  Iniciando..."
 sleep 0.5
 apt update -y
 apt upgrade -y
@@ -38,7 +38,7 @@ apt autoremove -y >/dev/null 2>&1
 sudo apt-get -y install vnstat
 /etc/init.d/vnstat restart
 sudo apt-get -y install libsqlite3-dev
-wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/vnstat-2.6.tar.gz
+wget https://raw.githubusercontent.com/warouhh/new/main/main/vnstat-2.6.tar.gz
 tar zxvf vnstat-2.6.tar.gz
 cd vnstat-2.6
 ./configure --prefix=/usr --sysconfdir=/etc && make && make install
