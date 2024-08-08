@@ -15,7 +15,7 @@ read -rp "   Por Favor Selecciona del 1 al 3 : " slow
 echo ""
 if [[ $slow == "1" ]]; then
 echo -e "   \e[1;32mPor favor Ingrese su Subdominio SlowDNS$NC"
-read -p "   Subdominio: " slow
+read -p "   Subdominio: " dns2
 mkdir -p /etc/xray
 touch /etc/xray/nsdomain
 echo "$dns2" > /etc/xray/nsdomain
