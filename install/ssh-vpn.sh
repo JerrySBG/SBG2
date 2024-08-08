@@ -233,17 +233,17 @@ socket = r:TCP_NODELAY=1
 accept = 447
 connect = 127.0.0.1:109
 
-[dropbear]
-accept = 8443
-connect = 127.0.0.1:109
+[openssh]
+accept = 777
+connect = 127.0.0.1:443
 
-[dropbear]
-accept = 2082
-connect = 127.0.0.1:22
+#[dropbear]
+#accept = 2082
+#connect = 127.0.0.1:22
 
-[dropbear]
-accept = 2083
-connect = 127.0.0.1:109
+#[dropbear]
+#accept = 2083
+#connect = 127.0.0.1:109
 #[ws-stunnel]
 #accept = 2083
 #connect = 700
