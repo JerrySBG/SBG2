@@ -122,14 +122,12 @@ echo -e "${BIBlue}╰═══════════════════�
 read -p "   Por Favor Selecciona del 1-2 or Any Button(Random): " slow
 echo ""
     if [[ $slow == "1" ]]; then
-        read -rp "Ingresa tu DOMINIO SlowDNS : " -e domainmu
-        if [ -z ${domainmu} ]; then
-            echo -e " ¡Aún no has ingresado a un dominio! Entonces se creará un dominio aleatorio."
-            ns_domain_sbg
-        else
-            echo "$domainmu" > /etc/xray/domain
-            echo "IP=$domainmu" > /var/lib/yaddykakkoii/ipvps.conf
-        fi
+        read -rp "Ingrese su dominio SlowDNS aquí : " -e dns2
+        if [ -z ${dns2} ]; then
+            mkdir -p /etc/xray
+touch /etc/xray/nsdomain
+echo "$dns2" > /etc/xray/nsdomain
+echo "$dns2" >/etc/xray/dns
         clear
     elif [[ $slow == "2" ]]; then
         echo -e "Subdomain/Domain Aletorio sera Usado"
