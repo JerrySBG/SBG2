@@ -872,6 +872,7 @@ rm /root/insshws.sh >/dev/null 2>&1
 rm /root/set-br.sh >/dev/null 2>&1
 #rm /root/ohp.sh >/dev/null 2>&1
 rm /root/update.sh >/dev/null 2>&1
+rm /root/installsl.sh >/dev/null 2>&1
 rm /root/slowdns.sh >/dev/null 2>&1
 rm -rf /etc/noobz
 mkdir -p /etc/noobz
@@ -890,6 +891,7 @@ echo  ""
 sleep 4
 echo -e "[ ${yell}ADVERTENCIA${NC} ] ¿Quieres Reiniciar Ahora? ? (s/n)? "; read answer
 if [ "$answer" == "${answer#[Ss]}" ] ;then
+echo " "
 exit 0
 else
 reboot
