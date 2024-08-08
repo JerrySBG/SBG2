@@ -4,12 +4,12 @@ cd
 
 slowsbg() {  
 echo -e "${BIBlue}╭═══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│\033[1;37m Seleccione Opcion para Configurar Dominio ${BIBlue}│${NC}"
+echo -e "${BIBlue}│\e[1;32m Seleccione Opcion para Configurar Dominio ${BIBlue}│${NC}"
 echo -e "${BIBlue}╰═══════════════════════════════════════════╯${NC}"
 echo -e "${BIBlue}╭═══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│  [ 1 ]  \033[1;37mPropio Dominio SlowDNS                ${NC}"  
-echo -e "${BIBlue}│  [ 2 ]  \033[1;37mDominio Aletorio Free             ${NC}" 
-echo -e "${BIBlue}│  [ 3 ]  \033[1;37mDominio Aletorio By JERRY             ${NC}"                                        
+echo -e "${BIBlue}│  [ 1 ]  \e[1;32mPropio Dominio SlowDNS                ${NC}"  
+echo -e "${BIBlue}│  [ 2 ]  \e[1;32mDominio Aletorio Free             ${NC}" 
+echo -e "${BIBlue}│  [ 3 ]  \e[1;32mDominio Aletorio By JERRY             ${NC}"                                        
 echo -e "${BIBlue}╰═══════════════════════════════════════════╯${NC}"
 read -rp "   Por Favor Selecciona del 1 al 3 : " slow
 echo ""
@@ -30,7 +30,7 @@ elif [[ $slow == "3" ]]; then
 #install slowdns
 wget ${REPO}slowdns/slowdns.sh && chmod +x slowdns.sh && ./slowdns.sh
 rm -f /root/slowdns.sh
-print_install "Se utiliza Subdominio/Dominio Aleatorio"
+print_install "\e[1;32m  Se utiliza Subdominio/Dominio Aleatorio"
 clear
 fi
 }
