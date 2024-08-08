@@ -11,7 +11,7 @@ echo -e "${BIBlue}│  [ 1 ]  \033[1;37mPropio Dominio SlowDNS                ${
 echo -e "${BIBlue}│  [ 2 ]  \033[1;37mDominio Aletorio Free             ${NC}" 
 echo -e "${BIBlue}│  [ 3 ]  \033[1;37mDominio Aletorio By JERRY             ${NC}"                                        
 echo -e "${BIBlue}╰═══════════════════════════════════════════╯${NC}"
-read -p "   Por Favor Selecciona del 1 al 3 : " slow
+read -rp "   Por Favor Selecciona del 1 al 3 : " slow
 echo ""
 if [[ $slow == "1" ]]; then
 echo -e "   \e[1;32mPor favor Ingrese su Subdominio SlowDNS$NC"
