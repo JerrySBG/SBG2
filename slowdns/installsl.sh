@@ -13,18 +13,8 @@ echo -e "${BIBlue}╰═══════════════════�
 read -p "   Seleccione los Números 1 o 2 Cualquier Botón (Aleatorio) : " slow
 echo ""
 if [[ $slow == "1" ]]; then
-clear
-echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│            \033[1;37mDOMINIO O SUBDOMINIO          ${BIBlue}│${NC}"
-echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
-echo -e  "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e  "${BIBlue}│               \033[1;37mGRACIAS POR                ${BIBlue}│${NC}"
-echo -e  "${BIBlue}│        \033[1;37mUSAR MI AUTOSCRIPT PREMIUM        ${BIBlue}│${NC}"
-echo -e  "${BIBlue}│                \033[1;37mBY JERRY 2024             ${BIBlue}│${NC}"
-echo -e  "${BIBlue}╰══════════════════════════════════════════╯${NC}"
-echo " "
-until [[ $dns2 =~ ^[a-zA-Z0-9_.-]+$ ]]; do
-read -rp "Ingrese su dominio SlowDNS aquí : " -e dns2
+echo -e "   \e[1;32mPor favor ingrese su Subdominio SlowDNS$NC"
+read -p "   Subdominio: " slow
 mkdir -p /etc/xray
 touch /etc/xray/nsdomain
 echo "$dns2" > /etc/xray/nsdomain
