@@ -12,7 +12,7 @@ echo -e "${BIBlue}│  [ 2 ]  \033[1;37mDominio Aletorio By JERRY              $
 echo -e "${BIBlue}╰═══════════════════════════════════════════╯${NC}"
 until [[ $domain =~ ^[1-2]+$ ]]; do 
 read -p "   Seleccione los Números 1 o 2 Cualquier Botón (Aleatorio) : " slow
-echo ""
+done
 if [[ $slow == "1" ]]; then
 clear
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
