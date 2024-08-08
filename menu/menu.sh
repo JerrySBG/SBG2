@@ -357,7 +357,7 @@ echo -e "$COLOR1╭════════════════════�
 echo -e "$COLOR1│$NC  ${WH}Total    $COLOR1│${NC}     ${WH}HOY         ${WH}AYER             ${WH}MES         ${NC}"
 echo -e "$COLOR1│$NC ${WH}Bantwidth $COLOR1│${NC}   ${WH}$today_tx $today_txv     ${WH}$yesterday_tx $yesterday_txv      ${WH}$month_tx $month_txv$COLOR1${NC}"
 echo -e "$COLOR1╰═════════════════════════════════════════════════════════╯${NC}"
-DATE=$(date +'%Y-%m-%d')
+DATE=$(date +'%d-%m-%Y')
 datediff() {
 d1=$(date -d "$1" +%s)
 d2=$(date -d "$2" +%s)

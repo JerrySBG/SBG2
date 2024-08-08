@@ -318,15 +318,15 @@ wget https://raw.githubusercontent.com/RMBL-VPN/v1/main/install/r3.sh && chmod +
 clear
 }
 clear
-cd
-echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ \033[1;37mSeleccione Opcion para Configurar Dominio${BIBlue}│${NC}"
-echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
-echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
+cd  
+echo -e "${BIBlue}╭══════════════════════════════════════════════════════════════════╮${NC}"
+echo -e "${BIBlue}│             \033[1;37mSeleccione Opcion para Configurar Dominio            ${BIBlue}│${NC}"
+echo -e "${BIBlue}╰══════════════════════════════════════════════════════════════════╯${NC}"
+echo -e "${BIBlue}╭══════════════════════════════════════════════════════════════════╮${NC}"
 echo -e "${BIBlue}│  [ 1 ]  \033[1;37mTu propio Dominio Y SlowDNS Aletorio      ${NC}"
 echo -e "${BIBlue}│  [ 2 ]  \033[1;37mDominios que tiene el Script y SlowDNS aleatorio  ${NC}"
 echo -e "${BIBlue}│  [ 3 ]  \033[1;37mTu propio Dominio y tu Propio Dominio SlowDNS    ${NC}"
-echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
+echo -e "${BIBlue}╰══════════════════════════════════════════════════════════════════╯${NC}"
 until [[ $domain =~ ^[1-3]+$ ]]; do 
 read -p "   Por favor seleccione los números 1 o 3 : " domain
 done
@@ -533,7 +533,7 @@ fi
 if [[ $domain == "3" ]]; then
 clear
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│            \033[1;37mDOMINIO O SUBDOMINIO           ${BIBlue}│${NC}"
+echo -e "${BIBlue}│            \033[1;37mDOMINIO O SUBDOMINIO          ${BIBlue}│${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 echo -e  "${BIBlue}╭══════════════════════════════════════════╮${NC}"
 echo -e  "${BIBlue}│               \033[1;37mGRACIAS POR                ${BIBlue}│${NC}"
@@ -555,7 +555,7 @@ echo "IP=$dns1" > /var/lib/ipvps.conf
 clear
 echo ""
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│            \033[1;37mDOMINIO O SUBDOMINIO           ${BIBlue}│${NC}"
+echo -e "${BIBlue}│            \033[1;37mDOMINIO O SUBDOMINIO          ${BIBlue}│${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 echo -e  "${BIBlue}╭══════════════════════════════════════════╮${NC}"
 echo -e  "${BIBlue}│               \033[1;37mGRACIAS POR                ${BIBlue}│${NC}"
@@ -685,7 +685,8 @@ clear
 }
 
 res4() {
-wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
+wget https://raw.githubusercontent.com/warouhh/new/main/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
+#wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
 clear
 }
 
@@ -798,7 +799,7 @@ URL="https://api.telegram.org/bot$KEY/sendMessage"
 ISP=$(cat /etc/xray/isp)
 CITY=$(cat /etc/xray/city)
 domain=$(cat /etc/xray/domain) 
-TIME=$(date +'%Y-%m-%d %H:%M:%S T')
+TIME=$(date +'%d-%m-%Y %h:%M:%S')
 RAMMS=$(free -m | awk 'NR==2 {print $2}')
 MODEL2=$(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')
 MYIP=$(curl -sS ipv4.icanhazip.com)
@@ -875,14 +876,15 @@ rm /root/slowdns.sh >/dev/null 2>&1
 rm -rf /etc/noobz
 mkdir -p /etc/noobz
 echo "" > /etc/xray/noob
+clear
+iinfo
 secs_to_human "$(($(date +%s) - ${start}))" | tee -a log-install.txt
 sleep 3
 echo  ""
 cd
-iinfo
-rm -rf *
+rm -rf * 
 echo -e "${BIBlue}╭════════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR} INSTALACION DEL SCRIPT FINALIZADO..    ${NC}${BIBlue} │${NC}"
+echo -e "${BIBlue}│    ${BGCOLOR}INSTALACION DEL SCRIPT FINALIZADO..     ${NC}${BIBlue}│${NC}"
 echo -e "${BIBlue}╰════════════════════════════════════════════╯${NC}"
 echo  ""
 sleep 4
