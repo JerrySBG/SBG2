@@ -230,16 +230,16 @@ socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
 
 [dropbear]
+accept = 443
+connect = 127.0.0.1:109
+
+[dropbear]
 accept = 447
 connect = 127.0.0.1:109
 
 [dropbear]
 accept = 2082
 connect = 127.0.0.1:22
-
-[dropbear]
-accept = 2083
-connect = 127.0.0.1:109
 
 #[ws-stunnel]
 #accept = 2083

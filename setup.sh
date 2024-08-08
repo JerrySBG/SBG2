@@ -685,8 +685,8 @@ clear
 }
 
 res4() {
-wget https://raw.githubusercontent.com/warouhh/new/main/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
-#wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
+#wget https://raw.githubusercontent.com/warouhh/new/main/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
+wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
 clear
 }
 
@@ -876,15 +876,15 @@ rm /root/slowdns.sh >/dev/null 2>&1
 rm -rf /etc/noobz
 mkdir -p /etc/noobz
 echo "" > /etc/xray/noob
-clear
 iinfo
+
 secs_to_human "$(($(date +%s) - ${start}))" | tee -a log-install.txt
 sleep 3
 echo  ""
 cd
 rm -rf * 
 echo -e "${BIBlue}╭════════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│    ${BGCOLOR}INSTALACION DEL SCRIPT FINALIZADO..     ${NC}${BIBlue}│${NC}"
+echo -e "${BIBlue}│${BGCOLOR}    INSTALACION DEL SCRIPT FINALIZADO..     ${NC}${BIBlue}│${NC}"
 echo -e "${BIBlue}╰════════════════════════════════════════════╯${NC}"
 echo  ""
 sleep 4
