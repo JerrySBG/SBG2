@@ -30,7 +30,9 @@ touch /etc/xray/nsdomain
 echo "$dns2" > /etc/xray/nsdomain
 echo "$dns2" >/etc/xray/dns
 echo ""
-elif [[ $slow == "2" ]]; then
+clear
+fi
+if [[ $slow == "2" ]]; then
 #install slowdns
 wget ${REPO}slowdns/slowdns.sh && chmod +x slowdns.sh && ./slowdns.sh
 rm -f /root/slowdns.sh
