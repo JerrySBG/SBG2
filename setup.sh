@@ -325,15 +325,15 @@ echo -e "${BIBlue}╰═══════════════════�
 echo -e "${BIBlue}╭══════════════════════════════════════════════════════════════════╮${NC}"
 echo -e "${BIBlue}│  [ 1 ]  \033[1;37mTu propio Dominio Y SlowDNS Aletorio      ${NC}"
 echo -e "${BIBlue}│  [ 2 ]  \033[1;37mDominios que tiene el Script y SlowDNS aleatorio  ${NC}"
-echo -e "${BIBlue}│  [ 3 ]  \033[1;37mTu propio Dominio y tu Propio Dominio SlowDNS    ${NC}"
+#echo -e "${BIBlue}│  [ 3 ]  \033[1;37mTu propio Dominio y tu Propio Dominio SlowDNS    ${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════════════════════════════╯${NC}"
-until [[ $domain =~ ^[1-3]+$ ]]; do 
-read -p "   Por favor seleccione los números 1 o 3 : " domain
+until [[ $domain =~ ^[1-2]+$ ]]; do 
+read -p "   Por favor seleccione los números 1 o 2 : " domain
 done
 if [[ $domain == "1" ]]; then
-clear
+clear 
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│            \033[1;37mDOMINIO O SUBDOMINIO           ${BIBlue}│${NC}"
+echo -e "${BIBlue}│            \033[1;37mDOMINIO O SUBDOMINIO          ${BIBlue}│${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 echo -e  "${BIBlue}╭══════════════════════════════════════════╮${NC}"
 echo -e  "${BIBlue}│               \033[1;37mGRACIAS POR                ${BIBlue}│${NC}"
