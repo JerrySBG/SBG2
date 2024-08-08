@@ -1,66 +1,43 @@
 #!/bin/sh
-ns_domain_cloudflare() {
-	DOMAIN="tepllovpn.eu.org"
-	DOMAIN_PATH=$(cat /etc/xray/domain)
-	SUB=$(tr </dev/urandom -dc a-z0-9 | head -c7)
-	SUB_DOMAIN=${SUB}".tepllovpn.eu.org"
-	NS_DOMAIN=ns.${SUB_DOMAIN}
-	CF_ID=bangtepllo752@gmail.com
-        CF_KEY=d8e5c652e1ddcc6fbfb20b1d7b6364de70c82
-	set -euo pipefail
-	IP=$(wget -qO- ipinfo.io/ip)
-	echo "Updating DNS NS for ${NS_DOMAIN}..."
-	ZONE=$(
-		curl -sLX GET "https://api.cloudflare.com/client/v4/zones?name=${DOMAIN}&status=active" \
-		-H "X-Auth-Email: ${CF_ID}" \
-		-H "X-Auth-Key: ${CF_KEY}" \
-		-H "Content-Type: application/json" | jq -r .result[0].id
-	)
+REPO="https://raw.githubusercontent.com/JerrySBG/SBG2/main/"
 
-	RECORD=$(
-		curl -sLX GET "https://api.cloudflare.com/client/v4/zones/${ZONE}/dns_records?name=${NS_DOMAIN}" \
-		-H "X-Auth-Email: ${CF_ID}" \
-		-H "X-Auth-Key: ${CF_KEY}" \
-		-H "Content-Type: application/json" | jq -r .result[0].id
-	)
-
-	if [[ "${#RECORD}" -le 10 ]]; then
-		RECORD=$(
-			curl -sLX POST "https://api.cloudflare.com/client/v4/zones/${ZONE}/dns_records" \
-			-H "X-Auth-Email: ${CF_ID}" \
-			-H "X-Auth-Key: ${CF_KEY}" \
-			-H "Content-Type: application/json" \
-			--data '{"type":"NS","name":"'${NS_DOMAIN}'","content":"'${DOMAIN_PATH}'","proxied":false}' | jq -r .result.id
-		)
-	fi
-
-	RESULT=$(
-		curl -sLX PUT "https://api.cloudflare.com/client/v4/zones/${ZONE}/dns_records/${RECORD}" \
-		-H "X-Auth-Email: ${CF_ID}" \
-		-H "X-Auth-Key: ${CF_KEY}" \
-		-H "Content-Type: application/json" \
-		--data '{"type":"NS","name":"'${NS_DOMAIN}'","content":"'${DOMAIN_PATH}'","proxied":false}'
-	)
-	echo $NS_DOMAIN >/etc/xray/dns
+slowsbg() {  
+echo -e "${BIBlue}╭═══════════════════════════════════════════╮${NC}"
+echo -e "${BIBlue}│\033[1;37m Seleccione Opcion para Configurar Dominio ${BIBlue}│${NC}"
+echo -e "${BIBlue}╰═══════════════════════════════════════════╯${NC}"
+echo -e "${BIBlue}╭═══════════════════════════════════════════╮${NC}"
+echo -e "${BIBlue}│  [ 1 ]  \033[1;37mPropio Dominio SlowDNS                ${NC}"  
+echo -e "${BIBlue}│  [ 2 ]  \033[1;37mDominio Aletorio By JERRY              ${NC}"                                        
+echo -e "${BIBlue}╰═══════════════════════════════════════════╯${NC}"
+read -p "   Seleccione los Números 1 o 2 Cualquier Botón (Aleatorio) : " slow
+echo ""
+if [[ $slow == "1" ]]; then
+echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
+echo -e "${BIBlue}│            \033[1;37mDOMINIO O SUBDOMINIO          ${BIBlue}│${NC}"
+echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
+echo -e  "${BIBlue}╭══════════════════════════════════════════╮${NC}"
+echo -e  "${BIBlue}│               \033[1;37mGRACIAS POR                ${BIBlue}│${NC}"
+echo -e  "${BIBlue}│        \033[1;37mUSAR MI AUTOSCRIPT PREMIUM        ${BIBlue}│${NC}"
+echo -e  "${BIBlue}│                \033[1;37mBY JERRY 2024             ${BIBlue}│${NC}"
+echo -e  "${BIBlue}╰══════════════════════════════════════════╯${NC}"
+echo " "
+until [[ $dns2 =~ ^[a-zA-Z0-9_.-]+$ ]]; do
+read -rp "Ingrese su dominio SlowDNS aquí : " -e dns2
+done
+mkdir -p /etc/xray
+touch /etc/xray/nsdomain
+echo "$dns2" > /etc/xray/nsdomain
+echo "$dns2" >/etc/xray/dns
+echo ""
+elif [[ $slow == "2" ]]; then
+#install slowdns
+wget ${REPO}slowdns/slowdns.sh && chmod +x slowdns.sh && ./slowdns.sh
+rm -f /root/slowdns.sh
+clear
+else
+print_install "Se utiliza Subdominio/Dominio Aleatorio"
+clear
+    fi
 }
-
-setup_dnstt() {
-	cd
-	mkdir -p /etc/slowdns
-	wget -O dnstt-server "https://raw.githubusercontent.com/JerrySBG/SBG2/main/slowdns/dnstt-server" >/dev/null 2>&1
-	chmod +x dnstt-server >/dev/null 2>&1
-	wget -O dnstt-client "https://raw.githubusercontent.com/JerrySBG/SBG2/main/slowdns/dnstt-client" >/dev/null 2>&1
-	chmod +x dnstt-client >/dev/null 2>&1
-	./dnstt-server -gen-key -privkey-file server.key -pubkey-file server.pub
-	chmod +x *
-	mv * /etc/slowdns
-	wget -O /etc/systemd/system/client.service "https://raw.githubusercontent.com/JerrySBG/SBG2/main/slowdns/client" >/dev/null 2>&1
-	wget -O /etc/systemd/system/server.service "https://raw.githubusercontent.com/JerrySBG/SBG2/main/slowdns/server" >/dev/null 2>&1
-	sed -i "s/xxxx/$NS_DOMAIN/g" /etc/systemd/system/client.service 
-	sed -i "s/xxxx/$NS_DOMAIN/g" /etc/systemd/system/server.service 
-}
-ns_domain_cloudflare
-setup_dnstt
-systemctl restart client
-systemctl restart server
+slowsbg
 exit
