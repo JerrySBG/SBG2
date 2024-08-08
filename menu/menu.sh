@@ -428,6 +428,8 @@ res1() {
     systemctl restart daemon
     systemctl restart udp-custom
     systemctl restart ws-dropbear
+    systemctl restart ws-dropbear2
+    systemctl restart ws-dropbear3
     systemctl restart ws-stunnel
     systemctl restart openvpn
     systemctl restart cron
@@ -441,7 +443,7 @@ res1() {
 }
 clear
 echo -e "$COLOR1 ╭══════════════════════════════════════════╮${NC}"
-echo -e "$COLOR1 ${NC} ${COLBG1}          ${WH}REINICIANDO SERVICIOS VPS             ${NC} $COLOR1 $NC"
+echo -e "$COLOR1 ${NC} ${COLBG1}          ${WH}  REINICIANDO SERVICIOS VPS       ${NC} $COLOR1 $NC"
 echo -e "$COLOR1 ╰══════════════════════════════════════════╯${NC}"
 echo -e ""
 echo -e "  \033[1;91m Reiniciando Todos los Servicios... \033[1;37m"
