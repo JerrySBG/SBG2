@@ -10,7 +10,6 @@ echo -e "${BIBlue}╭═══════════════════�
 echo -e "${BIBlue}│  [ 1 ]  \033[1;37mPropio Dominio SlowDNS                ${NC}"  
 echo -e "${BIBlue}│  [ 2 ]  \033[1;37mDominio Aletorio By JERRY              ${NC}"                                        
 echo -e "${BIBlue}╰═══════════════════════════════════════════╯${NC}"
-if [[ $domain =~ ^[1-2]+$ ]]; then
 read -p "   Seleccione los Números 1 o 2 Cualquier Botón (Aleatorio) : " slow
 echo ""
 if [[ $slow == "1" ]]; then
