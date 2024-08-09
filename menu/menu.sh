@@ -135,7 +135,7 @@ yesterday_tx=NULL
 yesterday_txv=NULL
 fi
 ssh_ssl=$( systemctl status ws-stunnel | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
-if [[ $ssh_ws == "running" ]]; then
+if [[ $ssh_ssl == "running" ]]; then
 status_ssl="${COLOR1}ON${NC}"
 else
 status_ssl="${RED}OFF${NC}"

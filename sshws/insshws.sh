@@ -136,6 +136,9 @@ systemctl restart ws-dropbear2.service
 systemctl enable ws-dropbear3.service
 systemctl start ws-dropbear3.service
 systemctl restart ws-dropbear3.service
+systemctl enable ws-dropbear4.service
+systemctl start ws-dropbear4.service
+systemctl restart ws-dropbear4.service
 systemctl enable ws-stunnel.service
 systemctl start ws-stunnel.service
 systemctl restart ws-stunnel.service
