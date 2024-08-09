@@ -90,7 +90,7 @@ apt-get install ruby -y
 gem install lolcat
 
 # set time GMT +7
-ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
+ln -fs /usr/share/zoneinfo/America/Mexico_City /etc/localtime
 
 # set locale
 sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
@@ -199,7 +199,7 @@ apt -y install squid3
 
 # install squid for debian 11
 apt -y install squid
-wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/main/squid3.conf"
+wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/squid3.conf"
 sed -i $MYIP2 /etc/squid/squid.conf
 
 # setting vnstat
@@ -230,11 +230,11 @@ socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
 
 [dropbear]
-accept = 8880
+accept = 8443
 connect = 127.0.0.1:22
 
 [dropbear]
-accept = 8443
+accept = 443
 connect = 127.0.0.1:109
 
 #[dropbear]

@@ -134,11 +134,11 @@ yesterday_rxv=NULL
 yesterday_tx=NULL
 yesterday_txv=NULL
 fi
-ssh_ws=$( systemctl status ws-stunnel | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
+ssh_ssl=$( systemctl status ws-stunnel | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
 if [[ $ssh_ws == "running" ]]; then
-status_ws="${COLOR1}ON${NC}"
+status_ssl="${COLOR1}ON${NC}"
 else
-status_ws="${RED}OFF${NC}"
+status_ssl="${RED}OFF${NC}"
 fi
 nginx=$( systemctl status nginx | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
 if [[ $nginx == "running" ]]; then
@@ -163,12 +163,20 @@ else
 status_xray="${RED}OFF${NC}"
 fi
 
-stat_noobz=$( systemctl status noobzvpns | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
-if [[ $stat_noobz == "running" ]]; then
-    stat_noobz="${COLOR1}ON${NC}"
+#stat_noobz=$( systemctl status noobzvpns | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
+#if [[ $stat_noobz == "running" ]]; then
+#    stat_noobz="${COLOR1}ON${NC}"
+#else
+#    stat_noobz="${RED}OFF${NC}"
+#    systemctl start noobzvpns
+#fi
+
+sshws=$( systemctl status ws-dropbear2 | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
+if [[ $status_ws == "running" ]]; then
+    status_ws="${COLOR1}ON${NC}"
 else
-    stat_noobz="${RED}OFF${NC}"
-    systemctl start noobzvpns
+    status_ws="${RED}OFF${NC}"
+    systemctl start ws-dropbear2
 fi
 
 # // Dropbear
@@ -321,8 +329,8 @@ echo -e " $COLOR1│$NC${WH} ❈ DOMINIO       ${COLOR1}: ${WH}$(cat /etc/xray/d
 echo -e " $COLOR1│$NC${WH} ❈ NSDominio     ${COLOR1}: ${WH}$(cat /etc/xray/dns)"
 echo -e " $COLOR1╰══════════════════════════════════════════════════════════╯${NC}"
 echo -e "    $COLOR1╭═════════════════ • ${NC}${WH}STATUS SERVER${NC}${COLOR1} • ═══════════════╮${NC}"
-echo -e "     ${WH} SSH WS : ${status_ws} ${WH} XRAY : ${status_xray} ${WH} NGINX : ${status_nginx} ${WH} DROPBEAR : ${status_beruangjatuh}$NC"
-echo -e "      ${WH} UDP CUSTOM : ${status_udp} ${WH} NOOBZVPNS : ${stat_noobz} ${WH} TROJAN-GO : ${stat_trgo} ${NC}"
+echo -e "     ${WH} SSH SSL : ${status_ssl} ${WH} XRAY : ${status_xray} ${WH} NGINX : ${status_nginx} ${WH} DROPBEAR : ${status_beruangjatuh}$NC"
+echo -e "      ${WH} UDP CUSTOM : ${status_udp} ${WH} SSH WS : ${status_ws} ${WH} TROJAN-GO : ${stat_trgo} ${NC}"
 echo -e "    $COLOR1╰═══════════════════════════════════════════════════╯${NC}"
 echo -e "        $COLOR1╭════════════════════════════════════════════╮${NC}"
 echo -e "                 $COLOR1$NC${WH}    LIST ACCOUNT PREMIUM ${NC}"

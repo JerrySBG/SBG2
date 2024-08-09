@@ -85,8 +85,8 @@ chmod +x /usr/local/bin/ws-stunnel
 # Installing Service
 cat > /etc/systemd/system/ws-stunnel.service << END
 [Unit]
-Description=Python Proxy Mod By SFVPN
-Documentation=https://t.me/abecasdee13
+Description=Python Proxy Mod By Jerry
+Documentation=https://t.me/Jerry_SBG
 After=network.target nss-lookup.target
 
 [Service]
