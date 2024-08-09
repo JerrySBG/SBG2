@@ -23,7 +23,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /usr/local/bin/ws-dropbear 80
+ExecStart=/usr/bin/python -O /usr/local/bin/ws-dropbear 8008
 Restart=on-failure
 
 [Install]
@@ -71,7 +71,31 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /usr/local/bin/ws-dropbear3 8280
+ExecStart=/usr/bin/python -O /usr/local/bin/ws-dropbear3 8090
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+END
+
+# Getting Proxy Template
+wget -q -O /usr/local/bin/ws-dropbear4 https://${JerrySBG}/websocket4.py
+chmod +x /usr/local/bin/ws-dropbear4
+
+# Installing Service
+cat > /etc/systemd/system/ws-dropbear4.service << END
+[Unit]
+Description=Python Proxy Mod By Jerry
+Documentation=https://t.me/Jerry_SBG
+After=network.target nss-lookup.target
+
+[Service]
+Type=simple
+User=root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/bin/python -O /usr/local/bin/ws-dropbear4 8280
 Restart=on-failure
 
 [Install]
