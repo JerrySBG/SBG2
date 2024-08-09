@@ -11,11 +11,13 @@ echo -e "${BIBlue}│  [ 1 ]  \e[1;32mPropio Dominio SlowDNS                ${NC
 echo -e "${BIBlue}│  [ 2 ]  \e[1;32mDominio Aletorio Free             ${NC}" 
 echo -e "${BIBlue}│  [ 3 ]  \e[1;32mDominio Aletorio By JERRY             ${NC}"                                        
 echo -e "${BIBlue}╰═══════════════════════════════════════════╯${NC}"
-read -rp "   Por Favor Selecciona del 1 al 3 : " slow
-echo ""
+until [[ $slow =~ ^[1-3]+$ ]]; do 
+read -p "   Por Favor Selecciona del 1 al 3 : " slow
+done
+fi
 if [[ $slow == "1" ]]; then
 echo -e "   \e[1;32mPor favor Ingrese su Subdominio SlowDNS$NC"
-read -p "   Subdominio: " dns2
+read -rp "   Subdominio: " dns2
 mkdir -p /etc/xray
 touch /etc/xray/nsdomain
 echo "$dns2" > /etc/xray/nsdomain
