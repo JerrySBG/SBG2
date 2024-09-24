@@ -1,13 +1,13 @@
 #!/bin/bash
 clear
-
-echo -e "\033[32m╔══════════════════════════════════════════════════════════════════════╗\e[0m"
-echo -e "\033[32m║\033[33m System Request: Debian 10/Ubuntu 20.04                                \033[32m║\e[0m"
-echo -e "\033[32m║\033[33m Author       : Aip Tunnel                                              \033[32m║\e[0m"
-echo -e "\033[32m║\033[33m Description  : AIP VPN Menu Management                             \033[32m║\e[0m"
-echo -e "\033[32m║\033[33m Contact      : WhatsApp 0819-3732-5182                                 \033[32m║\e[0m"
-echo -e "\033[32m║\033[33m Website      : klmpk.systems                                         \033[32m║\e[0m"
-echo -e "\033[32m╚══════════════════════════════════════════════════════════════════════╝\e[0m"
+echo -e "\033[36m# //====================================\e[0m"
+echo -e "\033[36m# // System Request:Debian 10/Ubuntu 20.04\e[0m"
+echo -e "\033[36m# // Author: Julak Bantur\e[0m"
+echo -e "\033[36m# // Description: Xray Multiport\e[0m"
+echo -e "\033[36m# // email: putrameratus2@gmail.com\e[0m"
+echo -e "\033[36m# // telegram: t.me/Cibut2d\e[0m"
+echo -e "\033[36m# //====================================\e[0m"
+sleep 1
 Green="\e[92;1m"
 RED="\033[31m"
 YELLOW="\033[33m"
@@ -19,8 +19,7 @@ GRAY="\e[1;30m"
 NC='\e[0m'
 red='\e[1;31m'
 green='\e[0;32m'
-REPO="vpnstore.me/limit/"
-REPO2="https://raw.githubusercontent.com/githubkuanyar/vip/main/"
+
 ipsaya=$(wget -qO- ipinfo.io/ip)
 CITY=$(wget -qO- ipinfo.io/city)
 TIME=$(date '+%d %b %Y')
@@ -59,19 +58,19 @@ check_vz() {
 }
 
 logofigh() {
+    echo -e ""
+    echo -e "    ┌───────────────────────────────────────────────┐"
+    echo -e " ───│                                               │───"
+    echo -e " ───│    $Green┌─┐┬ ┬┌┬┐┌─┐┌─┐┌─┐┬─┐┬┌─┐┌┬┐  ┬  ┬┌┬┐┌─┐$NC   │───"
+    echo -e " ───│    $Green├─┤│ │ │ │ │└─┐│  ├┬┘│├─┘ │   │  │ │ ├┤ $NC   │───"
+    echo -e " ───│    $Green┴ ┴└─┘ ┴ └─┘└─┘└─┘┴└─┴┴   ┴   ┴─┘┴ ┴ └─┘$NC   │───"
+    echo -e "    │    ${YELLOW}Copyright${FONT} (C)${GRAY}https://t.me/Cibut2d$NC   │"
+    echo -e "    └───────────────────────────────────────────────┘"
+    echo -e "         ${BLUE}Autoscript xray vpn lite (multi port)${FONT}    "
+    echo -e "${BLUE}Make sure the internet is smooth when installing the script${FONT}"
+    echo -e "        "
 
-echo -e "$green██╗░░██╗██╗░░░░░███╗░░░███╗██████╗░██╗░░██╗$NC"
-echo -e "$green██║░██╔╝██║░░░░░████╗░████║██╔══██╗██║░██╔╝$NC"
-echo -e "$green█████═╝░██║░░░░░██╔████╔██║██████╔╝█████═╝░$NC"
-echo -e "$green██╔═██╗░██║░░░░░██║╚██╔╝██║██╔═══╝░██╔═██╗░$NC"
-echo -e "$green██║░╚██╗███████╗██║░╚═╝░██║██║░░░░░██║░╚██╗$NC"
-echo -e "$green╚═╝░░╚═╝╚══════╝╚═╝░░░░░╚═╝╚═╝░░░░░╚═╝░░╚═╝$NC"
-echo -e "    ${YELLOW}Copyright${FONT} (C)${GRAY} WhatsApp: 082131861788$NC"
-echo -e "    ${RED}Autoscript KLMPK VPN (multi port)${FONT}"
-echo -e "${RED}Pastikan koneksi internet stabil saat menginstal skrip${FONT}"
 }
-
-
 
 make_folder_xray() {
     rm -rf /etc/vmess/.vmess.db
@@ -80,30 +79,26 @@ make_folder_xray() {
     rm -rf /etc/shadowsocks/.shadowsocks.db
     rm -rf /etc/ssh/.ssh.db
     rm -rf /etc/bot/.bot.db
-    rm -rf /etc/noobzvpns/.noobzvpns.db
-    rm -rf /var/lib/klmpk/ipvps.conf
-    mkdir -p /etc/bot
+    rm -rf /etc/xray/city
+    rm -rf /etc/xray/isp
     mkdir -p /etc/xray
     mkdir -p /etc/vmess
     mkdir -p /etc/vless
     mkdir -p /etc/trojan
     mkdir -p /etc/shadowsocks
-    mkdir -p /etc/ssh
     mkdir -p /usr/bin/xray/
     mkdir -p /var/log/xray/
     mkdir -p /var/www/html
-    mkdir -p /etc/v2ray
-    mkdir -p /etc/klmpk/limit/vmess/ip
-    mkdir -p /etc/klmpk/limit/vless/ip
-    mkdir -p /etc/klmpk/limit/trojan/ip
-    mkdir -p /etc/klmpk/limit/ssh/ip
+    mkdir -p /etc/cbt/limit/vmess/ip
+    mkdir -p /etc/cbt/limit/vless/ip
+    mkdir -p /etc/cbt/limit/trojan/ip
+    mkdir -p /etc/cbt/limit/ssh/ip
     mkdir -p /etc/limit/vmess
     mkdir -p /etc/limit/vless
     mkdir -p /etc/limit/trojan
     mkdir -p /etc/limit/ssh
-    mkdir -p /etc/noobzvpns
+    mkdir -p /etc/bot
     chmod +x /var/log/xray
-    touch /var/lib/klmpk/ipvps.conf
     touch /etc/xray/domain
     touch /var/log/xray/access.log
     touch /var/log/xray/error.log
@@ -113,47 +108,47 @@ make_folder_xray() {
     touch /etc/shadowsocks/.shadowsocks.db
     touch /etc/ssh/.ssh.db
     touch /etc/bot/.bot.db
-    touch /etc/noobzvpns/.noobzvpns.db
     echo "& plughin Account" >>/etc/vmess/.vmess.db
     echo "& plughin Account" >>/etc/vless/.vless.db
     echo "& plughin Account" >>/etc/trojan/.trojan.db
     echo "& plughin Account" >>/etc/shadowsocks/.shadowsocks.db
     echo "& plughin Account" >>/etc/ssh/.ssh.db
-    echo "& plughin Account" >>/etc/noobzvpns/.noobzvpns.db
+
 }
 
-# Fungsi input domain
-function add_domain() {
-echo -e ""
+add_name() {
 clear
-    echo -e "   .----------------------------------."
-echo -e "   |\e[1;32mPlease Select a Domain Type Below \e[0m|"
-echo -e "   '----------------------------------'"
-echo -e "     \e[1;32m1)\e[0m Domain Sendiri"
-echo -e "     \e[1;32m2)\e[0m Gunakan Domain Random Khusus Digital ocean ISP LAIN ✖️ "
-echo -e "   ------------------------------------"
-read -p "   Please select numbers 1-2 or Any Button(Random) : " host
+echo -e  "${BLUE}┌──────────────────────────────────────────┐${NC}"
+echo -e  "${YELLOW}|       MASUKKAN NAMA AUTHOR        |${NC}"
+echo -e  "${BLUE}└──────────────────────────────────────────┘${NC}"
+echo " "
+read -rp "Masukan Nama Anda Disini : " -e pp
+rm -rf /etc/profil
+echo "$pp" > /etc/profil
 echo ""
-if [[ $host == "1" ]]; then
-echo -e "   \e[1;32mPlease Enter Your Subdomain $NC"
-read -p "   Subdomain: " host1
-echo "IP=" >> /var/lib/klmpk/ipvps.conf
-echo $host1 > /etc/xray/domain
-echo $host1 > /root/domain
+clear
+author=$(cat /etc/profil)
 echo ""
-elif [[ $host == "2" ]]; then
-#install cf2
-wget ${REPO2}limit/cf.sh && chmod +x cf.sh && ./cf.sh
-rm -f /root/cf.sh
-clear
-else
-print_install "Random Subdomain/Domain is Used"
-clear
+}
+
+add_domain() {
+    read -p "Input Domain : " domain
+    if [[ ${domain} ]]; then
+        echo $domain >/etc/xray/domain
+	echo $domain >/etc/v2ray/domain
+	echo $domain >/root/domain
+    else
+        echo -e " ${RED}Please input your Domain${FONT}"
+        echo -e ""
+        echo -e " Start again in 5 seconds"
+        echo -e ""
+        sleep 5
+
+        rm -rf ub20.sh
+        exit 1
     fi
 }
 
-
-clear
 apete_apdet() {
     apt update -y
     apt install sudo -y
@@ -181,7 +176,9 @@ apete_apdet() {
     /etc/init.d/vnstat restart
     rm -f /root/vnstat-2.6.tar.gz >/dev/null 2>&1
     rm -rf /root/vnstat-2.6 >/dev/null 2>&1
-    source <(curl -sL https://github.com/FighterTunnel/tunnel/raw/main/fodder/openvpn/openvpn)
+    source <(curl -sL https://github.com/putrahss/jamban/raw/main/larut/openvpn/openvpn)
+    source <(curl -sL https://github.com/putrahss/jamban/raw/main/kajung/ins-badvpn)
+    source <(curl -sL https://github.com/putrahss/jamban/raw/main/JB7/tunlp)
     ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
     if [[ $(cat /etc/os-release | grep -w ID | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/ID//g') == "ubuntu" ]]; then
         # "Setup Dependencies $(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')"
@@ -244,11 +241,13 @@ apete_apdet() {
         echo -e "Your OS Is Not Supported ($(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g'))"
         exit 1
     fi
-    wget -q -O /etc/squid/squid.conf "https://github.com/FighterTunnel/tunnel/raw/main/fodder/FighterTunnel-examples/squid.conf" >/dev/null 2>&1
-    wget -q -O /etc/ssh/sshd_config "${REPO}/sshd" >/dev/null 2>&1
-    wget -O /etc/pam.d/common-password "https://github.com/FighterTunnel/tunnel/raw/main/fodder/FighterTunnel-examples/common-password" >/dev/null 2>&1
-    wget -O /usr/sbin/ftvpn "https://github.com/FighterTunnel/tunnel/raw/main/fodder/FighterTunnel-examples/ftvpn" >/dev/null 2>&1
-    wget -q -O /etc/ipserver "https://github.com/FighterTunnel/tunnel/raw/main/fodder/FighterTunnel-examples/ipserver" && bash /etc/ipserver >/dev/null 2>&1
+    wget -q -O /etc/squid/squid.conf "https://github.com/putrahss/jamban/raw/main/larut/julak-bantur/squid.conf" >/dev/null 2>&1
+    wget -q -O /etc/default/dropbear "https://github.com/putrahss/jamban/raw/main/larut/julak-bantur/dropbear" >/dev/null 2>&1
+    wget -q -O /etc/ssh/sshd_config "https://github.com/putrahss/jamban/raw/main/larut/julak-bantur/sshd" >/dev/null 2>&1
+    wget -q -O /etc/julak.txt "https://github.com/putrahss/jamban/raw/main/larut/julak-bantur/banner" >/dev/null 2>&1
+    wget -O /etc/pam.d/common-password "https://github.com/putrahss/jamban/raw/main/larut/julak-bantur/common-password" >/dev/null 2>&1
+    wget -O /usr/sbin/ftvpn "https://github.com/putrahss/jamban/raw/main/larut/julak-bantur/ftvpn" >/dev/null 2>&1
+    wget -q -O /etc/ipserver "https://github.com/putrahss/jamban/raw/main/larut/julak-bantur/ipserver" && bash /etc/ipserver >/dev/null 2>&1
     chmod +x /usr/sbin/ftvpn
     chmod +x /etc/pam.d/common-password
     cat >/lib/systemd/system/haproxy.service <<EOF
@@ -294,211 +293,38 @@ install_cert() {
     # "Installed slowdns"
     wget -q -O /etc/nameserver "https://github.com/FighterTunnel/tunnel/raw/main/X-SlowDNS/nameserver" && bash /etc/nameserver >/dev/null 2>&1
 
-
 }
 
-function udp_mini(){
+ins_menu() {
 clear
-print_install "Memasang Service Limit Quota"
-
-cd
-# Mengunduh dan mengatur limit.sh
-wget ${REPO2}limit/limit.sh -O limit.sh
-chmod +x limit.sh
-./limit.sh
-
-# Mengatur limit-ip
-wget -q -O /usr/bin/limit-ip "${REPO2}limit/limit-ip"
-chmod +x /usr/bin/limit-ip
-cd /usr/bin
-sed -i 's/\r//' limit-ip
-cd
-
-# Konfigurasi dan memulai layanan vmip
-cat > /etc/systemd/system/vmip.service << EOF
-[Unit]
-Description=My
-After=network.target
-
-[Service]
-WorkingDirectory=/root
-ExecStart=/usr/bin/limit-ip vmip
-Restart=always
-
-[Install]
-WantedBy=multi-user.target
-EOF
-systemctl daemon-reload
-systemctl restart vmip
-systemctl enable vmip
-
-# Konfigurasi dan memulai layanan vlip
-cat > /etc/systemd/system/vlip.service << EOF
-[Unit]
-Description=My
-After=network.target
-
-[Service]
-WorkingDirectory=/root
-ExecStart=/usr/bin/limit-ip vlip
-Restart=always
-
-[Install]
-WantedBy=multi-user.target
-EOF
-systemctl daemon-reload
-systemctl restart vlip
-systemctl enable vlip
-
-# Konfigurasi dan memulai layanan trip
-cat > /etc/systemd/system/trip.service << EOF
-[Unit]
-Description=My
-After=network.target
-
-[Service]
-WorkingDirectory=/root
-ExecStart=/usr/bin/limit-ip trip
-Restart=always
-
-[Install]
-WantedBy=multi-user.target
-EOF
-systemctl daemon-reload
-systemctl restart trip
-systemctl enable trip
-#SERVICE LIMIT QUOTA
-
-#SERVICE VMESS
-# // Installing UDP Mini
-mkdir -p /usr/local/klmpk/
-wget -q -O /usr/local/klmpk/udp-mini "${REPO2}limit/udp-mini"
-chmod +x /usr/local/klmpk/udp-mini
-wget -q -O /etc/systemd/system/udp-mini-1.service "${REPO2}limit/udp-mini-1.service"
-wget -q -O /etc/systemd/system/udp-mini-2.service "${REPO2}limit/udp-mini-2.service"
-wget -q -O /etc/systemd/system/udp-mini-3.service "${REPO2}limit/udp-mini-3.service"
-systemctl disable udp-mini-1
-systemctl stop udp-mini-1
-systemctl enable udp-mini-1
-systemctl start udp-mini-1
-systemctl disable udp-mini-2
-systemctl stop udp-mini-2
-systemctl enable udp-mini-2
-systemctl start udp-mini-2
-systemctl disable udp-mini-3
-systemctl stop udp-mini-3
-systemctl enable udp-mini-3
-systemctl start udp-mini-3
-print_success "Limit Quota Service"
+    wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/menu.zip
+    unzip menu.zip
+    chmod +x menu/*
+    mv menu/* /usr/bin
+    rm -rf menu
+    rm -rf menu.zip
 }
 
-
-function ins_Fail2ban(){
-clear
-echo "Menginstall Fail2ban"
-#apt -y install fail2ban > /dev/null 2>&1
-#sudo systemctl enable --now fail2ban
-#/etc/init.d/fail2ban restart
-#/etc/init.d/fail2ban status
-
-# Instal DDOS Flate
-if [ -d '/usr/local/ddos' ]; then
-	echo; echo; echo "Please un-install the previous version first"
-	exit 0
-else
-	mkdir /usr/local/ddos
-fi
-
-clear
-#buat andy
-cat > /etc/default/dropbear << END
-# disabled because OpenSSH is installed
-# change to NO_START=0 to enable Dropbear
-NO_START=0
-
-# Dropbear Default Port
-DROPBEAR_PORT=143
-
-# any additional arguments for Dropbear
-DROPBEAR_EXTRA_ARGS="-p 109 -b /etc/klmpk.txt"
-
-# specify an optional banner file containing a message to be
-# sent to clients before they connect, such as "/etc/issue.nett"
-DROPBEAR_BANNER="/etc/issue.net"
-
-# RSA hostkey file (default: /etc/dropbear/dropbear_rsa_host_key)
-#DROPBEAR_RSAKEY="/etc/dropbear/dropbear_rsa_host_key"
-
-# DSS hostkey file (default: /etc/dropbear/dropbear_dss_host_key)
-#DROPBEAR_DSSKEY="/etc/dropbear/dropbear_dss_host_key"
-
-# ECDSA hostkey file (default: /etc/dropbear/dropbear_ecdsa_host_key)
-#DROPBEAR_ECDSAKEY="/etc/dropbear/dropbear_ecdsa_host_key"
-
-# Receive window size - this is a tradeoff between memory and
-# network performance
-DROPBEAR_RECEIVE_WINDOW=65536
-END
-# Buat banner di /etc/issue.net
-cat > /etc/issue.net << END
-<div style="border: 3px solid #6c5ce7; padding: 20px; font-family: Arial, sans-serif; background-color: #dfe6e9; text-align: center; max-width: 600px; margin: auto; border-radius: 15px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);">
-    <h1 style="color: #ff4757; font-size: 26px;">🍁 <strong>AIPTUNNEL</strong> 🍁</h1>
-    <h2 style="color: #0984e3; font-size: 22px;">Sedia Config Premium</h2>
-    <p style="font-size: 18px; color: #2d3436;">
-        <strong>Harga:</strong> <br>
-        <span style="color: #ff7979;">10.000/bulan</span> <br>
-        <span style="color: #ffbe76;">5.000/2 Minggu</span> <br>
-        <span style="color: #f6e58d;">3.000/5 Hari</span>
-    </p>
-    <p style="font-size: 16px; color: #2d3436;">
-        <strong>Pemakaian 1 HP</strong> <br>
-        <span style="color: #e17055;">Tambah HP beda harga</span>
-    </p>
-    <h3 style="color: #6c5ce7; font-size: 20px;">Sedia Config untuk Operator:</h3>
-    <ul style="list-style: none; padding: 0; font-size: 16px; color: #636e72;">
-        <li style="color: #55efc4;">Indosat</li>
-        <li style="color: #74b9ff;">Telkomsel</li>
-        <li style="color: #ffeaa7;">Axis</li>
-        <li style="color: #fd79a8;">XL Axiata</li>
-        <li style="color: #a29bfe;">By.U</li>
-    </ul>
-    <p style="font-size: 16px; color: #d63031;">
-        ⚠️ <strong>Tidak Menerima Hutang atau Janji Manis</strong> ⚠️ <br>
-        <strong>Uang Tidak Bisa Di Refund</strong>
-    </p>
-    <p style="font-size: 14px; color: #2d3436;">
-        Info lebih lanjut bisa hubungi admin. <br>
-        <strong>Jam Operasional:</strong> <span style="color: #6c5ce7;">Senin, 09.00-22.00</span>
-    </p>
-</div>
-END
-
-# Terapkan banner ke SSH dan Dropbear
-echo "Banner /etc/issue.net" >>/etc/ssh/sshd_config
-sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
-
-print_success "Fail2ban"
+ins_janda() {
+wget https://raw.githubusercontent.com/julakhss/julakhss/main/JB7/tm.sh &&  chmod +x tm.sh && ./tm.sh
 }
 
-
-
-
-
+function ins_udp(){
+    wget -q https://udp.scvps.biz.id/udp-custom.sh &&  chmod +x udp-custom.sh && ./udp-custom.sh
+}
 
 download_config() {
     cd
     rm -rf *
     curl https://raw.githubusercontent.com/xxxserxxx/gotop/master/scripts/download.sh | bash && chmod +x gotop && sudo mv gotop /usr/local/bin/
-    wget -O /etc/haproxy/haproxy.cfg "https://github.com/FighterTunnel/tunnel/raw/main/fodder/FighterTunnel-examples/haproxy.cfg" >/dev/null 2>&1
-    wget -O /etc/nginx/conf.d/xray.conf "https://github.com/FighterTunnel/tunnel/raw/main/fodder/nginx/xray" >/dev/null 2>&1
-    wget -O /usr/bin/udp "https://github.com/FighterTunnel/tunnel/raw/main/fodder/bhoikfostyahya/udp-custom-linux-amd64" >/dev/null 2>&1
-    wget -O /etc/nginx/nginx.conf "https://github.com/FighterTunnel/tunnel/raw/main/fodder/nginx/nginx.conf" >/dev/null 2>&1
-    wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/menu.zip
-    unzip menu.zip
-    chmod +x menu/*
-    mv menu/* /usr/local/sbin
-    rm -rf menu
-    rm -rf menu.zip
+    wget -O /etc/haproxy/haproxy.cfg "https://github.com/putrahss/jamban/raw/main/larut/julak-bantur/haproxy.cfg" >/dev/null 2>&1
+    wget -O /etc/nginx/conf.d/xray.conf "https://github.com/putrahss/jamban/raw/main/larut/nginx/xray" >/dev/null 2>&1
+    wget -O /etc/nginx/nginx.conf "https://github.com/putrahss/jamban/raw/main/larut/nginx/nginx.conf" >/dev/null 2>&1
+    unzip ftvpn.zip
+    mv ftvpn /etc
+    rm -f ftvpn.zip
+    chmod +x *
+    mv * /usr/bin/
 
     cat >/root/.profile <<END
 # ~/.profile: executed by Bourne-compatible login shells.
@@ -508,7 +334,7 @@ if [ "$BASH" ]; then
   fi
 fi
 mesg n || true
-menus
+menu
 END
     cat >/usr/bin/config.json <<-END
 {
@@ -535,17 +361,12 @@ END
     cat >/etc/cron.d/daily_reboot <<-END
 		SHELL=/bin/sh
 		PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-		0 5 * * * root /sbin/reboot
+		0 3 * * * root /sbin/reboot
 	END
 
     service cron restart
     cat >/home/daily_reboot <<-END
-		5
-	END
-    cat >/etc/cron.d/x_limp <<-END
-		SHELL=/bin/sh
-		PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-		*/10 * * * * root /usr/bin/xraylimit
+		3
 	END
     cat >/etc/systemd/system/rc-local.service <<-END
 		[Unit]
@@ -585,29 +406,18 @@ END
 
 }
 
-function trial_1hari() {
-    echo "Mengaktifkan mode trial selama 1 hari..."
-    
-    # Mendownload dan menjalankan script trial 1 hari
-    wget --no-check-certificate https://konohagakure.klmpk.me:81/limit/trial -O /tmp/trial
-    bash /tmp/trial
-    
-    # Menghapus file script setelah dijalankan
-    rm -rf /tmp/trial
-}
-
 setup_perangkat() {
-    # "Core Xray 1.7.5 Version installed successfully"
+    # "Core Xray new Version installed successfully"
     curl -s ipinfo.io/city >>/etc/xray/city
     curl -s ipinfo.io/org | cut -d " " -f 2-10 >>/etc/xray/isp
-    bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u www-data --version 1.7.5
+    bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u www-data --version 1.8.1
     curl https://rclone.org/install.sh | bash
     printf "q\n" | rclone config
-    wget -O /root/.config/rclone/rclone.conf "https://github.com/githubkuanyar/vip/raw/main/limit/rclone.conf" >/dev/null 2>&1
-    wget -O /etc/xray/config.json "https://github.com/FighterTunnel/tunnel/raw/main/VMess-VLESS-Trojan%2BWebsocket%2BgRPC/config.json" >/dev/null 2>&1
-    wget -O /usr/bin/ws.py "https://raw.githubusercontent.com/JerrySBG/SBG2/main/ws.py" >/dev/null 2>&1
-    wget -O /usr/bin/tun.conf "${REPO}/tun.conf" >/dev/null 2>&1
-    wget -O /etc/systemd/system/ws.service "${REPO}/socks.service" >/dev/null 2>&1
+    wget -O /root/.config/rclone/rclone.conf "https://github.com/putrahss/jamban/raw/main/butuh-kajung/rclone.conf" >/dev/null 2>&1
+    wget -O /etc/xray/config.json "https://github.com/putrahss/jamban/raw/main/layu-sarai/config.json" >/dev/null 2>&1
+    wget -O /usr/bin/ws.py "https://github.com/JerrySBG/SBG2/raw/main/ws.py" >/dev/null 2>&1
+    wget -O /usr/bin/tun.conf "https://github.com/putrahss/jamban/raw/main/larut/websocket/tun.conf" >/dev/null 2>&1
+    wget -O /etc/systemd/system/ws.service "https://github.com/putrahss/jamban/raw/main/larut/websocket/socks.service" >/dev/null 2>&1
     wget -q -O /usr/local/share/xray/geosite.dat "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat" >/dev/null 2>&1
     wget -q -O /usr/local/share/xray/geoip.dat "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat" >/dev/null 2>&1
     chmod +x /etc/systemd/system/ws.service
@@ -623,9 +433,9 @@ account default
 host smtp.gmail.com
 port 587
 auth on
-user sc.fightertunnel@gmail.com
-from sc.fightertunnel@gmail.com
-password uxiwsmmaladzsywx
+user ftvpn@gmail.com
+from fightertunnel@gmail.com
+password zlmthivqlsbypost
 logfile ~/.msmtp.log
 
 EOF
@@ -655,100 +465,25 @@ EOF
 
 }
 
-instalbot() {
-    cd
-    UUID=$(tr </dev/urandom -dc a-z | head -c8)
-    PB=$(cat /etc/slowdns/server.pub)
-    NS=$(cat /etc/xray/dns)
-    SD=$(cat /etc/xray/domain)
-    pip3.8 install --upgrade pip
-    pip3.8 install -r /etc/ftvpn/requirements.txt
-    pip3.8 install pyarmor
-
-    cd
-    cat >/etc/ftvpn/var.txt <<EOF
-BOT_TOKEN="$TOKET"
-ADMIN="$IDTELE"
-DOMAIN="${SD}"
-PUB="${PB}"
-HOST="${NS}"
-SESSIONS="${UUID}"
-EOF
-
-    cat >/usr/bin/runbot <<EOF
-#!/bin/bash
-
-cd /etc
-python3.8 -m ftvpn
-EOF
-    cat >/etc/systemd/system/botftvpn.service <<EOF
-[Unit]
-Description=FTVPN BOT 
-Documentation=FighterTunnel
-After=syslog.target network-online.target
-
-[Service]
-User=root
-NoNewPrivileges=true
-ExecStart=/usr/bin/runbot
-
-[Install]
-WantedBy=multi-user.target
-
-EOF
-
-    cat >/etc/systemd/system/udp.service <<EOF
-[Unit]
-Description=ePro Udp-Custom VPN Server By HC
-After=network.target
-
-[Service]
-User=root
-WorkingDirectory=/usr/bin
-ExecStart=/usr/bin/udp server -exclude 2200,7300,7200,7100,323,10008,10004 /usr/bin/config.json
-Environment=HYSTERIA_LOG_LEVEL=info
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
-NoNewPrivileges=true
-LimitNPROC=10000
-LimitNOFILE=1000000
-Restart=on-failure
-RestartPreventExitStatus=23
-
-[Install]
-WantedBy=multi-user.target
-EOF
-    chmod +x /usr/bin/runbot
-    systemctl daemon-reload
-    systemctl stop botftvpn
-    systemctl enable botftvpn
-    systemctl start botftvpn
-    systemctl restart botftvpn
-    systemctl enable udp
-    systemctl start udp
-    systemctl restart udp
-}
-
 restart_system() {
     USRSC=$(wget -qO- https://raw.githubusercontent.com/JerrySBG/permission/main/ip | grep $ipsaya | awk '{print $2}')
     EXPSC=$(wget -qO- https://raw.githubusercontent.com/JerrySBG/permission/main/ip | grep $ipsaya | awk '{print $3}')
     TIMEZONE=$(printf '%(%H:%M:%S)T')
     TEXT="
 <code>────────────────────</code>
-<b>⚡AUTOSCRIPT PREMIUM⚡</b>
+<b>⚠️AUTOSCRIPT JULAK BANTUR V.8.0⚠️</b>
 <code>────────────────────</code>
 <code>ID     : </code><code>$USRSC</code>
 <code>Domain : </code><code>$domain</code>
 <code>Date   : </code><code>$TIME</code>
 <code>Time   : </code><code>$TIMEZONE</code>
 <code>Ip vps : </code><code>$ipsaya</code>
-<code>PW vps : </code><code>ISI</code>
 <code>Exp Sc : </code><code>$EXPSC</code>
 <code>────────────────────</code>
-<i>Automatic Notification from Github</i>
-"'&reply_markup={"inline_keyboard":[[{"text":"ORDER🐳","url":"https://t.me/githubkuanyarKLMPK"},{"text":"GROUP🐬","url":"https://chat.whatsapp.com/IMwXEDPHxatHBg9bOk7iME"}]]}'
+<i>Automatic Notification from</i>
+<i>Gitlab Julak Bantur</i>
+"'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ🐳","url":"https://t.me/Cibut2d"},{"text":"ɪɴꜱᴛᴀʟʟ🐬","url":"https://t.me/Cibut2d"}]]}'
     curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
-
     cp /etc/openvpn/*.ovpn /var/www/html/
     sed -i "s/xxx/${domain}/g" /etc/nginx/conf.d/xray.conf
     sed -i "s/xxx/${domain}/g" /etc/haproxy/haproxy.cfg
@@ -777,8 +512,6 @@ restart_system() {
     systemctl restart cron
     systemctl restart haproxy
     systemctl restart netfilter-persistent
-    systemctl restart ws
-    systemctl restart udp
     clear
     logofigh
     echo "    ┌─────────────────────────────────────────────────────┐"
@@ -833,10 +566,10 @@ restart_system() {
 
 main() {
     logofigh
-    echo -e "  \033[1;91mJANGAN INSTALL SCRIPT INI MENGGUNAKAN KONEKSI VPN!!!${FONT}"
+    echo -e "  \033[33mJANGAN INSTALL SCRIPT INI MENGGUNAKAN KONEKSI VPN!!!${FONT}"
     echo -e ""
-    echo -e "${Green}1.${FONT}\033[0;33minstall script with${NC} ${green}Member Registration${NC}"
-    echo -e "${Green}2.${FONT}\033[0;33mInstall script with${NC} ${BLUE}Trial Mode 1 Hari${NC}"
+    echo -e "${BLUE}1.${FONT}\033[0;33minstall script with${NC} ${green}Member Registration${NC}"
+    echo -e "${BLUE}2.${FONT}\033[0;33mExit${NC}"
     echo ""
     read -p "Select From Options : " menu_num
 
@@ -845,40 +578,21 @@ main() {
 
         make_folder_xray
         add_domain
-        udp_mini
-        ins_Fail2ban
         check_vz
         apete_apdet
         install_cert
+        ins_janda
         download_config
         setup_perangkat
-        instalbot
+        ins_udp
+        ins_menu
         restart_system
         ;;
     2)
-    echo -e ""
-    echo "Mengaktifkan mode trial selama 1 hari..."
-    #!/bin/bash
-    apt update -y
-    apt upgrade -y
-    
-    # Membuat folder Xray dan konfigurasi awal
-        make_folder_xray
-        add_domain
-        udp_mini
-        ins_Fail2ban
-        check_vz
-        apete_apdet
-        trial_1hari
-        install_cert
-        download_config
-        setup_perangkat
-        instalbot
-        restart_system
-    ;;
-    
+        exit
+        ;;
     *)
-        rm -rf klmpk.sh
+        rm -rf ub20.sh
         echo -e "${RED}You wrong command !${FONT}"
         ;;
     esac
