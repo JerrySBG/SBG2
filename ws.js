@@ -55,9 +55,9 @@ setInterval(gcollector, 1000);
 const server = net.createServer();
 server.on('connection', function(socket) {
     var packetCount = 0;
-    var gu = "Websocket by Global User";
+    var gu = "Websocket by JERRY";
     //var handshakeMade = false;
-    socket.write("HTTP/1.1 101 " + gu.fontcolor("green") + "WebSocket By JERRY\r\n\r\nContent-Length: 104857600000\r\n\r\n", function(err) {
+    socket.write("HTTP/1.1 101 " + gu.fontcolor("cyan") + "\r\nContent-Length: 104857600000\r\n\r\n", function(err) {
         if(err) {
             console.log("[SWRITE] Failed to write response to " + socket.remoteAddress + ":" + socket.remotePort + ", error: " + err);
         }
