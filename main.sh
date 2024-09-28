@@ -507,11 +507,11 @@ apete_eee() {
 #apete_eee
 clear
 LOGO
-echo -e "${RED}JANGAN INSTALL SCRIPT INI MENGGUNAKAN KONEKSI VPN!!!${FONT}"
+echo -e "${RED}NO INSTALE ESTE SCRIPT USANDO UNA CONEXIÓN VPN!!!${FONT}"
 echo -e ""
-echo -e "${Green}DNS POINTING${FONT}(DNS-resolved IP address of the domain)"
+echo -e "${Green}DNS APUNTANDO${FONT}(Tu Direccion IP debe estar ya con Dominio)"
 echo ""
-read -p "Lanjutkan untuk menginstall y/n : " menu_num
+read -p "Continuar con la Instalación y/n : " menu_num
 
 case $menu_num in
 y)
