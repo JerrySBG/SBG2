@@ -504,7 +504,7 @@ apete_eee() {
         exit 0
     fi
 }
-apete_eee
+#apete_eee
 clear
 LOGO
 echo -e "${RED}JANGAN INSTALL SCRIPT INI MENGGUNAKAN KONEKSI VPN!!!${FONT}"
