@@ -15,6 +15,6 @@ systemctl restart ws
 systemctl restart nginx
 systemctl restart ws 
 clear
-read -p "$( echo " Done Update, Please Reboot Manual Your VPS") "
-rm /root/ws-fix-sh
+read -p "$( echo " Actualizacion Completada, Se Procedera a Reiniciar tu VPS") "
+rm /root/ws-fix.sh
 reboot
