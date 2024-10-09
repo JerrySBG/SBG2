@@ -308,7 +308,7 @@ Login Limit  : ${iplim} IP
 ISP          : ${ISP}
 CITY         : ${CITY}
 Port TLS     : 443
-Port NTLS    : 80, 8081
+Port NTLS    : 80, 8080
 Port GRPC    : 443
 UUID         : <code>${uuid}</code>
 AlterId      : 0
@@ -347,7 +347,7 @@ Quota Limit  : ${Quota} GB
 ISP          : ${ISP}
 CITY         : ${CITY}
 Port TLS     : 443
-Port NTLS    : 80, 8081
+Port NTLS    : 80, 8080
 Port GRPC    : 443
 UUID         : <code>${uuid}</code>
 AlterId      : 0
@@ -414,7 +414,7 @@ else
 echo -e "$COLOR1 ${NC} ${WH}Quota Limit  ${COLOR1}: ${WH}${Quota} GB" | tee -a /etc/vmess/akun/log-create-${user}.log
 fi
 echo -e "$COLOR1 ${NC} ${WH}Port TLS      ${COLOR1}: ${WH}443" | tee -a /etc/vmess/akun/log-create-${user}.log
-echo -e "$COLOR1 ${NC} ${WH}Port NTLS    ${COLOR1}: ${WH}80,8081" | tee -a /etc/vmess/akun/log-create-${user}.log
+echo -e "$COLOR1 ${NC} ${WH}Port NTLS    ${COLOR1}: ${WH}80,8080" | tee -a /etc/vmess/akun/log-create-${user}.log
 echo -e "$COLOR1 ${NC} ${WH}Port gRPC     ${COLOR1}: ${WH}443" | tee -a /etc/vmess/akun/log-create-${user}.log
 echo -e "$COLOR1 ${NC} ${WH}UUID         ${COLOR1}: ${WH}${uuid}" | tee -a /etc/vmess/akun/log-create-${user}.log
 echo -e "$COLOR1 ${NC} ${WH}alterId       ${COLOR1}: ${WH}0" | tee -a /etc/vmess/akun/log-create-${user}.log
@@ -686,7 +686,7 @@ Login Limit  : ${iplim} IP
 ISP          : ${ISP}
 CITY         : ${CITY}
 Port TLS     : 443
-Port NTLS    : 80, 8081
+Port NTLS    : 80, 8080
 Port GRPC    : 443
 UUID         : <code>${uuid}</code>
 AlterId      : 0
@@ -731,7 +731,7 @@ echo -e "$COLOR1 ${NC} ${WH}City          ${COLOR1}: ${WH}$CITY" | tee -a /etc/v
 echo -e "$COLOR1 ${NC} ${WH}Domain        ${COLOR1}: ${WH}${domain}" | tee -a /etc/vmess/akun/log-create-${user}.log
 echo -e "$COLOR1 ${NC} ${WH}Login Limit  ${COLOR1}: ${WH}${iplim} IP" | tee -a /etc/log-create-.log
 echo -e "$COLOR1 ${NC} ${WH}Port TLS      ${COLOR1}: ${WH}443" | tee -a /etc/vmess/akun/log-create-${user}.log
-echo -e "$COLOR1 ${NC} ${WH}Port NTLS    ${COLOR1}: ${WH}80,8081" | tee -a /etc/vmess/akun/log-create-${user}.log
+echo -e "$COLOR1 ${NC} ${WH}Port NTLS    ${COLOR1}: ${WH}80,8080" | tee -a /etc/vmess/akun/log-create-${user}.log
 echo -e "$COLOR1 ${NC} ${WH}Port gRPC     ${COLOR1}: ${WH}443" | tee -a /etc/vmess/akun/log-create-${user}.log
 echo -e "$COLOR1 ${NC} ${WH}UUID         ${COLOR1}: ${WH}${uuid}" | tee -a /etc/vmess/akun/log-create-${user}.log
 echo -e "$COLOR1 ${NC} ${WH}alterId       ${COLOR1}: ${WH}0" | tee -a /etc/vmess/akun/log-create-${user}.log

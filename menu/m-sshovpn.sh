@@ -121,8 +121,8 @@ Login Limit      : ${iplim} IP
 Port OpenSSH     : 22
 Port Dropbear    : 143, 109
 Port SSH WS      : 80, 8008, 8080, 8090, 8280
-Port SSH SSL WS  : 443
-Port SSL/TLS     : 444, 445, 448, 4443, 8443
+Port SSH SSL WS  : 8443
+Port SSL/TLS     : 443
 Port OVPN WS SSL : 2086
 Port OVPN SSL    : 990
 Port OVPN TCP    : 1194
@@ -165,8 +165,8 @@ Login Limit      :  ${iplim} IP
 Port OpenSSH     :  22
 Port Dropbear    :  109, 143
 Port SSH WS      :  80, 8008, 8080, 8090, 8280
-Port SSH SSL WS  :  443
-Port SSL/TLS     :  8443
+Port SSH SSL WS  :  8443
+Port SSL/TLS     :  443
 Port OVPN WS SSL :  2086
 Port OVPN SSL    :  990
 Port OVPN TCP    :  1194
@@ -215,8 +215,8 @@ Login Limit      :  ${iplim} IP
 Port OpenSSH     :  22
 Port Dropbear    :  109, 143
 Port SSH WS      :  80, 8008, 8080, 8090, 8280
-Port SSH SSL WS  :  443
-Port SSL/TLS     :  8443
+Port SSH SSL WS  :  8443
+Port SSL/TLS     :  443
 Port OVPN WS SSL :  2086
 Port OVPN SSL    :  990
 Port OVPN TCP    :  1194
@@ -289,8 +289,8 @@ echo -e "$COLOR1 $NC  ${WH}Login Limit${COLOR1}: ${WH}${iplim} IP" | tee -a /etc
 echo -e "$COLOR1 $NC  ${WH}OpenSSH    ${COLOR1}: ${WH}22" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
 echo -e "$COLOR1 $NC  ${WH}Dropbear   ${COLOR1}: ${WH}109, 143" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
 echo -e "$COLOR1 $NC  ${WH}SSH-WS     ${COLOR1}: ${WH}80, 8008, 8080, 8090, 8280" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
-echo -e "$COLOR1 $NC  ${WH}SSH-SSL-WS ${COLOR1}: ${WH}443" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
-echo -e "$COLOR1 $NC  ${WH}SSL/TLS    ${COLOR1}: ${WH}8443" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
+echo -e "$COLOR1 $NC  ${WH}SSH-SSL-WS ${COLOR1}: ${WH}8443" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
+echo -e "$COLOR1 $NC  ${WH}SSL/TLS    ${COLOR1}: ${WH}443" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
 echo -e "$COLOR1 $NC  ${WH}Ovpn Ws    ${COLOR1}: ${WH}2086" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
 echo -e "$COLOR1 $NC  ${WH}Port TCP   ${COLOR1}: ${WH}1194" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
 echo -e "$COLOR1 $NC  ${WH}Port UDP   ${COLOR1}: ${WH}1-65535" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
@@ -384,8 +384,8 @@ Login Limit      : ${iplim} IP
 Port OpenSSH     : 22
 Port Dropbear    : 143, 109
 Port SSH WS      : 80, 8008, 8080, 8090, 8280
-Port SSH SSL WS  : 443
-Port SSL/TLS     : 8443
+Port SSH SSL WS  : 8443
+Port SSL/TLS     : 443
 Port OVPN WS SSL : 2086
 Port OVPN SSL    : 990
 Port OVPN TCP    : 1194
@@ -428,8 +428,8 @@ Login Limit      :  ${iplim} IP
 Port OpenSSH     :  22
 Port Dropbear    :  109, 143
 Port SSH WS      :  80, 8008, 8080, 8090, 8280
-Port SSH SSL WS  :  443
-Port SSL/TLS     :  8443
+Port SSH SSL WS  :  8443
+Port SSL/TLS     :  443
 Port OVPN WS SSL :  2086
 Port OVPN SSL    :  990
 Port OVPN TCP    :  1194
@@ -478,8 +478,8 @@ Login Limit      :  ${iplim} IP
 Port OpenSSH     :  22
 Port Dropbear    :  109, 143
 Port SSH WS      :  80, 8008, 8080, 8090, 8280
-Port SSH SSL WS  :  443
-Port SSL/TLS     :  8443
+Port SSH SSL WS  :  8443
+Port SSL/TLS     :  443
 Port OVPN WS SSL :  2086
 Port OVPN SSL    :  990
 Port OVPN TCP    :  1194
@@ -541,8 +541,8 @@ echo -e "$COLOR1 $NC  ${WH}Login Limit${COLOR1}: ${WH}${iplim} IP" | tee -a /etc
 echo -e "$COLOR1 $NC  ${WH}OpenSSH    ${COLOR1}: ${WH}22" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
 echo -e "$COLOR1 $NC  ${WH}Dropbear   ${COLOR1}: ${WH}109, 143" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
 echo -e "$COLOR1 $NC  ${WH}SSH-WS     ${COLOR1}: ${WH}80, 8008, 8080, 8090, 8280" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
-echo -e "$COLOR1 $NC  ${WH}SSH-SSL-WS ${COLOR1}: ${WH}443" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
-echo -e "$COLOR1 $NC  ${WH}SSL/TLS    ${COLOR1}: ${WH}8443" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
+echo -e "$COLOR1 $NC  ${WH}SSH-SSL-WS ${COLOR1}: ${WH}8443" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
+echo -e "$COLOR1 $NC  ${WH}SSL/TLS    ${COLOR1}: ${WH}443" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
 echo -e "$COLOR1 $NC  ${WH}Ovpn Ws    ${COLOR1}: ${WH}2086" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
 echo -e "$COLOR1 $NC  ${WH}Port TCP   ${COLOR1}: ${WH}1194" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
 echo -e "$COLOR1 $NC  ${WH}Port UDP   ${COLOR1}: ${WH}1-65535" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
