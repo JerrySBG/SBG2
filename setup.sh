@@ -1,7 +1,7 @@
 #!/bin/bash
 function CEKIP () {
 MYIP=$(curl -sS ipv4.icanhazip.com)
-IPVPS=$(curl -sS https://raw.githubusercontent.com/JerrySBG/SBG2/main/ip | grep $MYIP | awk '{print $4}')
+IPVPS=$(curl -sS https://raw.githubusercontent.com/JerrySBG/permission/main/ip | grep $MYIP | awk '{print $4}')
 if [[ $MYIP == $IPVPS ]]; then
 domain
 Casper2
@@ -88,7 +88,7 @@ USERGIT=$(cat /etc/github/username)
 hhari=$(date -d "1 days" +"%Y-%m-%d")
 mkdir /root/casper
 cd /root/casper
-wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/ip >/dev/null 2>&1
+wget https://raw.githubusercontent.com/JerrySBG/permission/main/ip >/dev/null 2>&1
 echo "### $author $hhari $MYIP @trial" >> ipmini
 sleep 1
 rm -rf .git
@@ -137,7 +137,7 @@ USERGIT=$(cat /etc/github/username)
 hhari=$(date -d "30 days" +"%Y-%m-%d")
 mkdir /root/rmbl
 cd /root/rmbl
-wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/ip >/dev/null 2>&1
+wget https://raw.githubusercontent.com/JerrySBG/permission/main/ip >/dev/null 2>&1
 
 echo "### $author $hhari $MYIP @RMBL" >> ipmini
 
@@ -168,7 +168,7 @@ USERGIT=$(cat /etc/github/username)
 hhari2=$(date -d "999 days" +"%Y-%m-%d")
 mkdir /root/rmbl
 cd /root/rmbl
-wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/ip >/dev/null 2>&1
+wget https://raw.githubusercontent.com/JerrySBG/permission/main/ip >/dev/null 2>&1
 
 sed -i "/# VIP/a ### ${author2} ${hhari2} ${MYIP2} ON 999 VIP" /root/rmbl/ipmini
 
@@ -199,7 +199,7 @@ USERGIT=$(cat /etc/github/username)
 hhari3=$(date -d "999 days" +"%Y-%m-%d")
 mkdir /root/rmbl
 cd /root/rmbl
-wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/ip >/dev/null 2>&1
+wget https://raw.githubusercontent.com/JerrySBG/permission/main/ip >/dev/null 2>&1
 
 sed -i "/# RESELLER/a ### ${author3} ${hhari3} ${MYIP3} ON 999" /root/rmbl/ipmini
 
@@ -229,7 +229,7 @@ USERGIT=$(cat /etc/github/username)
 hhari=$(date -d "$KEY2 days" +"%Y-%m-%d")
 mkdir /root/rmbl
 cd /root/rmbl
-wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/ip >/dev/null 2>&1
+wget https://raw.githubusercontent.com/JerrySBG/permission/main/ip >/dev/null 2>&1
 if [ "$ADMIN" = "ON" ]; then
 sed -i "/# RESELLER/a ### ${author} ${hhari} ${MYIP} ${ADMIN} ${TOTALIP}" /root/rmbl/ipmini
 else
@@ -741,15 +741,15 @@ TIME=$(date +'%d-%m-%Y %I:%M')
 RAMMS=$(free -m | awk 'NR==2 {print $2}')
 MODEL2=$(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')
 MYIP=$(curl -sS ipv4.icanhazip.com)
-IZIN=$(curl -sS https://raw.githubusercontent.com/JerrySBG/SBG2/main/ip | grep $MYIP | awk '{print $3}' )
+IZIN=$(curl -sS https://raw.githubusercontent.com/JerrySBG/permission/main/ip | grep $MYIP | awk '{print $3}' )
 d1=$(date -d "$IZIN" +%s)
 d2=$(date -d "$today" +%s)
 EXP=$(( (d1 - d2) / 86400 ))
 
 TEXT="
-<code>━━━━━━━━━━━━━━━━━━━━</code>
-<code>⚠️ AUTOSCRIPT PREMIUM ⚠️</code>
-<code>━━━━━━━━━━━━━━━━━━━━</code>
+<code>◇━━━━━━━━━━━━━━━━━━━━━━━━━━◇</code>
+💻🆂🅲🆁🅸🅿🆃 🅹🅴🆁🆁🆈|🆂🅱🅶 💻
+<code>◇━━━━━━━━━━━━━━━━━━━━━━━━━━◇</code>
 <code>NOMBRE   : </code><code>${author}</code>
 <code>FECHA    : </code><code>${TIME} HORA</code>
 <code>DOMINIO  : </code><code>${domain}</code>
@@ -758,7 +758,7 @@ TEXT="
 <code>S.Op     : </code><code>${MODEL2}</code>
 <code>RAM      : </code><code>${RAMMS} MB</code>
 <code>EXP SC   : </code><code>$EXP Dias</code>
-<code>━━━━━━━━━━━━━━━━━━━━</code>
+<code>◇━━━━━━━━━━━━━━━━━━━━━━━━━━◇</code>
 <i> Notificacion Instalacion del Script...</i>
 "'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ","url":"https://t.me/Jerry_SBG"},{"text":"Contack","url":"https://wa.me/+529241293310"}]]}'
 curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
@@ -788,7 +788,7 @@ if [ ! -f "/etc/log-create-user.log" ]; then
 echo "Log All Account " > /etc/log-create-user.log
 fi
 history -c
-serverV=$( curl -sS https://raw.githubusercontent.com/JerrySBG/SBG2/main/versi  )
+serverV=$( curl -sS https://raw.githubusercontent.com/JerrySBG/SBG2/main/versi)
 echo $serverV > /opt/.ver
 aureb=$(cat /home/re_otm)
 b=11
@@ -831,15 +831,15 @@ echo "   >>> Service & Port"  | tee -a log-install.txt
 echo "   - SlowDNS           : Todos los Puertos" | tee -a log-install.txt
 echo "   - OpenSSH           : 22"  | tee -a log-install.txt
 echo "   - SSH Websocket     : 8008, 8080, 8090, 8280" | tee -a log-install.txt
-echo "   - SSH SSL Websocket : 443" | tee -a log-install.txt
-echo "   - Stunnel4          : 444, 445, 448, 4443, 8443" | tee -a log-install.txt
+echo "   - SSH SSL Websocket : 8443" | tee -a log-install.txt
+echo "   - Stunnel4          : 443" | tee -a log-install.txt
 echo "   - Dropbear          : 109, 110, 143" | tee -a log-install.txt
 echo "   - Badvpn            : 7100-7300" | tee -a log-install.txt
 echo "   - Nginx             : 81" | tee -a log-install.txt
 echo "   - Vmess TLS         : 443" | tee -a log-install.txt
-echo "   - Vmess None TLS    : 80, 8081" | tee -a log-install.txt
+echo "   - Vmess None TLS    : 80, 8080" | tee -a log-install.txt
 echo "   - Vless TLS         : 443" | tee -a log-install.txt
-echo "   - Vless None TLS    : 80, 8081" | tee -a log-install.txt
+echo "   - Vless None TLS    : 80, 8080" | tee -a log-install.txt
 echo "   - Trojan GRPC       : 443" | tee -a log-install.txt
 echo "   - Trojan WS         : 443" | tee -a log-install.txt
 echo "   - Trojan Go         : 443" | tee -a log-install.txt
@@ -868,10 +868,14 @@ echo -e "${BIBlue}╭═══════════════════�
 echo -e "${BIBlue}│${BGCOLOR}    INSTALACION DEL SCRIPT FINALIZADO..     ${NC}${BIBlue}│${NC}"
 echo -e "${BIBlue}╰════════════════════════════════════════════╯${NC}"
 echo  ""
-sleep 4
-echo -e "[ ${yell}ADVERTENCIA${NC} ] ¿Quieres Reiniciar Ahora? ? (s/n)? "; read answer
-if [ "$answer" == "${answer#[Ss]}" ] ;then
-exit 0
-else
+sleep 5
+echo -e "${BIBlue}╭════════════════════════════════════════════╮${NC}"
+echo -e "${BIBlue}│${BGCOLOR}    TU VPS SE REINCIARA EN 10 SEGUNDOS..    ${NC}${BIBlue}│${NC}"
+echo -e "${BIBlue}╰════════════════════════════════════════════╯${NC}"
+#echo -e "[ ${yell}ADVERTENCIA${NC} ] ¿Quieres Reiniciar Ahora? ? (s/n)? "; read answer
+#if [ "$answer" == "${answer#[Ss]}" ] ;then
+#exit 0
+#else
+sleep 10
 reboot
-fi
+#fi
