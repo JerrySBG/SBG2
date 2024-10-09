@@ -146,9 +146,12 @@ global
 
 defaults
     mode tcp
-    timeout connect 5000ms
-    timeout client 50000ms
-    timeout server 50000ms
+    retries 3
+    timeout connect 0ms
+    timeout client 0ms
+    timeout server 0ms
+    timeout http-request 0ms
+    timeout http-keep-alive 0ms
 
 frontend ssh-ssl
     bind *:443 ssl crt /etc/haproxy/funny.pem
@@ -158,21 +161,25 @@ backend ssh-ssl
     mode tcp
     server ssh-server 127.0.0.1:3303
 
-frontend ssh-ssl
+frontend ssh-ws
     bind *:80
     bind *:8080
     bind *:8081
     bind *:8090
     bind *:8280
     bind *:8243
-    mode tcp
     option tcplog
-    default_backend ssh-backend
-
-backend ssh-backend
-    mode tcp
-    option tcplog
-    server ssh-server 127.0.0.1:8008
+    default_backend ws-backend
+    timeout client 0ms
+           
+backend ws-backend
+    balance roundrobin
+    server ssh-server2 127.0.0.1:8008 check
+    retries 2
+    timeout connect 0ms
+    timeout server 0ms
+    timeout http-request 0ms
+    timeout http-keep-alive 0ms
 HAH
 
 # install webserver
