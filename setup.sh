@@ -687,7 +687,14 @@ clear
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
 echo -e "${BIBlue}│ ${BGCOLOR}         DESCARGANDO EXTRA MENU         ${NC}${BIBlue} │${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
-wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/menu/update.sh && chmod +x update.sh && ./update.sh
+clear
+    wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/menu/menu.zip
+    unzip menu.zip
+    chmod +x menu/*
+    mv menu/* /usr/local/sbin
+    rm -rf menu
+    rm -rf menu.zip
+#wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/menu/update.sh && chmod +x update.sh && ./update.sh
 clear
 
 #echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
@@ -774,7 +781,6 @@ if [ -f ~/.bashrc ]; then
 fi
 fi
 mesg n || true
-clear
 menu
 END
 chmod 644 /root/.profile
@@ -866,12 +872,9 @@ echo ""
 echo "------------------------------------------------------------"
 echo -e "${BIBlue}╭════════════════════════════════════════════╮${NC}"
 echo -e "${BIBlue}│${BGCOLOR}    INSTALACION DEL SCRIPT FINALIZADO..     ${NC}${BIBlue}│${NC}"
-echo -e "${BIBlue}╰════════════════════════════════════════════╯${NC}"
-echo  ""
-sleep 5
-echo -e "${BIBlue}╭════════════════════════════════════════════╮${NC}"
 echo -e "${BIBlue}│${BGCOLOR}    TU VPS SE REINCIARA EN 10 SEGUNDOS..    ${NC}${BIBlue}│${NC}"
 echo -e "${BIBlue}╰════════════════════════════════════════════╯${NC}"
+echo  ""
 #echo -e "[ ${yell}ADVERTENCIA${NC} ] ¿Quieres Reiniciar Ahora? ? (s/n)? "; read answer
 #if [ "$answer" == "${answer#[Ss]}" ] ;then
 #exit 0
