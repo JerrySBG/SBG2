@@ -44,8 +44,8 @@ echo -e "$COLOR1│     ${YELLOW}COMPRA ACCESO AL SCRIPT POR FAVOR ${NC}        
 echo -e "$COLOR1│             \033[0;32mTELEGRAM: @Jerry_SBG ${NC}               $COLOR1│"
 echo -e "$COLOR1│             \033[0;32mWHATSAPP: 0529241293310 ${NC}            $COLOR1│"
 echo -e "$COLOR1╰═════════════════════════════════════════════════╯${NC}"
-key
 fi
+exit
 }
 checking_sc
 cd
@@ -351,7 +351,7 @@ echo -e " $COLOR1│$NC ${WH}[${COLOR1}24${WH}]${NC} ${COLOR1}• ${WH}INSTALAR 
 echo -e " $COLOR1╰════════════════════════════════════════════════════════════╯${NC}"
 if [ "$Isadmin" = "ON" ]; then
 echo -e "$COLOR1╭══════════════════════ • ${WH}PANEL ADMIN VIP${NC}${COLOR1} • ══════════════════╮${NC}"
-echo -e "$COLOR1│  ${WH}[${COLOR1}13${WH}]${NC} ${COLOR1}• ${WH}MENU KEY BOT ${WH}[${COLOR1}MENU${WH}] $COLOR1 $NC"
+echo -e "$COLOR1│  ${WH}[${COLOR1}14${WH}]${NC} ${COLOR1}• ${WH}MENU KEY BOT ${WH}[${COLOR1}MENU${WH}] $COLOR1 $NC"
 ressee="m-ip2"
 bottt="m-bot"
 echo -e "$COLOR1╰═════════════════════════════════════════════════════════════╯${NC}"
@@ -531,7 +531,7 @@ case $opt in
 12 | 12) clear ; m-backup;;
 13 | 13) clear ; reboot ;;
 14 | 14) clear ; $ressee ;;
-15 | 15) clear ; key ;;
+15 | 15) clear ; $ressee ;;
 22 | 22) clear ; running;;
 23 | 23) clear ; restartservice ;;
 24 | 24) clear ; setupudp ;;
