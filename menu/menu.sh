@@ -19,15 +19,15 @@ DATE2=$(date -R | cut -d " " -f -5)
 Fecha=$(date +"%A, %e de %B del %Y" -d "$data_server")
 TIMEZONE=$(printf '%(%I:%M %p)T')
 MYIP=$(wget -qO- ipinfo.io/ip)
-Isadmin=$(curl -sS https://raw.githubusercontent.com/JerrySBG/SBG2/main/ip | grep $MYIP | awk '{print $5}')
-Exp2=$(curl -sS https://raw.githubusercontent.com/JerrySBG/SBG2/main/ip | grep $MYIP | awk '{print $3}')
+Isadmin=$(curl -sS https://raw.githubusercontent.com/JerrySBG/permission/main/ip | grep $MYIP | awk '{print $5}')
+Exp2=$(curl -sS https://raw.githubusercontent.com/JerrySBG/permission/main/ip | grep $MYIP | awk '{print $3}')
 export RED='\033[0;31m'
 export GREEN='\033[0;32m'
-Name=$(curl -sS https://raw.githubusercontent.com/JerrySBG/SBG2/main/ip | grep $MYIP | awk '{print $2}')
+Name=$(curl -sS https://raw.githubusercontent.com/JerrySBG/permission/main/ip | grep $MYIP | awk '{print $6}')
 ipsaya=$(wget -qO- ipinfo.io/ip)
 data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 date_list=$(date +"%Y-%m-%d" -d "$data_server")
-data_ip="https://raw.githubusercontent.com/JerrySBG/SBG2/main/ip"
+data_ip="https://raw.githubusercontent.com/JerrySBG/permission/main/ip"
 checking_sc() {
 useexp=$(curl -sS $data_ip | grep $ipsaya | awk '{print $3}')
 if [[ $date_list < $useexp ]]; then
@@ -47,7 +47,6 @@ echo -e "$COLOR1╰════════════════════�
 key
 fi
 }
-madmin=$(curl -sS https://raw.githubusercontent.com/JerrySBG/SBG2/main/ip | grep $MYIP | awk '{print $5}')
 checking_sc
 cd
 if [ ! -e /etc/per/id ]; then
@@ -173,7 +172,7 @@ fi
 #    systemctl start noobzvpns
 #fi
 
-sshws=$( systemctl status ws-dropbear2 | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
+sshws=$( systemctl status ws-dropbear | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
 if [[ $sshws == "running" ]]; then
     status_ws="${COLOR1}ON${NC}"
 else
@@ -234,16 +233,7 @@ jumlah_trgo=$(grep -c -E "^### " "/etc/trojan-go/trgo")
 shadow=$(grep -c -E "^#ssgrpc " "/etc/xray/config.json")
 function m-ip2(){
 clear
-cd
-if [[ -e /etc/github/api ]]; then
 m-ip
-else
-mkdir /etc/github
-echo "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" > /etc/github/api
-echo "p.layhackbins@gmail.com" > /etc/github/email
-echo "JerrySBG" > /etc/github/username
-m-ip
-fi
 }
 uphours=`uptime -p | awk '{print $2,$3}' | cut -d , -f1`
 upminutes=`uptime -p | awk '{print $4,$5}' | cut -d , -f1`
@@ -361,7 +351,7 @@ echo -e " $COLOR1│$NC ${WH}[${COLOR1}24${WH}]${NC} ${COLOR1}• ${WH}INSTALAR 
 echo -e " $COLOR1╰════════════════════════════════════════════════════════════╯${NC}"
 if [ "$Isadmin" = "ON" ]; then
 echo -e "$COLOR1╭══════════════════════ • ${WH}PANEL ADMIN VIP${NC}${COLOR1} • ══════════════════╮${NC}"
-echo -e "$COLOR1│  ${WH}[${COLOR1}13${WH}]${NC} ${COLOR1}• ${WH}RESELLER IP ${WH}[${COLOR1}MENU${WH}] $COLOR1 $NC"
+echo -e "$COLOR1│  ${WH}[${COLOR1}13${WH}]${NC} ${COLOR1}• ${WH}MENU KEY BOT ${WH}[${COLOR1}MENU${WH}] $COLOR1 $NC"
 ressee="m-ip2"
 bottt="m-bot"
 echo -e "$COLOR1╰═════════════════════════════════════════════════════════════╯${NC}"
@@ -520,6 +510,7 @@ chmod +x install_up.sh
 echo -e "$COLOR1╭═════════════════════════════════════════════════════════════╮${NC}"
 echo -e "$COLOR1│$NC ${WH} ❈ Version  ${NC} : ${WH}$(cat /opt/.ver) Version${NC}$COLOR1"
 echo -e "$COLOR1│$NC ${WH} ❈ Cliente  ${NC} : \e[1;32m$author${NC}"
+echo -e "$COLOR1│$NC ${WH} ❈ Vendedor ${NC} : \e[1;32m$Name${NC}"
 echo -e "$COLOR1│$NC ${WH} ❈ Duracion ${NC} : ${WH}$certificate Días${NC}$COLOR1"
 echo -e "$COLOR1│$NC ${WH} ❈ Expira   ${NC} : ${WH}$Exp2 $sts ${NC}$COLOR1"
 echo -e "$COLOR1╰═════════════════════════════════════════════════════════════╯${NC}"

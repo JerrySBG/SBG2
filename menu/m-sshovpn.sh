@@ -9,7 +9,7 @@ WH='\033[1;37m'
 ipsaya=$(wget -qO- ipinfo.io/ip)
 data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 date_list=$(date +"%Y-%m-%d" -d "$data_server")
-data_ip="https://raw.githubusercontent.com/JerrySBG/SBG2/main/ip"
+data_ip="https://raw.githubusercontent.com/JerrySBG/permission/main/ip"
 checking_sc() {
 useexp=$(curl -sS $data_ip | grep $ipsaya | awk '{print $3}')
 if [[ $date_list < $useexp ]]; then
@@ -138,8 +138,8 @@ _______________________________
 SSH UDP CUSTOM   : $domen:1-65535@$Login:$Pass
 _______________________________
 SSH WS           : $domen:80@$Login:$Pass
-SHH WS + SSL     : $domen:443@$Login:$Pass
-SHH SSL          : $domen:444@$Login:$Pass
+SHH WS + SSL     : $domen:8443@$Login:$Pass
+SHH SSL          : $domen:443@$Login:$Pass
 _______________________________
 Payload WS/WSS   :
 GET / HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]User-Agent: [ua][crlf]Upgrade: ws[crlf][crlf]
@@ -166,7 +166,7 @@ Port OpenSSH     :  22
 Port Dropbear    :  109, 143
 Port SSH WS      :  80, 8008, 8080, 8090, 8280
 Port SSH SSL WS  :  443
-Port SSL/TLS     :  444, 445, 448, 4443, 8443
+Port SSL/TLS     :  8443
 Port OVPN WS SSL :  2086
 Port OVPN SSL    :  990
 Port OVPN TCP    :  1194
@@ -177,8 +177,8 @@ BadVPN UDP       :  7100, 7300, 7300
 SSH UDP CUSTOM   : <code>$domen:1-65535@$Login:$Pass</code>
 ◇━━━━━━━━━━━━━━━━━━━━◇
 SSH WS           : <code>$domen:80@$Login:$Pass</code>
-SSH WS + SSL     : $domen:443@$Login:$Pass
-SSH SSL          : $domen:444@$Login:$Pass
+SSH WS + SSL     : $domen:8443@$Login:$Pass
+SSH SSL          : $domen:443@$Login:$Pass
 ◇━━━━━━━━━━━━━━━━━━━━◇
 Host Slowdns     :  <code>$sldomain</code>
 Port Slowdns     :  Todos los Puertos
@@ -216,7 +216,7 @@ Port OpenSSH     :  22
 Port Dropbear    :  109, 143
 Port SSH WS      :  80, 8008, 8080, 8090, 8280
 Port SSH SSL WS  :  443
-Port SSL/TLS     :  444, 445, 448, 4443, 8443
+Port SSL/TLS     :  8443
 Port OVPN WS SSL :  2086
 Port OVPN SSL    :  990
 Port OVPN TCP    :  1194
@@ -227,8 +227,8 @@ BadVPN UDP       :  7100, 7300, 7300
 SSH UDP CUSTOM   : <code>$domen:1-65535@$Login:$Pass</code>
 ◇━━━━━━━━━━━━━━━━━━━━◇
 SSH WS           : <code>$domen:80@$Login:$Pass</code>
-SSH WS + SSL     : $domen:443@$Login:$Pass
-SSH SSL          : $domen:444@$Login:$Pass
+SSH WS + SSL     : $domen:8443@$Login:$Pass
+SSH SSL          : $domen:443@$Login:$Pass
 ◇━━━━━━━━━━━━━━━━━━━━◇
 Host Slowdns     :  <code>$sldomain</code>
 Port Slowdns     :  Todos los Puertos
@@ -290,7 +290,7 @@ echo -e "$COLOR1 $NC  ${WH}OpenSSH    ${COLOR1}: ${WH}22" | tee -a /etc/xray/ssh
 echo -e "$COLOR1 $NC  ${WH}Dropbear   ${COLOR1}: ${WH}109, 143" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
 echo -e "$COLOR1 $NC  ${WH}SSH-WS     ${COLOR1}: ${WH}80, 8008, 8080, 8090, 8280" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
 echo -e "$COLOR1 $NC  ${WH}SSH-SSL-WS ${COLOR1}: ${WH}443" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
-echo -e "$COLOR1 $NC  ${WH}SSL/TLS    ${COLOR1}: ${WH}444, 445, 448, 4443, 8443" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
+echo -e "$COLOR1 $NC  ${WH}SSL/TLS    ${COLOR1}: ${WH}8443" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
 echo -e "$COLOR1 $NC  ${WH}Ovpn Ws    ${COLOR1}: ${WH}2086" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
 echo -e "$COLOR1 $NC  ${WH}Port TCP   ${COLOR1}: ${WH}1194" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
 echo -e "$COLOR1 $NC  ${WH}Port UDP   ${COLOR1}: ${WH}1-65535" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
@@ -350,7 +350,7 @@ done
 Login=Temporal-`</dev/urandom tr -dc X-Z0-9 | head -c4`
 DIAS=0
 Pass="ByJERRY"
-iplim=1
+iplim=2
 if [ ! -e /etc/xray/sshx ]; then
 mkdir -p /etc/xray/sshx
 fi
@@ -385,7 +385,7 @@ Port OpenSSH     : 22
 Port Dropbear    : 143, 109
 Port SSH WS      : 80, 8008, 8080, 8090, 8280
 Port SSH SSL WS  : 443
-Port SSL/TLS     : 444, 445, 448, 4443, 8443
+Port SSL/TLS     : 8443
 Port OVPN WS SSL : 2086
 Port OVPN SSL    : 990
 Port OVPN TCP    : 1194
@@ -401,8 +401,8 @@ _______________________________
 SSH UDP CUSTOM   : $domen:1-65535@$Login:$Pass
 _______________________________
 SSH WS           : $domen:80@$Login:$Pass
-SSH WS + SSL     : $domen:443@$Login:$Pass
-SSH SSL          : $domen:444@$Login:$Pass
+SSH WS + SSL     : $domen:8443@$Login:$Pass
+SSH SSL          : $domen:443@$Login:$Pass
 _______________________________
 Payload WS/WSS   :
 GET / HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]User-Agent: [ua][crlf]Upgrade: ws[crlf][crlf]
@@ -429,7 +429,7 @@ Port OpenSSH     :  22
 Port Dropbear    :  109, 143
 Port SSH WS      :  80, 8008, 8080, 8090, 8280
 Port SSH SSL WS  :  443
-Port SSL/TLS     :  444, 445, 448, 4443, 8443
+Port SSL/TLS     :  8443
 Port OVPN WS SSL :  2086
 Port OVPN SSL    :  990
 Port OVPN TCP    :  1194
@@ -440,8 +440,8 @@ BadVPN UDP       :  7100, 7300, 7300
 SSH UDP CUSTOM   : <code>$domen:1-65535@$Login:$Pass</code>
 ◇━━━━━━━━━━━━━━━━━━━━◇
 SSH WS           : <code>$domen:80@$Login:$Pass</code>
-SSH WS + SSL     : $domen:443@$Login:$Pass
-SSH SSL          : $domen:444@$Login:$Pass
+SSH WS + SSL     : $domen:8443@$Login:$Pass
+SSH SSL          : $domen:443@$Login:$Pass
 ◇━━━━━━━━━━━━━━━━━━━━◇
 Host Slowdns     :  <code>$sldomain</code>
 Port Slowdns     :  Todos los Puertos
@@ -479,7 +479,7 @@ Port OpenSSH     :  22
 Port Dropbear    :  109, 143
 Port SSH WS      :  80, 8008, 8080, 8090, 8280
 Port SSH SSL WS  :  443
-Port SSL/TLS     :  444, 445, 448, 4443, 8443
+Port SSL/TLS     :  8443
 Port OVPN WS SSL :  2086
 Port OVPN SSL    :  990
 Port OVPN TCP    :  1194
@@ -490,8 +490,8 @@ BadVPN UDP       :  7100, 7300, 7300
 SSH UDP CUSTOM   : <code>$domen:1-65535@$Login:$Pass</code>
 ◇━━━━━━━━━━━━━━━━━━━━◇
 SSH WS           : <code>$domen:80@$Login:$Pass</code>
-SSH WS + SSL     : $domen:443@$Login:$Pass
-SSH SSL          : $domen:444@$Login:$Pass
+SSH WS + SSL     : $domen:8443@$Login:$Pass
+SSH SSL          : $domen:443@$Login:$Pass
 ◇━━━━━━━━━━━━━━━━━━━━◇
 Host Slowdns     :  <code>$sldomain</code>
 Port Slowdns     :  Todos los Puertos
@@ -542,7 +542,7 @@ echo -e "$COLOR1 $NC  ${WH}OpenSSH    ${COLOR1}: ${WH}22" | tee -a /etc/xray/ssh
 echo -e "$COLOR1 $NC  ${WH}Dropbear   ${COLOR1}: ${WH}109, 143" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
 echo -e "$COLOR1 $NC  ${WH}SSH-WS     ${COLOR1}: ${WH}80, 8008, 8080, 8090, 8280" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
 echo -e "$COLOR1 $NC  ${WH}SSH-SSL-WS ${COLOR1}: ${WH}443" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
-echo -e "$COLOR1 $NC  ${WH}SSL/TLS    ${COLOR1}: ${WH}444, 445, 448, 4443, 8443" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
+echo -e "$COLOR1 $NC  ${WH}SSL/TLS    ${COLOR1}: ${WH}8443" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
 echo -e "$COLOR1 $NC  ${WH}Ovpn Ws    ${COLOR1}: ${WH}2086" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
 echo -e "$COLOR1 $NC  ${WH}Port TCP   ${COLOR1}: ${WH}1194" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log
 echo -e "$COLOR1 $NC  ${WH}Port UDP   ${COLOR1}: ${WH}1-65535" | tee -a /etc/xray/sshx/akun/log-create-${Login}.log

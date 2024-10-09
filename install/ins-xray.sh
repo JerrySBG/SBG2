@@ -79,7 +79,8 @@ chmod +x /root/.acme.sh/acme.sh
 /root/.acme.sh/acme.sh --set-default-ca --server letsencrypt
 /root/.acme.sh/acme.sh --issue -d $domain --standalone -k ec-256
 ~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /etc/xray/xray.crt --keypath /etc/xray/xray.key --ecc
-
+#ssl
+cat /etc/xray/xray.crt /etc/xray/xray.key | tee /etc/haproxy/funny.pem
 # nginx renew ssl
 echo -n '#!/bin/bash
 /etc/init.d/nginx stop
@@ -408,10 +409,10 @@ EOF
 #nginx config
 cat >/etc/nginx/conf.d/xray.conf <<EOF
     server {
-             listen 80;
-             listen [::]:80;
-             listen 8081;
-             listen [::]:8081;
+             listen 80 reuseport;
+             listen [::]:80 reuseport;
+             listen 8080 reuseport;
+             listen [::]:8080 reuseport;
              listen 443 ssl http2 reuseport;
              listen [::]:443 http2 reuseport;
              server_name *.$domain;
@@ -474,18 +475,6 @@ sed -i '$ ilocation = /ss-ws' /etc/nginx/conf.d/xray.conf
 sed -i '$ i{' /etc/nginx/conf.d/xray.conf
 sed -i '$ iproxy_redirect off;' /etc/nginx/conf.d/xray.conf
 sed -i '$ iproxy_pass http://127.0.0.1:30300;' /etc/nginx/conf.d/xray.conf
-sed -i '$ iproxy_http_version 1.1;' /etc/nginx/conf.d/xray.conf
-sed -i '$ iproxy_set_header X-Real-IP \$remote_addr;' /etc/nginx/conf.d/xray.conf
-sed -i '$ iproxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;' /etc/nginx/conf.d/xray.conf
-sed -i '$ iproxy_set_header Upgrade \$http_upgrade;' /etc/nginx/conf.d/xray.conf
-sed -i '$ iproxy_set_header Connection "upgrade";' /etc/nginx/conf.d/xray.conf
-sed -i '$ iproxy_set_header Host \$http_host;' /etc/nginx/conf.d/xray.conf
-sed -i '$ i}' /etc/nginx/conf.d/xray.conf
-
-sed -i '$ ilocation /' /etc/nginx/conf.d/xray.conf
-sed -i '$ i{' /etc/nginx/conf.d/xray.conf
-sed -i '$ iproxy_redirect off;' /etc/nginx/conf.d/xray.conf
-sed -i '$ iproxy_pass http://127.0.0.1:700;' /etc/nginx/conf.d/xray.conf
 sed -i '$ iproxy_http_version 1.1;' /etc/nginx/conf.d/xray.conf
 sed -i '$ iproxy_set_header X-Real-IP \$remote_addr;' /etc/nginx/conf.d/xray.conf
 sed -i '$ iproxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;' /etc/nginx/conf.d/xray.conf

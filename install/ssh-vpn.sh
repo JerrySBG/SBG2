@@ -133,7 +133,47 @@ install_ssl(){
         sleep 3s
     fi
 }
+#haproxy
+apt install haproxy -y
+systemctl start haproxy
+systemctl enable haproxy
+#install haproxy ssl
+rm -fr /etc/haproxy/haproxy.cfg
+cat >/etc/haproxy/haproxy.cfg <<HAH
+global
+    daemon
+    maxconn 256
 
+defaults
+    mode tcp
+    timeout connect 5000ms
+    timeout client 50000ms
+    timeout server 50000ms
+
+frontend ssh-ssl
+    bind *:443 ssl crt /etc/haproxy/funny.pem
+    default_backend ssh-ssl
+
+backend ssh-ssl
+    mode tcp
+    server ssh-server 127.0.0.1:3303
+
+frontend ssh-ssl
+    bind *:80
+    bind *:8080
+    bind *:8081
+    bind *:8090
+    bind *:8280
+    bind *:8243
+    mode tcp
+    option tcplog
+    default_backend ssh-backend
+
+backend ssh-backend
+    mode tcp
+    option tcplog
+    server ssh-server 127.0.0.1:8008
+HAH
 
 # install webserver
 apt -y install nginx php php-fpm php-cli php-mysql libxml-parser-perl
@@ -141,7 +181,7 @@ rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
 curl https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/nginx.conf > /etc/nginx/nginx.conf
 curl https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/vps.conf > /etc/nginx/conf.d/vps.conf
-sed -i 's/listen = \/var\/run\/php-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php/fpm/pool.d/www.conf
+sed -i 's/listen = \/var\/run\/php-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php/7.4/fpm/pool.d/www.conf
 useradd -m vps;
 mkdir -p /home/vps/public_html
 echo "<?php phpinfo() ?>" > /home/vps/public_html/info.php
@@ -225,32 +265,8 @@ socket = a:SO_REUSEADDR=1
 socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
 
-[dropbear]
-accept = 444
-connect = 127.0.0.1:69
-
-#[dropbear]
-#accept = 445
-#connect = 127.0.0.1:69
-
-#[dropbear]
-#accept = 448
-#connect = 127.0.0.1:69
-
-#[dropbear]
-#accept = 4443
-#connect = 127.0.0.1:109
-
-#[dropbear]
-#accept = 8443
-#connect = 127.0.0.1:109
-
-#[ws-stunnel]
-#accept = 2083
-#connect = 700
-
 [ws-stunnel]
-accept = 2096
+accept = 8443
 connect = 700
 
 [openvpn]
@@ -333,8 +349,8 @@ wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/bbr.sh && chmo
 #run_ip
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 80 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8081 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8081 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8080 -j ACCEPT
 #iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8008 -j ACCEPT
 #iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8008 -j ACCEPT
 #iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
@@ -363,9 +379,6 @@ iptables-save > /etc/iptables.up.rules
 iptables-restore -t < /etc/iptables.up.rules
 netfilter-persistent save
 netfilter-persistent reload
-
-
-
 
 # download script
 cd /usr/bin
