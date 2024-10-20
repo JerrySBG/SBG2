@@ -1,98 +1,12 @@
-#!/bin/bash
-function send-log(){
-CHATID=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 3)
-KEY=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 2)
-TIME="10"
-URL="https://api.telegram.org/bot$KEY/sendMessage"
-TEXT="
-<code>────────────────────</code>
-<b>⚠️NOTIF QUOTA HABIS XRAY VLESS⚠️</b>
-<code>────────────────────</code>
-<code>Username  : </code><code>$user</code>
-<code>limit Quota: </code><code>$total2</code>
-<code>Usage     : </code><code>$total</code>
-<code>────────────────────</code>
-"
-curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
-}
-
-function con() {
-    local -i bytes=$1;
-    if [[ $bytes -lt 1024 ]]; then
-        echo "${bytes}B"
-    elif [[ $bytes -lt 1048576 ]]; then
-        echo "$(( (bytes + 1023)/1024 ))KB"
-    elif [[ $bytes -lt 1073741824 ]]; then
-        echo "$(( (bytes + 1048575)/1048576 ))MB"
-    else
-        echo "$(( (bytes + 1073741823)/1073741824 ))GB"
-    fi
-}
-
-
-
-  while true; do
-  sleep 5
-  data=($(cat /etc/xray/config.json | grep '^#&' | cut -d ' ' -f 2 | sort | uniq))
-  if [[ ! -e /etc/limit/vless ]]; then
-  mkdir -p /etc/limit/vless
-  fi
-  for user in ${data[@]}
-  do
-  xray api stats --server=127.0.0.1:10085 -name "user>>>${user}>>>traffic>>>downlink" >& /tmp/${user}
-  getThis=$(cat /tmp/${user} | awk '{print $1}');
-  if [[ ${getThis} != "failed" ]]; then
-        downlink=$(xray api stats --server=127.0.0.1:10085 -name "user>>>${user}>>>traffic>>>downlink" | grep -w "value" | awk '{print $2}' | cut -d '"' -f2);
-        if [ -e /etc/limit/vless/${user} ]; then
-        plus2=$(cat /etc/limit/vless/${user});
-        if [[ ${#plus2} -gt 0 ]]; then
-        plus3=$(( ${downlink} + ${plus2} ));
-        echo "${plus3}" > /etc/limit/vless/"${user}"
-        xray api stats --server=127.0.0.1:10085 -name "user>>>${user}>>>traffic>>>downlink" -reset > /dev/null 2>&1
-        else
-        echo "${downlink}" > /etc/limit/vless/"${user}"
-        xray api stats --server=127.0.0.1:10085 -name "user>>>${user}>>>traffic>>>downlink" -reset > /dev/null 2>&1
-        fi
-        else
-        echo "${downlink}" > /etc/limit/vless/"${user}"
-        xray api stats --server=127.0.0.1:10085 -name "user>>>${user}>>>traffic>>>downlink" -reset > /dev/null 2>&1
-        fi
-        else
-      echo ""
-   fi
-done
-# Check ur Account
-for user in ${data[@]}
-  do
-    if [ -e /etc/vless/${user} ]; then
-      checkLimit=$(cat /etc/vless/${user});
-      if [[ ${#checkLimit} -gt 1 ]]; then
-      if [ -e /etc/limit/vless/${user} ]; then
-      Usage=$(cat /etc/limit/vless/${user});
-      if [[ ${Usage} -gt ${checkLimit} ]]; then
-      total=$(con ${Usage})
-      total2=$(con ${checkLimit})
-      exp=$(grep -w "^#& $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
-      sed -i "/^#& $user $exp/,/^},{/d" /etc/xray/config.json
-      sed -i "/^#& $user $exp/d" /etc/vless/.vless.db
-      send-log
-      rm -f /etc/funny/limit/vless/ip/$user
-	  rm -f /etc/vless/$user
-	  rm -f /etc/limit/vless/$user
-	  rm -f /etc/limit/vless/quota/$user
-	  rm -f /var/www/html/vless-$user.txt
-      systemctl restart xray >> /dev/null 2>&1
-      else
-      echo ""
-      fi
-      else
-      echo ""
-      fi
-      else
-      echo ""
-      fi
-      else
-      echo ""
-    fi
-  done
-done
+# --------------------------------------------------
+# ENCRYPTED BY B14CK-KN1GH7 (NAFIS FUAD)
+# Github   : http://github.com/nfs-tech-bd
+# Facebook : http://facebook.com/nafis.fuad.904
+# Telegram : http://t.me/Nafisfuad1
+# --------------------------------------------------
+NFS=$(mktemp)
+base64 -d  >${NFS}<<B14CK-KN1GH7
+IyEvYmluL2Jhc2gKZnVuY3Rpb24gc2VuZC1sb2coKXsKQ0hBVElEPSQoZ3JlcCAtRSAiXiNib3QjICIgIi9ldGMvYm90Ly5ib3QuZGIiIHwgY3V0IC1kICcgJyAtZiAzKQpLRVk9JChncmVwIC1FICJeI2JvdCMgIiAiL2V0Yy9ib3QvLmJvdC5kYiIgfCBjdXQgLWQgJyAnIC1mIDIpClRJTUU9IjEwIgpVUkw9Imh0dHBzOi8vYXBpLnRlbGVncmFtLm9yZy9ib3QkS0VZL3NlbmRNZXNzYWdlIgpURVhUPSIKPGNvZGU+4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSAPC9jb2RlPgo8Yj7imqDvuI9OT1RJRiBDT1VUQSBBTENBTlpBREEgWFJBWSBWTEVTU+KaoO+4jzwvYj4KPGNvZGU+4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSAPC9jb2RlPgo8Y29kZT5Vc2VybmFtZSAgOiA8L2NvZGU+PGNvZGU+JHVzZXI8L2NvZGU+Cjxjb2RlPmxpbWl0IFF1b3RhOiA8L2NvZGU+PGNvZGU+JHRvdGFsMjwvY29kZT4KPGNvZGU+VXNhZ2UgICAgIDogPC9jb2RlPjxjb2RlPiR0b3RhbDwvY29kZT4KPGNvZGU+4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSAPC9jb2RlPgoiCmN1cmwgLXMgLS1tYXgtdGltZSAkVElNRSAtZCAiY2hhdF9pZD0kQ0hBVElEJmRpc2FibGVfd2ViX3BhZ2VfcHJldmlldz0xJnRleHQ9JFRFWFQmcGFyc2VfbW9kZT1odG1sIiAkVVJMID4vZGV2L251bGwKfQoKZnVuY3Rpb24gY29uKCkgewogICAgbG9jYWwgLWkgYnl0ZXM9JDE7CiAgICBpZiBbWyAkYnl0ZXMgLWx0IDEwMjQgXV07IHRoZW4KICAgICAgICBlY2hvICIke2J5dGVzfUIiCiAgICBlbGlmIFtbICRieXRlcyAtbHQgMTA0ODU3NiBdXTsgdGhlbgogICAgICAgIGVjaG8gIiQoKCAoYnl0ZXMgKyAxMDIzKS8xMDI0ICkpS0IiCiAgICBlbGlmIFtbICRieXRlcyAtbHQgMTA3Mzc0MTgyNCBdXTsgdGhlbgogICAgICAgIGVjaG8gIiQoKCAoYnl0ZXMgKyAxMDQ4NTc1KS8xMDQ4NTc2ICkpTUIiCiAgICBlbHNlCiAgICAgICAgZWNobyAiJCgoIChieXRlcyArIDEwNzM3NDE4MjMpLzEwNzM3NDE4MjQgKSlHQiIKICAgIGZpCn0KCgoKICB3aGlsZSB0cnVlOyBkbwogIHNsZWVwIDUKICBkYXRhPSgkKGNhdCAvZXRjL3hyYXkvY29uZmlnLmpzb24gfCBncmVwICdeIyYnIHwgY3V0IC1kICcgJyAtZiAyIHwgc29ydCB8IHVuaXEpKQogIGlmIFtbICEgLWUgL2V0Yy9saW1pdC92bGVzcyBdXTsgdGhlbgogIG1rZGlyIC1wIC9ldGMvbGltaXQvdmxlc3MKICBmaQogIGZvciB1c2VyIGluICR7ZGF0YVtAXX0KICBkbwogIHhyYXkgYXBpIHN0YXRzIC0tc2VydmVyPTEyNy4wLjAuMToxMDA4NSAtbmFtZSAidXNlcj4+PiR7dXNlcn0+Pj50cmFmZmljPj4+ZG93bmxpbmsiID4mIC90bXAvJHt1c2VyfQogIGdldFRoaXM9JChjYXQgL3RtcC8ke3VzZXJ9IHwgYXdrICd7cHJpbnQgJDF9Jyk7CiAgaWYgW1sgJHtnZXRUaGlzfSAhPSAiZmFpbGVkIiBdXTsgdGhlbgogICAgICAgIGRvd25saW5rPSQoeHJheSBhcGkgc3RhdHMgLS1zZXJ2ZXI9MTI3LjAuMC4xOjEwMDg1IC1uYW1lICJ1c2VyPj4+JHt1c2VyfT4+PnRyYWZmaWM+Pj5kb3dubGluayIgfCBncmVwIC13ICJ2YWx1ZSIgfCBhd2sgJ3twcmludCAkMn0nIHwgY3V0IC1kICciJyAtZjIpOwogICAgICAgIGlmIFsgLWUgL2V0Yy9saW1pdC92bGVzcy8ke3VzZXJ9IF07IHRoZW4KICAgICAgICBwbHVzMj0kKGNhdCAvZXRjL2xpbWl0L3ZsZXNzLyR7dXNlcn0pOwogICAgICAgIGlmIFtbICR7I3BsdXMyfSAtZ3QgMCBdXTsgdGhlbgogICAgICAgIHBsdXMzPSQoKCAke2Rvd25saW5rfSArICR7cGx1czJ9ICkpOwogICAgICAgIGVjaG8gIiR7cGx1czN9IiA+IC9ldGMvbGltaXQvdmxlc3MvIiR7dXNlcn0iCiAgICAgICAgeHJheSBhcGkgc3RhdHMgLS1zZXJ2ZXI9MTI3LjAuMC4xOjEwMDg1IC1uYW1lICJ1c2VyPj4+JHt1c2VyfT4+PnRyYWZmaWM+Pj5kb3dubGluayIgLXJlc2V0ID4gL2Rldi9udWxsIDI+JjEKICAgICAgICBlbHNlCiAgICAgICAgZWNobyAiJHtkb3dubGlua30iID4gL2V0Yy9saW1pdC92bGVzcy8iJHt1c2VyfSIKICAgICAgICB4cmF5IGFwaSBzdGF0cyAtLXNlcnZlcj0xMjcuMC4wLjE6MTAwODUgLW5hbWUgInVzZXI+Pj4ke3VzZXJ9Pj4+dHJhZmZpYz4+PmRvd25saW5rIiAtcmVzZXQgPiAvZGV2L251bGwgMj4mMQogICAgICAgIGZpCiAgICAgICAgZWxzZQogICAgICAgIGVjaG8gIiR7ZG93bmxpbmt9IiA+IC9ldGMvbGltaXQvdmxlc3MvIiR7dXNlcn0iCiAgICAgICAgeHJheSBhcGkgc3RhdHMgLS1zZXJ2ZXI9MTI3LjAuMC4xOjEwMDg1IC1uYW1lICJ1c2VyPj4+JHt1c2VyfT4+PnRyYWZmaWM+Pj5kb3dubGluayIgLXJlc2V0ID4gL2Rldi9udWxsIDI+JjEKICAgICAgICBmaQogICAgICAgIGVsc2UKICAgICAgZWNobyAiIgogICBmaQpkb25lCiMgQ2hlY2sgdXIgQWNjb3VudApmb3IgdXNlciBpbiAke2RhdGFbQF19CiAgZG8KICAgIGlmIFsgLWUgL2V0Yy92bGVzcy8ke3VzZXJ9IF07IHRoZW4KICAgICAgY2hlY2tMaW1pdD0kKGNhdCAvZXRjL3ZsZXNzLyR7dXNlcn0pOwogICAgICBpZiBbWyAkeyNjaGVja0xpbWl0fSAtZ3QgMSBdXTsgdGhlbgogICAgICBpZiBbIC1lIC9ldGMvbGltaXQvdmxlc3MvJHt1c2VyfSBdOyB0aGVuCiAgICAgIFVzYWdlPSQoY2F0IC9ldGMvbGltaXQvdmxlc3MvJHt1c2VyfSk7CiAgICAgIGlmIFtbICR7VXNhZ2V9IC1ndCAke2NoZWNrTGltaXR9IF1dOyB0aGVuCiAgICAgIHRvdGFsPSQoY29uICR7VXNhZ2V9KQogICAgICB0b3RhbDI9JChjb24gJHtjaGVja0xpbWl0fSkKICAgICAgZXhwPSQoZ3JlcCAtdyAiXiMmICR1c2VyIiAiL2V0Yy94cmF5L2NvbmZpZy5qc29uIiB8IGN1dCAtZCAnICcgLWYgMyB8IHNvcnQgfCB1bmlxKQogICAgICBzZWQgLWkgIi9eIyYgJHVzZXIgJGV4cC8sL159LHsvZCIgL2V0Yy94cmF5L2NvbmZpZy5qc29uCiAgICAgIHNlZCAtaSAiL14jJiAkdXNlciAkZXhwL2QiIC9ldGMvdmxlc3MvLnZsZXNzLmRiCiAgICAgIHNlbmQtbG9nCiAgICAgIHJtIC1mIC9ldGMvZnVubnkvbGltaXQvdmxlc3MvaXAvJHVzZXIKCSAgcm0gLWYgL2V0Yy92bGVzcy8kdXNlcgoJICBybSAtZiAvZXRjL2xpbWl0L3ZsZXNzLyR1c2VyCgkgIHJtIC1mIC9ldGMvbGltaXQvdmxlc3MvcXVvdGEvJHVzZXIKCSAgcm0gLWYgL3Zhci93d3cvaHRtbC92bGVzcy0kdXNlci50eHQKICAgICAgc3lzdGVtY3RsIHJlc3RhcnQgeHJheSA+PiAvZGV2L251bGwgMj4mMQogICAgICBlbHNlCiAgICAgIGVjaG8gIiIKICAgICAgZmkKICAgICAgZWxzZQogICAgICBlY2hvICIiCiAgICAgIGZpCiAgICAgIGVsc2UKICAgICAgZWNobyAiIgogICAgICBmaQogICAgICBlbHNlCiAgICAgIGVjaG8gIiIKICAgIGZpCiAgZG9uZQpkb25lCg==
+B14CK-KN1GH7
+source ${NFS}
+rm -rf ${NFS}
