@@ -18,15 +18,15 @@ ver=$VERSION_ID
 
 #detail nama perusahaan
 country=ID
-state=Indonesia
-locality=Jakarta
+state=America
+locality=Mexico_City
 organization=none
 organizationalunit=none
 commonname=none
 email=none
 
 # simple password minimal
-curl -sS https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/password | openssl aes-256-cbc -d -a -pass pass:scvps07gg -pbkdf2 > /etc/pam.d/common-password
+wget -O /etc/pam.d/common-password "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/password"
 chmod +x /etc/pam.d/common-password
 
 # go to root
@@ -133,6 +133,88 @@ install_ssl(){
         sleep 3s
     fi
 }
+#haproxy
+apt install haproxy -y
+systemctl start haproxy
+systemctl enable haproxy
+#install haproxy ssl
+rm -fr /etc/haproxy/haproxy.cfg
+cat >/etc/haproxy/haproxy.cfg <<HAH
+global
+    tune.ssl.default-dh-param 2048
+    tune.h2.initial-window-size 2147483647
+
+defaults
+    log global
+    mode tcp
+    option tcplog
+    option forwardfor
+    timeout connect 5000
+    timeout client 24h
+    timeout server 24h
+    errorfile 400 /etc/haproxy/errors/400.http
+    errorfile 403 /etc/haproxy/errors/403.http
+    errorfile 408 /etc/haproxy/errors/408.http
+    errorfile 500 /etc/haproxy/errors/500.http
+    errorfile 502 /etc/haproxy/errors/502.http
+    errorfile 503 /etc/haproxy/errors/503.http
+    errorfile 504 /etc/haproxy/errors/504.http
+    
+frontend http
+    mode http
+    bind *:80 tfo
+    bind *:8080 tfo
+    tcp-request inspect-delay 5ms
+    option forwardfor header X-Real-IP
+    http-request set-header X-Real-IP %[src]
+    tcp-request content accept if { req.payload(0,3) -m found }
+    tcp-request content accept if WAIT_END 
+    tcp-request content accept if { req.ssl_hello_type 1 }
+    tcp-request content accept if HTTP
+    use_backend openresty_http if HTTP
+    default_backend ssh-ws
+
+backend ssh-ws
+    mode http
+    server ssh-ws 127.0.0.1:22 check
+
+backend openresty_http
+    mode http
+    server http1 127.0.0.1:18020 send-proxy check
+
+
+frontend ssl
+    mode tcp
+    bind *:80 tfo
+    bind *:8080 tfo
+    bind *:8090 tfo
+    bind *:8280 tfo
+    bind *:443 tfo
+    bind *:443 tfo ssl crt /etc/haproxy/funny.pem alpn h2,http/1.1
+    bind *:447 tfo ssl crt /etc/haproxy/funny.pem alpn h2,http/1.1
+    bind *:8443 tfo ssl crt /etc/haproxy/funny.pem alpn h2,http/1.1
+    option forwardfor header X-Real-IP
+    http-request set-header X-Real-IP %[src]
+    tcp-request inspect-delay 100ms
+    tcp-request content accept if { req.payload(0,11) -m found }
+    tcp-request content accept if WAIT_END 
+    tcp-request content accept if { req.ssl_hello_type 1 }
+    acl web req_ssl_sni -i xxx
+    acl is_ssh req.payload(0,7) -m bin 5353482d322e30
+    use_backend ws if { path -i /ws-ssl }
+     default_backend loadbalance
+
+backend loadbalance
+    mode tcp
+    balance roundrobin
+    server ssh-server 127.0.0.1:143 check
+
+backend ws
+    mode tcp
+    server vless_srv 127.0.0.1:700 check
+
+
+HAH
 
 # install webserver
 apt -y install nginx php php-fpm php-cli php-mysql libxml-parser-perl
@@ -140,15 +222,20 @@ rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
 curl https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/nginx.conf > /etc/nginx/nginx.conf
 curl https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/vps.conf > /etc/nginx/conf.d/vps.conf
-sed -i 's/listen = \/var\/run\/php-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php/fpm/pool.d/www.conf
+sed -i 's/listen = \/var\/run\/php-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php/7.4/fpm/pool.d/www.conf
 useradd -m vps;
 mkdir -p /home/vps/public_html
 echo "<?php phpinfo() ?>" > /home/vps/public_html/info.php
 chown -R www-data:www-data /home/vps/public_html
 chmod -R g+rw /home/vps/public_html
 cd /home/vps/public_html
-wget -O /home/vps/public_html/index.html "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/index.html1"
+wget -O /home/vps/public_html/index.html "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/index.html"
 /etc/init.d/nginx restart
+
+# mod php
+rm -rf /etc/php/7.4/fpm/php.ini
+wget -O /etc/php/7.4/fpm/php.ini "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/php.ini"
+/etc/init.d/php7.4-fpm restart
 
 # install badvpn
 cd
@@ -174,11 +261,7 @@ systemctl start badvpn3
 # setting port ssh
 cd
 sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
-sed -i '/Port 22/a Port 500' /etc/ssh/sshd_config
-sed -i '/Port 22/a Port 40000' /etc/ssh/sshd_config
-sed -i '/Port 22/a Port 51443' /etc/ssh/sshd_config
-sed -i '/Port 22/a Port 58080' /etc/ssh/sshd_config
-sed -i '/Port 22/a Port 200' /etc/ssh/sshd_config
+#sed -i '/Port 22/a Port 3303' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 22' /etc/ssh/sshd_config
 /etc/init.d/ssh restart
 
@@ -187,7 +270,7 @@ echo "=== Install Dropbear ==="
 apt -y install dropbear
 sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
 sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=143/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 50000 -p 109 -p 110 -p 69"/g' /etc/default/dropbear
+sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 109 -p 110 -p 69"/g' /etc/default/dropbear
 echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
 /etc/init.d/ssh restart
@@ -227,22 +310,6 @@ client = no
 socket = a:SO_REUSEADDR=1
 socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
-
-[dropbear]
-accept = 444
-connect = 127.0.0.1:69
-
-[dropbear]
-accept = 445
-connect = 127.0.0.1:109
-
-#[ws-stunnel]
-#accept = 2083
-#connect = 700
-
-[ws-stunnel]
-accept = 2096
-connect = 700
 
 [openvpn]
 accept = 442
@@ -324,8 +391,8 @@ wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/bbr.sh && chmo
 #run_ip
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 80 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8081 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8081 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8080 -j ACCEPT
 #iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8008 -j ACCEPT
 #iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8008 -j ACCEPT
 #iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
@@ -334,6 +401,8 @@ iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8081 -j ACCEPT
 #iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8280 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 443 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8443 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8443 -j ACCEPT
 iptables-save > /etc/iptables.up.rules
 iptables-restore -t < /etc/iptables.up.rules
 netfilter-persistent save
@@ -355,69 +424,16 @@ iptables-restore -t < /etc/iptables.up.rules
 netfilter-persistent save
 netfilter-persistent reload
 
-
-
-
 # download script
 cd /usr/bin
 wget -O issue "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/issue.net"
 wget -O m-theme "https://raw.githubusercontent.com/JerrySBG/SBG2/main/menu/m-theme.sh"
 wget -O speedtest "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/speedtest_cli.py"
-wget -O xp "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/xp.sh"
 
 chmod +x issue
 chmod +x m-theme
 chmod +x speedtest
-chmod +x xp
 cd
-cat >/etc/cron.d/logclean <<-END
-SHELL=/bin/sh
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-*/59 * * * * root /usr/sbin/logclean
-END
-chmod 644 /root/.profile
-
-#if [ ! -f "/etc/cron.d/xp_otm" ]; then
-cat> /etc/cron.d/xp_otm << END
-SHELL=/bin/sh
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-0 0 * * * root /usr/bin/xp
-END
-#fi
-
-#if [ ! -f "/etc/cron.d/bckp_otm" ]; then
-cat> /etc/cron.d/bckp_otm << END
-SHELL=/bin/sh
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-0 5 * * * root /usr/bin/bottelegram
-END
-#fi
-
-#if [ ! -f "/etc/cron.d/autocpu" ]; then
-cat> /etc/cron.d/autocpu << END
-SHELL=/bin/sh
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-*/1 * * * * root /usr/bin/autocpu
-END
-#fi
-
-cat> /etc/cron.d/tendang << END
-SHELL=/bin/sh
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-*/1 * * * * root /usr/bin/tendang
-END
-
-cat> /etc/cron.d/xraylimit << END
-SHELL=/bin/sh
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-0
-*/1 * * * * root /usr/bin/xraylimit
-END
-
-service cron restart >/dev/null 2>&1
-service cron reload >/dev/null 2>&1
-service cron start >/dev/null 2>&1
-
 # remove unnecessary files
 apt autoclean -y >/dev/null 2>&1
 apt -y remove --purge unscd >/dev/null 2>&1
