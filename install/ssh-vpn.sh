@@ -26,7 +26,8 @@ commonname=none
 email=none
 
 # simple password minimal
-wget -O /etc/pam.d/common-password "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/password"
+#wget -O /etc/pam.d/common-password "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/password"
+curl -sS https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/password | openssl aes-256-cbc -d -a -pass pass:scvps07gg -pbkdf2 > /etc/pam.d/common-password
 chmod +x /etc/pam.d/common-password
 
 # go to root
@@ -160,31 +161,6 @@ defaults
     errorfile 503 /etc/haproxy/errors/503.http
     errorfile 504 /etc/haproxy/errors/504.http
     
-frontend ws
-    mode tcp
-    bind *:80 tfo
-    bind *:8080 tfo
-    bind *:8090 tfo
-    bind *:8280 tfo
-    option forwardfor header X-Real-IP
-    http-request set-header X-Real-IP %[src]
-    tcp-request inspect-delay 100ms
-    tcp-request content accept if { req.payload(0,11) -m found }
-    tcp-request content accept if WAIT_END 
-    tcp-request content accept if { req.ssl_hello_type 1 }
-    acl web req_ssl_sni -i xxx
-    acl is_ssh req.payload(0,7) -m bin 5353482d322e30
-    default_backend wss
-
-backend wss
-    mode tcp
-    server ssh-server 127.0.0.1:8008 check
-    server vless-server 127.0.0.1:14016 check
-    server vmess-server 127.0.0.1:23456 check
-    server worryfree-server 127.0.0.1:28406 check
-    server trojan-server 127.0.0.1:25432 check
-    server ss-server 127.0.0.1:30300 check
-
 frontend ssl
     mode tcp
     bind *:443 ssl crt /etc/haproxy/funny.pem
@@ -195,12 +171,13 @@ frontend ssl
 backend sl
     mode tcp
     option tcplog
-    server vless_srv 127.0.0.1:22 check
-    
+    server ssh_server 127.0.0.1:22 check
+    server ssh-server2 127.0.0.1:700 check
+
 HAH
 
 # install webserver
-apt -y install nginx php php-fpm php-cli php-mysql libxml-parser-perl
+apt -y install nginx
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
 curl https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/nginx.conf > /etc/nginx/nginx.conf
@@ -216,9 +193,9 @@ wget -O /home/vps/public_html/index.html "https://raw.githubusercontent.com/Jerr
 /etc/init.d/nginx restart
 
 # mod php
-rm -rf /etc/php/7.4/fpm/php.ini
-wget -O /etc/php/7.4/fpm/php.ini "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/php.ini"
-/etc/init.d/php7.4-fpm restart
+#rm -rf /etc/php/7.4/fpm/php.ini
+#wget -O /etc/php/7.4/fpm/php.ini "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/php.ini"
+#/etc/init.d/php7.4-fpm restart
 
 # install badvpn
 cd
