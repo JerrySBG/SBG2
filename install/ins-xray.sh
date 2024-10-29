@@ -80,7 +80,7 @@ chmod +x /root/.acme.sh/acme.sh
 /root/.acme.sh/acme.sh --issue -d $domain --standalone -k ec-256
 ~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /etc/xray/xray.crt --keypath /etc/xray/xray.key --ecc
 #ssl
-cat /etc/xray/xray.crt /etc/xray/xray.key | tee /etc/haproxy/funny.pem
+#cat /etc/xray/xray.crt /etc/xray/xray.key | tee /etc/haproxy/funny.pem
 # nginx renew ssl
 echo -n '#!/bin/bash
 /etc/init.d/nginx stop
@@ -413,6 +413,8 @@ cat >/etc/nginx/conf.d/xray.conf <<EOF
              listen [::]:80;
              listen 8080;
              listen [::]:8080;
+             listen 8090;
+             listen [::]:8090;
              listen 8280;
              listen [::]:8280;
              listen 443 ssl http2 reuseport;
@@ -426,6 +428,7 @@ cat >/etc/nginx/conf.d/xray.conf <<EOF
              ssl_certificate_key /etc/xray/xray.key;
              ssl_ciphers EECDH+CHACHA20:EECDH+CHACHA20-draft:EECDH+ECDSA+AES128:EECDH+aRSA+AES128:RSA+AES128:EECDH+ECDSA+AES256:EECDH+aRSA+AES256:RSA+AES256:EECDH+ECDSA+3DES:EECDH+aRSA+3DES:RSA+3DES:!MD5;
              ssl_protocols TLSv1.1 TLSv1.2 TLSv1.3;
+             client_max_body_size 0;
              root /home/vps/public_html;
         }
 EOF

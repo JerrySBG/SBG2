@@ -142,42 +142,33 @@ systemctl enable haproxy
 rm -fr /etc/haproxy/haproxy.cfg
 cat >/etc/haproxy/haproxy.cfg <<HAH
 global
-     daemon
+    daemon
     maxconn 256
 
 defaults
-    log global
     mode tcp
     option tcplog
-    option forwardfor
     timeout connect 5000
     timeout client 24h
     timeout server 24h
-    errorfile 400 /etc/haproxy/errors/400.http
-    errorfile 403 /etc/haproxy/errors/403.http
-    errorfile 408 /etc/haproxy/errors/408.http
-    errorfile 500 /etc/haproxy/errors/500.http
-    errorfile 502 /etc/haproxy/errors/502.http
-    errorfile 503 /etc/haproxy/errors/503.http
-    errorfile 504 /etc/haproxy/errors/504.http
     
 frontend ssl
     mode tcp
-    bind *:443 ssl crt /etc/haproxy/funny.pem
-    bind *:447 ssl crt /etc/haproxy/funny.pem
-    bind *:8443 ssl crt /etc/haproxy/funny.pem
+    bind *:443 ssl crt /etc/stunnel/stunnel.pem
+    bind *:447 ssl crt /etc/stunnel/stunnel.pem
+    bind *:8443 ssl crt /etc/stunnel/stunnel.pem
+    mode tcp
+    option tcplog
     default_backend sl
 
 backend sl
     mode tcp
     option tcplog
     server ssh_server 127.0.0.1:22 check
-    server ssh-server2 127.0.0.1:700 check
-
 HAH
 
 # install webserver
-apt -y install nginx
+apt -y install nginx php php-fpm php-cli php-mysql libxml-parser-perl
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
 curl https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/nginx.conf > /etc/nginx/nginx.conf
@@ -193,9 +184,9 @@ wget -O /home/vps/public_html/index.html "https://raw.githubusercontent.com/Jerr
 /etc/init.d/nginx restart
 
 # mod php
-#rm -rf /etc/php/7.4/fpm/php.ini
-#wget -O /etc/php/7.4/fpm/php.ini "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/php.ini"
-#/etc/init.d/php7.4-fpm restart
+rm -rf /etc/php/7.4/fpm/php.ini
+wget -O /etc/php/7.4/fpm/php.ini "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/php.ini"
+/etc/init.d/php7.4-fpm restart
 
 # install badvpn
 cd
