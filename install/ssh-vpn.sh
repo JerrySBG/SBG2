@@ -18,15 +18,14 @@ ver=$VERSION_ID
 
 #detail nama perusahaan
 country=ID
-state=America
-locality=Mexico_City
+state=Indonesia
+locality=Jakarta
 organization=none
 organizationalunit=none
 commonname=none
 email=none
 
 # simple password minimal
-#wget -O /etc/pam.d/common-password "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/password"
 curl -sS https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/password | openssl aes-256-cbc -d -a -pass pass:scvps07gg -pbkdf2 > /etc/pam.d/common-password
 chmod +x /etc/pam.d/common-password
 
@@ -134,38 +133,6 @@ install_ssl(){
         sleep 3s
     fi
 }
-#haproxy
-apt install haproxy -y
-systemctl start haproxy
-systemctl enable haproxy
-#install haproxy ssl
-rm -fr /etc/haproxy/haproxy.cfg
-cat >/etc/haproxy/haproxy.cfg <<HAH
-global
-    daemon
-    maxconn 256
-
-defaults
-    mode tcp
-    option tcplog
-    timeout connect 5000
-    timeout client 24h
-    timeout server 24h
-    
-frontend ssl
-    mode tcp
-    bind *:443 ssl crt /etc/stunnel/stunnel.pem
-    bind *:447 ssl crt /etc/stunnel/stunnel.pem
-    bind *:8443 ssl crt /etc/stunnel/stunnel.pem
-    mode tcp
-    option tcplog
-    default_backend sl
-
-backend sl
-    mode tcp
-    option tcplog
-    server ssh_server 127.0.0.1:22 check
-HAH
 
 # install webserver
 apt -y install nginx php php-fpm php-cli php-mysql libxml-parser-perl
@@ -173,7 +140,7 @@ rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
 curl https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/nginx.conf > /etc/nginx/nginx.conf
 curl https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/vps.conf > /etc/nginx/conf.d/vps.conf
-sed -i 's/listen = \/var\/run\/php-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php/7.4/fpm/pool.d/www.conf
+sed -i 's/listen = \/var\/run\/php-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php/fpm/pool.d/www.conf
 useradd -m vps;
 mkdir -p /home/vps/public_html
 echo "<?php phpinfo() ?>" > /home/vps/public_html/info.php
@@ -182,11 +149,6 @@ chmod -R g+rw /home/vps/public_html
 cd /home/vps/public_html
 wget -O /home/vps/public_html/index.html "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/index.html"
 /etc/init.d/nginx restart
-
-# mod php
-rm -rf /etc/php/7.4/fpm/php.ini
-wget -O /etc/php/7.4/fpm/php.ini "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/php.ini"
-/etc/init.d/php7.4-fpm restart
 
 # install badvpn
 cd
@@ -208,11 +170,10 @@ systemctl stop badvpn3
 systemctl enable badvpn3
 systemctl start badvpn3 
 
-
 # setting port ssh
 cd
 sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
-#sed -i '/Port 22/a Port 3303' /etc/ssh/sshd_config
+sed -i '/Port 22/a Port 3303' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 22' /etc/ssh/sshd_config
 /etc/init.d/ssh restart
 
@@ -221,7 +182,7 @@ echo "=== Install Dropbear ==="
 apt -y install dropbear
 sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
 sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=143/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 109 -p 110 -p 69"/g' /etc/default/dropbear
+sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 50000 -p 109 -p 110 -p 69"/g' /etc/default/dropbear
 echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
 /etc/init.d/ssh restart
@@ -262,6 +223,22 @@ socket = a:SO_REUSEADDR=1
 socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
 
+[dropbear]
+accept = 444
+connect = 127.0.0.1:69
+
+[dropbear]
+accept = 445
+connect = 127.0.0.1:109
+
+#[ws-stunnel]
+#accept = 2083
+#connect = 700
+
+[ws-stunnel]
+accept = 2096
+connect = 700
+
 [openvpn]
 accept = 442
 connect = 127.0.0.1:1194
@@ -286,7 +263,6 @@ wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/vpn.sh &&  chm
 #wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/sshws/ovpn-websocket.sh &&  chmod +x ovpn-websocket.sh && ./ovpn-websocket.sh
 #go run ovpn-websocket.sh
 
-
 # // install lolcat
 wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/lolcat.sh &&  chmod +x lolcat.sh && ./lolcat.sh
 
@@ -304,10 +280,10 @@ apt -y install fail2ban
 
 # Instal DDOS Flate
 if [ -d '/usr/local/ddos' ]; then
-	echo; echo; echo "Please un-install the previous version first"
-	exit 0
+    echo; echo; echo "Please un-install the previous version first"
+    exit 0
 else
-	mkdir /usr/local/ddos
+    mkdir /usr/local/ddos
 fi
 clear
 echo; echo 'Installing DOS-Deflate 0.6'; echo
@@ -342,8 +318,8 @@ wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/bbr.sh && chmo
 #run_ip
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 80 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8080 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8081 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8081 -j ACCEPT
 #iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8008 -j ACCEPT
 #iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8008 -j ACCEPT
 #iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
@@ -352,8 +328,6 @@ iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8080 -j ACCEPT
 #iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8280 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 443 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8443 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8443 -j ACCEPT
 iptables-save > /etc/iptables.up.rules
 iptables-restore -t < /etc/iptables.up.rules
 netfilter-persistent save
@@ -384,6 +358,7 @@ wget -O speedtest "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/
 chmod +x issue
 chmod +x m-theme
 chmod +x speedtest
+chmod +x xp
 cd
 # remove unnecessary files
 apt autoclean -y >/dev/null 2>&1
