@@ -134,6 +134,7 @@ install_ssl(){
     fi
 }
 #install haproxy ssl
+apt install haproxy -y
 rm -fr /etc/haproxy/haproxy.cfg
 cat >/etc/haproxy/haproxy.cfg <<HAH
 global
@@ -155,9 +156,11 @@ frontend ssh-ssl
 backend ssh-backend
     mode tcp
     option tcplog
-    server ssh-server 127.0.0.1:700
+    server ssh-server 127.0.0.1:22
 HAH
 clear
+systemctl daemon-reload
+systemctl restart haproxy
 
 # install webserver
 apt -y install nginx php php-fpm php-cli php-mysql libxml-parser-perl
