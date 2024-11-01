@@ -133,6 +133,31 @@ install_ssl(){
         sleep 3s
     fi
 }
+#install haproxy ssl
+rm -fr /etc/haproxy/haproxy.cfg
+cat >/etc/haproxy/haproxy.cfg <<HAH
+global
+    daemon
+    maxconn 256
+
+defaults
+    mode tcp
+    timeout connect 5000ms
+    timeout client 50000ms
+    timeout server 50000ms
+
+frontend ssh-ssl
+    bind *:443 ssl crt /etc/stunnel/stunnel.pem
+    mode tcp
+    option tcplog
+    default_backend ssh-backend
+
+backend ssh-backend
+    mode tcp
+    option tcplog
+    server ssh-server 127.0.0.1:700
+HAH
+clear
 
 # install webserver
 apt -y install nginx php php-fpm php-cli php-mysql libxml-parser-perl
@@ -222,18 +247,6 @@ client = no
 socket = a:SO_REUSEADDR=1
 socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
-
-[dropbear]
-accept = 444
-connect = 127.0.0.1:69
-
-[dropbear]
-accept = 445
-connect = 127.0.0.1:109
-
-#[ws-stunnel]
-#accept = 2083
-#connect = 700
 
 [ws-stunnel]
 accept = 2096
