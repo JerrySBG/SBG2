@@ -413,6 +413,7 @@ cat >/etc/nginx/conf.d/xray.conf <<EOF
              listen [::]:1800;
              listen 4443 ssl http2 reuseport;
              listen [::]:4443 http2 reuseport;
+             client_max_body_size 9999999999M;
              server_name $domain;
              ssl_certificate /etc/xray/xray.crt;
              ssl_certificate_key /etc/xray/xray.key;
