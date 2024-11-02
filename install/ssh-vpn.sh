@@ -133,6 +133,34 @@ install_ssl(){
         sleep 3s
     fi
 }
+#install haproxy ssl
+apt install haproxy -y
+rm -fr /etc/haproxy/haproxy.cfg
+cat >/etc/haproxy/haproxy.cfg <<HAH
+global
+    daemon
+    maxconn 256
+
+defaults
+    mode tcp
+    timeout connect 5000ms
+    timeout client 50000ms
+    timeout server 50000ms
+
+frontend ssh-ssl
+    bind *:443 ssl crt /etc/haproxy/funny.pem
+    mode tcp
+    option tcplog
+    default_backend ssh-backend
+
+backend ssh-backend
+    mode tcp
+    option tcplog
+    server ssh-server 127.0.0.1:22
+HAH
+clear
+systemctl daemon-reload
+systemctl restart haproxy
 
 # install webserver
 apt -y install nginx php php-fpm php-cli php-mysql libxml-parser-perl

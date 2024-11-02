@@ -79,7 +79,8 @@ chmod +x /root/.acme.sh/acme.sh
 /root/.acme.sh/acme.sh --set-default-ca --server letsencrypt
 /root/.acme.sh/acme.sh --issue -d $domain --standalone -k ec-256
 ~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /etc/xray/xray.crt --keypath /etc/xray/xray.key --ecc
-
+#ssl
+cat /etc/xray/xray.crt /etc/xray/xray.key | tee /etc/haproxy/funny.pem
 # nginx renew ssl
 echo -n '#!/bin/bash
 /etc/init.d/nginx stop
