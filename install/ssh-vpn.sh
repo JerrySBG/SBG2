@@ -147,16 +147,33 @@ defaults
     timeout client 50000ms
     timeout server 50000ms
 
-frontend ssh-ssl
+frontend http-https
+    bind *:80 tfo
+    bind *:8080 tfo
+    bind *:8090 tfo
+    bind *:8280 tfo
     bind *:443 ssl crt /etc/haproxy/funny.pem
-    mode tcp
-    option tcplog
-    default_backend ssh-backend
+    use_backend http_nginx_pool    if !{ ssl_fc }
+    use_backend https_nginx_pool   if { ssl_fc }
+    
+backend http_nginx_pool
+    mode http
+    server nginx 127.0.0.1:8008 send-proxy check
+    server nginx2 127.0.0.1:14016 send-proxy check
+    server nginx3 127.0.0.1:23456 send-proxy check
+    server nginx4 127.0.0.1:28406 send-proxy check
+    server nginx5 127.0.0.1:25432 send-proxy check
+    server nginx6 127.0.0.1:30300 send-proxy check
 
-backend ssh-backend
-    mode tcp
-    option tcplog
-    server ssh-server 127.0.0.1:22
+backend https_nginx_pool
+    mode http
+    server nginx2 127.0.0.1:22 check
+    server nginx2 127.0.0.1:700 send-proxy check
+    server nginx3 127.0.0.1:24456 send-proxy check
+    server nginx4 127.0.0.1:31234 send-proxy check
+    server nginx5 127.0.0.1:33456 send-proxy check
+    server nginx6 127.0.0.1:30310 send-proxy check
+
 HAH
 clear
 systemctl daemon-reload
@@ -198,28 +215,36 @@ systemctl stop badvpn3
 systemctl enable badvpn3
 systemctl start badvpn3 
 
-
 # setting port ssh
 cd
-sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
-sed -i '/Port 22/a Port 500' /etc/ssh/sshd_config
-sed -i '/Port 22/a Port 40000' /etc/ssh/sshd_config
-sed -i '/Port 22/a Port 51443' /etc/ssh/sshd_config
-sed -i '/Port 22/a Port 58080' /etc/ssh/sshd_config
-sed -i '/Port 22/a Port 200' /etc/ssh/sshd_config
-sed -i '/Port 22/a Port 22' /etc/ssh/sshd_config
+echo "=== Install SSH ==="
+wget -q -O /etc/ssh/sshd_config "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/sshd" >/dev/null 2>&1
+chmod 700 /etc/ssh/sshd_config
 /etc/init.d/ssh restart
+systemctl restart ssh
+/etc/init.d/ssh status
+print_success "SSHD"
+
+#sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+#sed -i '/Port 22/a Port 22' /etc/ssh/sshd_config
+#/etc/init.d/ssh restart
 
 echo "=== Install Dropbear ==="
 # install dropbear
 apt -y install dropbear
-sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=143/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 50000 -p 109 -p 110 -p 69"/g' /etc/default/dropbear
+wget -q -O /etc/default/dropbear "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/dropbear.conf"
+chmod +x /etc/default/dropbear
+/etc/init.d/dropbear restart
+/etc/init.d/ssh restart
+/etc/init.d/dropbear status
+print_success "DROPBEAR"
+#sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
+#sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=143/g' /etc/default/dropbear
+#sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 50000 -p 109 -p 110 -p 69"/g' /etc/default/dropbear
 echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
-/etc/init.d/ssh restart
-/etc/init.d/dropbear restart
+#/etc/init.d/ssh restart
+#/etc/init.d/dropbear restart
 
 # // install squid for debian 9,10 & ubuntu 20.04
 apt -y install squid3
@@ -256,22 +281,6 @@ socket = a:SO_REUSEADDR=1
 socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
 
-[dropbear]
-accept = 444
-connect = 127.0.0.1:69
-
-[dropbear]
-accept = 445
-connect = 127.0.0.1:109
-
-#[ws-stunnel]
-#accept = 2083
-#connect = 700
-
-[ws-stunnel]
-accept = 2096
-connect = 700
-
 [openvpn]
 accept = 442
 connect = 127.0.0.1:1194
@@ -296,7 +305,6 @@ wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/vpn.sh &&  chm
 #wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/sshws/ovpn-websocket.sh &&  chmod +x ovpn-websocket.sh && ./ovpn-websocket.sh
 #go run ovpn-websocket.sh
 
-
 # // install lolcat
 wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/lolcat.sh &&  chmod +x lolcat.sh && ./lolcat.sh
 
@@ -314,10 +322,10 @@ apt -y install fail2ban
 
 # Instal DDOS Flate
 if [ -d '/usr/local/ddos' ]; then
-	echo; echo; echo "Please un-install the previous version first"
-	exit 0
+    echo; echo; echo "Please un-install the previous version first"
+    exit 0
 else
-	mkdir /usr/local/ddos
+    mkdir /usr/local/ddos
 fi
 clear
 echo; echo 'Installing DOS-Deflate 0.6'; echo
@@ -383,85 +391,67 @@ iptables-restore -t < /etc/iptables.up.rules
 netfilter-persistent save
 netfilter-persistent reload
 
-
-
-
 # download script
 cd /usr/bin
 wget -O issue "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/issue.net"
 wget -O m-theme "https://raw.githubusercontent.com/JerrySBG/SBG2/main/menu/m-theme.sh"
 wget -O speedtest "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/speedtest_cli.py"
-wget -O xp "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/xp.sh"
 
 chmod +x issue
 chmod +x m-theme
 chmod +x speedtest
-chmod +x xp
 cd
-cat >/etc/cron.d/logclean <<-END
-SHELL=/bin/sh
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-*/59 * * * * root /usr/sbin/logclean
-END
-chmod 644 /root/.profile
-
-#if [ ! -f "/etc/cron.d/xp_otm" ]; then
-cat> /etc/cron.d/xp_otm << END
-SHELL=/bin/sh
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-0 0 * * * root /usr/bin/xp
-END
-#fi
-
-#if [ ! -f "/etc/cron.d/bckp_otm" ]; then
-cat> /etc/cron.d/bckp_otm << END
-SHELL=/bin/sh
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-0 5 * * * root /usr/bin/bottelegram
-END
-#fi
-
-#if [ ! -f "/etc/cron.d/autocpu" ]; then
-cat> /etc/cron.d/autocpu << END
-SHELL=/bin/sh
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-*/1 * * * * root /usr/bin/autocpu
-END
-#fi
-
-cat> /etc/cron.d/tendang << END
-SHELL=/bin/sh
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-*/1 * * * * root /usr/bin/tendang
-END
-
-cat> /etc/cron.d/xraylimit << END
-SHELL=/bin/sh
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-0
-*/1 * * * * root /usr/bin/xraylimit
-END
-
-service cron restart >/dev/null 2>&1
-service cron reload >/dev/null 2>&1
-service cron start >/dev/null 2>&1
-
 # remove unnecessary files
 apt autoclean -y >/dev/null 2>&1
 apt -y remove --purge unscd >/dev/null 2>&1
-apt-get -y --purge remove samba* >/dev/null 2>&1
-apt-get -y --purge remove apache2* >/dev/null 2>&1
-apt-get -y --purge remove bind9* >/dev/null 2>&1
-apt-get -y remove sendmail* >/dev/null 2>&1
-apt autoremove -y >/dev/null 2>&1
+#apt-get -y --purge remove samba* >/dev/null 2>&1
+#apt-get -y --purge remove apache2* >/dev/null 2>&1
+#apt-get -y --purge remove bind9* >/dev/null 2>&1
+#apt-get -y remove sendmail* >/dev/null 2>&1
+#apt autoremove -y >/dev/null 2>&1
 # finishing
 cd
 chown -R www-data:www-data /home/vps/public_html
+sleep 1
+echo -e "$yell[SERVICE]$NC Restart All service SSH & OVPN"
+/etc/init.d/nginx restart >/dev/null 2>&1
+sleep 1
+echo -e "[ ${green}ok${NC} ] Restarting nginx"
+/etc/init.d/openvpn restart >/dev/null 2>&1
+sleep 1
+echo -e "[ ${green}ok${NC} ] Restarting cron "
+/etc/init.d/ssh restart >/dev/null 2>&1
+sleep 1
+echo -e "[ ${green}ok${NC} ] Restarting ssh "
+/etc/init.d/dropbear restart >/dev/null 2>&1
+sleep 1
+echo -e "[ ${green}ok${NC} ] Restarting dropbear "
+/etc/init.d/fail2ban restart >/dev/null 2>&1
+sleep 1
+echo -e "[ ${green}ok${NC} ] Restarting fail2ban "
+/etc/init.d/stunnel4 restart >/dev/null 2>&1
+sleep 1
+echo -e "[ ${green}ok${NC} ] Restarting stunnel4 "
+/etc/init.d/vnstat restart >/dev/null 2>&1
+sleep 1
+echo -e "[ ${green}ok${NC} ] Restarting vnstat "
+/etc/init.d/squid restart >/dev/null 2>&1
+
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 500
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 500
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7400 --max-clients 500
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7500 --max-clients 500
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7600 --max-clients 500
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7700 --max-clients 500
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7800 --max-clients 500
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7900 --max-clients 500
+history -c
+echo "unset HISTFILE" >> /etc/profile
 
 rm -f /root/key.pem
 rm -f /root/cert.pem
 rm -f /root/ssh-vpn.sh
 rm -f /root/bbr.sh
-rm -rf /etc/apache2
 
 clear
