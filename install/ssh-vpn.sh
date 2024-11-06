@@ -1,12 +1,453 @@
-# --------------------------------------------------
-# ENCRYPTED BY B14CK-KN1GH7 (NAFIS FUAD)
-# Github   : http://github.com/nfs-tech-bd
-# Facebook : http://facebook.com/nafis.fuad.904
-# Telegram : http://t.me/Nafisfuad1
-# --------------------------------------------------
-NFS=$(mktemp)
-base64 -d  >${NFS}<<B14CK-KN1GH7
-IyEvYmluL2Jhc2gKIwojID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CgojIGV0YwphcHQgZGlzdC11cGdyYWRlIC15CmFwdCBpbnN0YWxsIG5ldGZpbHRlci1wZXJzaXN0ZW50IC15CmFwdC1nZXQgcmVtb3ZlIC0tcHVyZ2UgdWZ3IGZpcmV3YWxsZCAteQphcHQgaW5zdGFsbCAteSBzY3JlZW4gY3VybCBqcSBiemlwMiBnemlwIHZuc3RhdCBjb3JldXRpbHMgcnN5c2xvZyBpZnRvcCB6aXAgdW56aXAgZ2l0IGFwdC10cmFuc3BvcnQtaHR0cHMgYnVpbGQtZXNzZW50aWFsIC15CgojIGluaXRpYWxpemluZyB2YXIKZXhwb3J0IERFQklBTl9GUk9OVEVORD1ub25pbnRlcmFjdGl2ZQpNWUlQPSQod2dldCAtcU8tIGlwaW5mby5pby9pcCk7Ck1ZSVAyPSJzL3h4eHh4eHh4eC8kTVlJUC9nIjsKTkVUPSQoaXAgLW8gJEFOVSAtNCByb3V0ZSBzaG93IHRvIGRlZmF1bHQgfCBhd2sgJ3twcmludCAkNX0nKTsKc291cmNlIC9ldGMvb3MtcmVsZWFzZQp2ZXI9JFZFUlNJT05fSUQKCiNkZXRhaWwgbmFtYSBwZXJ1c2FoYWFuCmNvdW50cnk9SUQKc3RhdGU9SW5kb25lc2lhCmxvY2FsaXR5PUpha2FydGEKb3JnYW5pemF0aW9uPW5vbmUKb3JnYW5pemF0aW9uYWx1bml0PW5vbmUKY29tbW9ubmFtZT1ub25lCmVtYWlsPW5vbmUKCiMgc2ltcGxlIHBhc3N3b3JkIG1pbmltYWwKY3VybCAtc1MgaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0plcnJ5U0JHL1NCRzIvbWFpbi9pbnN0YWxsL3Bhc3N3b3JkIHwgb3BlbnNzbCBhZXMtMjU2LWNiYyAtZCAtYSAtcGFzcyBwYXNzOnNjdnBzMDdnZyAtcGJrZGYyID4gL2V0Yy9wYW0uZC9jb21tb24tcGFzc3dvcmQKY2htb2QgK3ggL2V0Yy9wYW0uZC9jb21tb24tcGFzc3dvcmQKCiMgZ28gdG8gcm9vdApjZAoKIyBFZGl0IGZpbGUgL2V0Yy9zeXN0ZW1kL3N5c3RlbS9yYy1sb2NhbC5zZXJ2aWNlCmNhdCA+IC9ldGMvc3lzdGVtZC9zeXN0ZW0vcmMtbG9jYWwuc2VydmljZSA8PC1FTkQKW1VuaXRdCkRlc2NyaXB0aW9uPS9ldGMvcmMubG9jYWwKQ29uZGl0aW9uUGF0aEV4aXN0cz0vZXRjL3JjLmxvY2FsCltTZXJ2aWNlXQpUeXBlPWZvcmtpbmcKRXhlY1N0YXJ0PS9ldGMvcmMubG9jYWwgc3RhcnQKVGltZW91dFNlYz0wClN0YW5kYXJkT3V0cHV0PXR0eQpSZW1haW5BZnRlckV4aXQ9eWVzClN5c1ZTdGFydFByaW9yaXR5PTk5CltJbnN0YWxsXQpXYW50ZWRCeT1tdWx0aS11c2VyLnRhcmdldApFTkQKCiMgbmFubyAvZXRjL3JjLmxvY2FsCmNhdCA+IC9ldGMvcmMubG9jYWwgPDwtRU5ECiMhL2Jpbi9zaCAtZQojIHJjLmxvY2FsCiMgQnkgZGVmYXVsdCB0aGlzIHNjcmlwdCBkb2VzIG5vdGhpbmcuCmV4aXQgMApFTkQKCiMgVWJhaCBpemluIGFrc2VzCmNobW9kICt4IC9ldGMvcmMubG9jYWwKCiMgZW5hYmxlIHJjIGxvY2FsCnN5c3RlbWN0bCBlbmFibGUgcmMtbG9jYWwKc3lzdGVtY3RsIHN0YXJ0IHJjLWxvY2FsLnNlcnZpY2UKCiMgZGlzYWJsZSBpcHY2CmVjaG8gMSA+IC9wcm9jL3N5cy9uZXQvaXB2Ni9jb25mL2FsbC9kaXNhYmxlX2lwdjYKc2VkIC1pICckIGlcZWNobyAxID4gL3Byb2Mvc3lzL25ldC9pcHY2L2NvbmYvYWxsL2Rpc2FibGVfaXB2NicgL2V0Yy9yYy5sb2NhbAoKI3VwZGF0ZQphcHQgdXBkYXRlIC15CmFwdCB1cGdyYWRlIC15CmFwdCBjbGVhbiBhbGwKYXB0IGRpc3QtdXBncmFkZSAteQphcHQtZ2V0IHJlbW92ZSAtLXB1cmdlIHVmdyBmaXJld2FsbGQgLXkKYXB0LWdldCByZW1vdmUgLS1wdXJnZSBleGltNCAteQoKI2luc3RhbGwganEKYXB0IC15IGluc3RhbGwganEKCiNpbnN0YWxsIHNoYwphcHQgLXkgaW5zdGFsbCBzaGMKCiMgaW5zdGFsbCB3Z2V0IGFuZCBjdXJsCmFwdCAteSBpbnN0YWxsIHdnZXQgY3VybAoKI2ZpZ2xldAphcHQtZ2V0IGluc3RhbGwgZmlnbGV0IC15CmFwdC1nZXQgaW5zdGFsbCBydWJ5IC15CmdlbSBpbnN0YWxsIGxvbGNhdAoKIyBzZXQgdGltZSBHTVQgKzcKbG4gLWZzIC91c3Ivc2hhcmUvem9uZWluZm8vQW1lcmljYS9NZXhpY29fQ2l0eSAvZXRjL2xvY2FsdGltZQoKIyBzZXQgbG9jYWxlCnNlZCAtaSAncy9BY2NlcHRFbnYvI0FjY2VwdEVudi9nJyAvZXRjL3NzaC9zc2hkX2NvbmZpZwoKIyAvLyBpbnN0YWxsCmFwdC1nZXQgLS1yZWluc3RhbGwgLS1maXgtbWlzc2luZyBpbnN0YWxsIC15IGJ6aXAyIGd6aXAgY29yZXV0aWxzIHdnZXQgc2NyZWVuIHJzeXNsb2cgaWZ0b3AgaHRvcCBuZXQtdG9vbHMgemlwIHVuemlwIHdnZXQgbmV0LXRvb2xzIGN1cmwgbmFubyBzZWQgc2NyZWVuIGdudXBnIGdudXBnMSBiYyBhcHQtdHJhbnNwb3J0LWh0dHBzIGJ1aWxkLWVzc2VudGlhbCBkaXJtbmdyIGxpYnhtbC1wYXJzZXItcGVybCBuZW9mZXRjaCBnaXQgbHNvZgplY2hvICJjbGVhciIgPj4gLnByb2ZpbGUKZWNobyAibWVudSIgPj4gLnByb2ZpbGUKCmluc3RhbGxfc3NsKCl7CiAgICBpZiBbIC1mICIvdXNyL2Jpbi9hcHQtZ2V0IiBdO3RoZW4KICAgICAgICAgICAgaXNEZWJpYW49YGNhdCAvZXRjL2lzc3VlfGdyZXAgRGViaWFuYAogICAgICAgICAgICBpZiBbICIkaXNEZWJpYW4iICE9ICIiIF07dGhlbgogICAgICAgICAgICAgICAgICAgIGFwdC1nZXQgaW5zdGFsbCAteSBuZ2lueCBjZXJ0Ym90CiAgICAgICAgICAgICAgICAgICAgYXB0IGluc3RhbGwgLXkgbmdpbnggY2VydGJvdAogICAgICAgICAgICAgICAgICAgIHNsZWVwIDNzCiAgICAgICAgICAgIGVsc2UKICAgICAgICAgICAgICAgICAgICBhcHQtZ2V0IGluc3RhbGwgLXkgbmdpbnggY2VydGJvdAogICAgICAgICAgICAgICAgICAgIGFwdCBpbnN0YWxsIC15IG5naW54IGNlcnRib3QKICAgICAgICAgICAgICAgICAgICBzbGVlcCAzcwogICAgICAgICAgICBmaQogICAgZWxzZQogICAgICAgIHl1bSBpbnN0YWxsIC15IG5naW54IGNlcnRib3QKICAgICAgICBzbGVlcCAzcwogICAgZmkKCiAgICBzeXN0ZW1jdGwgc3RvcCBuZ2lueC5zZXJ2aWNlCgogICAgaWYgWyAtZiAiL3Vzci9iaW4vYXB0LWdldCIgXTt0aGVuCiAgICAgICAgICAgIGlzRGViaWFuPWBjYXQgL2V0Yy9pc3N1ZXxncmVwIERlYmlhbmAKICAgICAgICAgICAgaWYgWyAiJGlzRGViaWFuIiAhPSAiIiBdO3RoZW4KICAgICAgICAgICAgICAgICAgICBlY2hvICJBIiB8IGNlcnRib3QgY2VydG9ubHkgLS1yZW5ldy1ieS1kZWZhdWx0IC0tcmVnaXN0ZXItdW5zYWZlbHktd2l0aG91dC1lbWFpbCAtLXN0YW5kYWxvbmUgLWQgJGRvbWFpbgogICAgICAgICAgICAgICAgICAgIHNsZWVwIDNzCiAgICAgICAgICAgIGVsc2UKICAgICAgICAgICAgICAgICAgICBlY2hvICJBIiB8IGNlcnRib3QgY2VydG9ubHkgLS1yZW5ldy1ieS1kZWZhdWx0IC0tcmVnaXN0ZXItdW5zYWZlbHktd2l0aG91dC1lbWFpbCAtLXN0YW5kYWxvbmUgLWQgJGRvbWFpbgogICAgICAgICAgICAgICAgICAgIHNsZWVwIDNzCiAgICAgICAgICAgIGZpCiAgICBlbHNlCiAgICAgICAgZWNobyAiWSIgfCBjZXJ0Ym90IGNlcnRvbmx5IC0tcmVuZXctYnktZGVmYXVsdCAtLXJlZ2lzdGVyLXVuc2FmZWx5LXdpdGhvdXQtZW1haWwgLS1zdGFuZGFsb25lIC1kICRkb21haW4KICAgICAgICBzbGVlcCAzcwogICAgZmkKfQojaW5zdGFsbCBoYXByb3h5IHNzbAphcHQgaW5zdGFsbCBoYXByb3h5IC15CnJtIC1mciAvZXRjL2hhcHJveHkvaGFwcm94eS5jZmcKY2F0ID4vZXRjL2hhcHJveHkvaGFwcm94eS5jZmcgPDxIQUgKZ2xvYmFsCiAgICBkYWVtb24KICAgIG1heGNvbm4gMjU2CgpkZWZhdWx0cwogICAgbW9kZSB0Y3AKICAgIHRpbWVvdXQgY29ubmVjdCA1MDAwbXMKICAgIHRpbWVvdXQgY2xpZW50IDUwMDAwbXMKICAgIHRpbWVvdXQgc2VydmVyIDUwMDAwbXMKCmZyb250ZW5kIGh0dHAKICAgIGJpbmQgKjo4MCB0Zm8KICAgIGJpbmQgKjo4MDgwIHRmbwogICAgYmluZCAqOjgwOTAgdGZvCiAgICBiaW5kICo6ODI4MCB0Zm8KICAgIHVzZV9iYWNrZW5kIGh0dHBfbmdpbnhfcG9vbCAgICBpZiAheyBzc2xfZmMgfQoKZnJvbnRlbmQgaHR0cHMKICAgIGJpbmQgKjo0NDMgc3NsIGNydCAvZXRjL2hhcHJveHkvZnVubnkucGVtCiAgICBiaW5kICo6ODQ0MyBzc2wgY3J0IC9ldGMvaGFwcm94eS9mdW5ueS5wZW0KICAgIHVzZV9iYWNrZW5kIGh0dHBzX25naW54X3Bvb2wgICBpZiB7IHNzbF9mYyB9CgpiYWNrZW5kIGh0dHBfbmdpbnhfcG9vbAogICAgbW9kZSB0Y3AKICAgIHNlcnZlciBuZ2lueCAxMjcuMC4wLjE6ODAwOCBzZW5kLXByb3h5IGNoZWNrCgpiYWNrZW5kIGh0dHBzX25naW54X3Bvb2wKICAgIG1vZGUgdGNwCiAgICBzZXJ2ZXIgbmdpbngyIDEyNy4wLjAuMToxMDkgY2hlY2sKSEFICmNsZWFyCnN5c3RlbWN0bCBkYWVtb24tcmVsb2FkCnN5c3RlbWN0bCByZXN0YXJ0IGhhcHJveHkKCiMgaW5zdGFsbCB3ZWJzZXJ2ZXIKYXB0IC15IGluc3RhbGwgbmdpbnggcGhwIHBocC1mcG0gcGhwLWNsaSBwaHAtbXlzcWwgbGlieG1sLXBhcnNlci1wZXJsCnJtIC9ldGMvbmdpbngvc2l0ZXMtZW5hYmxlZC9kZWZhdWx0CnJtIC9ldGMvbmdpbngvc2l0ZXMtYXZhaWxhYmxlL2RlZmF1bHQKY3VybCBodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vSmVycnlTQkcvU0JHMi9tYWluL2luc3RhbGwvbmdpbnguY29uZiA+IC9ldGMvbmdpbngvbmdpbnguY29uZgpjdXJsIGh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9KZXJyeVNCRy9TQkcyL21haW4vaW5zdGFsbC92cHMuY29uZiA+IC9ldGMvbmdpbngvY29uZi5kL3Zwcy5jb25mCnNlZCAtaSAncy9saXN0ZW4gPSBcL3ZhclwvcnVuXC9waHAtZnBtLnNvY2svbGlzdGVuID0gMTI3LjAuMC4xOjkwMDAvZycgL2V0Yy9waHAvZnBtL3Bvb2wuZC93d3cuY29uZgp1c2VyYWRkIC1tIHZwczsKbWtkaXIgLXAgL2hvbWUvdnBzL3B1YmxpY19odG1sCmVjaG8gIjw/cGhwIHBocGluZm8oKSA/PiIgPiAvaG9tZS92cHMvcHVibGljX2h0bWwvaW5mby5waHAKY2hvd24gLVIgd3d3LWRhdGE6d3d3LWRhdGEgL2hvbWUvdnBzL3B1YmxpY19odG1sCmNobW9kIC1SIGcrcncgL2hvbWUvdnBzL3B1YmxpY19odG1sCmNkIC9ob21lL3Zwcy9wdWJsaWNfaHRtbAp3Z2V0IC1PIC9ob21lL3Zwcy9wdWJsaWNfaHRtbC9pbmRleC5odG1sICJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vSmVycnlTQkcvU0JHMi9tYWluL2luc3RhbGwvaW5kZXguaHRtbCIKL2V0Yy9pbml0LmQvbmdpbnggcmVzdGFydAoKIyBpbnN0YWxsIGJhZHZwbgpjZAp3Z2V0IC1PIC91c3Ivc2Jpbi9iYWR2cG4gImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9KZXJyeVNCRy9TQkcyL21haW4vaW5zdGFsbC9iYWR2cG4iID4vZGV2L251bGwgMj4mMQpjaG1vZCAreCAvdXNyL3NiaW4vYmFkdnBuID4gL2Rldi9udWxsIDI+JjEKd2dldCAtcSAtTyAvZXRjL3N5c3RlbWQvc3lzdGVtL2JhZHZwbjEuc2VydmljZSAiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0plcnJ5U0JHL1NCRzIvbWFpbi9pbnN0YWxsL2JhZHZwbjEuc2VydmljZSIgPi9kZXYvbnVsbCAyPiYxCndnZXQgLXEgLU8gL2V0Yy9zeXN0ZW1kL3N5c3RlbS9iYWR2cG4yLnNlcnZpY2UgImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9KZXJyeVNCRy9TQkcyL21haW4vaW5zdGFsbC9iYWR2cG4yLnNlcnZpY2UiID4vZGV2L251bGwgMj4mMQp3Z2V0IC1xIC1PIC9ldGMvc3lzdGVtZC9zeXN0ZW0vYmFkdnBuMy5zZXJ2aWNlICJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vSmVycnlTQkcvU0JHMi9tYWluL2luc3RhbGwvYmFkdnBuMy5zZXJ2aWNlIiA+L2Rldi9udWxsIDI+JjEKc3lzdGVtY3RsIGRpc2FibGUgYmFkdnBuMSAKc3lzdGVtY3RsIHN0b3AgYmFkdnBuMSAKc3lzdGVtY3RsIGVuYWJsZSBiYWR2cG4xCnN5c3RlbWN0bCBzdGFydCBiYWR2cG4xIApzeXN0ZW1jdGwgZGlzYWJsZSBiYWR2cG4yIApzeXN0ZW1jdGwgc3RvcCBiYWR2cG4yIApzeXN0ZW1jdGwgZW5hYmxlIGJhZHZwbjIKc3lzdGVtY3RsIHN0YXJ0IGJhZHZwbjIgCnN5c3RlbWN0bCBkaXNhYmxlIGJhZHZwbjMgCnN5c3RlbWN0bCBzdG9wIGJhZHZwbjMgCnN5c3RlbWN0bCBlbmFibGUgYmFkdnBuMwpzeXN0ZW1jdGwgc3RhcnQgYmFkdnBuMyAKCiMgc2V0dGluZyBwb3J0IHNzaApjZApzZWQgLWkgJ3MvUGFzc3dvcmRBdXRoZW50aWNhdGlvbiBuby9QYXNzd29yZEF1dGhlbnRpY2F0aW9uIHllcy9nJyAvZXRjL3NzaC9zc2hkX2NvbmZpZwpzZWQgLWkgJy9Qb3J0IDIyL2EgUG9ydCAyMicgL2V0Yy9zc2gvc3NoZF9jb25maWcKZWNobyAiU3Vic3lzdGVtICAgICAgIHNmdHAgICAgL3Vzci9saWIvb3BlbnNzaC9zZnRwLXNlcnZlciIgPj4gL2V0Yy9zc2gvc3NoZF9jb25maWcKc3lzdGVtY3RsIGRhZW1vbi1yZWxvYWQKL2V0Yy9pbml0LmQvc3NoIHJlc3RhcnQKI3dnZXQgLXFPLSAtTyAvZXRjL3NzaC9zc2hkX2NvbmZpZyBodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vSmVycnlTQkcvU0JHMi9tYWluL2luc3RhbGwvc3NoZF9jb25maWcKI3N5c3RlbWN0bCByZXN0YXJ0IHNzaGQKCmVjaG8gIj09PSBJbnN0YWxsIERyb3BiZWFyID09PSIKIyBpbnN0YWxsIGRyb3BiZWFyCmFwdCAteSBpbnN0YWxsIGRyb3BiZWFyCnNlZCAtaSAncy9OT19TVEFSVD0xL05PX1NUQVJUPTAvZycgL2V0Yy9kZWZhdWx0L2Ryb3BiZWFyCnNlZCAtaSAncy9EUk9QQkVBUl9QT1JUPTIyL0RST1BCRUFSX1BPUlQ9MTQzL2cnIC9ldGMvZGVmYXVsdC9kcm9wYmVhcgpzZWQgLWkgJ3MvRFJPUEJFQVJfRVhUUkFfQVJHUz0vRFJPUEJFQVJfRVhUUkFfQVJHUz0iLXAgMTA5IC1wIDExMCAtcCA2OSIvZycgL2V0Yy9kZWZhdWx0L2Ryb3BiZWFyCmVjaG8gIi9iaW4vZmFsc2UiID4+IC9ldGMvc2hlbGxzCmVjaG8gIi91c3Ivc2Jpbi9ub2xvZ2luIiA+PiAvZXRjL3NoZWxscwovZXRjL2luaXQuZC9zc2ggcmVzdGFydAovZXRjL2luaXQuZC9kcm9wYmVhciByZXN0YXJ0CgojIC8vIGluc3RhbGwgc3F1aWQgZm9yIGRlYmlhbiA5LDEwICYgdWJ1bnR1IDIwLjA0CmFwdCAteSBpbnN0YWxsIHNxdWlkMwoKIyBpbnN0YWxsIHNxdWlkIGZvciBkZWJpYW4gMTEKYXB0IC15IGluc3RhbGwgc3F1aWQKd2dldCAtTyAvZXRjL3NxdWlkL3NxdWlkLmNvbmYgImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9KZXJyeVNCRy9TQkcyL21haW4vaW5zdGFsbC9zcXVpZDMuY29uZiIKc2VkIC1pICRNWUlQMiAvZXRjL3NxdWlkL3NxdWlkLmNvbmYKCiMgc2V0dGluZyB2bnN0YXQKYXB0IC15IGluc3RhbGwgdm5zdGF0Ci9ldGMvaW5pdC5kL3Zuc3RhdCByZXN0YXJ0CmFwdCAteSBpbnN0YWxsIGxpYnNxbGl0ZTMtZGV2CndnZXQgaHR0cHM6Ly9odW1kaS5uZXQvdm5zdGF0L3Zuc3RhdC0yLjYudGFyLmd6CnRhciB6eHZmIHZuc3RhdC0yLjYudGFyLmd6CmNkIHZuc3RhdC0yLjYKLi9jb25maWd1cmUgLS1wcmVmaXg9L3VzciAtLXN5c2NvbmZkaXI9L2V0YyAmJiBtYWtlICYmIG1ha2UgaW5zdGFsbApjZAp2bnN0YXQgLXUgLWkgJE5FVApzZWQgLWkgJ3MvSW50ZXJmYWNlICInIiJldGgwIiInIi9JbnRlcmZhY2UgIiciIiRORVQiIiciL2cnIC9ldGMvdm5zdGF0LmNvbmYKY2hvd24gdm5zdGF0OnZuc3RhdCAvdmFyL2xpYi92bnN0YXQgLVIKc3lzdGVtY3RsIGVuYWJsZSB2bnN0YXQKL2V0Yy9pbml0LmQvdm5zdGF0IHJlc3RhcnQKcm0gLWYgL3Jvb3Qvdm5zdGF0LTIuNi50YXIuZ3oKcm0gLXJmIC9yb290L3Zuc3RhdC0yLjYKCmNkCiMgaW5zdGFsbCBzdHVubmVsCmFwdCBpbnN0YWxsIHN0dW5uZWw0IC15CmNhdCA+IC9ldGMvc3R1bm5lbC9zdHVubmVsLmNvbmYgPDwtRU5ECmNlcnQgPSAvZXRjL3N0dW5uZWwvc3R1bm5lbC5wZW0KY2xpZW50ID0gbm8Kc29ja2V0ID0gYTpTT19SRVVTRUFERFI9MQpzb2NrZXQgPSBsOlRDUF9OT0RFTEFZPTEKc29ja2V0ID0gcjpUQ1BfTk9ERUxBWT0xCgpbb3BlbnZwbl0KYWNjZXB0ID0gNDQyCmNvbm5lY3QgPSAxMjcuMC4wLjE6MTE5NAoKRU5ECgojIG1ha2UgYSBjZXJ0aWZpY2F0ZQpvcGVuc3NsIGdlbnJzYSAtb3V0IGtleS5wZW0gMjA0OApvcGVuc3NsIHJlcSAtbmV3IC14NTA5IC1rZXkga2V5LnBlbSAtb3V0IGNlcnQucGVtIC1kYXlzIDEwOTUgXAotc3ViaiAiL0M9JGNvdW50cnkvU1Q9JHN0YXRlL0w9JGxvY2FsaXR5L089JG9yZ2FuaXphdGlvbi9PVT0kb3JnYW5pemF0aW9uYWx1bml0L0NOPSRjb21tb25uYW1lL2VtYWlsQWRkcmVzcz0kZW1haWwiCmNhdCBrZXkucGVtIGNlcnQucGVtID4+IC9ldGMvc3R1bm5lbC9zdHVubmVsLnBlbQoKIyBrb25maWd1cmFzaSBzdHVubmVsCnNlZCAtaSAncy9FTkFCTEVEPTAvRU5BQkxFRD0xL2cnIC9ldGMvZGVmYXVsdC9zdHVubmVsNAovZXRjL2luaXQuZC9zdHVubmVsNCByZXN0YXJ0CgojT3BlblZQTgp3Z2V0IGh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9KZXJyeVNCRy9TQkcyL21haW4vaW5zdGFsbC92cG4uc2ggJiYgIGNobW9kICt4IHZwbi5zaCAmJiAuL3Zwbi5zaAoKI09wZW5WUE53ZWJzb2NrZXQKI2FwdCBpbnN0YWxsIGdvbGFuZy1nbwojd2dldCBodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vSmVycnlTQkcvU0JHMi9tYWluL3NzaHdzL292cG4td2Vic29ja2V0LnNoICYmICBjaG1vZCAreCBvdnBuLXdlYnNvY2tldC5zaCAmJiAuL292cG4td2Vic29ja2V0LnNoCiNnbyBydW4gb3Zwbi13ZWJzb2NrZXQuc2gKCiMgLy8gaW5zdGFsbCBsb2xjYXQKd2dldCBodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vSmVycnlTQkcvU0JHMi9tYWluL2luc3RhbGwvbG9sY2F0LnNoICYmICBjaG1vZCAreCBsb2xjYXQuc2ggJiYgLi9sb2xjYXQuc2gKCiMgbWVtb3J5IHN3YXAgMWdiCmNkCmRkIGlmPS9kZXYvemVybyBvZj0vc3dhcGZpbGUgYnM9MTAyNCBjb3VudD00MTk0MzA0Cm1rc3dhcCAvc3dhcGZpbGUKY2hvd24gcm9vdDpyb290IC9zd2FwZmlsZQpjaG1vZCAwNjAwIC9zd2FwZmlsZSA+L2Rldi9udWxsIDI+JjEKc3dhcG9uIC9zd2FwZmlsZSA+L2Rldi9udWxsIDI+JjEKc2VkIC1pICckIGlcL3N3YXBmaWxlICAgICAgc3dhcCBzd2FwICAgZGVmYXVsdHMgICAgMCAwJyAvZXRjL2ZzdGFiCgojIGluc3RhbGwgZmFpbDJiYW4KYXB0IC15IGluc3RhbGwgZmFpbDJiYW4KCiMgSW5zdGFsIERET1MgRmxhdGUKaWYgWyAtZCAnL3Vzci9sb2NhbC9kZG9zJyBdOyB0aGVuCiAgICBlY2hvOyBlY2hvOyBlY2hvICJQbGVhc2UgdW4taW5zdGFsbCB0aGUgcHJldmlvdXMgdmVyc2lvbiBmaXJzdCIKICAgIGV4aXQgMAplbHNlCiAgICBta2RpciAvdXNyL2xvY2FsL2Rkb3MKZmkKY2xlYXIKZWNobzsgZWNobyAnSW5zdGFsbGluZyBET1MtRGVmbGF0ZSAwLjYnOyBlY2hvCmVjaG87IGVjaG8gLW4gJ0Rvd25sb2FkaW5nIHNvdXJjZSBmaWxlcy4uLicKd2dldCAtcSAtTyAvdXNyL2xvY2FsL2Rkb3MvZGRvcy5jb25mIGh0dHA6Ly93d3cuaW5ldGJhc2UuY29tL3NjcmlwdHMvZGRvcy9kZG9zLmNvbmYKZWNobyAtbiAnLicKd2dldCAtcSAtTyAvdXNyL2xvY2FsL2Rkb3MvTElDRU5TRSBodHRwOi8vd3d3LmluZXRiYXNlLmNvbS9zY3JpcHRzL2Rkb3MvTElDRU5TRQplY2hvIC1uICcuJwp3Z2V0IC1xIC1PIC91c3IvbG9jYWwvZGRvcy9pZ25vcmUuaXAubGlzdCBodHRwOi8vd3d3LmluZXRiYXNlLmNvbS9zY3JpcHRzL2Rkb3MvaWdub3JlLmlwLmxpc3QKZWNobyAtbiAnLicKd2dldCAtcSAtTyAvdXNyL2xvY2FsL2Rkb3MvZGRvcy5zaCBodHRwOi8vd3d3LmluZXRiYXNlLmNvbS9zY3JpcHRzL2Rkb3MvZGRvcy5zaApjaG1vZCAwNzU1IC91c3IvbG9jYWwvZGRvcy9kZG9zLnNoCmNwIC1zIC91c3IvbG9jYWwvZGRvcy9kZG9zLnNoIC91c3IvbG9jYWwvc2Jpbi9kZG9zCmVjaG8gJy4uLmRvbmUnCmVjaG87IGVjaG8gLW4gJ0NyZWF0aW5nIGNyb24gdG8gcnVuIHNjcmlwdCBldmVyeSBtaW51dGUuLi4uLihEZWZhdWx0IHNldHRpbmcpJwovdXNyL2xvY2FsL2Rkb3MvZGRvcy5zaCAtLWNyb24gPiAvZGV2L251bGwgMj4mMQplY2hvICcuLi4uLmRvbmUnCmVjaG87IGVjaG8gJ0luc3RhbGxhdGlvbiBoYXMgY29tcGxldGVkLicKZWNobyAnQ29uZmlnIGZpbGUgaXMgYXQgL3Vzci9sb2NhbC9kZG9zL2Rkb3MuY29uZicKZWNobyAnUGxlYXNlIHNlbmQgaW4geW91ciBjb21tZW50cyBhbmQvb3Igc3VnZ2VzdGlvbnMgdG8gemFmQHZzbmwuY29tJwoKIyBiYW5uZXIgL2V0Yy9pc3N1ZS5uZXQKZWNobyAiQmFubmVyIC9ldGMvaXNzdWUubmV0IiA+Pi9ldGMvc3NoL3NzaGRfY29uZmlnCnNlZCAtaSAnc0BEUk9QQkVBUl9CQU5ORVI9IiJARFJPUEJFQVJfQkFOTkVSPSIvZXRjL2lzc3VlLm5ldCJAZycgL2V0Yy9kZWZhdWx0L2Ryb3BiZWFyCgojIEdhbnRpIEJhbm5lcgp3Z2V0IC1PIC9ldGMvaXNzdWUubmV0ICJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vSmVycnlTQkcvU0JHMi9tYWluL2luc3RhbGwvaXNzdWUubmV0IgoKI2luc3RhbGwgYmJyIGRhbiBvcHRpbWFzaSBrZXJuZWwKd2dldCBodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vSmVycnlTQkcvU0JHMi9tYWluL2luc3RhbGwvYmJyLnNoICYmIGNobW9kICt4IGJici5zaCAmJiAuL2Jici5zaAoKI3J1bl9pcAppcHRhYmxlcyAtSSBJTlBVVCAtbSBzdGF0ZSAtLXN0YXRlIE5FVyAtbSB0Y3AgLXAgdGNwIC0tZHBvcnQgODAgLWogQUNDRVBUCmlwdGFibGVzIC1JIElOUFVUIC1tIHN0YXRlIC0tc3RhdGUgTkVXIC1tIHVkcCAtcCB1ZHAgLS1kcG9ydCA4MCAtaiBBQ0NFUFQKaXB0YWJsZXMgLUkgSU5QVVQgLW0gc3RhdGUgLS1zdGF0ZSBORVcgLW0gdGNwIC1wIHRjcCAtLWRwb3J0IDgwODEgLWogQUNDRVBUCmlwdGFibGVzIC1JIElOUFVUIC1tIHN0YXRlIC0tc3RhdGUgTkVXIC1tIHVkcCAtcCB1ZHAgLS1kcG9ydCA4MDgxIC1qIEFDQ0VQVAojaXB0YWJsZXMgLUkgSU5QVVQgLW0gc3RhdGUgLS1zdGF0ZSBORVcgLW0gdGNwIC1wIHRjcCAtLWRwb3J0IDgwMDggLWogQUNDRVBUCiNpcHRhYmxlcyAtSSBJTlBVVCAtbSBzdGF0ZSAtLXN0YXRlIE5FVyAtbSB1ZHAgLXAgdWRwIC0tZHBvcnQgODAwOCAtaiBBQ0NFUFQKI2lwdGFibGVzIC1JIElOUFVUIC1tIHN0YXRlIC0tc3RhdGUgTkVXIC1tIHRjcCAtcCB0Y3AgLS1kcG9ydCA4MDgwIC1qIEFDQ0VQVAojaXB0YWJsZXMgLUkgSU5QVVQgLW0gc3RhdGUgLS1zdGF0ZSBORVcgLW0gdWRwIC1wIHVkcCAtLWRwb3J0IDgwODAgLWogQUNDRVBUCiNpcHRhYmxlcyAtSSBJTlBVVCAtbSBzdGF0ZSAtLXN0YXRlIE5FVyAtbSB0Y3AgLXAgdGNwIC0tZHBvcnQgODI4MCAtaiBBQ0NFUFQKI2lwdGFibGVzIC1JIElOUFVUIC1tIHN0YXRlIC0tc3RhdGUgTkVXIC1tIHVkcCAtcCB1ZHAgLS1kcG9ydCA4MjgwIC1qIEFDQ0VQVAppcHRhYmxlcyAtSSBJTlBVVCAtbSBzdGF0ZSAtLXN0YXRlIE5FVyAtbSB0Y3AgLXAgdGNwIC0tZHBvcnQgNDQzIC1qIEFDQ0VQVAppcHRhYmxlcyAtSSBJTlBVVCAtbSBzdGF0ZSAtLXN0YXRlIE5FVyAtbSB1ZHAgLXAgdWRwIC0tZHBvcnQgNDQzIC1qIEFDQ0VQVAppcHRhYmxlcy1zYXZlID4gL2V0Yy9pcHRhYmxlcy51cC5ydWxlcwppcHRhYmxlcy1yZXN0b3JlIC10IDwgL2V0Yy9pcHRhYmxlcy51cC5ydWxlcwpuZXRmaWx0ZXItcGVyc2lzdGVudCBzYXZlCm5ldGZpbHRlci1wZXJzaXN0ZW50IHJlbG9hZAojIGJsb2tpciB0b3JyZW50CmlwdGFibGVzIC1BIEZPUldBUkQgLW0gc3RyaW5nIC0tc3RyaW5nICJnZXRfcGVlcnMiIC0tYWxnbyBibSAtaiBEUk9QCmlwdGFibGVzIC1BIEZPUldBUkQgLW0gc3RyaW5nIC0tc3RyaW5nICJhbm5vdW5jZV9wZWVyIiAtLWFsZ28gYm0gLWogRFJPUAppcHRhYmxlcyAtQSBGT1JXQVJEIC1tIHN0cmluZyAtLXN0cmluZyAiZmluZF9ub2RlIiAtLWFsZ28gYm0gLWogRFJPUAppcHRhYmxlcyAtQSBGT1JXQVJEIC1tIHN0cmluZyAtLWFsZ28gYm0gLS1zdHJpbmcgIkJpdFRvcnJlbnQiIC1qIERST1AKaXB0YWJsZXMgLUEgRk9SV0FSRCAtbSBzdHJpbmcgLS1hbGdvIGJtIC0tc3RyaW5nICJCaXRUb3JyZW50IHByb3RvY29sIiAtaiBEUk9QCmlwdGFibGVzIC1BIEZPUldBUkQgLW0gc3RyaW5nIC0tYWxnbyBibSAtLXN0cmluZyAicGVlcl9pZD0iIC1qIERST1AKaXB0YWJsZXMgLUEgRk9SV0FSRCAtbSBzdHJpbmcgLS1hbGdvIGJtIC0tc3RyaW5nICIudG9ycmVudCIgLWogRFJPUAppcHRhYmxlcyAtQSBGT1JXQVJEIC1tIHN0cmluZyAtLWFsZ28gYm0gLS1zdHJpbmcgImFubm91bmNlLnBocD9wYXNza2V5PSIgLWogRFJPUAppcHRhYmxlcyAtQSBGT1JXQVJEIC1tIHN0cmluZyAtLWFsZ28gYm0gLS1zdHJpbmcgInRvcnJlbnQiIC1qIERST1AKaXB0YWJsZXMgLUEgRk9SV0FSRCAtbSBzdHJpbmcgLS1hbGdvIGJtIC0tc3RyaW5nICJhbm5vdW5jZSIgLWogRFJPUAppcHRhYmxlcyAtQSBGT1JXQVJEIC1tIHN0cmluZyAtLWFsZ28gYm0gLS1zdHJpbmcgImluZm9faGFzaCIgLWogRFJPUAppcHRhYmxlcy1zYXZlID4gL2V0Yy9pcHRhYmxlcy51cC5ydWxlcwppcHRhYmxlcy1yZXN0b3JlIC10IDwgL2V0Yy9pcHRhYmxlcy51cC5ydWxlcwpuZXRmaWx0ZXItcGVyc2lzdGVudCBzYXZlCm5ldGZpbHRlci1wZXJzaXN0ZW50IHJlbG9hZAoKIyBkb3dubG9hZCBzY3JpcHQKY2QgL3Vzci9iaW4Kd2dldCAtTyBpc3N1ZSAiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0plcnJ5U0JHL1NCRzIvbWFpbi9pbnN0YWxsL2lzc3VlLm5ldCIKd2dldCAtTyBtLXRoZW1lICJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vSmVycnlTQkcvU0JHMi9tYWluL21lbnUvbS10aGVtZS5zaCIKd2dldCAtTyBzcGVlZHRlc3QgImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9KZXJyeVNCRy9TQkcyL21haW4vaW5zdGFsbC9zcGVlZHRlc3RfY2xpLnB5IgoKY2htb2QgK3ggaXNzdWUKY2htb2QgK3ggbS10aGVtZQpjaG1vZCAreCBzcGVlZHRlc3QKY2QKIyByZW1vdmUgdW5uZWNlc3NhcnkgZmlsZXMKYXB0IGF1dG9jbGVhbiAteSA+L2Rldi9udWxsIDI+JjEKYXB0IC15IHJlbW92ZSAtLXB1cmdlIHVuc2NkID4vZGV2L251bGwgMj4mMQojYXB0LWdldCAteSAtLXB1cmdlIHJlbW92ZSBzYW1iYSogPi9kZXYvbnVsbCAyPiYxCiNhcHQtZ2V0IC15IC0tcHVyZ2UgcmVtb3ZlIGFwYWNoZTIqID4vZGV2L251bGwgMj4mMQojYXB0LWdldCAteSAtLXB1cmdlIHJlbW92ZSBiaW5kOSogPi9kZXYvbnVsbCAyPiYxCiNhcHQtZ2V0IC15IHJlbW92ZSBzZW5kbWFpbCogPi9kZXYvbnVsbCAyPiYxCiNhcHQgYXV0b3JlbW92ZSAteSA+L2Rldi9udWxsIDI+JjEKIyBmaW5pc2hpbmcKc3lzdGVtY3RsIGRhZW1vbi1yZWxvYWQKY2QKY2hvd24gLVIgd3d3LWRhdGE6d3d3LWRhdGEgL2hvbWUvdnBzL3B1YmxpY19odG1sCnNsZWVwIDEKZWNobyAtZSAiJHllbGxbU0VSVklDRV0kTkMgUmVzdGFydCBBbGwgc2VydmljZSBTU0ggJiBPVlBOIgovZXRjL2luaXQuZC9uZ2lueCByZXN0YXJ0ID4vZGV2L251bGwgMj4mMQpzbGVlcCAxCmVjaG8gLWUgIlsgJHtncmVlbn1vayR7TkN9IF0gUmVzdGFydGluZyBuZ2lueCIKL2V0Yy9pbml0LmQvb3BlbnZwbiByZXN0YXJ0ID4vZGV2L251bGwgMj4mMQpzbGVlcCAxCmVjaG8gLWUgIlsgJHtncmVlbn1vayR7TkN9IF0gUmVzdGFydGluZyBjcm9uICIKL2V0Yy9pbml0LmQvc3NoIHJlc3RhcnQgPi9kZXYvbnVsbCAyPiYxCnNsZWVwIDEKZWNobyAtZSAiWyAke2dyZWVufW9rJHtOQ30gXSBSZXN0YXJ0aW5nIHNzaCAiCi9ldGMvaW5pdC5kL2Ryb3BiZWFyIHJlc3RhcnQgPi9kZXYvbnVsbCAyPiYxCnNsZWVwIDEKZWNobyAtZSAiWyAke2dyZWVufW9rJHtOQ30gXSBSZXN0YXJ0aW5nIGRyb3BiZWFyICIKL2V0Yy9pbml0LmQvZmFpbDJiYW4gcmVzdGFydCA+L2Rldi9udWxsIDI+JjEKc2xlZXAgMQplY2hvIC1lICJbICR7Z3JlZW59b2ske05DfSBdIFJlc3RhcnRpbmcgZmFpbDJiYW4gIgovZXRjL2luaXQuZC9zdHVubmVsNCByZXN0YXJ0ID4vZGV2L251bGwgMj4mMQpzbGVlcCAxCmVjaG8gLWUgIlsgJHtncmVlbn1vayR7TkN9IF0gUmVzdGFydGluZyBzdHVubmVsNCAiCi9ldGMvaW5pdC5kL3Zuc3RhdCByZXN0YXJ0ID4vZGV2L251bGwgMj4mMQpzbGVlcCAxCmVjaG8gLWUgIlsgJHtncmVlbn1vayR7TkN9IF0gUmVzdGFydGluZyB2bnN0YXQgIgovZXRjL2luaXQuZC9zcXVpZCByZXN0YXJ0ID4vZGV2L251bGwgMj4mMQoKc2NyZWVuIC1kbVMgYmFkdnBuIGJhZHZwbi11ZHBndyAtLWxpc3Rlbi1hZGRyIDEyNy4wLjAuMTo3MTAwIC0tbWF4LWNsaWVudHMgNTAwCnNjcmVlbiAtZG1TIGJhZHZwbiBiYWR2cG4tdWRwZ3cgLS1saXN0ZW4tYWRkciAxMjcuMC4wLjE6NzIwMCAtLW1heC1jbGllbnRzIDUwMApzY3JlZW4gLWRtUyBiYWR2cG4gYmFkdnBuLXVkcGd3IC0tbGlzdGVuLWFkZHIgMTI3LjAuMC4xOjczMDAgLS1tYXgtY2xpZW50cyA1MDAKc2NyZWVuIC1kbVMgYmFkdnBuIGJhZHZwbi11ZHBndyAtLWxpc3Rlbi1hZGRyIDEyNy4wLjAuMTo3NDAwIC0tbWF4LWNsaWVudHMgNTAwCnNjcmVlbiAtZG1TIGJhZHZwbiBiYWR2cG4tdWRwZ3cgLS1saXN0ZW4tYWRkciAxMjcuMC4wLjE6NzUwMCAtLW1heC1jbGllbnRzIDUwMApzY3JlZW4gLWRtUyBiYWR2cG4gYmFkdnBuLXVkcGd3IC0tbGlzdGVuLWFkZHIgMTI3LjAuMC4xOjc2MDAgLS1tYXgtY2xpZW50cyA1MDAKc2NyZWVuIC1kbVMgYmFkdnBuIGJhZHZwbi11ZHBndyAtLWxpc3Rlbi1hZGRyIDEyNy4wLjAuMTo3NzAwIC0tbWF4LWNsaWVudHMgNTAwCnNjcmVlbiAtZG1TIGJhZHZwbiBiYWR2cG4tdWRwZ3cgLS1saXN0ZW4tYWRkciAxMjcuMC4wLjE6NzgwMCAtLW1heC1jbGllbnRzIDUwMApzY3JlZW4gLWRtUyBiYWR2cG4gYmFkdnBuLXVkcGd3IC0tbGlzdGVuLWFkZHIgMTI3LjAuMC4xOjc5MDAgLS1tYXgtY2xpZW50cyA1MDAKaGlzdG9yeSAtYwplY2hvICJ1bnNldCBISVNURklMRSIgPj4gL2V0Yy9wcm9maWxlCgpybSAtZiAvcm9vdC9rZXkucGVtCnJtIC1mIC9yb290L2NlcnQucGVtCnJtIC1mIC9yb290L3NzaC12cG4uc2gKcm0gLWYgL3Jvb3QvYmJyLnNoCgpjbGVhcg==
-B14CK-KN1GH7
-source ${NFS}
-rm -rf ${NFS}
+#!/bin/bash
+#
+# ==================================================
+
+# etc
+apt dist-upgrade -y
+apt install netfilter-persistent -y
+apt-get remove --purge ufw firewalld -y
+apt install -y screen curl jq bzip2 gzip vnstat coreutils rsyslog iftop zip unzip git apt-transport-https build-essential -y
+
+# initializing var
+export DEBIAN_FRONTEND=noninteractive
+MYIP=$(wget -qO- ipinfo.io/ip);
+MYIP2="s/xxxxxxxxx/$MYIP/g";
+NET=$(ip -o $ANU -4 route show to default | awk '{print $5}');
+source /etc/os-release
+ver=$VERSION_ID
+
+#detail nama perusahaan
+country=ID
+state=Indonesia
+locality=Jakarta
+organization=none
+organizationalunit=none
+commonname=none
+email=none
+
+# simple password minimal
+curl -sS https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/password | openssl aes-256-cbc -d -a -pass pass:scvps07gg -pbkdf2 > /etc/pam.d/common-password
+chmod +x /etc/pam.d/common-password
+
+# go to root
+cd
+
+# Edit file /etc/systemd/system/rc-local.service
+cat > /etc/systemd/system/rc-local.service <<-END
+[Unit]
+Description=/etc/rc.local
+ConditionPathExists=/etc/rc.local
+[Service]
+Type=forking
+ExecStart=/etc/rc.local start
+TimeoutSec=0
+StandardOutput=tty
+RemainAfterExit=yes
+SysVStartPriority=99
+[Install]
+WantedBy=multi-user.target
+END
+
+# nano /etc/rc.local
+cat > /etc/rc.local <<-END
+#!/bin/sh -e
+# rc.local
+# By default this script does nothing.
+exit 0
+END
+
+# Ubah izin akses
+chmod +x /etc/rc.local
+
+# enable rc local
+systemctl enable rc-local
+systemctl start rc-local.service
+
+# disable ipv6
+echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
+sed -i '$ i\echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6' /etc/rc.local
+
+#update
+apt update -y
+apt upgrade -y
+apt clean all
+apt dist-upgrade -y
+apt-get remove --purge ufw firewalld -y
+apt-get remove --purge exim4 -y
+
+#install jq
+apt -y install jq
+
+#install shc
+apt -y install shc
+
+# install wget and curl
+apt -y install wget curl
+
+#figlet
+apt-get install figlet -y
+apt-get install ruby -y
+gem install lolcat
+
+# set time GMT +7
+ln -fs /usr/share/zoneinfo/America/Mexico_City /etc/localtime
+
+# set locale
+sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
+
+# // install
+apt-get --reinstall --fix-missing install -y bzip2 gzip coreutils wget screen rsyslog iftop htop net-tools zip unzip wget net-tools curl nano sed screen gnupg gnupg1 bc apt-transport-https build-essential dirmngr libxml-parser-perl neofetch git lsof
+echo "clear" >> .profile
+echo "menu" >> .profile
+
+install_ssl(){
+    if [ -f "/usr/bin/apt-get" ];then
+            isDebian=`cat /etc/issue|grep Debian`
+            if [ "$isDebian" != "" ];then
+                    apt-get install -y nginx certbot
+                    apt install -y nginx certbot
+                    sleep 3s
+            else
+                    apt-get install -y nginx certbot
+                    apt install -y nginx certbot
+                    sleep 3s
+            fi
+    else
+        yum install -y nginx certbot
+        sleep 3s
+    fi
+
+    systemctl stop nginx.service
+
+    if [ -f "/usr/bin/apt-get" ];then
+            isDebian=`cat /etc/issue|grep Debian`
+            if [ "$isDebian" != "" ];then
+                    echo "A" | certbot certonly --renew-by-default --register-unsafely-without-email --standalone -d $domain
+                    sleep 3s
+            else
+                    echo "A" | certbot certonly --renew-by-default --register-unsafely-without-email --standalone -d $domain
+                    sleep 3s
+            fi
+    else
+        echo "Y" | certbot certonly --renew-by-default --register-unsafely-without-email --standalone -d $domain
+        sleep 3s
+    fi
+}
+#install haproxy ssl
+apt install haproxy -y
+rm -fr /etc/haproxy/haproxy.cfg
+cat >/etc/haproxy/haproxy.cfg <<HAH
+global
+    daemon
+    maxconn 256
+
+defaults
+    mode tcp
+    timeout connect 5000ms
+    timeout client 50000ms
+    timeout server 50000ms
+
+#frontend http
+#    bind *:80 tfo
+#    bind *:8080 tfo
+#    bind *:8090 tfo
+#    bind *:8280 tfo
+#    use_backend http_nginx_pool    if !{ ssl_fc }
+
+frontend https
+#    bind *:443 ssl crt /etc/haproxy/funny.pem
+    bind *:8443 ssl crt /etc/haproxy/funny.pem
+    use_backend https_nginx_pool   if { ssl_fc }
+
+#backend http_nginx_pool
+#    mode tcp
+#    server nginx 127.0.0.1:8008 send-proxy check
+
+backend https_nginx_pool
+    mode tcp
+    server nginx2 127.0.0.1:109 check
+HAH
+clear
+systemctl daemon-reload
+systemctl restart haproxy
+
+# install webserver
+apt -y install nginx php php-fpm php-cli php-mysql libxml-parser-perl
+rm /etc/nginx/sites-enabled/default
+rm /etc/nginx/sites-available/default
+curl https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/nginx.conf > /etc/nginx/nginx.conf
+curl https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/vps.conf > /etc/nginx/conf.d/vps.conf
+sed -i 's/listen = \/var\/run\/php-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php/fpm/pool.d/www.conf
+useradd -m vps;
+mkdir -p /home/vps/public_html
+echo "<?php phpinfo() ?>" > /home/vps/public_html/info.php
+chown -R www-data:www-data /home/vps/public_html
+chmod -R g+rw /home/vps/public_html
+cd /home/vps/public_html
+wget -O /home/vps/public_html/index.html "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/index.html"
+/etc/init.d/nginx restart
+echo 'Modifying php configs'
+sudo ed -s /etc/php/7.4/fpm/pool.d/www.conf <<'EOF'
+g/^pm\.max_children/s/5/20
+w
+EOF
+sudo ed -s /etc/php/7.4/fpm/php.ini <<'EOF'
+g/^post_max_size/s/8/1000
+g/^upload_max_filesize/s/2/1000
+w
+EOF
+sudo service php7.4-fpm reload
+echo 'Reloading php-fpm'
+sudo service php7.4-fpm reload
+
+# install badvpn
+cd
+wget -O /usr/sbin/badvpn "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/badvpn" >/dev/null 2>&1
+chmod +x /usr/sbin/badvpn > /dev/null 2>&1
+wget -q -O /etc/systemd/system/badvpn1.service "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/badvpn1.service" >/dev/null 2>&1
+wget -q -O /etc/systemd/system/badvpn2.service "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/badvpn2.service" >/dev/null 2>&1
+wget -q -O /etc/systemd/system/badvpn3.service "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/badvpn3.service" >/dev/null 2>&1
+systemctl disable badvpn1 
+systemctl stop badvpn1 
+systemctl enable badvpn1
+systemctl start badvpn1 
+systemctl disable badvpn2 
+systemctl stop badvpn2 
+systemctl enable badvpn2
+systemctl start badvpn2 
+systemctl disable badvpn3 
+systemctl stop badvpn3 
+systemctl enable badvpn3
+systemctl start badvpn3 
+
+# setting port ssh
+cd
+sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+sed -i '/Port 22/a Port 22' /etc/ssh/sshd_config
+echo "Subsystem       sftp    /usr/lib/openssh/sftp-server" >> /etc/ssh/sshd_config
+systemctl daemon-reload
+/etc/init.d/ssh restart
+#wget -qO- -O /etc/ssh/sshd_config https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/sshd_config
+#systemctl restart sshd
+
+echo "=== Install Dropbear ==="
+# install dropbear
+apt -y install dropbear
+sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
+sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=143/g' /etc/default/dropbear
+sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 109 -p 110 -p 69"/g' /etc/default/dropbear
+echo "/bin/false" >> /etc/shells
+echo "/usr/sbin/nologin" >> /etc/shells
+/etc/init.d/ssh restart
+/etc/init.d/dropbear restart
+
+# // install squid for debian 9,10 & ubuntu 20.04
+apt -y install squid3
+
+# install squid for debian 11
+apt -y install squid
+wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/squid3.conf"
+sed -i $MYIP2 /etc/squid/squid.conf
+
+# setting vnstat
+apt -y install vnstat
+/etc/init.d/vnstat restart
+apt -y install libsqlite3-dev
+wget https://humdi.net/vnstat/vnstat-2.6.tar.gz
+tar zxvf vnstat-2.6.tar.gz
+cd vnstat-2.6
+./configure --prefix=/usr --sysconfdir=/etc && make && make install
+cd
+vnstat -u -i $NET
+sed -i 's/Interface "'""eth0""'"/Interface "'""$NET""'"/g' /etc/vnstat.conf
+chown vnstat:vnstat /var/lib/vnstat -R
+systemctl enable vnstat
+/etc/init.d/vnstat restart
+rm -f /root/vnstat-2.6.tar.gz
+rm -rf /root/vnstat-2.6
+
+cd
+# install stunnel
+apt install stunnel4 -y
+cat > /etc/stunnel/stunnel.conf <<-END
+cert = /etc/stunnel/stunnel.pem
+client = no
+socket = a:SO_REUSEADDR=1
+socket = l:TCP_NODELAY=1
+socket = r:TCP_NODELAY=1
+
+[openvpn]
+accept = 442
+connect = 127.0.0.1:1194
+
+END
+
+# make a certificate
+openssl genrsa -out key.pem 2048
+openssl req -new -x509 -key key.pem -out cert.pem -days 1095 \
+-subj "/C=$country/ST=$state/L=$locality/O=$organization/OU=$organizationalunit/CN=$commonname/emailAddress=$email"
+cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
+
+# konfigurasi stunnel
+sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
+/etc/init.d/stunnel4 restart
+
+#OpenVPN
+wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
+
+#OpenVPNwebsocket
+#apt install golang-go
+#wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/sshws/ovpn-websocket.sh &&  chmod +x ovpn-websocket.sh && ./ovpn-websocket.sh
+#go run ovpn-websocket.sh
+
+# // install lolcat
+wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/lolcat.sh &&  chmod +x lolcat.sh && ./lolcat.sh
+
+# memory swap 1gb
+cd
+dd if=/dev/zero of=/swapfile bs=1024 count=4194304
+mkswap /swapfile
+chown root:root /swapfile
+chmod 0600 /swapfile >/dev/null 2>&1
+swapon /swapfile >/dev/null 2>&1
+sed -i '$ i\/swapfile      swap swap   defaults    0 0' /etc/fstab
+
+# install fail2ban
+apt -y install fail2ban
+
+# Instal DDOS Flate
+if [ -d '/usr/local/ddos' ]; then
+    echo; echo; echo "Please un-install the previous version first"
+    exit 0
+else
+    mkdir /usr/local/ddos
+fi
+clear
+echo; echo 'Installing DOS-Deflate 0.6'; echo
+echo; echo -n 'Downloading source files...'
+wget -q -O /usr/local/ddos/ddos.conf http://www.inetbase.com/scripts/ddos/ddos.conf
+echo -n '.'
+wget -q -O /usr/local/ddos/LICENSE http://www.inetbase.com/scripts/ddos/LICENSE
+echo -n '.'
+wget -q -O /usr/local/ddos/ignore.ip.list http://www.inetbase.com/scripts/ddos/ignore.ip.list
+echo -n '.'
+wget -q -O /usr/local/ddos/ddos.sh http://www.inetbase.com/scripts/ddos/ddos.sh
+chmod 0755 /usr/local/ddos/ddos.sh
+cp -s /usr/local/ddos/ddos.sh /usr/local/sbin/ddos
+echo '...done'
+echo; echo -n 'Creating cron to run script every minute.....(Default setting)'
+/usr/local/ddos/ddos.sh --cron > /dev/null 2>&1
+echo '.....done'
+echo; echo 'Installation has completed.'
+echo 'Config file is at /usr/local/ddos/ddos.conf'
+echo 'Please send in your comments and/or suggestions to zaf@vsnl.com'
+
+# banner /etc/issue.net
+echo "Banner /etc/issue.net" >>/etc/ssh/sshd_config
+sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
+
+# Ganti Banner
+wget -O /etc/issue.net "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/issue.net"
+
+#install bbr dan optimasi kernel
+wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/bbr.sh && chmod +x bbr.sh && ./bbr.sh
+
+#run_ip
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 80 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8081 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8081 -j ACCEPT
+#iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8008 -j ACCEPT
+#iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8008 -j ACCEPT
+#iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
+#iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8080 -j ACCEPT
+#iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8280 -j ACCEPT
+#iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8280 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 443 -j ACCEPT
+iptables-save > /etc/iptables.up.rules
+iptables-restore -t < /etc/iptables.up.rules
+netfilter-persistent save
+netfilter-persistent reload
+# blokir torrent
+iptables -A FORWARD -m string --string "get_peers" --algo bm -j DROP
+iptables -A FORWARD -m string --string "announce_peer" --algo bm -j DROP
+iptables -A FORWARD -m string --string "find_node" --algo bm -j DROP
+iptables -A FORWARD -m string --algo bm --string "BitTorrent" -j DROP
+iptables -A FORWARD -m string --algo bm --string "BitTorrent protocol" -j DROP
+iptables -A FORWARD -m string --algo bm --string "peer_id=" -j DROP
+iptables -A FORWARD -m string --algo bm --string ".torrent" -j DROP
+iptables -A FORWARD -m string --algo bm --string "announce.php?passkey=" -j DROP
+iptables -A FORWARD -m string --algo bm --string "torrent" -j DROP
+iptables -A FORWARD -m string --algo bm --string "announce" -j DROP
+iptables -A FORWARD -m string --algo bm --string "info_hash" -j DROP
+iptables-save > /etc/iptables.up.rules
+iptables-restore -t < /etc/iptables.up.rules
+netfilter-persistent save
+netfilter-persistent reload
+
+# download script
+cd /usr/bin
+wget -O issue "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/issue.net"
+wget -O m-theme "https://raw.githubusercontent.com/JerrySBG/SBG2/main/menu/m-theme.sh"
+wget -O speedtest "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/speedtest_cli.py"
+
+chmod +x issue
+chmod +x m-theme
+chmod +x speedtest
+cd
+# remove unnecessary files
+apt autoclean -y >/dev/null 2>&1
+apt -y remove --purge unscd >/dev/null 2>&1
+#apt-get -y --purge remove samba* >/dev/null 2>&1
+#apt-get -y --purge remove apache2* >/dev/null 2>&1
+#apt-get -y --purge remove bind9* >/dev/null 2>&1
+#apt-get -y remove sendmail* >/dev/null 2>&1
+#apt autoremove -y >/dev/null 2>&1
+# finishing
+systemctl daemon-reload
+cd
+chown -R www-data:www-data /home/vps/public_html
+sleep 1
+echo -e "$yell[SERVICE]$NC Restart All service SSH & OVPN"
+/etc/init.d/nginx restart >/dev/null 2>&1
+sleep 1
+echo -e "[ ${green}ok${NC} ] Restarting nginx"
+/etc/init.d/openvpn restart >/dev/null 2>&1
+sleep 1
+echo -e "[ ${green}ok${NC} ] Restarting cron "
+/etc/init.d/ssh restart >/dev/null 2>&1
+sleep 1
+echo -e "[ ${green}ok${NC} ] Restarting ssh "
+/etc/init.d/dropbear restart >/dev/null 2>&1
+sleep 1
+echo -e "[ ${green}ok${NC} ] Restarting dropbear "
+/etc/init.d/fail2ban restart >/dev/null 2>&1
+sleep 1
+echo -e "[ ${green}ok${NC} ] Restarting fail2ban "
+/etc/init.d/stunnel4 restart >/dev/null 2>&1
+sleep 1
+echo -e "[ ${green}ok${NC} ] Restarting stunnel4 "
+/etc/init.d/vnstat restart >/dev/null 2>&1
+sleep 1
+echo -e "[ ${green}ok${NC} ] Restarting vnstat "
+/etc/init.d/squid restart >/dev/null 2>&1
+
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 500
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 500
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7400 --max-clients 500
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7500 --max-clients 500
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7600 --max-clients 500
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7700 --max-clients 500
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7800 --max-clients 500
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7900 --max-clients 500
+history -c
+echo "unset HISTFILE" >> /etc/profile
+
+rm -f /root/key.pem
+rm -f /root/cert.pem
+rm -f /root/ssh-vpn.sh
+rm -f /root/bbr.sh
+
+clear
