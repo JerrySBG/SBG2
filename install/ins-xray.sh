@@ -80,7 +80,7 @@ chmod +x /root/.acme.sh/acme.sh
 /root/.acme.sh/acme.sh --issue -d $domain --standalone -k ec-256
 ~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /etc/xray/xray.crt --keypath /etc/xray/xray.key --ecc
 #ssl
-cat /etc/xray/xray.crt /etc/xray/xray.key | tee /etc/haproxy/funny.pem
+#cat /etc/xray/xray.crt /etc/xray/xray.key | tee /etc/haproxy/funny.pem
 # nginx renew ssl
 echo -n '#!/bin/bash
 /etc/init.d/nginx stop
@@ -413,10 +413,10 @@ cat >/etc/nginx/conf.d/xray.conf <<EOF
              listen [::]:80 reuseport;
              listen 8080 reuseport;
              listen [::]:8080 reuseport;
+             listen 8280 reuseport;
+             listen [::]:8280 reuseport;
              listen 443 ssl http2 reuseport;
              listen [::]:443 http2 reuseport;
-             listen 8443 ssl http2 reuseport;
-             listen [::]:8443 http2 reuseport;
              client_max_body_size 9999999999M;
              server_name $domain;
              ssl_certificate /etc/xray/xray.crt;

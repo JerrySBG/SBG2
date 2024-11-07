@@ -133,44 +133,6 @@ install_ssl(){
         sleep 3s
     fi
 }
-#install haproxy ssl
-apt install haproxy -y
-rm -fr /etc/haproxy/haproxy.cfg
-cat >/etc/haproxy/haproxy.cfg <<HAH
-global
-    daemon
-    maxconn 256
-
-defaults
-    mode tcp
-    timeout connect 5000ms
-    timeout client 50000ms
-    timeout server 50000ms
-
-#frontend http
-#    bind *:80 tfo
-#    bind *:8080 tfo
-#    bind *:8090 tfo
-#    bind *:8280 tfo
-#    use_backend http_nginx_pool    if !{ ssl_fc }
-
-frontend https
-#    bind *:443 ssl crt /etc/haproxy/funny.pem
-    bind *:8443 ssl crt /etc/haproxy/funny.pem
-    use_backend https_nginx_pool   if { ssl_fc }
-
-#backend http_nginx_pool
-#    mode tcp
-#    server nginx 127.0.0.1:8008 send-proxy check
-
-backend https_nginx_pool
-    mode tcp
-    server nginx2 127.0.0.1:109 check
-HAH
-clear
-systemctl daemon-reload
-systemctl restart haproxy
-
 # install webserver
 apt -y install nginx php php-fpm php-cli php-mysql libxml-parser-perl
 rm /etc/nginx/sites-enabled/default
@@ -275,6 +237,10 @@ client = no
 socket = a:SO_REUSEADDR=1
 socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
+
+[openvpn]
+accept = 8443
+connect = 127.0.0.1:109
 
 [openvpn]
 accept = 442
