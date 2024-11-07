@@ -238,8 +238,12 @@ socket = a:SO_REUSEADDR=1
 socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
 
-[openvpn]
-accept = 8443
+[dropbear]
+accept = 444
+connect = 127.0.0.1:22
+
+[dropbear]
+accept = 4443
 connect = 127.0.0.1:109
 
 [openvpn]
