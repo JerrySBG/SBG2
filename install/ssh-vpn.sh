@@ -133,6 +133,7 @@ install_ssl(){
         sleep 3s
     fi
 }
+
 # install webserver
 apt -y install nginx php php-fpm php-cli php-mysql libxml-parser-perl
 rm /etc/nginx/sites-enabled/default
