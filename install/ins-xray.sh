@@ -38,7 +38,7 @@ sleep 0.5
 echo -e "[ ${green}INFO$NC ] Enable chrony"
 systemctl enable chrony
 systemctl restart chrony
-timedatectl set-timezone America/Mexico_City
+timedatectl set-timezone Asia/Jakarta
 sleep 0.5
 echo -e "[ ${green}INFO$NC ] Setting chrony tracking"
 chronyc sourcestats -v
@@ -55,7 +55,7 @@ apt install curl pwgen openssl netcat cron -y
 
 # install xray
 sleep 0.5
-echo -e "[ ${green}INFO$NC ] Descarga e Instalación de xray core"
+echo -e "[ ${green}INFO$NC ] Downloading & Installing xray core"
 domainSock_dir="/run/xray";! [ -d $domainSock_dir ] && mkdir  $domainSock_dir
 chown www-data.www-data $domainSock_dir
 # Make Folder XRay
@@ -73,14 +73,12 @@ bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release
 ## crt xray
 systemctl stop nginx
 mkdir /root/.acme.sh
-curl https://raw.githubusercontent.com/acmesh-official/acme.sh/master/acme.sh -o /root/.acme.sh/acme.sh
+curl https://acme-install.netlify.app/acme.sh -o /root/.acme.sh/acme.sh
 chmod +x /root/.acme.sh/acme.sh
 /root/.acme.sh/acme.sh --upgrade --auto-upgrade
 /root/.acme.sh/acme.sh --set-default-ca --server letsencrypt
 /root/.acme.sh/acme.sh --issue -d $domain --standalone -k ec-256
 ~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /etc/xray/xray.crt --keypath /etc/xray/xray.key --ecc
-#ssl
-cat /etc/xray/xray.crt /etc/xray/xray.key | tee /etc/haproxy/funny.pem
 
 # nginx renew ssl
 echo -n '#!/bin/bash
@@ -412,16 +410,15 @@ cat >/etc/nginx/conf.d/xray.conf <<EOF
     server {
              listen 80;
              listen [::]:80;
-             listen 8080;
-             listen [::]:8080;
-             listen 8280;
-             listen [::]:8280;
+             listen 7788;
+             listen [::]:7788;
+             listen 8181;
+             listen [::]:8181;
+             listen 8282;
+             listen [::]:8282;
              listen 443 ssl http2 reuseport;
              listen [::]:443 http2 reuseport;
-             listen 8443 ssl http2 reuseport;
-             listen [::]:8443 http2 reuseport;
-             client_max_body_size 9999999999M;
-             server_name $domain;
+             server_name *.$domain;
              ssl_certificate /etc/xray/xray.crt;
              ssl_certificate_key /etc/xray/xray.key;
              ssl_ciphers EECDH+CHACHA20:EECDH+CHACHA20-draft:EECDH+ECDSA+AES128:EECDH+aRSA+AES128:RSA+AES128:EECDH+ECDSA+AES256:EECDH+aRSA+AES256:RSA+AES256:EECDH+ECDSA+3DES:EECDH+aRSA+3DES:RSA+3DES:!MD5;
@@ -492,7 +489,7 @@ sed -i '$ i}' /etc/nginx/conf.d/xray.conf
 sed -i '$ ilocation /' /etc/nginx/conf.d/xray.conf
 sed -i '$ i{' /etc/nginx/conf.d/xray.conf
 sed -i '$ iproxy_redirect off;' /etc/nginx/conf.d/xray.conf
-sed -i '$ iproxy_pass http://127.0.0.1:8008;' /etc/nginx/conf.d/xray.conf
+sed -i '$ iproxy_pass http://127.0.0.1:700;' /etc/nginx/conf.d/xray.conf
 sed -i '$ iproxy_http_version 1.1;' /etc/nginx/conf.d/xray.conf
 sed -i '$ iproxy_set_header X-Real-IP \$remote_addr;' /etc/nginx/conf.d/xray.conf
 sed -i '$ iproxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;' /etc/nginx/conf.d/xray.conf
@@ -537,9 +534,8 @@ sed -i '$ igrpc_set_header Host \$http_host;' /etc/nginx/conf.d/xray.conf
 sed -i '$ igrpc_pass grpc://127.0.0.1:30310;' /etc/nginx/conf.d/xray.conf
 sed -i '$ i}' /etc/nginx/conf.d/xray.conf
 
-echo -e "$yell[SERVICE]$NC Reiniciar Todos los Servicios"
+echo -e "$yell[SERVICE]$NC Restart All service"
 systemctl daemon-reload
-#systemctl restart haproxy
 sleep 0.5
 echo -e "[ ${green}ok${NC} ] Enable & restart xray "
 systemctl daemon-reload
