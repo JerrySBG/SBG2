@@ -133,35 +133,53 @@ install_ssl(){
         sleep 3s
     fi
 }
+#install haproxy ssl
+apt install haproxy -y
+rm -fr /etc/haproxy/haproxy.cfg
+cat >/etc/haproxy/haproxy.cfg <<HAH
+global
+    daemon
+    maxconn 256
+
+defaults
+    log global
+    mode tcp
+    option dontlognull
+    timeout connect 200ms
+    timeout client  300s
+    timeout server  300s
+
+frontend ssh-ssl
+    bind *:443 ssl crt /etc/haproxy/funny.pem
+    mode tcp
+    option tcplog
+    default_backend ssh-backend
+
+backend ssh-backend
+    mode tcp
+    option tcplog
+    server ssh-server 127.0.0.1:69
+HAH
+clear
+systemctl daemon-reload
+systemctl start haproxy
+systemctl enable haproxy
 
 # install webserver
-apt -y install nginx php php-fpm php-cli php-mysql libxml-parser-perl
+apt -y install nginx #php php-fpm php-cli php-mysql libxml-parser-perl
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
 curl https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/nginx.conf > /etc/nginx/nginx.conf
 curl https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/vps.conf > /etc/nginx/conf.d/vps.conf
-sed -i 's/listen = \/var\/run\/php-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php/fpm/pool.d/www.conf
+sed -i 's/listen = \/var\/run\/php-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php/7.4/fpm/pool.d/www.conf
 useradd -m vps;
 mkdir -p /home/vps/public_html
 echo "<?php phpinfo() ?>" > /home/vps/public_html/info.php
 chown -R www-data:www-data /home/vps/public_html
 chmod -R g+rw /home/vps/public_html
 cd /home/vps/public_html
-wget -O /home/vps/public_html/index.html "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/index.html"
+wget -O /home/vps/public_html/index.html "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/index.html1"
 /etc/init.d/nginx restart
-echo 'Modifying php configs'
-sudo ed -s /etc/php/7.4/fpm/pool.d/www.conf <<'EOF'
-g/^pm\.max_children/s/5/20
-w
-EOF
-sudo ed -s /etc/php/7.4/fpm/php.ini <<'EOF'
-g/^post_max_size/s/8/1000
-g/^upload_max_filesize/s/2/1000
-w
-EOF
-sudo service php7.4-fpm reload
-echo 'Reloading php-fpm'
-sudo service php7.4-fpm reload
 
 # install badvpn
 cd
@@ -192,8 +210,6 @@ systemctl daemon-reload
 /etc/init.d/ssh restart
 chmod 0755 /etc/ssh/sshd_config
 systemctl restart sshd
-#wget -qO- -O /etc/ssh/sshd_config https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/sshd_config
-#systemctl restart sshd
 
 echo "=== Install Dropbear ==="
 # install dropbear
@@ -328,16 +344,18 @@ wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/bbr.sh && chmo
 #run_ip
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 80 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8081 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8081 -j ACCEPT
-#iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8008 -j ACCEPT
-#iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8008 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8080 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8008 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8008 -j ACCEPT
 #iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
 #iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8080 -j ACCEPT
-#iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8280 -j ACCEPT
-#iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8280 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8280 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8280 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 443 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8443 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8443 -j ACCEPT
 iptables-save > /etc/iptables.up.rules
 iptables-restore -t < /etc/iptables.up.rules
 netfilter-persistent save
@@ -372,11 +390,11 @@ cd
 # remove unnecessary files
 apt autoclean -y >/dev/null 2>&1
 apt -y remove --purge unscd >/dev/null 2>&1
-#apt-get -y --purge remove samba* >/dev/null 2>&1
-#apt-get -y --purge remove apache2* >/dev/null 2>&1
-#apt-get -y --purge remove bind9* >/dev/null 2>&1
-#apt-get -y remove sendmail* >/dev/null 2>&1
-#apt autoremove -y >/dev/null 2>&1
+apt-get -y --purge remove samba* >/dev/null 2>&1
+apt-get -y --purge remove apache2* >/dev/null 2>&1
+apt-get -y --purge remove bind9* >/dev/null 2>&1
+apt-get -y remove sendmail* >/dev/null 2>&1
+apt autoremove -y >/dev/null 2>&1
 # finishing
 systemctl daemon-reload
 cd

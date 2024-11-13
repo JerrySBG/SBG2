@@ -70,35 +70,6 @@ touch /var/log/xray/error2.log
 # / / Ambil Xray Core Version Terbaru
 bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u www-data --version 1.6.1
 
-apt install haproxy -y
-#install haproxy ssl
-rm -fr /etc/haproxy/haproxy.cfg
-cat >/etc/haproxy/haproxy.cfg <<HAH
-global
-    daemon
-    maxconn 256
-
-defaults
-    log global
-    mode tcp
-    option dontlognull
-    timeout connect 200ms
-    timeout client  300s
-    timeout server  300s
-
-frontend ssh-ssl
-    bind *:443 ssl crt /etc/haproxy/funny.pem
-    mode tcp
-    option tcplog
-    default_backend ssh-backend
-
-backend ssh-backend
-    mode tcp
-    option tcplog
-    server ssh-server 127.0.0.1:69
-HAH
-clear
-
 ## crt xray
 systemctl stop nginx
 mkdir /root/.acme.sh
@@ -568,7 +539,7 @@ sed -i '$ i}' /etc/nginx/conf.d/xray.conf
 
 echo -e "$yell[SERVICE]$NC Reiniciar Todos los Servicios"
 systemctl daemon-reload
-systemctl restart haproxy
+#systemctl restart haproxy
 sleep 0.5
 echo -e "[ ${green}ok${NC} ] Enable & restart xray "
 systemctl daemon-reload
