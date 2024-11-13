@@ -190,6 +190,8 @@ sed -i '/Port 22/a Port 22' /etc/ssh/sshd_config
 echo "Subsystem       sftp    /usr/lib/openssh/sftp-server" >> /etc/ssh/sshd_config
 systemctl daemon-reload
 /etc/init.d/ssh restart
+chmod 0755 /etc/ssh/sshd_config
+systemctl restart sshd
 #wget -qO- -O /etc/ssh/sshd_config https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/sshd_config
 #systemctl restart sshd
 
