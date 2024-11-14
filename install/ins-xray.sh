@@ -68,7 +68,7 @@ touch /var/log/xray/error.log
 touch /var/log/xray/access2.log
 touch /var/log/xray/error2.log
 # / / Ambil Xray Core Version Terbaru
-bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u www-data --version 1.8.7
+bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u www-data --version 1.6.1
 
 ## crt xray
 systemctl stop nginx
@@ -81,7 +81,6 @@ chmod +x /root/.acme.sh/acme.sh
 ~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /etc/xray/xray.crt --keypath /etc/xray/xray.key --ecc
 #ssl
 cat /etc/xray/xray.crt /etc/xray/xray.key | tee /etc/haproxy/funny.pem
-
 # nginx renew ssl
 echo -n '#!/bin/bash
 /etc/init.d/nginx stop
@@ -414,15 +413,17 @@ cat >/etc/nginx/conf.d/xray.conf <<EOF
              listen [::]:80;
              listen 8080;
              listen [::]:8080;
+             listen 8090;
+             listen [::]:8090;
              listen 8280;
              listen [::]:8280;
              listen 443 ssl http2 reuseport;
              listen [::]:443 http2 reuseport;
              listen 8443 ssl http2 reuseport;
              listen [::]:8443 http2 reuseport;
-             client_max_body_size 0;     
-             large_client_header_buffers 4 16k; 
-             #client_max_body_size 9999999999M;
+             listen 447 ssl http2 reuseport;
+             listen [::]:447 http2 reuseport;
+             client_max_body_size 99999999M;
              server_name $domain;
              ssl_certificate /etc/xray/xray.crt;
              ssl_certificate_key /etc/xray/xray.key;
@@ -541,7 +542,6 @@ sed -i '$ i}' /etc/nginx/conf.d/xray.conf
 
 echo -e "$yell[SERVICE]$NC Reiniciar Todos los Servicios"
 systemctl daemon-reload
-#systemctl restart haproxy
 sleep 0.5
 echo -e "[ ${green}ok${NC} ] Enable & restart xray "
 systemctl daemon-reload
