@@ -420,21 +420,10 @@ cat >/etc/nginx/conf.d/xray.conf <<EOF
              listen [::]:443 http2 reuseport;
              listen 8443 ssl http2 reuseport;
              listen [::]:8443 http2 reuseport;
-    set_real_ip_from 127.0.0.1;
-    real_ip_header proxy_protocol;
-    client_body_buffer_size 512K;  
-    client_header_buffer_size 4k;  
-    client_max_body_size 0;     
-    large_client_header_buffers 4 16k; 
-    client_header_timeout 60s;       
-    keepalive_timeout 60s;          
-    add_header X-HTTP-LEVEL-HEADER 1;
-    add_header X-ANOTHER-HTTP-LEVEL-HEADER 1;
-    add_header X-SERVER-LEVEL-HEADER 1;
-    add_header X-LOCATION-LEVEL-HEADER 1;
-    add_header X-XSS-Protection "1; mode=block";
+             client_max_body_size 0;     
+             large_client_header_buffers 4 16k; 
              #client_max_body_size 9999999999M;
-             #server_name $domain;
+             server_name $domain;
              ssl_certificate /etc/xray/xray.crt;
              ssl_certificate_key /etc/xray/xray.key;
              ssl_ciphers EECDH+CHACHA20:EECDH+CHACHA20-draft:EECDH+ECDSA+AES128:EECDH+aRSA+AES128:RSA+AES128:EECDH+ECDSA+AES256:EECDH+aRSA+AES256:RSA+AES256:EECDH+ECDSA+3DES:EECDH+aRSA+3DES:RSA+3DES:!MD5;
@@ -505,7 +494,7 @@ sed -i '$ i}' /etc/nginx/conf.d/xray.conf
 sed -i '$ ilocation /' /etc/nginx/conf.d/xray.conf
 sed -i '$ i{' /etc/nginx/conf.d/xray.conf
 sed -i '$ iproxy_redirect off;' /etc/nginx/conf.d/xray.conf
-sed -i '$ iproxy_pass http://127.0.0.1:8008;' /etc/nginx/conf.d/xray.conf
+sed -i '$ iproxy_pass http://127.0.0.1:700;' /etc/nginx/conf.d/xray.conf
 sed -i '$ iproxy_http_version 1.1;' /etc/nginx/conf.d/xray.conf
 sed -i '$ iproxy_set_header X-Real-IP \$remote_addr;' /etc/nginx/conf.d/xray.conf
 sed -i '$ iproxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;' /etc/nginx/conf.d/xray.conf
