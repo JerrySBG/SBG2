@@ -411,18 +411,8 @@ cat >/etc/nginx/conf.d/xray.conf <<EOF
     server {
              listen 80;
              listen [::]:80;
-             listen 8080;
-             listen [::]:8080;
-             listen 8090;
-             listen [::]:8090;
-             listen 8280;
-             listen [::]:8280;
              listen 443 ssl http2 reuseport;
              listen [::]:443 http2 reuseport;
-             listen 8443 ssl http2 reuseport;
-             listen [::]:8443 http2 reuseport;
-             listen 447 ssl http2 reuseport;
-             listen [::]:447 http2 reuseport;
              client_max_body_size 99999999M;
              server_name $domain;
              ssl_certificate /etc/xray/xray.crt;
