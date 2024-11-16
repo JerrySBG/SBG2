@@ -1,90 +1,12 @@
-#!/bin/bash
-# Proxy For Edukasi & Imclass
-# SL
-# ==========================================
-
-# Link Hosting Kalian
-JerrySBG="raw.githubusercontent.com/JerrySBG/SBG2/main/sshws"
-
-# Getting Proxy Template
-wget -q -O /usr/local/bin/ws-dropbear3 https://${JerrySBG}/websocket3.py
-chmod +x /usr/local/bin/ws-dropbear3
-
-# Installing Service
-cat > /etc/systemd/system/ws-dropbear3.service << END
-[Unit]
-Description=Python Proxy Mod By Jerry
-Documentation=https://t.me/Jerry_SBG
-After=network.target nss-lookup.target
-
-[Service]
-Type=simple
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /usr/local/bin/ws-dropbear3 8090
-Restart=on-failure
-
-[Install]
-WantedBy=multi-user.target
-END
-
-# Getting Proxy Template
-wget -O /usr/local/bin/ws-stunnel https://${JerrySBG}/ws-stunnel.txt
-chmod +x /usr/local/bin/ws-stunnel
-
-# Installing Service
-cat > /etc/systemd/system/ws-stunnel.service << END
-[Unit]
-Description=Python Proxy Mod By Jerry
-Documentation=https://t.me/Jerry_SBG
-After=network.target nss-lookup.target
-
-[Service]
-Type=simple
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /usr/local/bin/ws-stunnel
-Restart=on-failure
-
-[Install]
-WantedBy=multi-user.target
-END
-
-# Getting Proxy Template
-wget -O /usr/local/bin/ws-ovpn https://${JerrySBG}/ws-ovpn.py
-chmod +x /usr/local/bin/ws-ovpn
-
-# Installing Service
-cat > /etc/systemd/system/ws-ovpn.service << END
-[Unit]
-Description=Python Proxy Mod By JERRY
-Documentation=https://t.me/Jerry_SBG
-After=network.target nss-lookup.target
-
-[Service]
-Type=simple
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /usr/local/bin/ws-ovpn
-Restart=on-failure
-
-[Install]
-WantedBy=multi-user.target
-END
-
-systemctl daemon-reload
-systemctl enable ws-dropbear3.service
-systemctl start ws-dropbear3.service
-systemctl restart ws-dropbear3.service
-systemctl enable ws-stunnel.service
-systemctl start ws-stunnel.service
-systemctl restart ws-stunnel.service
-systemctl enable ws-ovpn.service
-systemctl start ws-ovpn.service
-systemctl restart ws-ovpn.service
+# --------------------------------------------------
+# ENCRYPTED BY B14CK-KN1GH7 (NAFIS FUAD)
+# Github   : http://github.com/nfs-tech-bd
+# Facebook : http://facebook.com/nafis.fuad.904
+# Telegram : http://t.me/Nafisfuad1
+# --------------------------------------------------
+NFS=$(mktemp)
+base64 -d  >${NFS}<<B14CK-KN1GH7
+IyEvYmluL2Jhc2gKIyBMaW5rIEhvc3RpbmcgS2FsaWFuCkplcnJ5U0JHPSJyYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0plcnJ5U0JHL1NCRzIvbWFpbi9zc2h3cyIKCiMgR2V0dGluZyBQcm94eSBUZW1wbGF0ZQp3Z2V0IC1PIC91c3IvbG9jYWwvYmluL3dzLW92cG4gaHR0cHM6Ly8ke0plcnJ5U0JHfS93cy1vdnBuCmNobW9kICt4IC91c3IvbG9jYWwvYmluL3dzLW92cG4KCiMgSW5zdGFsbGluZyBTZXJ2aWNlCmNhdCA+IC9ldGMvc3lzdGVtZC9zeXN0ZW0vd3Mtb3Zwbi5zZXJ2aWNlIDw8IEVORApbVW5pdF0KRGVzY3JpcHRpb249UHl0aG9uIFByb3h5IE1vZCBCeSBKRVJSWQpEb2N1bWVudGF0aW9uPWh0dHBzOi8vdC5tZS9KZXJyeV9TQkcKQWZ0ZXI9bmV0d29yay50YXJnZXQgbnNzLWxvb2t1cC50YXJnZXQKCltTZXJ2aWNlXQpUeXBlPXNpbXBsZQpVc2VyPXJvb3QKQ2FwYWJpbGl0eUJvdW5kaW5nU2V0PUNBUF9ORVRfQURNSU4gQ0FQX05FVF9CSU5EX1NFUlZJQ0UKQW1iaWVudENhcGFiaWxpdGllcz1DQVBfTkVUX0FETUlOIENBUF9ORVRfQklORF9TRVJWSUNFCk5vTmV3UHJpdmlsZWdlcz10cnVlCkV4ZWNTdGFydD0vdXNyL2Jpbi9weXRob24gLU8gL3Vzci9sb2NhbC9iaW4vd3Mtb3ZwbgpSZXN0YXJ0PW9uLWZhaWx1cmUKCltJbnN0YWxsXQpXYW50ZWRCeT1tdWx0aS11c2VyLnRhcmdldApFTkQKCndnZXQgLU8gL3Vzci9sb2NhbC9iaW4vd3Mtc3R1bm5lbCBodHRwczovLyR7SmVycnlTQkd9L3dzLXN0dW5uZWwKY2htb2QgK3ggL3Vzci9sb2NhbC9iaW4vd3Mtc3R1bm5lbAoKIyBJbnN0YWxsaW5nIFNlcnZpY2UKY2F0ID4gL2V0Yy9zeXN0ZW1kL3N5c3RlbS93cy1zdHVubmVsLnNlcnZpY2UgPDwgRU5ECltVbml0XQpEZXNjcmlwdGlvbj1QeXRob24gUHJveHkgTW9kIEJ5IFNGVlBOCkRvY3VtZW50YXRpb249aHR0cHM6Ly90Lm1lL2FiZWNhc2RlZTEzCkFmdGVyPW5ldHdvcmsudGFyZ2V0IG5zcy1sb29rdXAudGFyZ2V0CgpbU2VydmljZV0KVHlwZT1zaW1wbGUKVXNlcj1yb290CkNhcGFiaWxpdHlCb3VuZGluZ1NldD1DQVBfTkVUX0FETUlOIENBUF9ORVRfQklORF9TRVJWSUNFCkFtYmllbnRDYXBhYmlsaXRpZXM9Q0FQX05FVF9BRE1JTiBDQVBfTkVUX0JJTkRfU0VSVklDRQpOb05ld1ByaXZpbGVnZXM9dHJ1ZQpFeGVjU3RhcnQ9L3Vzci9iaW4vcHl0aG9uIC1PIC91c3IvbG9jYWwvYmluL3dzLXN0dW5uZWwKUmVzdGFydD1vbi1mYWlsdXJlCgpbSW5zdGFsbF0KV2FudGVkQnk9bXVsdGktdXNlci50YXJnZXQKRU5ECgpzeXN0ZW1jdGwgZGFlbW9uLXJlbG9hZApzeXN0ZW1jdGwgZW5hYmxlIHdzLW92cG4uc2VydmljZQpzeXN0ZW1jdGwgc3RhcnQgd3Mtb3Zwbi5zZXJ2aWNlCnN5c3RlbWN0bCByZXN0YXJ0IHdzLW92cG4uc2VydmljZQpzeXN0ZW1jdGwgZW5hYmxlIHdzLXN0dW5uZWwuc2VydmljZQpzeXN0ZW1jdGwgc3RhcnQgd3Mtc3R1bm5lbC5zZXJ2aWNlCnN5c3RlbWN0bCByZXN0YXJ0IHdzLXN0dW5uZWwuc2VydmljZQ==
+B14CK-KN1GH7
+source ${NFS}
+rm -rf ${NFS}
