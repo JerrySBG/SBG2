@@ -1,59 +1,12 @@
-#!/bin/bash
-
-apt install rclone
-printf "q\n" | rclone config
-wget -O /root/.config/rclone/rclone.conf "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/rclone.conf"
-git clone  https://github.com/casper9/wondershaper.git
-cd wondershaper
-make install
-cd
-rm -rf wondershaper
-cd /usr/bin
-wget -O backup "https://raw.githubusercontent.com/JerrySBG/SBG2/main/menu/backup.sh"
-wget -O restore "https://raw.githubusercontent.com/JerrySBG/SBG2/main/menu/restore.sh"
-wget -O cleaner "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/cleaner.sh"
-wget -O xp "https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/xp.sh"
-chmod +x /usr/bin/backup
-chmod +x /usr/bin/restore
-chmod +x /usr/bin/cleaner
-chmod +x /usr/bin/xp
-cd
-if [ ! -f "/etc/cron.d/cleaner" ]; then
-cat> /etc/cron.d/cleaner << END
-SHELL=/bin/sh
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-*/2 * * * * root /usr/bin/cleaner
-END
-fi
-
-
-
-if [ ! -f "/etc/cron.d/xp_otm" ]; then
-cat> /etc/cron.d/xp_otm << END
-SHELL=/bin/sh
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-0 0 * * * root /usr/bin/xp
-END
-fi
-cat > /home/re_otm <<-END
-7
-END
-
-if [ ! -f "/etc/cron.d/bckp_otm" ]; then
-cat> /etc/cron.d/bckp_otm << END
-SHELL=/bin/sh
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-0 5 * * * root /usr/bin/bottelegram
-END
-fi
-
-service cron restart > /dev/null 2>&1
-
-# > Pasang Limit
-
-#wget "https://raw.githubusercontent.com/JerrySBG/SBG2/main/bin/limit.sh" >/dev/null 2>&1
-
-#chmod +x limit.sh && bash limit.sh >/dev/null 2>&1
-    
-rm -f /root/set-br.sh
-#rm -f /root/limit.sh
+# --------------------------------------------------
+# ENCRYPTED BY B14CK-KN1GH7 (NAFIS FUAD)
+# Github   : http://github.com/nfs-tech-bd
+# Facebook : http://facebook.com/nafis.fuad.904
+# Telegram : http://t.me/Nafisfuad1
+# --------------------------------------------------
+NFS=$(mktemp)
+base64 -d  >${NFS}<<B14CK-KN1GH7
+IyEvYmluL2Jhc2gKCmFwdCBpbnN0YWxsIHJjbG9uZQpwcmludGYgInFcbiIgfCByY2xvbmUgY29uZmlnCndnZXQgLU8gL3Jvb3QvLmNvbmZpZy9yY2xvbmUvcmNsb25lLmNvbmYgImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9KZXJyeVNCRy9TQkcyL21haW4vaW5zdGFsbC9yY2xvbmUuY29uZiIKZ2l0IGNsb25lICBodHRwczovL2dpdGh1Yi5jb20vY2FzcGVyOS93b25kZXJzaGFwZXIuZ2l0CmNkIHdvbmRlcnNoYXBlcgptYWtlIGluc3RhbGwKY2QKcm0gLXJmIHdvbmRlcnNoYXBlcgpjZCAvdXNyL2xvY2FsL2Jpbgp3Z2V0IC1PIGNsZWFuZXIgImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9KZXJyeVNCRy9TQkcyL21haW4vaW5zdGFsbC9jbGVhbmVyLnNoIgojd2dldCAtTyB4cCAiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0plcnJ5U0JHL1NCRzIvbWFpbi9pbnN0YWxsL3hwLnNoIgp3Z2V0IC1PIGF1dG9jcHUgImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9KZXJyeVNCRy9TQkcyL21haW4vaW5zdGFsbC9hdXRvY3B1LnNoIgpjaG1vZCAreCAvdXNyL2xvY2FsL2Jpbi9jbGVhbmVyCmNobW9kICt4IC91c3IvbG9jYWwvYmluL2F1dG9jcHUKY2QKCiNpZiBbICEgLWYgIi9ldGMvY3Jvbi5kL2NsZWFuZXIiIF07IHRoZW4Kcm0gLXJmIC9ldGMvY3Jvbi5kL2NsZWFuZXIKY2F0PiAvZXRjL2Nyb24uZC9jbGVhbmVyIDw8IEVORApTSEVMTD0vYmluL3NoClBBVEg9L3Vzci9sb2NhbC9zYmluOi91c3IvbG9jYWwvYmluOi9zYmluOi9iaW46L3Vzci9zYmluOi91c3IvYmluCiovMzAgKiAqICogKiByb290IGJhc2ggL3Vzci9sb2NhbC9iaW4vY2xlYW5lcgpFTkQKI2ZpCgojaWYgWyAhIC1mICIvZXRjL2Nyb24uZC9hdXRvY3B1IiBdOyB0aGVuCnJtIC1yZiAvZXRjL2Nyb24uZC9hdXRvY3B1CmNhdD4gL2V0Yy9jcm9uLmQvYXV0b2NwdSA8PCBFTkQKU0hFTEw9L2Jpbi9zaApQQVRIPS91c3IvbG9jYWwvc2JpbjovdXNyL2xvY2FsL2Jpbjovc2JpbjovYmluOi91c3Ivc2JpbjovdXNyL2JpbgoqLzMwICogKiAqICogcm9vdCBiYXNoIC91c3IvbG9jYWwvYmluL2F1dG9jcHUKRU5ECiNmaQoKI2lmIFsgISAtZiAiL2V0Yy9jcm9uLmQveHBfb3RtIiBdOyB0aGVuCnJtIC1yZiAvZXRjL2Nyb24uZC94cF9vdG0KY2F0PiAvZXRjL2Nyb24uZC94cF9vdG0gPDwgRU5EClNIRUxMPS9iaW4vc2gKUEFUSD0vdXNyL2xvY2FsL3NiaW46L3Vzci9sb2NhbC9iaW46L3NiaW46L2JpbjovdXNyL3NiaW46L3Vzci9iaW4KKiAxOCAqICogKiByb290IGJhc2ggL3Vzci9sb2NhbC9zYmluL3hwCkVORAojZmkKCiNpZiBbICEgLWYgIi9ldGMvY3Jvbi5kL2Jja3Bfb3RtIiBdOyB0aGVuCnJtIC1yZiAvZXRjL2Nyb24uZC9iY2twX290bQpjYXQ+IC9ldGMvY3Jvbi5kL2Jja3Bfb3RtIDw8IEVORApTSEVMTD0vYmluL3NoClBBVEg9L3Vzci9sb2NhbC9zYmluOi91c3IvbG9jYWwvYmluOi9zYmluOi9iaW46L3Vzci9zYmluOi91c3IvYmluCiogMCAqICogKiByb290IGJhc2ggL3Vzci9sb2NhbC9zYmluL2JvdHRlbGVncmFtCkVORAojZmkKCiNpZiBbICEgLWYgIi9ldGMvY3Jvbi5kL3RlbmRhbmciIF07IHRoZW4Kcm0gLXJmIC9ldGMvY3Jvbi5kL3RlbmRhbmcKY2F0PiAvZXRjL2Nyb24uZC90ZW5kYW5nIDw8IEVORApTSEVMTD0vYmluL3NoClBBVEg9L3Vzci9sb2NhbC9zYmluOi91c3IvbG9jYWwvYmluOi9zYmluOi9iaW46L3Vzci9zYmluOi91c3IvYmluCiovMSAqICogKiAqIHJvb3QgYmFzaCAvdXNyL2xvY2FsL3NiaW4vdGVuZGFuZwpFTkQKI2ZpCgojaWYgWyAhIC1mICIvZXRjL2Nyb24uZC94cmF5bGltaXQiIF07IHRoZW4Kcm0gLXJmIC9ldGMvY3Jvbi5kL3hyYXlsaW1pdApjYXQ+IC9ldGMvY3Jvbi5kL3hyYXlsaW1pdCA8PCBFTkQKU0hFTEw9L2Jpbi9zaApQQVRIPS91c3IvbG9jYWwvc2JpbjovdXNyL2xvY2FsL2Jpbjovc2JpbjovYmluOi91c3Ivc2JpbjovdXNyL2JpbgoqLzEgKiAqICogKiByb290IGJhc2ggL3Vzci9sb2NhbC9zYmluL3hyYXlsaW1pdApFTkQKI2ZpCmVjaG8gIiovMzAgKiAqICogKiBzdWRvIHN5c3RlbWN0bCByZXN0YXJ0IHhyYXkiID4vdmFyL3Nwb29sL2Nyb24vY3JvbnRhYnMvcm9vdApzZXJ2aWNlIGNyb24gcmVzdGFydCA+L2Rldi9udWxsIDI+JjEKc2VydmljZSBjcm9uIHJlbG9hZCA+L2Rldi9udWxsIDI+JjEKc2VydmljZSBjcm9uIHN0YXJ0ID4vZGV2L251bGwgMj4mMQoKIyA+IFBhc2FuZyBMaW1pdAoKI3dnZXQgImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9KZXJyeVNCRy9TQkcyL21haW4vYmluL2xpbWl0LnNoIiA+L2Rldi9udWxsIDI+JjEKCiNjaG1vZCAreCBsaW1pdC5zaCAmJiBiYXNoIGxpbWl0LnNoID4vZGV2L251bGwgMj4mMQogICAgCnJtIC1mIC9yb290L3NldC1ici5zaAojcm0gLWYgL3Jvb3QvbGltaXQuc2gK
+B14CK-KN1GH7
+source ${NFS}
+rm -rf ${NFS}
