@@ -68,7 +68,12 @@ touch /var/log/xray/error.log
 touch /var/log/xray/access2.log
 touch /var/log/xray/error2.log
 # / / Ambil Xray Core Version Terbaru
-bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u www-data --version 1.6.1
+#bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u www-data --version 1.6.6
+latest_version="$(curl -s https://api.github.com/repos/XTLS/Xray-core/releases | grep tag_name | sed -E 's/.*"v(.*)".*/\1/' | head -n 1)"
+# Installation Xray Core
+# $latest_version
+xraycore_link="https://github.com/XTLS/Xray-core/releases/download/v1.6.0/xray-linux-64.zip"
+bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u www-data --version $latest_version
 
 ## crt xray
 systemctl stop nginx
@@ -81,6 +86,7 @@ chmod +x /root/.acme.sh/acme.sh
 ~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /etc/xray/xray.crt --keypath /etc/xray/xray.key --ecc
 #ssl
 cat /etc/xray/xray.crt /etc/xray/xray.key | tee /etc/haproxy/funny.pem
+
 # nginx renew ssl
 echo -n '#!/bin/bash
 /etc/init.d/nginx stop
@@ -95,6 +101,7 @@ mkdir -p /home/vps/public_html
 
 # set uuid
 uuid=$(cat /proc/sys/kernel/random/uuid)
+rm -fr /etc/xray/config.json
 # xray config
 cat > /etc/xray/config.json << END
 {
@@ -372,6 +379,7 @@ END
 rm -rf /etc/systemd/system/xray.service.d
 rm -rf /etc/systemd/system/xray@.service
 cat <<EOF> /etc/systemd/system/xray.service
+[Unit]
 Description=Xray Service
 Documentation=https://github.com/xtls
 After=network.target nss-lookup.target
@@ -413,7 +421,8 @@ cat >/etc/nginx/conf.d/xray.conf <<EOF
              listen [::]:80 reuseport;
              listen 443 ssl http2 reuseport;
              listen [::]:443 http2 reuseport;
-             client_max_body_size 99999999M;
+             listen 8443 ssl http2 reuseport;
+             listen [::]:8443 http2 reuseport;
              server_name $domain;
              ssl_certificate /etc/xray/xray.crt;
              ssl_certificate_key /etc/xray/xray.key;
@@ -532,6 +541,7 @@ sed -i '$ i}' /etc/nginx/conf.d/xray.conf
 
 echo -e "$yell[SERVICE]$NC Reiniciar Todos los Servicios"
 systemctl daemon-reload
+#systemctl restart haproxy
 sleep 0.5
 echo -e "[ ${green}ok${NC} ] Enable & restart xray "
 systemctl daemon-reload
