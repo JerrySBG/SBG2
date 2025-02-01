@@ -1,12 +1,58 @@
-# --------------------------------------------------
-# ENCRYPTED BY B14CK-KN1GH7 (NAFIS FUAD)
-# Github   : http://github.com/nfs-tech-bd
-# Facebook : http://facebook.com/nafis.fuad.904
-# Telegram : http://t.me/Nafisfuad1
-# --------------------------------------------------
-NFS=$(mktemp)
-base64 -d  >${NFS}<<B14CK-KN1GH7
-IyEvYmluL2Jhc2gKY2xlYXIKcmVkPSdcZVsxOzMxbScKZ3JlZW4yPSdcZVsxOzMybScKeWVsbD0nXGVbMTszM20nCk5DPSdcZVswbScKZ3JlZW4oKSB7IGVjaG8gLWUgIlxcMDMzWzMyOzFtJHsqfVxcMDMzWzBtIjsgfQpyZWQoKSB7IGVjaG8gLWUgIlxcMDMzWzMxOzFtJHsqfVxcMDMzWzBtIjsgfQpyZWQgIiAgICAgICAgICAgSW5zdGFsYWNpw7NuIGRlIEhlcnJhbWllbnRhcy4uLiEiCnJlZCAiICAgICAgICAgICAgICAgICAgSW5pY2lhbmRvLi4uIgpzbGVlcCAwLjUKYXB0IHVwZGF0ZSAteQphcHQgdXBncmFkZSAteQphcHQgZGlzdC11cGdyYWRlIC15CmFwdCBpbnN0YWxsIHN1ZG8gLXkKc3VkbyBhcHQtZ2V0IGNsZWFuIGFsbAphcHQgaW5zdGFsbCAteSBkZWJjb25mLXV0aWxzCmFwdC1nZXQgcmVtb3ZlIC0tcHVyZ2UgdWZ3IGZpcmV3YWxsZCAteQphcHQtZ2V0IHJlbW92ZSAtLXB1cmdlIGV4aW00IC15CmFwdC1nZXQgYXV0b3JlbW92ZSAteQphcHQgaW5zdGFsbCAteSAtLW5vLWluc3RhbGwtcmVjb21tZW5kcyBzb2Z0d2FyZS1wcm9wZXJ0aWVzLWNvbW1vbgplY2hvIGlwdGFibGVzLXBlcnNpc3RlbnQgaXB0YWJsZXMtcGVyc2lzdGVudC9hdXRvc2F2ZV92NCBib29sZWFuIHRydWUgfCBkZWJjb25mLXNldC1zZWxlY3Rpb25zCmVjaG8gaXB0YWJsZXMtcGVyc2lzdGVudCBpcHRhYmxlcy1wZXJzaXN0ZW50L2F1dG9zYXZlX3Y2IGJvb2xlYW4gdHJ1ZSB8IGRlYmNvbmYtc2V0LXNlbGVjdGlvbnMKc3VkbyBERUJJQU5fRlJPTlRFTkQ9bm9uaW50ZXJhY3RpdmUgYXB0LWdldCAteSBpbnN0YWxsIGlwdGFibGVzIGlwdGFibGVzLXBlcnNpc3RlbnQgbmV0ZmlsdGVyLXBlcnNpc3RlbnQgZmlnbGV0IHJ1YnkgbGlieG1sLXBhcnNlci1wZXJsIHNxdWlkIG5tYXAgc2NyZWVuIGN1cmwganEgYnppcDIgZ3ppcCBjb3JldXRpbHMgcnN5c2xvZyBpZnRvcCBodG9wIHppcCB1bnppcCBuZXQtdG9vbHMgc2VkIGdudXBnIGdudXBnMSBiYyBhcHQtdHJhbnNwb3J0LWh0dHBzIGJ1aWxkLWVzc2VudGlhbCBkaXJtbmdyIGxpYnhtbC1wYXJzZXItcGVybCBuZW9mZXRjaCBzY3JlZW5mZXRjaCBsc29mIG9wZW5zc2wgb3BlbnZwbiBlYXN5LXJzYSBmYWlsMmJhbiB0bXV4IHN0dW5uZWw0IHNxdWlkMyBkcm9wYmVhciBzb2NhdCBjcm9uIGJhc2gtY29tcGxldGlvbiBudHBkYXRlIHh6LXV0aWxzIGFwdC10cmFuc3BvcnQtaHR0cHMgZ251cGcyIGRuc3V0aWxzIGxzYi1yZWxlYXNlIGNocm9ueSBsaWJuc3MzLWRldiBsaWJuc3ByNC1kZXYgcGtnLWNvbmZpZyBsaWJwYW0wZy1kZXYgbGliY2FwLW5nLWRldiBsaWJjYXAtbmctdXRpbHMgbGlic2VsaW51eDEtZGV2IGxpYmN1cmw0LW5zcy1kZXYgZmxleCBiaXNvbiBtYWtlIGxpYm5zczMtdG9vbHMgbGliZXZlbnQtZGV2IHhsMnRwZCBwcHRwZCBhcHQgZ2l0IHNwZWVkdGVzdC1jbGkgcDd6aXAtZnVsbCBsaWJqcGVnLWRldiB6bGliMWctZGV2IHB5dGhvbiBweXRob24zIHB5dGhvbjMtcGlwIHNoYyBidWlsZC1lc3NlbnRpYWwgbm9kZWpzIG5naW54IHBocCBwaHAtZnBtIHBocC1jbGkgcGhwLW15c3FsIHA3emlwLWZ1bGwKCiMgcmVtb3ZlIHVubmVjZXNzYXJ5IGZpbGVzCnN1ZG8gYXB0LWdldCBhdXRvY2xlYW4gLXkgPi9kZXYvbnVsbCAyPiYxCmF1ZG8gYXB0LWdldCAteSAtLXB1cmdlIHJlbW92ZCB1bnNjZCA+L2Rldi9udWxsIDI+JjEKc3VkbyBhcHQtZ2V0IC15IC0tcHVyZ2UgcmVtb3ZlIHNhbWJhKiA+L2Rldi9udWxsIDI+JjEKc3VkbyBhcHQtZ2V0IC15IC0tcHVyZ2UgcmVtb3ZlIGFwYWNoZTIqID4vZGV2L251bGwgMj4mMQpzdWRvIGFwdC1nZXQgLXkgLS1wdXJnZSByZW1vdmUgYmluZDkqID4vZGV2L251bGwgMj4mMQpzdWRvIGFwdC1nZXQgLXkgcmVtb3ZlIHNlbmRtYWlsKiA+L2Rldi9udWxsIDI+JjEKYXB0IGF1dG9yZW1vdmUgLXkgPi9kZXYvbnVsbCAyPiYxCiMgZmluaXNoaW5nCgpzdWRvIGFwdC1nZXQgLXkgaW5zdGFsbCB2bnN0YXQKL2V0Yy9pbml0LmQvdm5zdGF0IHJlc3RhcnQKc3VkbyBhcHQtZ2V0IC15IGluc3RhbGwgbGlic3FsaXRlMy1kZXYKd2dldCBodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vSmVycnlTQkcvU0JHMi9tYWluL3Zuc3RhdC0yLjYudGFyLmd6CnRhciB6eHZmIHZuc3RhdC0yLjYudGFyLmd6CmNkIHZuc3RhdC0yLjYKLi9jb25maWd1cmUgLS1wcmVmaXg9L3VzciAtLXN5c2NvbmZkaXI9L2V0YyAmJiBtYWtlICYmIG1ha2UgaW5zdGFsbApjZAp2bnN0YXQgLXUgLWkgJE5FVApzZWQgLWkgJ3MvSW50ZXJmYWNlICInIiJldGgwIiInIi9JbnRlcmZhY2UgIiciIiRORVQiIiciL2cnIC9ldGMvdm5zdGF0LmNvbmYKY2hvd24gdm5zdGF0OnZuc3RhdCAvdmFyL2xpYi92bnN0YXQgLVIKc3lzdGVtY3RsIGVuYWJsZSB2bnN0YXQKL2V0Yy9pbml0LmQvdm5zdGF0IHJlc3RhcnQKcm0gLWYgL3Jvb3Qvdm5zdGF0LTIuNi50YXIuZ3oKcm0gLXJmIC9yb290L3Zuc3RhdC0yLjYKCnllbGxvdygpIHsgZWNobyAtZSAiXFwwMzNbMzM7MW0keyp9XFwwMzNbMG0iOyB9CnllbGxvdyAiRGVwZW5kZW5jaWFzIEluc3RhbGFkYXMgRXhpdG9zYW1lbnRlLi4uIgpzbGVlcCAxCmNsZWFyCg==
-B14CK-KN1GH7
-source ${NFS}
-rm -rf ${NFS}
+#!/bin/bash
+clear
+red='\e[1;31m'
+green2='\e[1;32m'
+yell='\e[1;33m'
+NC='\e[0m'
+green() { echo -e "\\033[32;1m${*}\\033[0m"; }
+red() { echo -e "\\033[31;1m${*}\\033[0m"; }
+
+
+red "           Instalación de Herramientas...!"
+red "                  Iniciando..."
+sleep 0.5
+apt update -y
+apt upgrade -y
+apt dist-upgrade -y
+apt full-upgrade -y
+apt install sudo -y
+sudo apt-get clean all
+apt install -y debconf-utils
+apt-get remove --purge ufw firewalld -y
+apt-get remove --purge exim4 -y
+apt-get autoremove -y
+apt install -y --no-install-recommends software-properties-common
+echo iptables-persistent iptables-persistent/autosave_v4 boolean true | debconf-set-selections
+echo iptables-persistent iptables-persistent/autosave_v6 boolean true | debconf-set-selections
+sudo DEBIAN_FRONTEND=noninteractive apt-get -y install iptables iptables-persistent netfilter-persistent figlet ruby libxml-parser-perl squid nmap screen curl jq bzip2 gzip coreutils rsyslog iftop htop zip unzip net-tools sed gnupg gnupg1 bc apt-transport-https build-essential dirmngr libxml-parser-perl neofetch screenfetch lsof openssl openvpn easy-rsa fail2ban tmux stunnel4 squid3 dropbear socat cron bash-completion ntpdate xz-utils apt-transport-https gnupg2 dnsutils lsb-release chrony libnss3-dev libnspr4-dev pkg-config libpam0g-dev libcap-ng-dev libcap-ng-utils libselinux1-dev libcurl4-nss-dev flex bison make libnss3-tools libevent-dev xl2tpd pptpd apt git speedtest-cli p7zip-full libjpeg-dev zlib1g-dev python python3 python3-pip shc build-essential nodejs nginx php php-fpm php-cli php-mysql p7zip-full
+sudo apt install python-is-python3
+# remove unnecessary files
+sudo apt-get autoclean -y >/dev/null 2>&1
+audo apt-get -y --purge removd unscd >/dev/null 2>&1
+sudo apt-get -y --purge remove samba* >/dev/null 2>&1
+sudo apt-get -y --purge remove apache2* >/dev/null 2>&1
+sudo apt-get -y --purge remove bind9* >/dev/null 2>&1
+sudo apt-get -y remove sendmail* >/dev/null 2>&1
+apt autoremove -y >/dev/null 2>&1
+# finishing
+
+sudo apt-get -y install vnstat
+/etc/init.d/vnstat restart
+sudo apt-get -y install libsqlite3-dev
+wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/vnstat-2.6.tar.gz
+tar zxvf vnstat-2.6.tar.gz
+cd vnstat-2.6
+./configure --prefix=/usr --sysconfdir=/etc && make && make install
+cd
+vnstat -u -i $NET
+sed -i 's/Interface "'""eth0""'"/Interface "'""$NET""'"/g' /etc/vnstat.conf
+chown vnstat:vnstat /var/lib/vnstat -R
+systemctl enable vnstat
+/etc/init.d/vnstat restart
+rm -f /root/vnstat-2.6.tar.gz
+rm -rf /root/vnstat-2.6
+
+yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
+yellow "Dependencias Instaladas Exitosamente..."
+sleep 1
+clear
