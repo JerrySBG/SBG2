@@ -28,6 +28,7 @@ email=none
 # simple password minimal
 wget -q -O /etc/pam.d/common-password "https://raw.githubusercontent.com/zaraadelia/v5/main/tempek/password"
 chmod +x /etc/pam.d/common-password
+
 # go to root
 cd
 
@@ -223,20 +224,12 @@ systemctl start badvpn3
 
 # setting port ssh
 cd
-#sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 2222' /etc/ssh/sshd_config
 sed -i 's/#Port 22/Port 22/g' /etc/ssh/sshd_config
-echo "Port 40000" >> /etc/ssh/sshd_config
-echo "X11Forwarding yes" >> /etc/ssh/sshd_config
-echo "AllowTcpForwarding yes" >> /etc/ssh/sshd_config
-echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
-echo "PubkeyAuthentication yes" >> /etc/ssh/sshd_config
-echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
-sed -i 's/#AllowTcpForwarding yes/AllowTcpForwarding yes/g' /etc/ssh/sshd_config
-sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
-systemctl restart sshd
-systemctl daemon-reload
-#/etc/init.d/ssh restart
+#systemctl restart sshd
+#systemctl daemon-reload
+/etc/init.d/ssh restart
 
 echo "=== Install Dropbear ==="
 # install dropbear
@@ -274,75 +267,44 @@ systemctl enable vnstat
 rm -f /root/vnstat-2.6.tar.gz
 rm -rf /root/vnstat-2.6
 
-# Install Stunnel5
-cd /root/
-wget -q "https://raw.githubusercontent.com/AngIMAN/v6/main/tools/stunnel5.zip"
-unzip stunnel5.zip
-cd /root/stunnel
-chmod +x configure
-./configure
-make
-make install
-cd /root
-rm -r -f stunnel
-rm -f stunnel5.zip
-rm -fr /etc/stunnel5
-mkdir -p /etc/stunnel5
-chmod 644 /etc/stunnel5
+#install sslh
+apt install sslh -y
+cd /etc/default/
+rm sslh
+wget https://raw.githubusercontent.com/muhammadnoor674/anuy/main/sslh
 
-# Download Config Stunnel5
-cat > /etc/stunnel5/stunnel5.conf <<-END
-cert = /etc/xray/xray.crt
-key = /etc/xray/xray.key
+# install stunnel
+apt install stunnel4 -y
+cat > /etc/stunnel/stunnel.conf <<-END
+cert = /etc/stunnel/stunnel.pem
 client = no
 socket = a:SO_REUSEADDR=1
 socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
+
 [dropbear]
-accept = 447
-connect = 127.0.0.1:109
-[openssh]
+accept = 222
+connect = 127.0.0.1:22
+
+[dropbear]
 accept = 777
 connect = 127.0.0.1:22
+
 [openvpn]
 accept = 442
 connect = 127.0.0.1:1194
+
 END
 
-# Service Stunnel5 systemctl restart stunnel5
-rm -fr /etc/systemd/system/stunnel5.service
-cat > /etc/systemd/system/stunnel5.service << END
-[Unit]
-Description=Stunnel5 Service
-Documentation=https://stunnel.org
-Documentation=https://nekopoi.care
-After=syslog.target network-online.target
-[Service]
-ExecStart=/usr/local/bin/stunnel5 /etc/stunnel5/stunnel5.conf
-Type=forking
-[Install]
-WantedBy=multi-user.target
-END
+# make a certificate
+openssl genrsa -out key.pem 2048
+openssl req -new -x509 -key key.pem -out cert.pem -days 1095 \
+-subj "/C=$country/ST=$state/L=$locality/O=$organization/OU=$organizationalunit/CN=$commonname/emailAddress=$email"
+cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
 
-# Service Stunnel5 /etc/init.d/stunnel5
-rm -fr /etc/init.d/stunnel5
-wget -q -O /etc/init.d/stunnel5 "https://raw.githubusercontent.com/AngIMAN/v6/main/tools/stunnel5.init"
-
-chmod +x /etc/init.d/stunnel5
-cp -r /usr/local/bin/stunnel /usr/local/bin/stunnel5
-# Remove File
-rm -r -f /usr/local/share/doc/stunnel/
-rm -r -f /usr/local/etc/stunnel/
-rm -f /usr/local/bin/stunnel
-rm -f /usr/local/bin/stunnel3
-rm -f /usr/local/bin/stunnel4
-
-# Restart Stunnel5
-systemctl daemon-reload >/dev/null 2>&1
-systemctl enable stunnel5 >/dev/null 2>&1
-systemctl start stunnel5 >/dev/null 2>&1
-systemctl restart stunnel5 >/dev/null 2>&1
-
+# konfigurasi stunnel
+sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
+/etc/init.d/stunnel4 restart
 
 #OpenVPN
 wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/install/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
@@ -454,13 +416,13 @@ chmod +x m-theme
 chmod +x speedtest
 cd
 # remove unnecessary files
-#apt autoclean -y >/dev/null 2>&1
-#apt -y remove --purge unscd >/dev/null 2>&1
-#apt-get -y --purge remove samba* >/dev/null 2>&1
-#apt-get -y --purge remove apache2* >/dev/null 2>&1
-#apt-get -y --purge remove bind9* >/dev/null 2>&1
-#apt-get -y remove sendmail* >/dev/null 2>&1
-#apt autoremove -y >/dev/null 2>&1
+apt autoclean -y >/dev/null 2>&1
+apt -y remove --purge unscd >/dev/null 2>&1
+apt-get -y --purge remove samba* >/dev/null 2>&1
+apt-get -y --purge remove apache2* >/dev/null 2>&1
+apt-get -y --purge remove bind9* >/dev/null 2>&1
+apt-get -y remove sendmail* >/dev/null 2>&1
+apt autoremove -y >/dev/null 2>&1
 # finishing
 systemctl daemon-reload
 cd
@@ -482,7 +444,7 @@ echo -e "[ ${green}ok${NC} ] Restarting dropbear "
 /etc/init.d/fail2ban restart >/dev/null 2>&1
 sleep 1
 echo -e "[ ${green}ok${NC} ] Restarting fail2ban "
-/etc/init.d/stunnel5 restart >/dev/null 2>&1
+/etc/init.d/stunnel4 restart >/dev/null 2>&1
 sleep 1
 echo -e "[ ${green}ok${NC} ] Restarting stunnel4 "
 /etc/init.d/vnstat restart >/dev/null 2>&1
@@ -506,4 +468,5 @@ rm -f /root/key.pem
 rm -f /root/cert.pem
 rm -f /root/ssh-vpn.sh
 rm -f /root/bbr.sh
+
 clear
