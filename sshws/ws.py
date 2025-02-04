@@ -12,7 +12,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 # Listen
 LISTENING_ADDR = '0.0.0.0'
-LISTENING_PORT = 701  # Porta padrão 8098
+LISTENING_PORT = 700  # Porta padrão 8098
 
 # Senha (pode ser lida de um arquivo de configuração ou variável de ambiente)
 PASS = ''
@@ -20,8 +20,10 @@ PASS = ''
 # Constantes
 BUFLEN = 4096 * 4
 TIMEOUT = 60
-DEFAULT_HOST = '127.0.0.1:2222'
-RESPONSE = 'HTTP/1.1 101 <b><font color="cyan"><i>WebSocket By JERRY</i></font></b>\r\n\r\nContent-Length: 104857600000\r\n\r\n'
+DEFAULT_HOST = '127.0.0.1:143'
+#RESPONSE = 'HTTP/1.1 101 <b><font color="cyan"><i>WebSocket By JERRY</i></font></b>\r\n\r\nContent-Length: 104857600000\r\n\r\n'
+RESPONSE = 'HTTP/1.1 101 <b><font color="red"><i>WS + SSL By JERRY</i></font></b>\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Accept: foo\r\n\r\n'
+
 
 class Server(threading.Thread):
     def __init__(self, host, port):
