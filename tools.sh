@@ -1,58 +1,12 @@
-#!/bin/bash
-clear
-red='\e[1;31m'
-green2='\e[1;32m'
-yell='\e[1;33m'
-NC='\e[0m'
-green() { echo -e "\\033[32;1m${*}\\033[0m"; }
-red() { echo -e "\\033[31;1m${*}\\033[0m"; }
-
-
-red "           Instalación de Herramientas...!"
-red "                  Iniciando..."
-sleep 0.5
-apt update -y
-apt upgrade -y
-apt dist-upgrade -y
-apt full-upgrade -y
-apt install sudo -y
-sudo apt-get clean all
-apt install -y debconf-utils
-apt-get remove --purge ufw firewalld -y
-apt-get remove --purge exim4 -y
-apt-get autoremove -y
-apt install -y --no-install-recommends software-properties-common
-echo iptables-persistent iptables-persistent/autosave_v4 boolean true | debconf-set-selections
-echo iptables-persistent iptables-persistent/autosave_v6 boolean true | debconf-set-selections
-sudo DEBIAN_FRONTEND=noninteractive apt-get -y install iptables iptables-persistent netfilter-persistent figlet ruby libxml-parser-perl squid nmap screen curl jq bzip2 gzip coreutils rsyslog iftop htop zip unzip net-tools sed gnupg gnupg1 bc apt-transport-https build-essential dirmngr libxml-parser-perl neofetch screenfetch lsof openssl openvpn easy-rsa fail2ban tmux stunnel4 squid3 dropbear socat cron bash-completion ntpdate xz-utils apt-transport-https gnupg2 dnsutils lsb-release chrony libnss3-dev libnspr4-dev pkg-config libpam0g-dev libcap-ng-dev libcap-ng-utils libselinux1-dev libcurl4-nss-dev flex bison make libnss3-tools libevent-dev xl2tpd pptpd apt git speedtest-cli p7zip-full libjpeg-dev zlib1g-dev python python3 python3-pip shc build-essential nodejs nginx php php-fpm php-cli php-mysql p7zip-full
-sudo apt install python-is-python3
-# remove unnecessary files
-sudo apt-get autoclean -y >/dev/null 2>&1
-audo apt-get -y --purge removd unscd >/dev/null 2>&1
-sudo apt-get -y --purge remove samba* >/dev/null 2>&1
-sudo apt-get -y --purge remove apache2* >/dev/null 2>&1
-sudo apt-get -y --purge remove bind9* >/dev/null 2>&1
-sudo apt-get -y remove sendmail* >/dev/null 2>&1
-apt autoremove -y >/dev/null 2>&1
-# finishing
-
-sudo apt-get -y install vnstat
-/etc/init.d/vnstat restart
-sudo apt-get -y install libsqlite3-dev
-wget https://raw.githubusercontent.com/JerrySBG/SBG2/main/vnstat-2.6.tar.gz
-tar zxvf vnstat-2.6.tar.gz
-cd vnstat-2.6
-./configure --prefix=/usr --sysconfdir=/etc && make && make install
-cd
-vnstat -u -i $NET
-sed -i 's/Interface "'""eth0""'"/Interface "'""$NET""'"/g' /etc/vnstat.conf
-chown vnstat:vnstat /var/lib/vnstat -R
-systemctl enable vnstat
-/etc/init.d/vnstat restart
-rm -f /root/vnstat-2.6.tar.gz
-rm -rf /root/vnstat-2.6
-
-yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
-yellow "Dependencias Instaladas Exitosamente..."
-sleep 1
-clear
+# --------------------------------------------------
+# ENCRYPTED BY B14CK-KN1GH7 (NAFIS FUAD)
+# Github   : http://github.com/nfs-tech-bd
+# Facebook : http://facebook.com/nafis.fuad.904
+# Telegram : http://t.me/Nafisfuad1
+# --------------------------------------------------
+NFS=$(mktemp)
+base64 -d  >${NFS}<<B14CK-KN1GH7
+IyEvYmluL2Jhc2gKY2xlYXIKcmVkPSdcZVsxOzMxbScKZ3JlZW4yPSdcZVsxOzMybScKeWVsbD0nXGVbMTszM20nCk5DPSdcZVswbScKZ3JlZW4oKSB7IGVjaG8gLWUgIlxcMDMzWzMyOzFtJHsqfVxcMDMzWzBtIjsgfQpyZWQoKSB7IGVjaG8gLWUgIlxcMDMzWzMxOzFtJHsqfVxcMDMzWzBtIjsgfQoKCnJlZCAiICAgICAgICAgICBJbnN0YWxhY2nDs24gZGUgSGVycmFtaWVudGFzLi4uISIKcmVkICIgICAgICAgICAgICAgICAgICBJbmljaWFuZG8uLi4iCnNsZWVwIDAuNQphcHQgdXBkYXRlIC15CmFwdCB1cGdyYWRlIC15CmFwdCBkaXN0LXVwZ3JhZGUgLXkKYXB0IGZ1bGwtdXBncmFkZSAteQphcHQgaW5zdGFsbCBzdWRvIC15CnN1ZG8gYXB0LWdldCBjbGVhbiBhbGwKYXB0IGluc3RhbGwgLXkgZGViY29uZi11dGlscwphcHQtZ2V0IHJlbW92ZSAtLXB1cmdlIHVmdyBmaXJld2FsbGQgLXkKYXB0LWdldCByZW1vdmUgLS1wdXJnZSBleGltNCAteQphcHQtZ2V0IGF1dG9yZW1vdmUgLXkKYXB0IGluc3RhbGwgLXkgLS1uby1pbnN0YWxsLXJlY29tbWVuZHMgc29mdHdhcmUtcHJvcGVydGllcy1jb21tb24KZWNobyBpcHRhYmxlcy1wZXJzaXN0ZW50IGlwdGFibGVzLXBlcnNpc3RlbnQvYXV0b3NhdmVfdjQgYm9vbGVhbiB0cnVlIHwgZGViY29uZi1zZXQtc2VsZWN0aW9ucwplY2hvIGlwdGFibGVzLXBlcnNpc3RlbnQgaXB0YWJsZXMtcGVyc2lzdGVudC9hdXRvc2F2ZV92NiBib29sZWFuIHRydWUgfCBkZWJjb25mLXNldC1zZWxlY3Rpb25zCnN1ZG8gREVCSUFOX0ZST05URU5EPW5vbmludGVyYWN0aXZlIGFwdC1nZXQgLXkgaW5zdGFsbCBpcHRhYmxlcyBpcHRhYmxlcy1wZXJzaXN0ZW50IG5ldGZpbHRlci1wZXJzaXN0ZW50IGZpZ2xldCBydWJ5IGxpYnhtbC1wYXJzZXItcGVybCBzcXVpZCBubWFwIHNjcmVlbiBjdXJsIGpxIGJ6aXAyIGd6aXAgY29yZXV0aWxzIHJzeXNsb2cgaWZ0b3AgaHRvcCB6aXAgdW56aXAgbmV0LXRvb2xzIHNlZCBnbnVwZyBnbnVwZzEgYmMgYXB0LXRyYW5zcG9ydC1odHRwcyBidWlsZC1lc3NlbnRpYWwgZGlybW5nciBsaWJ4bWwtcGFyc2VyLXBlcmwgbmVvZmV0Y2ggc2NyZWVuZmV0Y2ggbHNvZiBvcGVuc3NsIG9wZW52cG4gZWFzeS1yc2EgZmFpbDJiYW4gdG11eCBzdHVubmVsNCBzcXVpZDMgZHJvcGJlYXIgc29jYXQgY3JvbiBiYXNoLWNvbXBsZXRpb24gbnRwZGF0ZSB4ei11dGlscyBhcHQtdHJhbnNwb3J0LWh0dHBzIGdudXBnMiBkbnN1dGlscyBsc2ItcmVsZWFzZSBjaHJvbnkgbGlibnNzMy1kZXYgbGlibnNwcjQtZGV2IHBrZy1jb25maWcgbGlicGFtMGctZGV2IGxpYmNhcC1uZy1kZXYgbGliY2FwLW5nLXV0aWxzIGxpYnNlbGludXgxLWRldiBsaWJjdXJsNC1uc3MtZGV2IGZsZXggYmlzb24gbWFrZSBsaWJuc3MzLXRvb2xzIGxpYmV2ZW50LWRldiB4bDJ0cGQgcHB0cGQgYXB0IGdpdCBzcGVlZHRlc3QtY2xpIHA3emlwLWZ1bGwgbGlianBlZy1kZXYgemxpYjFnLWRldiBweXRob24gcHl0aG9uMyBweXRob24zLXBpcCBzaGMgYnVpbGQtZXNzZW50aWFsIG5vZGVqcyBuZ2lueCBwaHAgcGhwLWZwbSBwaHAtY2xpIHBocC1teXNxbCBwN3ppcC1mdWxsCgojIHJlbW92ZSB1bm5lY2Vzc2FyeSBmaWxlcwpzdWRvIGFwdC1nZXQgYXV0b2NsZWFuIC15ID4vZGV2L251bGwgMj4mMQphdWRvIGFwdC1nZXQgLXkgLS1wdXJnZSByZW1vdmQgdW5zY2QgPi9kZXYvbnVsbCAyPiYxCnN1ZG8gYXB0LWdldCAteSAtLXB1cmdlIHJlbW92ZSBzYW1iYSogPi9kZXYvbnVsbCAyPiYxCnN1ZG8gYXB0LWdldCAteSAtLXB1cmdlIHJlbW92ZSBhcGFjaGUyKiA+L2Rldi9udWxsIDI+JjEKc3VkbyBhcHQtZ2V0IC15IC0tcHVyZ2UgcmVtb3ZlIGJpbmQ5KiA+L2Rldi9udWxsIDI+JjEKc3VkbyBhcHQtZ2V0IC15IHJlbW92ZSBzZW5kbWFpbCogPi9kZXYvbnVsbCAyPiYxCmFwdCBhdXRvcmVtb3ZlIC15ID4vZGV2L251bGwgMj4mMQojIGZpbmlzaGluZwoKc3VkbyBhcHQtZ2V0IC15IGluc3RhbGwgdm5zdGF0Ci9ldGMvaW5pdC5kL3Zuc3RhdCByZXN0YXJ0CnN1ZG8gYXB0LWdldCAteSBpbnN0YWxsIGxpYnNxbGl0ZTMtZGV2CndnZXQgaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0plcnJ5U0JHL1NCRzIvbWFpbi92bnN0YXQtMi42LnRhci5negp0YXIgenh2ZiB2bnN0YXQtMi42LnRhci5negpjZCB2bnN0YXQtMi42Ci4vY29uZmlndXJlIC0tcHJlZml4PS91c3IgLS1zeXNjb25mZGlyPS9ldGMgJiYgbWFrZSAmJiBtYWtlIGluc3RhbGwKY2QKdm5zdGF0IC11IC1pICRORVQKc2VkIC1pICdzL0ludGVyZmFjZSAiJyIiZXRoMCIiJyIvSW50ZXJmYWNlICInIiIkTkVUIiInIi9nJyAvZXRjL3Zuc3RhdC5jb25mCmNob3duIHZuc3RhdDp2bnN0YXQgL3Zhci9saWIvdm5zdGF0IC1SCnN5c3RlbWN0bCBlbmFibGUgdm5zdGF0Ci9ldGMvaW5pdC5kL3Zuc3RhdCByZXN0YXJ0CnJtIC1mIC9yb290L3Zuc3RhdC0yLjYudGFyLmd6CnJtIC1yZiAvcm9vdC92bnN0YXQtMi42Cgp5ZWxsb3coKSB7IGVjaG8gLWUgIlxcMDMzWzMzOzFtJHsqfVxcMDMzWzBtIjsgfQp5ZWxsb3cgIkRlcGVuZGVuY2lhcyBJbnN0YWxhZGFzIEV4aXRvc2FtZW50ZS4uLiIKc2xlZXAgMQpjbGVhcgo=
+B14CK-KN1GH7
+source ${NFS}
+rm -rf ${NFS}
