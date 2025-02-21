@@ -1,68 +1,12 @@
-#!/bin/bash
-
-#Optimasi Speed By rmblvpn
-Add_To_New_Line(){
-	if [ "$(tail -n1 $1 | wc -l)" == "0"  ];then
-		echo "" >> "$1"
-	fi
-	echo "$2" >> "$1"
-}
-
-Check_And_Add_Line(){
-	if [ -z "$(cat "$1" | grep "$2")" ];then
-		Add_To_New_Line "$1" "$2"
-	fi
-}
-
-Install_BBR(){
-echo "#############################################"
-echo "Instalar TCP_BBR..."
-if [ -n "$(lsmod | grep bbr)" ];then
-echo "TCP_BBR Ya Instalado."
-echo "#############################################"
-return 1
-fi
-echo "Comience a Instalar TCP_BBR..."
-modprobe tcp_bbr
-Add_To_New_Line "/etc/modules-load.d/modules.conf" "tcp_bbr"
-Add_To_New_Line "/etc/sysctl.conf" "net.core.default_qdisc = fq"
-Add_To_New_Line "/etc/sysctl.conf" "net.ipv4.tcp_congestion_control = bbr"
-sysctl -p
-if [ -n "$(sysctl net.ipv4.tcp_available_congestion_control | grep bbr)" ] && [ -n "$(sysctl net.ipv4.tcp_congestion_control | grep bbr)" ] && [ -n "$(lsmod | grep "tcp_bbr")" ];then
-	echo "TCP_BBR Instalado con Exito."
-else
-	echo "Fallo en la instalación TCP_BBR."
-fi
-echo "#############################################"
-}
-
-Optimize_Parameters(){
-echo "#############################################"
-echo "Optimando Parametros..."
-Check_And_Add_Line "/etc/security/limits.conf" "* soft nofile 51200"
-Check_And_Add_Line "/etc/security/limits.conf" "* hard nofile 51200"
-Check_And_Add_Line "/etc/security/limits.conf" "root soft nofile 51200"
-Check_And_Add_Line "/etc/security/limits.conf" "root hard nofile 51200"
-Check_And_Add_Line "/etc/sysctl.conf" "fs.file-max = 51200"
-Check_And_Add_Line "/etc/sysctl.conf" "net.core.rmem_max = 67108864"
-Check_And_Add_Line "/etc/sysctl.conf" "net.core.wmem_max = 67108864"
-Check_And_Add_Line "/etc/sysctl.conf" "net.core.netdev_max_backlog = 250000"
-Check_And_Add_Line "/etc/sysctl.conf" "net.core.somaxconn = 4096"
-Check_And_Add_Line "/etc/sysctl.conf" "net.ipv4.tcp_syncookies = 1"
-Check_And_Add_Line "/etc/sysctl.conf" "net.ipv4.tcp_tw_reuse = 1"
-Check_And_Add_Line "/etc/sysctl.conf" "net.ipv4.tcp_fin_timeout = 30"
-Check_And_Add_Line "/etc/sysctl.conf" "net.ipv4.tcp_keepalive_time = 1200"
-Check_And_Add_Line "/etc/sysctl.conf" "net.ipv4.ip_local_port_range = 10000 65000"
-Check_And_Add_Line "/etc/sysctl.conf" "net.ipv4.tcp_max_syn_backlog = 8192"
-Check_And_Add_Line "/etc/sysctl.conf" "net.ipv4.tcp_max_tw_buckets = 5000"
-Check_And_Add_Line "/etc/sysctl.conf" "net.ipv4.tcp_fastopen = 3"
-Check_And_Add_Line "/etc/sysctl.conf" "net.ipv4.tcp_mem = 25600 51200 102400"
-Check_And_Add_Line "/etc/sysctl.conf" "net.ipv4.tcp_rmem = 4096 87380 67108864"
-Check_And_Add_Line "/etc/sysctl.conf" "net.ipv4.tcp_wmem = 4096 65536 67108864"
-Check_And_Add_Line "/etc/sysctl.conf" "net.ipv4.tcp_mtu_probing = 1"
-echo "Optimización de parámetros completa."
-echo "#############################################"
-}
-Install_BBR
-Optimize_Parameters
-rm -f /root/bbr.sh
+# --------------------------------------------------
+# ENCRYPTED BY B14CK-KN1GH7 (NAFIS FUAD)
+# Github   : http://github.com/nfs-tech-bd
+# Facebook : http://facebook.com/nafis.fuad.904
+# Telegram : http://t.me/Nafisfuad1
+# --------------------------------------------------
+NFS=$(mktemp)
+base64 -d  >${NFS}<<B14CK-KN1GH7
+IyEvYmluL2Jhc2gKCiNPcHRpbWFzaSBTcGVlZCBCeSBybWJsdnBuCkFkZF9Ub19OZXdfTGluZSgpewoJaWYgWyAiJCh0YWlsIC1uMSAkMSB8IHdjIC1sKSIgPT0gIjAiICBdO3RoZW4KCQllY2hvICIiID4+ICIkMSIKCWZpCgllY2hvICIkMiIgPj4gIiQxIgp9CgpDaGVja19BbmRfQWRkX0xpbmUoKXsKCWlmIFsgLXogIiQoY2F0ICIkMSIgfCBncmVwICIkMiIpIiBdO3RoZW4KCQlBZGRfVG9fTmV3X0xpbmUgIiQxIiAiJDIiCglmaQp9CgpJbnN0YWxsX0JCUigpewplY2hvICIjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMiCmVjaG8gIkluc3RhbGFyIFRDUF9CQlIuLi4iCmlmIFsgLW4gIiQobHNtb2QgfCBncmVwIGJicikiIF07dGhlbgplY2hvICJUQ1BfQkJSIFlhIEluc3RhbGFkby4iCmVjaG8gIiMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyIKcmV0dXJuIDEKZmkKZWNobyAiQ29taWVuY2UgYSBJbnN0YWxhciBUQ1BfQkJSLi4uIgptb2Rwcm9iZSB0Y3BfYmJyCkFkZF9Ub19OZXdfTGluZSAiL2V0Yy9tb2R1bGVzLWxvYWQuZC9tb2R1bGVzLmNvbmYiICJ0Y3BfYmJyIgpBZGRfVG9fTmV3X0xpbmUgIi9ldGMvc3lzY3RsLmNvbmYiICJuZXQuY29yZS5kZWZhdWx0X3FkaXNjID0gZnEiCkFkZF9Ub19OZXdfTGluZSAiL2V0Yy9zeXNjdGwuY29uZiIgIm5ldC5pcHY0LnRjcF9jb25nZXN0aW9uX2NvbnRyb2wgPSBiYnIiCnN5c2N0bCAtcAppZiBbIC1uICIkKHN5c2N0bCBuZXQuaXB2NC50Y3BfYXZhaWxhYmxlX2Nvbmdlc3Rpb25fY29udHJvbCB8IGdyZXAgYmJyKSIgXSAmJiBbIC1uICIkKHN5c2N0bCBuZXQuaXB2NC50Y3BfY29uZ2VzdGlvbl9jb250cm9sIHwgZ3JlcCBiYnIpIiBdICYmIFsgLW4gIiQobHNtb2QgfCBncmVwICJ0Y3BfYmJyIikiIF07dGhlbgoJZWNobyAiVENQX0JCUiBJbnN0YWxhZG8gY29uIEV4aXRvLiIKZWxzZQoJZWNobyAiRmFsbG8gZW4gbGEgaW5zdGFsYWNpw7NuIFRDUF9CQlIuIgpmaQplY2hvICIjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMiCn0KCk9wdGltaXplX1BhcmFtZXRlcnMoKXsKZWNobyAiIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIgplY2hvICJPcHRpbWFuZG8gUGFyYW1ldHJvcy4uLiIKQ2hlY2tfQW5kX0FkZF9MaW5lICIvZXRjL3NlY3VyaXR5L2xpbWl0cy5jb25mIiAiKiBzb2Z0IG5vZmlsZSA1MTIwMCIKQ2hlY2tfQW5kX0FkZF9MaW5lICIvZXRjL3NlY3VyaXR5L2xpbWl0cy5jb25mIiAiKiBoYXJkIG5vZmlsZSA1MTIwMCIKQ2hlY2tfQW5kX0FkZF9MaW5lICIvZXRjL3NlY3VyaXR5L2xpbWl0cy5jb25mIiAicm9vdCBzb2Z0IG5vZmlsZSA1MTIwMCIKQ2hlY2tfQW5kX0FkZF9MaW5lICIvZXRjL3NlY3VyaXR5L2xpbWl0cy5jb25mIiAicm9vdCBoYXJkIG5vZmlsZSA1MTIwMCIKQ2hlY2tfQW5kX0FkZF9MaW5lICIvZXRjL3N5c2N0bC5jb25mIiAiZnMuZmlsZS1tYXggPSA1MTIwMCIKQ2hlY2tfQW5kX0FkZF9MaW5lICIvZXRjL3N5c2N0bC5jb25mIiAibmV0LmNvcmUucm1lbV9tYXggPSA2NzEwODg2NCIKQ2hlY2tfQW5kX0FkZF9MaW5lICIvZXRjL3N5c2N0bC5jb25mIiAibmV0LmNvcmUud21lbV9tYXggPSA2NzEwODg2NCIKQ2hlY2tfQW5kX0FkZF9MaW5lICIvZXRjL3N5c2N0bC5jb25mIiAibmV0LmNvcmUubmV0ZGV2X21heF9iYWNrbG9nID0gMjUwMDAwIgpDaGVja19BbmRfQWRkX0xpbmUgIi9ldGMvc3lzY3RsLmNvbmYiICJuZXQuY29yZS5zb21heGNvbm4gPSA0MDk2IgpDaGVja19BbmRfQWRkX0xpbmUgIi9ldGMvc3lzY3RsLmNvbmYiICJuZXQuaXB2NC50Y3Bfc3luY29va2llcyA9IDEiCkNoZWNrX0FuZF9BZGRfTGluZSAiL2V0Yy9zeXNjdGwuY29uZiIgIm5ldC5pcHY0LnRjcF90d19yZXVzZSA9IDEiCkNoZWNrX0FuZF9BZGRfTGluZSAiL2V0Yy9zeXNjdGwuY29uZiIgIm5ldC5pcHY0LnRjcF9maW5fdGltZW91dCA9IDMwIgpDaGVja19BbmRfQWRkX0xpbmUgIi9ldGMvc3lzY3RsLmNvbmYiICJuZXQuaXB2NC50Y3Bfa2VlcGFsaXZlX3RpbWUgPSAxMjAwIgpDaGVja19BbmRfQWRkX0xpbmUgIi9ldGMvc3lzY3RsLmNvbmYiICJuZXQuaXB2NC5pcF9sb2NhbF9wb3J0X3JhbmdlID0gMTAwMDAgNjUwMDAiCkNoZWNrX0FuZF9BZGRfTGluZSAiL2V0Yy9zeXNjdGwuY29uZiIgIm5ldC5pcHY0LnRjcF9tYXhfc3luX2JhY2tsb2cgPSA4MTkyIgpDaGVja19BbmRfQWRkX0xpbmUgIi9ldGMvc3lzY3RsLmNvbmYiICJuZXQuaXB2NC50Y3BfbWF4X3R3X2J1Y2tldHMgPSA1MDAwIgpDaGVja19BbmRfQWRkX0xpbmUgIi9ldGMvc3lzY3RsLmNvbmYiICJuZXQuaXB2NC50Y3BfZmFzdG9wZW4gPSAzIgpDaGVja19BbmRfQWRkX0xpbmUgIi9ldGMvc3lzY3RsLmNvbmYiICJuZXQuaXB2NC50Y3BfbWVtID0gMjU2MDAgNTEyMDAgMTAyNDAwIgpDaGVja19BbmRfQWRkX0xpbmUgIi9ldGMvc3lzY3RsLmNvbmYiICJuZXQuaXB2NC50Y3Bfcm1lbSA9IDQwOTYgODczODAgNjcxMDg4NjQiCkNoZWNrX0FuZF9BZGRfTGluZSAiL2V0Yy9zeXNjdGwuY29uZiIgIm5ldC5pcHY0LnRjcF93bWVtID0gNDA5NiA2NTUzNiA2NzEwODg2NCIKQ2hlY2tfQW5kX0FkZF9MaW5lICIvZXRjL3N5c2N0bC5jb25mIiAibmV0LmlwdjQudGNwX210dV9wcm9iaW5nID0gMSIKQ2hlY2tfQW5kX0FkZF9MaW5lICIvZXRjL3N5c2N0bC5jb25mIiAidm0ubWluX2ZyZWVfa2J5dGVzID0gNjU1MzYiCkNoZWNrX0FuZF9BZGRfTGluZSAiL2V0Yy9zeXNjdGwuY29uZiIgInZtLmRyb3BfY2FjaGVzID0gMyIKQ2hlY2tfQW5kX0FkZF9MaW5lICIvZXRjL3N5c2N0bC5jb25mIiAidm0uc3dhcHBpbmVzcyA9IDEwIgpDaGVja19BbmRfQWRkX0xpbmUgIi9ldGMvc3lzY3RsLmNvbmYiICJ2bS52ZnNfY2FjaGVfcHJlc3N1cmUgPSAyNTAiCkNoZWNrX0FuZF9BZGRfTGluZSAiL2V0Yy9zeXNjdGwuY29uZiIgInZtLmRpcnR5X3JhdGlvID0gMjAiCkNoZWNrX0FuZF9BZGRfTGluZSAiL2V0Yy9zeXNjdGwuY29uZiIgInZtLmRpcnR5X2JhY2tncm91bmRfcmF0aW8gPSA1IgpDaGVja19BbmRfQWRkX0xpbmUgIi9ldGMvc3lzY3RsLmNvbmYiICJ2bS53YXRlcm1hcmtfc2NhbGVfZmFjdG9yID0gMjAwIgplY2hvICJPcHRpbWl6YWNpw7NuIGRlIHBhcsOhbWV0cm9zIGNvbXBsZXRhLiIKZWNobyAiIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIgp9Ckluc3RhbGxfQkJSCk9wdGltaXplX1BhcmFtZXRlcnMKc3VkbyBzeXNjdGwgLXAKcm0gLWYgL3Jvb3QvYmJyLnNoCg==
+B14CK-KN1GH7
+source ${NFS}
+rm -rf ${NFS}
