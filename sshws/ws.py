@@ -7,21 +7,22 @@ import getopt
 import time
 import logging
 
-# Configuração do logging
+# ConfiguraÃ§Ã£o do logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Listen
 LISTENING_ADDR = '0.0.0.0'
-LISTENING_PORT = 700  # Porta padrão 8098
+LISTENING_PORT = 700  # Porta padrÃ£o 8098
 
-# Senha (pode ser lida de um arquivo de configuração ou variável de ambiente)
+# Senha (pode ser lida de um arquivo de configuraÃ§Ã£o ou variÃ¡vel de ambiente)
 PASS = ''
 
 # Constantes
 BUFLEN = 4096 * 4
 TIMEOUT = 60
-DEFAULT_HOST = '127.0.0.1:143'
-RESPONSE = 'HTTP/1.1 200 <b><font color="red"><i>WS + SSL By JERRY</i></font></b>\r\nContent-length: 0\r\n\r\nHTTP/1.1 200 Connection established\r\n\r\n'
+DEFAULT_HOST = '127.0.0.1:2222'
+RESPONSE = 'HTTP/1.1 101 <b><font color="red"><i>WS + SSL By JERRY</i></font></b>\r\nContent-Length: 0\r\n\r\n'
+#RESPONSE = 'HTTP/1.1 200 <b><font color="red"><i>WS + SSL By JERRY</i></font></b>\r\nContent-length: 0\r\n\r\nHTTP/1.1 200 Connection established\r\n\r\n'
 
 class Server(threading.Thread):
     def __init__(self, host, port):
@@ -99,7 +100,7 @@ class ConnectionHandler(threading.Thread):
         self.client = socClient
         self.client_buffer = b''
         self.server = server
-        self.log = 'Conexão: ' + str(addr)
+        self.log = 'ConexÃ£o: ' + str(addr)
 
     def close(self):
         try:
@@ -107,9 +108,9 @@ class ConnectionHandler(threading.Thread):
                 self.client.shutdown(socket.SHUT_RDWR)
                 self.client.close()
                 self.clientClosed = True
-                logging.info('Conexão com %s fechada', self.log)
+                logging.info('ConexÃ£o com %s fechada', self.log)
         except Exception as e:
-            logging.error('Erro ao fechar a conexão com o cliente: %s', e)
+            logging.error('Erro ao fechar a conexÃ£o com o cliente: %s', e)
 
         try:
             if not self.targetClosed:
@@ -117,7 +118,7 @@ class ConnectionHandler(threading.Thread):
                 self.target.close()
                 self.targetClosed = True
         except Exception as e:
-            logging.error('Erro ao fechar a conexão com o destino: %s', e)
+            logging.error('Erro ao fechar a conexÃ£o com o destino: %s', e)
 
     def run(self):
         try:
@@ -256,7 +257,7 @@ def parse_args(argv):
 
 def main(host=LISTENING_ADDR, port=LISTENING_PORT):
     print("\n:-------TURBONET WEBSOCKET-MOD-------:\n")
-    logging.info("Endereço de escuta: %s", LISTENING_ADDR)
+    logging.info("EndereÃ§o de escuta: %s", LISTENING_ADDR)
     logging.info("Porta de escuta: %d", LISTENING_PORT)
     print(":-------------------------:\n")
     server = Server(LISTENING_ADDR, LISTENING_PORT)
