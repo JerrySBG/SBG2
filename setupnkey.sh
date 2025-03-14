@@ -341,14 +341,13 @@ if [ -z "${_checkBT}" ]; then
 [[ -e $HOME/log.txt ]] && rm -f $HOME/log.txt
 IP=$(ofus "$Key" | grep -vE '127\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}') && echo "$IP" > /usr/bin/vendor_code
    REQUEST=$(ofus "$Key"|cut -d'/' -f2)
-   [[ ! -d ${SCPinstal} ]] && mkdir ${SCPinstal}
+   #[[ ! -d ${SCPinstal} ]] && mkdir ${SCPinstal}
    for arqx in $(cat $HOME/lista-arq); do
-   wget --no-check-certificate -O ${SCPinstal}/${arqx} ${IP}:8888/${REQUEST}/${arqx} > /dev/null 2>&1 && verificar_arq "${arqx}" 
-   done
-if [[ -e $HOME/lista-arq ]] && [[ ! $(cat $HOME/lista-arq|grep "KEY INVALIDA!") ]]; then
-[[ -e ${SCPdir}/header ]] && {
-echo $Key > /etc/cghkey
-clear
+   echo -ne "   \033[38;5;15;48;5;208mCONEXION AL SERVIDOR: \033[0m"
+wget -O $HOME/$arqx ${IP}:8888/${REQUEST}/${arqx} > /dev/null 2>&1 && echo -e "   \033[1;31m-\033[1;32mExitosa !" || { echo -e "   \033[0;97;41mFallida (Saliendo)\033[0m" | pv -qL 10; echo -e "   \033[0;97;45m-> INTENTA DE NUEVO, COPIA BIEN LA KEY${NC}"; echo -e "   \033[0;97;45m-> KEY ELIMINADA o USADA,Genera Nueva KEY${NC}"; echo -e "   \033[0;97;45m-> TELEGRAM: @Jerry_SBG${NC}"; rm -rf $HOME/lista-arq; exit 1; }
+[[ -e $HOME/$arqx ]] && veryfy_fun $arqx
+done
+rm $HOME/lista-arq
 rm -f $HOME/log.txt
 } || { 
 clear&&clear
