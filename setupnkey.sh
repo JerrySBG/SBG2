@@ -230,7 +230,7 @@ echo -e "  - \e[3;32mGENERADOR O KEYGEN COLAPZADO\e[0m - "
 }
 [[ "$list_fix" = "KEY INVALIDA!" ]] && {
 IiP="$(ofus "$Key" | grep -vE '127\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')"
-cheklist="$(curl -sSL $IiP:81/ChumoGH/checkIP.log)"
+cheklist="$(curl -sSL $IiP:8888/ChumoGH/checkIP.log)"
 chekIP="$(echo -e "$cheklist" | grep ${Key} | awk '{print $3}')"
 chekDATE="$(echo -e "$cheklist" | grep ${Key} | awk '{print $7}')"
 msg -bar3
