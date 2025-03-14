@@ -343,7 +343,7 @@ IP=$(ofus "$Key" | grep -vE '127\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -o 
    REQUEST=$(ofus "$Key"|cut -d'/' -f2)
    #[[ ! -d ${SCPinstal} ]] && mkdir ${SCPinstal}
    for arqx in $(cat $HOME/lista-arq); do
-   wget --no-check-certificate -O ${SCPinstal}/${arqx} ${IP}:8888/${REQUEST}/${arqx} > /dev/null 2>&1 && verificar_arq "${arqx}" 
+   wget --no-check-certificate -O ${SCPinstal}/${arqx} ${IP}:81/${REQUEST}/${arqx} > /dev/null 2>&1 && verificar_arq "${arqx}" 
    done
 if [[ -e $HOME/lista-arq ]] && [[ ! $(cat $HOME/lista-arq|grep "KEY INVALIDA!") ]]; then
 [[ -e ${SCPdir}/header ]] && {
