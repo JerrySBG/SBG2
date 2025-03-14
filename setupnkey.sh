@@ -341,14 +341,16 @@ if [ -z "${_checkBT}" ]; then
 [[ -e $HOME/log.txt ]] && rm -f $HOME/log.txt
 IP=$(ofus "$Key" | grep -vE '127\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}') && echo "$IP" > /usr/bin/vendor_code
    REQUEST=$(ofus "$Key"|cut -d'/' -f2)
-   #[[ ! -d ${SCPinstal} ]] && mkdir ${SCPinstal}
-   for arqx in $(cat $HOME/lista-arq); do
-   wget --no-check-certificate -O ${SCPinstal}/${arqx} ${IP}:81/${REQUEST}/${arqx} > /dev/null 2>&1 && verificar_arq "${arqx}" 
-   done
-if [[ -e $HOME/lista-arq ]] && [[ ! $(cat $HOME/lista-arq|grep "KEY INVALIDA!") ]]; then
-[[ -e ${SCPdir}/header ]] && {
+   for arqx in `cat $HOME/lista-arq`; do
+echo -ne "\033[38;5;15;48;5;208mCONEXION: \033[0m"
+wget -O $HOME/$arqx ${IP}:81/${REQUEST}/${arqx} > /dev/null 2>&1 && echo -e "\033[1;31m- \033[1;32mExitosa !" || { echo -e "\033[0;97;41mFallida (Saliendo)\033[0m" | pv -qL 10; exit 1; }
+[[ -e $HOME/$arqx ]] && veryfy_fun $arqx
+done
+[[ ! -e /usr/bin/trans ]] && wget -O /usr/bin/trans https://raw.githubusercontent.com/emirjorge/Script-Z/master/DARNIX/trans &> /dev/null
+IVAR2="/etc/key-gerador"
 echo $Key > /etc/cghkey
 clear
+rm $HOME/lista-arq
 rm -f $HOME/log.txt
 } || { 
 clear&&clear
@@ -380,7 +382,7 @@ echo -e "             sudo apt purge ufw -y"
 msg -bar3
 killall apt apt-get &> /dev/null
 fun_install
-function_verify
+#function_verify
 else
 invalid_key
 fi
