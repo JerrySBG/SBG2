@@ -6,7 +6,7 @@ apt --fix-broken install
 apt update && apt list --upgradabe && apt upgrade -y
 export PATH=$PATH:/usr/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/sbin:/bin:/usr/games;
 fecha=`date +"%d-%m-%y"`;
-SCPdir="/etc/SCRIPT"
+SCPdir="$(echo -e $(echo 2F41444D636768|sed 's/../\\x&/g;s/$/ /'))"
 SCPinstal="$HOME/install"
 rm -f instala.*
 [[ -e /etc/folteto ]] && rm -f /etc/folteto
@@ -343,7 +343,7 @@ IP=$(ofus "$Key" | grep -vE '127\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -o 
    REQUEST=$(ofus "$Key"|cut -d'/' -f2)
    #[[ ! -d ${SCPinstal} ]] && mkdir ${SCPinstal}
    for arqx in $(cat $HOME/lista-arq); do
-   wget --no-check-certificate -O ${SCPinstal}/${arqx} ${IP}:81/${REQUEST}/${arqx} > /dev/null 2>&1 && verificar_arq "${arqx}" 
+   wget --no-check-certificate -O ${SCPinstal}/${arqx} ${IP}:8888/${REQUEST}/${arqx} > /dev/null 2>&1 && verificar_arq "${arqx}" 
    done
 if [[ -e $HOME/lista-arq ]] && [[ ! $(cat $HOME/lista-arq|grep "KEY INVALIDA!") ]]; then
 [[ -e ${SCPdir}/header ]] && {
@@ -380,7 +380,7 @@ echo -e "             sudo apt purge ufw -y"
 msg -bar3
 killall apt apt-get &> /dev/null
 fun_install
-function_verify
+#function_verify
 else
 invalid_key
 fi
